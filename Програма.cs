@@ -15,7 +15,7 @@ namespace Mini
         static void Main()
         {
 
-            Табло scoreboard = new Табло();
+            Scoreboard scoreboard = new Scoreboard();
             ДайНаново:
             bool displayBoard = true;
             Дъска board = new Дъска();
@@ -34,7 +34,7 @@ namespace Mini
                 {
                     if (Команда.IsGetStatistic)
                     {
-                        scoreboard.Покажи();
+                        scoreboard.Show();
                         displayBoard = false;
                         Команда.Clear();
                         continue;
@@ -68,9 +68,9 @@ namespace Mini
                             Console.WriteLine();
                             if (board.RevealedCells > scoreboard.MinInTop5() || scoreboard.Count() < 5)
                             {
-                                scoreboard.Dobavi(board.RevealedCells);
+                                scoreboard.Add(board.RevealedCells);
                             }
-                            scoreboard.Покажи();
+                            scoreboard.Show();
                             goto ДайНаново;
                         }
                         else

@@ -46,9 +46,9 @@
   <ItemGroup>
     <Compile Include="Дъска.cs" />
     <Compile Include="Команда.cs" />
-    <Compile Include="Човек.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Програма.cs" />
-    <Compile Include="Табло.cs" />
+    <Compile Include="Scoreboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
