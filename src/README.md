@@ -1,0 +1,1 @@
+The **refactored source code** (project files, .cs files) without executables
