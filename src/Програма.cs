@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Minesweeper.InputProviders;
 
-namespace Mini
+namespace Minesweeper
 {
-
-	// Аз съм българче и пиша на БЪЛГАРСКИ!
-
     class Програма
     {
         static void Main()
         {
+            var inputProvider = new ConsoleInputProvider();
 
             Scoreboard scoreboard = new Scoreboard();
             ДайНаново:
@@ -28,25 +27,28 @@ namespace Mini
                     board.Display();
                 displayBoard = true;
                 Console.Write("Enter row and column: ");
-                Команда.Прочети();
 
+                var currentCommand = inputProvider.Read();
+                DispatchCommand(currentCommand);
+
+                // TODO: These lines of code should go to their corresponding methods
+                // Команда does not exist now
                 if (!Команда.NeMojesh)
                 {
-                    if (Команда.IsGetStatistic)
+                    if (Команда.IsGetStatistic)// input = Top
                     {
                         scoreboard.Show();
                         displayBoard = false;
                         Команда.Clear();
                         continue;
                     }
-                    if (Команда.Izlez)
+                    if (Команда.Izlez) // input = Exit
                     {
                         Console.WriteLine("Goodbye!");
                         Environment.Exit(0);
                     }
-                    if (Команда.Nanovo)
-                    {//ako iskahs pak skakash neznaino kyde
-                        // ama pyk si bachka
+                    if (Команда.Nanovo) // Input = Restart
+                    {
                         goto ДайНаново;
                     }
 
@@ -85,7 +87,45 @@ namespace Mini
             }
         }
 
-        //ai na bas che ne mojehs da napishesh pove4e kod v edin metod!
+        private static void DispatchCommand(string currentCommand)
+        {
+            switch (currentCommand)
+            {
+                case "Exit":
+                    EndGame();
+                    break;
 
+                case "Top":
+                    ShowTopScores();
+                    break;
+
+                case "Restart":
+                    Restart();
+                    break;
+                default:
+                    HandleCommand(currentCommand);
+                    break;
+            }
+        }
+
+        private static void HandleCommand(string currentCommand)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void Restart()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ShowTopScores()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void EndGame()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

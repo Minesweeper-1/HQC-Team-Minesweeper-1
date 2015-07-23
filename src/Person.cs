@@ -1,4 +1,4 @@
-﻿namespace Mini
+﻿namespace Minesweeper
 {
     public class Person
     {

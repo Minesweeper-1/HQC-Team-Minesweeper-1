@@ -1,4 +1,4 @@
-﻿namespace Mini
+﻿namespace Minesweeper
 {
     using System;
     using System.Collections.Generic;
