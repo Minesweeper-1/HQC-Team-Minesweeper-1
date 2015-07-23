@@ -1,7 +1,8 @@
-﻿Refactoring Documentation for Project “Minesweeper-1”
+Refactoring Documentation for Project “Minesweeper-1”
 ------------------------------------------------------
 This document describes the steps in the refactoring of the team project "Minesweeper-1" 
 in the Telerik Academy JavaScript UI & DOM course 2015
+
 ------------------------------------------------------
 1. Redesigned the project structure: Team "Minesweeper-1"
 	- Renamed the namespace `Mini` to `Minesweeper`
