@@ -33,49 +33,51 @@
             while (true)
             {
                 string command = this.InputProvider.Read();
-                this.ExecuteCommand(command);
+                bool commandResult = this.ExecuteCommand(command);
+                if (!commandResult)
+                {
+                    break;
+                }
             }
         }
 
-        private void ExecuteCommand(string command)
+        private bool ExecuteCommand(string command)
         {
-            switch (command)
+            string commandToLowerCase = command.ToLower();
+            switch (commandToLowerCase)
             {
-                case "Exit":
-                    HandleEndGameCommand();
-                    break;
-
-                case "Top":
+                case "exit":
+                    return HandleEndGameCommand();
+                case "top":
                     HandleShowTopScoresCommand();
-                    break;
-
-                case "Restart":
+                    return true;
+                case "restart":
                     HandleRestartCommand();
-                    break;
+                    return true;
                 default:
-                    HandlePlayCommand(command);
-                    break;
+                    HandlePlayCommand(commandToLowerCase);
+                    return true;
             }
         }
 
         private void HandlePlayCommand(string command)
         {
-            
+
         }
 
         private void HandleRestartCommand()
         {
-            
+
         }
 
         private void HandleShowTopScoresCommand()
         {
-            
+
         }
 
-        private void HandleEndGameCommand()
+        private bool HandleEndGameCommand()
         {
-            Environment.Exit(0);
+            return false;
         }
     }
 }
