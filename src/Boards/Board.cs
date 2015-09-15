@@ -37,20 +37,20 @@
             }
         }
 
-        internal bool proverka(int x, int y)
+        public bool IsInsideTheField(int x, int y)
         {
             return 0 <= x && x < SizeX && 0 <= y && y < SizeY;
         }
 
         private bool PlaceMine(int x, int y)
         {
-            if (proverka(x, y) && !hasMine[x, y])
+            if (IsInsideTheField(x, y) && !hasMine[x, y])
             {
                 hasMine[x, y] = true;
                 for (int xx = -1; xx <= 1; xx++)
                     for (int yy = -1; yy <= 1; yy++)
                     {
-                        if (((xx != 0) || (yy != 0)) && proverka(x + xx, y + yy))
+                        if (((xx != 0) || (yy != 0)) && IsInsideTheField(x + xx, y + yy))
                             numberOfNeighbourMines[x + xx, y + yy]++;
                     }
                 return true;
@@ -92,12 +92,12 @@
             Console.WriteLine();
         }
 
-        internal bool proverka3(int x, int y)
+        public bool IsMine(int x, int y)
         {
             return hasMine[x, y];
         }
 
-        internal void RevealBlock(int x, int y)
+        public void RevealCell(int x, int y)
         {
             display[x, y] = Convert.ToChar(numberOfNeighbourMines[x, y].ToString());
             RevealedCells++;
@@ -109,13 +109,13 @@
                     {
                         int newX = x + xx;
                         int newY = y + yy;
-                        if (proverka(newX, newY) && shown[newX, newY] == false)
-                            RevealBlock(newX, newY);
+                        if (IsInsideTheField(newX, newY) && shown[newX, newY] == false)
+                            RevealCell(newX, newY);
                     }
             }
         }
 
-        internal void Край(int x, int y)
+        public void Край(int x, int y)
         {
             for (int i = 0; i < SizeX; i++)
                 for (int j = 0; j < SizeY; j++)
@@ -127,7 +127,7 @@
                 }
         }
 
-        internal bool proverka2(int x, int y)
+        public bool IsAlreadyShown(int x, int y)
         {
             return shown[x, y];
         }

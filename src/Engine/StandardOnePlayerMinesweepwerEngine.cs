@@ -24,7 +24,8 @@
 
         public void Initialize()
         {
-            this.Renderer.RenderWelcomeLine();
+            string welcomeLine = "Welcome to the all-time classic Minesweeper. Use your mind to tackle the mines.";
+            this.Renderer.Render(welcomeLine);
             this.Board.Display();
         }
 
@@ -55,14 +56,40 @@
                     HandleRestartCommand();
                     return true;
                 default:
-                    HandlePlayCommand(commandToLowerCase);
-                    return true;
+                    return HandlePlayCommand(commandToLowerCase);
             }
         }
 
-        private void HandlePlayCommand(string command)
+        private bool HandlePlayCommand(string command)
         {
+            string[] commandComponents = command.Split(' ');
+            int x = int.Parse(commandComponents[0]);
+            int y = int.Parse(commandComponents[1]);
 
+            if (!this.Board.IsInsideTheField(x, y))
+            {
+                string outOfBordersLine = "Out of borders";
+                this.Renderer.Render(outOfBordersLine);
+            }
+            else if (this.Board.IsAlreadyShown(x, y))
+            {
+                string cellAlreadyShownLine = "Cell is already shown";
+                this.Renderer.Render(cellAlreadyShownLine);
+            }
+
+            else if (this.Board.IsMine(x, y))
+            {
+                string gameOverLine = "Game over";
+                this.Renderer.Render(gameOverLine);
+                return false;
+            }
+            else
+            {
+                this.Board.RevealCell(x, y);
+                this.Board.Display();
+            }
+
+            return true;
         }
 
         private void HandleRestartCommand()
