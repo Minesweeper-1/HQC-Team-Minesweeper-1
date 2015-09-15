@@ -2,23 +2,25 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
+
+    using Players;
+    using InputProviders;
 
     public class Scoreboard
     {
-        private List<Person> participants;
+        private List<Player> participants;
 
         public Scoreboard()
         {
-            this.participants = new List<Person>();
+            this.participants = new List<Player>();
         }
 
         internal int MinInTop5()
         {
             if (this.participants.Count > 0)
             {
-                return new List<Person>(this.participants).Last().Score;
+                return new List<Player>(this.participants).Last().Score;
             }
             
             return -1;
@@ -31,7 +33,7 @@
         {
             Console.Write("Please enter your name for the top scoreboard: ");
             string name = Console.ReadLine();
-            this.participants.Add(new Person(name, score));
+            this.participants.Add(new Player(name, score));
             this.participants.Sort((p1, p2) => p2.Score.CompareTo(p1.Score));
             this.participants = this.participants.Take(5).ToList();
         }
