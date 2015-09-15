@@ -2,6 +2,6 @@
 {
     internal interface IInputProvider
     {
-        public string Read();
+        string Read();
     }
 }

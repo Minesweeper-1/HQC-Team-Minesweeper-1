@@ -44,10 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boards\Contracts\IBoard.cs" />
+    <Compile Include="Engine\Contracts\IMinesweeperEngine.cs" />
+    <Compile Include="Engine\StandardOnePlayerMinesweepwerEngine.cs" />
     <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
-    <Compile Include="Дъска.cs" />
+    <Compile Include="Players\Contracts\IPlayer.cs" />
+    <Compile Include="Boards\Board.cs" />
     <Compile Include="InputProviders\ConsoleInputProvider.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="Players\Player.cs" />
+    <Compile Include="Renderers\ConsoleRenderer.cs" />
+    <Compile Include="Renderers\Contracts\IRenderer.cs" />
     <Compile Include="Програма.cs" />
     <Compile Include="Scoreboard.cs" />
   </ItemGroup>

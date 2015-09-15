@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Minesweeper
+﻿namespace Minesweeper.Boards
 {
+    using System;
+    using Contracts;
 
-    class Дъска
+    public class Board : IBoard
     {
         private const int SizeX = 5;
         private const int SizeY = 10;
@@ -17,8 +14,8 @@ namespace Minesweeper
         private bool[,] shown;
         private int[,] numberOfNeighbourMines;
         internal int RevealedCells { get; set; }
-    
-        public Дъска()
+
+        public Board()
         {
             display = new char[SizeX, SizeY];
             hasMine = new bool[SizeX, SizeY];
@@ -35,7 +32,7 @@ namespace Minesweeper
             int actualNumberOfMines = 0;
             while (actualNumberOfMines < numberOfMines)
             {
-                if(PlaceMine(generator.Next(SizeX), generator.Next(SizeY)))
+                if (PlaceMine(generator.Next(SizeX), generator.Next(SizeY)))
                     actualNumberOfMines++;
             }
         }
@@ -68,7 +65,7 @@ namespace Minesweeper
                     display[i, j] = '?';
         }
 
-        internal void Display()
+        public void Display()
         {
 
             for (int i = 0; i < 4; i++)
@@ -78,7 +75,7 @@ namespace Minesweeper
             Console.WriteLine();
             for (int i = 0; i < 4; i++)
                 Console.Write(" ");
-            for (int i = 0; i < 2*SizeY; i++)
+            for (int i = 0; i < 2 * SizeY; i++)
                 Console.Write('-');
             Console.WriteLine();
             for (int i = 0; i < SizeX; i++)
@@ -107,7 +104,7 @@ namespace Minesweeper
             shown[x, y] = true;
             if (display[x, y] == '0')
             {
-                for(int xx = -1; xx <= 1; xx++)
+                for (int xx = -1; xx <= 1; xx++)
                     for (int yy = -1; yy <= 1; yy++)
                     {
                         int newX = x + xx;
