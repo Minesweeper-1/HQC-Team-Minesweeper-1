@@ -7,9 +7,9 @@
     using Renderers.Contracts;
     using InputProviders.Contracts;
 
-    public class StandardOnePlayerMinesweepwerEngine : IMinesweeperEngine
+    public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine
     {
-        public StandardOnePlayerMinesweepwerEngine(IBoard board, IRenderer renderer, IInputProvider inputProvider)
+        public StandardOnePlayerMinesweeperEngine(IBoard board, IRenderer renderer, IInputProvider inputProvider)
         {
             this.Board = board;
             this.Renderer = renderer;
@@ -25,16 +25,21 @@
         public void Initialize()
         {
             string welcomeLine = "Welcome to the all-time classic Minesweeper. Use your mind to tackle the mines.";
-            this.Renderer.Render(welcomeLine);
-            this.Board.Display();
+            this.Renderer.RenderLine(welcomeLine);
         }
 
         public void Run()
         {
             while (true)
             {
+                bool commandResult = true;
+                if (commandResult)
+                {
+                    this.Renderer.RenderMatrix(this.Board.Matrix);
+                }
+
                 string command = this.InputProvider.Read();
-                bool commandResult = this.ExecuteCommand(command);
+                commandResult = this.ExecuteCommand(command);
                 if (!commandResult)
                 {
                     break;
@@ -66,7 +71,7 @@
             int x = int.Parse(commandComponents[0]);
             int y = int.Parse(commandComponents[1]);
 
-            if (!this.Board.IsInsideTheField(x, y))
+            if (!this.Board.IsInsideBoard(x, y))
             {
                 string outOfBordersLine = "Out of borders";
                 this.Renderer.Render(outOfBordersLine);
@@ -86,7 +91,7 @@
             else
             {
                 this.Board.RevealCell(x, y);
-                this.Board.Display();
+                this.Renderer.Clear();
             }
 
             return true;

@@ -5,131 +5,108 @@
 
     public class Board : IBoard
     {
-        private const int SizeX = 5;
-        private const int SizeY = 10;
-        private const int numberOfMines = 15;
+        private int rows;
+        private int cols;
+        private int numberOfMines;
+        private char unrevealedCellChar;
+        public char[,] Matrix
+        {
+            get;
+            set;
+        }
 
-        private char[,] display;
-        private bool[,] hasMine;
-        private bool[,] shown;
-        private int[,] numberOfNeighbourMines;
-        internal int RevealedCells { get; set; }
+        private bool[,] bombs;
 
         public Board()
         {
-            display = new char[SizeX, SizeY];
-            hasMine = new bool[SizeX, SizeY];
-            shown = new bool[SizeX, SizeY];
-            numberOfNeighbourMines = new int[SizeX, SizeY];
-            InitializeBoardForDisplay();
-            PutMines();
+            this.InitializeBoard();
+            this.FillBoard();
+            this.PlantBombs();
         }
 
-        private void PutMines()
+        private void InitializeBoard()
         {
-            Random generator = new Random();
+            this.rows = 5;
+            this.cols = 10;
+            this.numberOfMines = 15;
+            this.unrevealedCellChar = '?';
+            this.Matrix = new char[this.rows, this.cols];
+            this.bombs = new bool[this.rows, this.cols];
+        }
 
-            int actualNumberOfMines = 0;
-            while (actualNumberOfMines < numberOfMines)
+        private void FillBoard()
+        {
+            for (var row = 0; row < this.rows; row++)
             {
-                if (PlaceMine(generator.Next(SizeX), generator.Next(SizeY)))
-                    actualNumberOfMines++;
+                for (int col = 0; col < this.cols; col++)
+                {
+                    this.Matrix[row, col] = this.unrevealedCellChar;
+                }
             }
         }
 
-        public bool IsInsideTheField(int x, int y)
+        private void PlantBombs()
         {
-            return 0 <= x && x < SizeX && 0 <= y && y < SizeY;
+            var randomGenerator = new Random();
+            for (var i = 0; i < this.numberOfMines; i++)
+            {
+                int x = randomGenerator.Next(this.rows + 1);
+                int y = randomGenerator.Next(this.cols + 1);
+                bool isInsideBoard = this.IsInsideBoard(x, y);
+                while (!isInsideBoard)
+                {
+                    x = randomGenerator.Next(this.rows + 1);
+                    y = randomGenerator.Next(this.cols + 1);
+                    isInsideBoard = this.IsInsideBoard(x, y);
+                }
+
+                this.bombs[x, y] = true;
+            }
         }
 
-        private bool PlaceMine(int x, int y)
+        private int CalculateNumberOfSurroundingBombs(int x, int y)
         {
-            if (IsInsideTheField(x, y) && !hasMine[x, y])
+            int result = 0;
+
+            int rowStart = x - 1;
+            int rowEnd = x + 1;
+            int colStart = y - 1;
+            int colEnd = y + 1;
+
+            for (int row = rowStart; row <= rowEnd; row++)
             {
-                hasMine[x, y] = true;
-                for (int xx = -1; xx <= 1; xx++)
-                    for (int yy = -1; yy <= 1; yy++)
+                for (int col = colStart; col <= colEnd; col++)
+                {
+                    if (this.IsInsideBoard(row, col) &&
+                        this.bombs[row, col] &&
+                        row != col)
                     {
-                        if (((xx != 0) || (yy != 0)) && IsInsideTheField(x + xx, y + yy))
-                            numberOfNeighbourMines[x + xx, y + yy]++;
+                        result++;
                     }
-                return true;
+                }
             }
-            return false;
-        }
 
-        private void InitializeBoardForDisplay()
-        {
-            for (int i = 0; i < SizeX; i++)
-                for (int j = 0; j < SizeY; j++)
-                    display[i, j] = '?';
-        }
-
-        public void Display()
-        {
-
-            for (int i = 0; i < 4; i++)
-                Console.Write(" ");
-            for (int i = 0; i < SizeY; i++)
-                Console.Write(i + " ");
-            Console.WriteLine();
-            for (int i = 0; i < 4; i++)
-                Console.Write(" ");
-            for (int i = 0; i < 2 * SizeY; i++)
-                Console.Write('-');
-            Console.WriteLine();
-            for (int i = 0; i < SizeX; i++)
-            {
-                Console.Write(i + " | ");
-                for (int j = 0; j < SizeY; j++)
-                    Console.Write(display[i, j] + " ");
-                Console.WriteLine("|");
-            }
-            for (int i = 0; i < 4; i++)
-                Console.Write(" ");
-            for (int i = 0; i < 2 * SizeY; i++)
-                Console.Write("-");
-            Console.WriteLine();
-        }
-
-        public bool IsMine(int x, int y)
-        {
-            return hasMine[x, y];
+            return result;
         }
 
         public void RevealCell(int x, int y)
         {
-            display[x, y] = Convert.ToChar(numberOfNeighbourMines[x, y].ToString());
-            RevealedCells++;
-            shown[x, y] = true;
-            if (display[x, y] == '0')
-            {
-                for (int xx = -1; xx <= 1; xx++)
-                    for (int yy = -1; yy <= 1; yy++)
-                    {
-                        int newX = x + xx;
-                        int newY = y + yy;
-                        if (IsInsideTheField(newX, newY) && shown[newX, newY] == false)
-                            RevealCell(newX, newY);
-                    }
-            }
+            this.Matrix[x, y] = this.CalculateNumberOfSurroundingBombs(x, y).ToString()[0];
         }
 
-        public void Край(int x, int y)
+        public bool IsInsideBoard(int x, int y)
         {
-            for (int i = 0; i < SizeX; i++)
-                for (int j = 0; j < SizeY; j++)
-                {
-                    if (!shown[i, j])
-                        display[i, j] = '-';
-                    if (hasMine[i, j])
-                        display[i, j] = '*';
-                }
+            return (0 <= x && x < this.rows) && (0 <= y && y < this.cols);
+        }
+
+        public bool IsMine(int x, int y)
+        {
+            return this.bombs[x, y];
         }
 
         public bool IsAlreadyShown(int x, int y)
         {
-            return shown[x, y];
+            return this.Matrix[x, y] != this.unrevealedCellChar;
         }
     }
 }

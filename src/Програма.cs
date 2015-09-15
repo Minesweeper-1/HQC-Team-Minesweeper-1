@@ -12,7 +12,7 @@
             var board = new Board();
             var renderer = new ConsoleRenderer();
             var inputProvider = new ConsoleInputProvider();
-            var engine = new StandardOnePlayerMinesweepwerEngine(board, renderer, inputProvider);
+            var engine = new StandardOnePlayerMinesweeperEngine(board, renderer, inputProvider);
             engine.Initialize();
             engine.Run();
         }

@@ -2,11 +2,15 @@
 {
     public interface IBoard
     {
-        void Display();
+        char[,] Matrix
+        {
+            get;
+            set;
+        }
 
         void RevealCell(int x, int y);
 
-        bool IsInsideTheField(int x, int y);
+        bool IsInsideBoard(int x, int y);
 
         bool IsMine(int x, int y);
 

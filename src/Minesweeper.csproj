@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Boards\Contracts\IBoard.cs" />
     <Compile Include="Engine\Contracts\IMinesweeperEngine.cs" />
-    <Compile Include="Engine\StandardOnePlayerMinesweepwerEngine.cs" />
+    <Compile Include="Engine\StandardOnePlayerMinesweeperEngine.cs" />
     <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
     <Compile Include="Players\Contracts\IPlayer.cs" />
     <Compile Include="Boards\Board.cs" />
