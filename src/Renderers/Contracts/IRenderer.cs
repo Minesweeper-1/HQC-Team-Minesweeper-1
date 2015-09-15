@@ -2,6 +2,7 @@
 {
     public interface IRenderer
     {
-        void Write(string line);
+        //void Write(string line);
+        void RenderWelcomeLine();
     }
 }

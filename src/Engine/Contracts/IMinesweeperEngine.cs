@@ -10,5 +10,7 @@
         IRenderer Renderer { get; set; }
 
         void Initialize();
+
+        void Run();
     }
 }

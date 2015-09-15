@@ -3,6 +3,7 @@
     using Renderers.Contracts;
     using Boards.Contracts;
     using Contracts;
+    using System;
 
     public class StandardOnePlayerMinesweepwerEngine : IMinesweeperEngine
     {
@@ -18,9 +19,16 @@
 
         public void Initialize()
         {
-            string welcomeLine = "Welcome to the all-time classic Minesweeper. Use your mind to tackle the mines.";
-            this.Renderer.Write(welcomeLine);
+            this.Renderer.RenderWelcomeLine();
             this.Board.Display();
+        }
+
+        public void Run()
+        {
+            while(true)
+            {
+
+            }
         }
     }
 }
