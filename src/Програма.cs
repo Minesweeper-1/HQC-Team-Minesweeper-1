@@ -3,6 +3,7 @@
     using Engine;
     using Boards;
     using Renderers;
+    using InputProviders;
 
     public class Програма
     {
@@ -10,8 +11,10 @@
         {
             var board = new Board();
             var renderer = new ConsoleRenderer();
-            var engine = new StandardOnePlayerMinesweepwerEngine(board, renderer);
+            var inputProvider = new ConsoleInputProvider();
+            var engine = new StandardOnePlayerMinesweepwerEngine(board, renderer, inputProvider);
             engine.Initialize();
+            engine.Run();
         }
 
         //    static void Main()

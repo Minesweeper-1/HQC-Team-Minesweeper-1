@@ -4,7 +4,7 @@
 
     using System;
 
-    internal class ConsoleInputProvider : IInputProvider
+    public class ConsoleInputProvider : IInputProvider
     {
         public ConsoleInputProvider()
         {

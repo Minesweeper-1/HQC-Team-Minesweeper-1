@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper.InputProviders.Contracts
 {
-    internal interface IInputProvider
+    public interface IInputProvider
     {
         string Read();
     }
