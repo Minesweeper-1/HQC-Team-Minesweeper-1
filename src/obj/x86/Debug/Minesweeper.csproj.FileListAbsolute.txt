@@ -1,0 +1,5 @@
+D:\My Documents\2_KURS\PROGRAMMING\Telerik Academy\GitHub\HQC-Team-Minesweeper-1\src\bin\Debug\Minesweeper.exe
+D:\My Documents\2_KURS\PROGRAMMING\Telerik Academy\GitHub\HQC-Team-Minesweeper-1\src\bin\Debug\Minesweeper.pdb
+D:\My Documents\2_KURS\PROGRAMMING\Telerik Academy\GitHub\HQC-Team-Minesweeper-1\src\obj\x86\Debug\Minesweeper.csprojResolveAssemblyReference.cache
+D:\My Documents\2_KURS\PROGRAMMING\Telerik Academy\GitHub\HQC-Team-Minesweeper-1\src\obj\x86\Debug\Minesweeper.exe
+D:\My Documents\2_KURS\PROGRAMMING\Telerik Academy\GitHub\HQC-Team-Minesweeper-1\src\obj\x86\Debug\Minesweeper.pdb
