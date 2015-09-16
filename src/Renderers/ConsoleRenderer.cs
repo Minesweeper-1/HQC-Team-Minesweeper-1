@@ -20,7 +20,7 @@
             Console.WriteLine(line);
         }
 
-        public void RenderMatrix(char[,] matrix)
+        public void RenderMatrix<T>(T[,] matrix)
         {
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);

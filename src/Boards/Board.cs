@@ -9,12 +9,6 @@
         private int cols;
         private int numberOfMines;
         private char unrevealedCellChar;
-        public char[,] Matrix
-        {
-            get;
-            set;
-        }
-
         private bool[,] bombs;
 
         public Board()
@@ -22,6 +16,20 @@
             this.InitializeBoard();
             this.FillBoard();
             this.PlantBombs();
+        }
+
+        public char[,] Matrix
+        {
+            get;
+            set;
+        }
+
+        public bool[,] Bombs
+        {
+            get
+            {
+                return this.bombs;
+            }
         }
 
         private void InitializeBoard()
@@ -78,12 +86,16 @@
                 for (int col = colStart; col <= colEnd; col++)
                 {
                     if (this.IsInsideBoard(row, col) &&
-                        this.bombs[row, col] &&
-                        row != col)
+                        this.bombs[row, col])
                     {
                         result++;
                     }
                 }
+            }
+
+            if(bombs[x, y])
+            {
+                result -= 1;
             }
 
             return result;

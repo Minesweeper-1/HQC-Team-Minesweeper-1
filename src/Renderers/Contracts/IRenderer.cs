@@ -6,7 +6,7 @@
 
         void RenderLine(string line);
 
-        void RenderMatrix(char[,] matrix);
+        void RenderMatrix<T>(T[,] matrix);
 
         void Clear();
     }

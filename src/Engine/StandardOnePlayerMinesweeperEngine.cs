@@ -26,48 +26,64 @@
         {
             string welcomeLine = "Welcome to the all-time classic Minesweeper. Use your mind to tackle the mines.";
             this.Renderer.RenderLine(welcomeLine);
+            this.Renderer.RenderMatrix(this.Board.Matrix);
         }
 
         public void Run()
         {
             while (true)
             {
-                bool commandResult = true;
-                if (commandResult)
+                string command = this.InputProvider.Read();
+                bool? commandResult = this.ExecuteCommand(command);
+
+                if (commandResult == null)
+                {
+                    return;
+                }
+                else if (commandResult == false)
+                {
+                    continue;
+                }
+                else if (commandResult == true)
                 {
                     this.Renderer.RenderMatrix(this.Board.Matrix);
-                }
-
-                string command = this.InputProvider.Read();
-                commandResult = this.ExecuteCommand(command);
-                if (!commandResult)
-                {
-                    break;
                 }
             }
         }
 
-        private bool ExecuteCommand(string command)
+        private bool? ExecuteCommand(string command)
         {
             string commandToLowerCase = command.ToLower();
             switch (commandToLowerCase)
             {
                 case "exit":
-                    return HandleEndGameCommand();
+                    HandleEndGameCommand();
+                    return null;
                 case "top":
                     HandleShowTopScoresCommand();
-                    return true;
+                    return false;
                 case "restart":
                     HandleRestartCommand();
                     return true;
                 default:
-                    return HandlePlayCommand(commandToLowerCase);
+                    {
+                        bool? result = HandlePlayCommand(commandToLowerCase);
+                        return result;
+                    }
             }
         }
 
-        private bool HandlePlayCommand(string command)
+        private bool? HandlePlayCommand(string command)
         {
+            string trimmedCommand = command.Trim();
             string[] commandComponents = command.Split(' ');
+            if (commandComponents.Length < 2)
+            {
+                string invalidCommandLine = "Invalid command";
+                this.Renderer.RenderLine(invalidCommandLine);
+                return false;
+            }
+
             int x = int.Parse(commandComponents[0]);
             int y = int.Parse(commandComponents[1]);
 
@@ -85,9 +101,10 @@
             else if (this.Board.IsMine(x, y))
             {
                 string gameOverLine = "Game over";
-                this.Renderer.Render(gameOverLine);
-                return false;
+                this.Renderer.RenderLine(gameOverLine);
+                return null;
             }
+
             else
             {
                 this.Board.RevealCell(x, y);
@@ -107,9 +124,9 @@
 
         }
 
-        private bool HandleEndGameCommand()
+        private bool? HandleEndGameCommand()
         {
-            return false;
+            return null;
         }
     }
 }
