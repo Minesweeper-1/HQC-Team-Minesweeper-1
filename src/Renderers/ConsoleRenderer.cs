@@ -2,6 +2,7 @@
 {
     using System;
     using Contracts;
+    using Common;
 
     public class ConsoleRenderer : IRenderer
     {
@@ -22,8 +23,8 @@
 
         public void RenderMatrix<T>(T[,] matrix)
         {
-            int rows = matrix.GetLength(0);
-            int cols = matrix.GetLength(1);
+            int rows = matrix.GetLength(GlobalConstants.MatrixRowsDimensionIndex);
+            int cols = matrix.GetLength(GlobalConstants.MatrixColsDimensionIndex);
 
             this.RenderLine(string.Empty);
             for (int row = -2; row < rows; row++)
@@ -41,12 +42,12 @@
                         {
                             if (col == 0)
                             {
-                                this.Render("    _");
+                                this.Render(GlobalConstants.ColsRenderingStartDivider);
                             }
 
                             else
                             {
-                                this.Render(" _");
+                                this.Render(GlobalConstants.ColsRenderingBaseDivider);
                             }
                         }
 
@@ -65,7 +66,7 @@
                     }
                     else
                     {
-                        this.Render(" ");
+                        this.Render(GlobalConstants.GameCellsDivider);
                         this.Render(matrix[row, col].ToString());
                     }
                 }

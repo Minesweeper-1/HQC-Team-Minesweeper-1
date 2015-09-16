@@ -1,11 +1,10 @@
 ﻿namespace Minesweeper.Engine
 {
-    using System;
-
     using Boards.Contracts;
     using Contracts;
     using Renderers.Contracts;
     using InputProviders.Contracts;
+    using Common;
 
     public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine
     {
@@ -76,11 +75,10 @@
         private bool? HandlePlayCommand(string command)
         {
             string trimmedCommand = command.Trim();
-            string[] commandComponents = command.Split(' ');
+            string[] commandComponents = command.Split(GlobalConstants.CommandParametersDivider);
             if (commandComponents.Length < 2)
             {
-                string invalidCommandLine = "Invalid command";
-                this.Renderer.RenderLine(invalidCommandLine);
+                this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
                 return false;
             }
 
@@ -89,19 +87,16 @@
 
             if (!this.Board.IsInsideBoard(x, y))
             {
-                string outOfBordersLine = "Out of borders";
-                this.Renderer.Render(outOfBordersLine);
+                this.Renderer.Render(GlobalMessages.OutOfBorders);
             }
             else if (this.Board.IsAlreadyShown(x, y))
             {
-                string cellAlreadyShownLine = "Cell is already shown";
-                this.Renderer.Render(cellAlreadyShownLine);
+                this.Renderer.Render(GlobalMessages.CellAlreadyRevealed);
             }
 
             else if (this.Board.IsMine(x, y))
             {
-                string gameOverLine = "Game over";
-                this.Renderer.RenderLine(gameOverLine);
+                this.Renderer.RenderLine(GlobalMessages.GameOver);
                 return null;
             }
 

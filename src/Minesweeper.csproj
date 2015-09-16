@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Boards\Contracts\IBoard.cs" />
+    <Compile Include="Common\GlobalConstants.cs" />
+    <Compile Include="Common\GlobalMessages.cs" />
     <Compile Include="Engine\Contracts\IMinesweeperEngine.cs" />
     <Compile Include="Engine\StandardOnePlayerMinesweeperEngine.cs" />
     <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
