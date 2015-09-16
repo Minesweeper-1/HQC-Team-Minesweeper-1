@@ -1,10 +1,10 @@
 ﻿namespace Minesweeper.Engine
 {
     using Boards.Contracts;
-    using Contracts;
-    using Renderers.Contracts;
-    using InputProviders.Contracts;
     using Common;
+    using Contracts;
+    using InputProviders.Contracts;
+    using Renderers.Contracts;
 
     public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine
     {
