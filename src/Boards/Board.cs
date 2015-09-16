@@ -1,7 +1,9 @@
 ﻿namespace Minesweeper.Boards
 {
     using System;
+
     using Contracts;
+    using Common;
 
     public class Board : IBoard
     {
@@ -34,10 +36,10 @@
 
         private void InitializeBoard()
         {
-            this.rows = 5;
-            this.cols = 10;
-            this.numberOfMines = 15;
-            this.unrevealedCellChar = '?';
+            this.rows = GlobalConstants.StandardNumberOfBoardRows;
+            this.cols = GlobalConstants.StandardNumberOfBoardCols;
+            this.numberOfMines = GlobalConstants.StandardNumberOfBoardCols;
+            this.unrevealedCellChar = GlobalConstants.StandardUnrevealedBoardCellCharacter;
             this.Matrix = new char[this.rows, this.cols];
             this.bombs = new bool[this.rows, this.cols];
         }

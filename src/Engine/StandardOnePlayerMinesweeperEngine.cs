@@ -75,15 +75,22 @@
         private bool? HandlePlayCommand(string command)
         {
             string trimmedCommand = command.Trim();
-            string[] commandComponents = command.Split(GlobalConstants.CommandParametersDivider);
-            if (commandComponents.Length < 2)
+            string[] commandComponents = trimmedCommand.Split(GlobalConstants.CommandParametersDivider);
+            if (commandComponents.Length < 2 || commandComponents.Length > 2)
             {
                 this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
                 return false;
             }
 
-            int x = int.Parse(commandComponents[0]);
-            int y = int.Parse(commandComponents[1]);
+            int x, y;
+            bool xIsNumeric = int.TryParse(commandComponents[0], out x);
+            bool yIsNumeric = int.TryParse(commandComponents[1], out y);
+
+            if(!(xIsNumeric && yIsNumeric))
+            {
+                this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
+                return false;
+            }
 
             if (!this.Board.IsInsideBoard(x, y))
             {
