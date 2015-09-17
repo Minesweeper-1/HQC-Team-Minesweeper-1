@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper.Engine.Initializations
 {
-    using System;
+    using Common;
     using Contracts;
     using Boards.Contracts;
 
@@ -8,7 +8,18 @@
     {
         public void Initialize(IBoard board)
         {
-            throw new NotImplementedException();
+            this.FillBoard(board);
+        }
+
+        private void FillBoard(IBoard board)
+        {
+            for (var row = 0; row < board.Rows; row++)
+            {
+                for (int col = 0; col < board.Cols; col++)
+                {
+                    board.Matrix[row, col] = GlobalConstants.StandardUnrevealedBoardCellCharacter;
+                }
+            }
         }
     }
 }

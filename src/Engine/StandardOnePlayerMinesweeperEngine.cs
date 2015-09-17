@@ -21,8 +21,9 @@
 
         public IInputProvider InputProvider { get; set; }
 
-        public void Initialize()
+        public void Initialize(IGameInitializationStrategy initializationStrategy)
         {
+            initializationStrategy.Initialize(this.Board);
             string welcomeLine = "Welcome to the all-time classic Minesweeper. Use your mind to tackle the mines.";
             this.Renderer.RenderLine(welcomeLine);
             this.Renderer.RenderMatrix(this.Board.Matrix);

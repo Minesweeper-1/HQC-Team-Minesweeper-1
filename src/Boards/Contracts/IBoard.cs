@@ -13,6 +13,16 @@
             get;
         }
 
+        int Rows
+        {
+            get;
+        }
+
+        int Cols
+        {
+            get;
+        }
+
         void RevealCell(int x, int y);
 
         bool IsInsideBoard(int x, int y);

@@ -12,7 +12,7 @@
 
         IInputProvider InputProvider { get; set; }
 
-        void Initialize();
+        void Initialize(IGameInitializationStrategy initializationStrategy);
 
         void Run();
     }

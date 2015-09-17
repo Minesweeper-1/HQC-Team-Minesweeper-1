@@ -7,16 +7,11 @@
 
     public class Board : IBoard
     {
-        private int rows;
-        private int cols;
-        private int numberOfMines;
         private char unrevealedCellChar;
-        private bool[,] bombs;
 
         public Board()
         {
             this.InitializeBoard();
-            this.FillBoard();
             this.PlantBombs();
         }
 
@@ -28,49 +23,54 @@
 
         public bool[,] Bombs
         {
-            get
-            {
-                return this.bombs;
-            }
+            get;
+            set;
+        }
+        public int NumberOfMines
+        {
+            get;
+            set;
+        }
+
+        public int Cols
+        {
+            get;
+            set;
+        }
+
+        public int Rows
+        {
+            get;
+            set;
         }
 
         private void InitializeBoard()
         {
-            this.rows = GlobalConstants.StandardNumberOfBoardRows;
-            this.cols = GlobalConstants.StandardNumberOfBoardCols;
-            this.numberOfMines = GlobalConstants.StandardNumberOfBoardCols;
+            this.Rows = GlobalConstants.StandardNumberOfBoardRows;
+            this.Cols = GlobalConstants.StandardNumberOfBoardCols;
+            this.NumberOfMines = GlobalConstants.StandardNumberOfBoardCols;
             this.unrevealedCellChar = GlobalConstants.StandardUnrevealedBoardCellCharacter;
-            this.Matrix = new char[this.rows, this.cols];
-            this.bombs = new bool[this.rows, this.cols];
+            this.Matrix = new char[this.Rows, this.Cols];
+            this.Bombs = new bool[this.Rows, this.Cols];
         }
-
-        private void FillBoard()
-        {
-            for (var row = 0; row < this.rows; row++)
-            {
-                for (int col = 0; col < this.cols; col++)
-                {
-                    this.Matrix[row, col] = this.unrevealedCellChar;
-                }
-            }
-        }
+        
 
         private void PlantBombs()
         {
             var randomGenerator = new Random();
-            for (var i = 0; i < this.numberOfMines; i++)
+            for (var i = 0; i < this.NumberOfMines; i++)
             {
-                int x = randomGenerator.Next(this.rows + 1);
-                int y = randomGenerator.Next(this.cols + 1);
+                int x = randomGenerator.Next(this.Rows + 1);
+                int y = randomGenerator.Next(this.Cols + 1);
                 bool isInsideBoard = this.IsInsideBoard(x, y);
                 while (!isInsideBoard)
                 {
-                    x = randomGenerator.Next(this.rows + 1);
-                    y = randomGenerator.Next(this.cols + 1);
+                    x = randomGenerator.Next(this.Rows + 1);
+                    y = randomGenerator.Next(this.Cols + 1);
                     isInsideBoard = this.IsInsideBoard(x, y);
                 }
 
-                this.bombs[x, y] = true;
+                this.Bombs[x, y] = true;
             }
         }
 
@@ -88,14 +88,14 @@
                 for (int col = colStart; col <= colEnd; col++)
                 {
                     if (this.IsInsideBoard(row, col) &&
-                        this.bombs[row, col])
+                        this.Bombs[row, col])
                     {
                         result++;
                     }
                 }
             }
 
-            if(bombs[x, y])
+            if(this.Bombs[x, y])
             {
                 result -= 1;
             }
@@ -110,12 +110,12 @@
 
         public bool IsInsideBoard(int x, int y)
         {
-            return (0 <= x && x < this.rows) && (0 <= y && y < this.cols);
+            return (0 <= x && x < this.Rows) && (0 <= y && y < this.Cols);
         }
 
         public bool IsMine(int x, int y)
         {
-            return this.bombs[x, y];
+            return this.Bombs[x, y];
         }
 
         public bool IsAlreadyShown(int x, int y)
