@@ -13,6 +13,7 @@
             this.Board = board;
             this.Renderer = renderer;
             this.InputProvider = inputProvider;
+            this.GameState = GameState.Running;
         }
 
         public IBoard Board { get; set; }
@@ -20,6 +21,8 @@
         public IRenderer Renderer { get; set; }
 
         public IInputProvider InputProvider { get; set; }
+
+        public GameState GameState { get; set; }
 
         public void Initialize(IGameInitializationStrategy initializationStrategy)
         {
@@ -35,63 +38,61 @@
             while (true)
             {
                 string command = this.InputProvider.Read();
-                bool? commandResult = this.ExecuteCommand(command);
+                this.ExecuteCommand(command);
 
-                if (commandResult == null)
+                if (this.GameState == GameState.Terminated)
                 {
                     return;
                 }
-                else if (commandResult == false)
+                else if (this.GameState == GameState.Continue)
                 {
                     continue;
                 }
-                else if (commandResult == true)
+                else if (this.GameState == GameState.Running)
                 {
                     this.Renderer.RenderMatrix(this.Board.Matrix);
                 }
             }
         }
 
-        private bool? ExecuteCommand(string command)
+        private void ExecuteCommand(string command)
         {
             string commandToLowerCase = command.ToLower();
             switch (commandToLowerCase)
             {
                 case "exit":
                     HandleEndGameCommand();
-                    return null;
+                    break;
                 case "top":
                     HandleShowTopScoresCommand();
-                    return false;
+                    break;
                 case "restart":
                     HandleRestartCommand();
-                    return true;
+                    break;
                 default:
-                    {
-                        bool? result = HandlePlayCommand(commandToLowerCase);
-                        return result;
-                    }
+                    HandlePlayCommand(commandToLowerCase);
+                    break;
             }
         }
 
-        private bool? HandlePlayCommand(string command)
+        private void HandlePlayCommand(string command)
         {
             string trimmedCommand = command.Trim();
             string[] commandComponents = trimmedCommand.Split(GlobalConstants.CommandParametersDivider);
             if (commandComponents.Length < 2 || commandComponents.Length > 2)
             {
                 this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
-                return false;
+                this.GameState = GameState.Continue;
             }
 
             int x, y;
             bool xIsNumeric = int.TryParse(commandComponents[0], out x);
             bool yIsNumeric = int.TryParse(commandComponents[1], out y);
 
-            if(!(xIsNumeric && yIsNumeric))
+            if (!(xIsNumeric && yIsNumeric))
             {
                 this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
-                return false;
+                this.GameState = GameState.Continue;
             }
 
             if (!this.Board.IsInsideBoard(x, y))
@@ -106,7 +107,7 @@
             else if (this.Board.IsMine(x, y))
             {
                 this.Renderer.RenderLine(GlobalMessages.GameOver);
-                return null;
+                this.GameState = GameState.Terminated;
             }
 
             else
@@ -115,22 +116,22 @@
                 this.Renderer.Clear();
             }
 
-            return true;
+            this.GameState = GameState.Running;
         }
 
         private void HandleRestartCommand()
         {
-
+            this.GameState = GameState.Running;
         }
 
         private void HandleShowTopScoresCommand()
         {
-
+            this.GameState = GameState.Continue;
         }
 
-        private bool? HandleEndGameCommand()
+        private void HandleEndGameCommand()
         {
-            return null;
+            this.GameState = GameState.Terminated;
         }
     }
 }
