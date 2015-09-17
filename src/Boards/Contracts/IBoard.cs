@@ -23,6 +23,11 @@
             get;
         }
 
+        int NumberOfMines
+        {
+            get;
+        }
+
         void RevealCell(int x, int y);
 
         bool IsInsideBoard(int x, int y);

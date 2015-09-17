@@ -1,5 +1,7 @@
 ﻿namespace Minesweeper.Engine.Initializations
 {
+    using System;
+
     using Common;
     using Contracts;
     using Boards.Contracts;
@@ -9,6 +11,7 @@
         public void Initialize(IBoard board)
         {
             this.FillBoard(board);
+            this.PlantBombs(board);
         }
 
         private void FillBoard(IBoard board)
@@ -19,6 +22,25 @@
                 {
                     board.Matrix[row, col] = GlobalConstants.StandardUnrevealedBoardCellCharacter;
                 }
+            }
+        }
+
+        private void PlantBombs(IBoard board)
+        {
+            var randomGenerator = new Random();
+            for (var i = 0; i < board.NumberOfMines; i++)
+            {
+                int x = randomGenerator.Next(board.Rows + 1);
+                int y = randomGenerator.Next(board.Cols + 1);
+                bool isInsideBoard = board.IsInsideBoard(x, y);
+                while (!isInsideBoard)
+                {
+                    x = randomGenerator.Next(board.Rows + 1);
+                    y = randomGenerator.Next(board.Cols + 1);
+                    isInsideBoard = board.IsInsideBoard(x, y);
+                }
+
+                board.Bombs[x, y] = true;
             }
         }
     }

@@ -12,7 +12,6 @@
         public Board()
         {
             this.InitializeBoard();
-            this.PlantBombs();
         }
 
         public char[,] Matrix
@@ -52,26 +51,6 @@
             this.unrevealedCellChar = GlobalConstants.StandardUnrevealedBoardCellCharacter;
             this.Matrix = new char[this.Rows, this.Cols];
             this.Bombs = new bool[this.Rows, this.Cols];
-        }
-        
-
-        private void PlantBombs()
-        {
-            var randomGenerator = new Random();
-            for (var i = 0; i < this.NumberOfMines; i++)
-            {
-                int x = randomGenerator.Next(this.Rows + 1);
-                int y = randomGenerator.Next(this.Cols + 1);
-                bool isInsideBoard = this.IsInsideBoard(x, y);
-                while (!isInsideBoard)
-                {
-                    x = randomGenerator.Next(this.Rows + 1);
-                    y = randomGenerator.Next(this.Cols + 1);
-                    isInsideBoard = this.IsInsideBoard(x, y);
-                }
-
-                this.Bombs[x, y] = true;
-            }
         }
 
         private int CalculateNumberOfSurroundingBombs(int x, int y)

@@ -58,7 +58,7 @@
     <Compile Include="Players\Player.cs" />
     <Compile Include="Renderers\ConsoleRenderer.cs" />
     <Compile Include="Renderers\Contracts\IRenderer.cs" />
-    <Compile Include="Програма.cs" />
+    <Compile Include="EntryPoint.cs" />
     <Compile Include="Scoreboard.cs" />
   </ItemGroup>
   <ItemGroup>
