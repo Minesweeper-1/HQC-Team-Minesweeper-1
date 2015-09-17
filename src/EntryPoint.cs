@@ -4,7 +4,7 @@
     {
         static void Main()
         {
-            MinesweeperFaçade.Start();
+            MinesweeperFaçade.GetInstance().Start();
         }
     }
 }

@@ -24,7 +24,7 @@
             return instance;
         }
 
-        public static void Start()
+        public void Start()
         {
             var board = new Board();
             var renderer = new ConsoleRenderer();
