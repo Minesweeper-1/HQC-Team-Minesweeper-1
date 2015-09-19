@@ -3,12 +3,12 @@
     using Contracts;
     using Common;
 
-    public class Bomb : IContent
+    public class EmptyContent : IContent
     {
-        public Bomb()
+        public EmptyContent()
         {
-            this.ContentType = ContentType.Bomb;
-            this.Value = -1;
+            this.ContentType = ContentType.Number;
+            this.Value = 0;
         }
 
         public ContentType ContentType

@@ -1,14 +1,23 @@
-﻿namespace Minesweeper.Cells.Common
+﻿namespace Minesweeper.Cells
 {
     using Contracts;
     using Contents.Contracts;
+    using Common;
+    using Contents;
 
     public class Cell : ICell
     {
-        public Cell(int row, int col, IContent content)
+        public Cell(int row, int col)
         {
             this.Row = row;
             this.Col = col;
+            this.State = CellState.Sealed;
+            this.Content = new EmptyContent();
+        }
+
+        public Cell(int row, int col, IContent content)
+            : this(row, col)
+        {
             this.Content = content;
         }
 
@@ -25,6 +34,12 @@
         }
 
         public IContent Content
+        {
+            get;
+            set;
+        }
+
+        public CellState State
         {
             get;
             set;

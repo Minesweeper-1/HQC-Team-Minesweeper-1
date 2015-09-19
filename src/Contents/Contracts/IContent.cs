@@ -8,5 +8,11 @@
         {
             get;
         }
+
+        int Value
+        {
+            get;
+            set;
+        }
     }
 }

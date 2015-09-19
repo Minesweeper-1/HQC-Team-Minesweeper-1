@@ -33,7 +33,7 @@
         {
             string welcomeLine = "Welcome to the all-time classic Minesweeper. Use your mind to tackle the mines.";
             this.Renderer.RenderLine(welcomeLine);
-            this.Renderer.RenderMatrix(this.Board.Matrix);
+            this.Renderer.RenderBoard(this.Board);
 
             while (true)
             {
@@ -50,7 +50,7 @@
                 }
                 else if (this.GameState == GameState.Running)
                 {
-                    this.Renderer.RenderMatrix(this.Board.Matrix);
+                    this.Renderer.RenderBoard(this.Board);
                 }
             }
         }
@@ -83,6 +83,7 @@
             {
                 this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
                 this.GameState = GameState.Continue;
+                return;
             }
 
             int x, y;
@@ -93,6 +94,7 @@
             {
                 this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
                 this.GameState = GameState.Continue;
+                return;
             }
 
             if (!this.Board.IsInsideBoard(x, y))
@@ -108,6 +110,7 @@
             {
                 this.Renderer.RenderLine(GlobalMessages.GameOver);
                 this.GameState = GameState.Terminated;
+                return;
             }
 
             else

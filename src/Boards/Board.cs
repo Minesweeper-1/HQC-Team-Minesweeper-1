@@ -2,6 +2,7 @@
 {
     using Contracts;
     using Common;
+    using Cells.Contracts;
 
     public class Board : IBoard
     {
@@ -28,19 +29,7 @@
             private set;
         }
 
-        public char UnrevealedCellChar
-        {
-            get;
-            private set;
-        }
-
-        public char[,] Matrix
-        {
-            get;
-            private set;
-        }
-
-        public bool[,] Bombs
+        public ICell[,] Cells
         {
             get;
             private set;
@@ -51,33 +40,33 @@
             this.Rows = GlobalConstants.StandardNumberOfBoardRows;
             this.Cols = GlobalConstants.StandardNumberOfBoardCols;
             this.NumberOfMines = GlobalConstants.StandardNumberOfBoardCols;
-            this.UnrevealedCellChar = GlobalConstants.StandardUnrevealedBoardCellCharacter;
-            this.Matrix = new char[this.Rows, this.Cols];
-            this.Bombs = new bool[this.Rows, this.Cols];
+            this.Cells = new ICell[this.Rows, this.Cols];
         }
 
-        private int CalculateNumberOfSurroundingBombs(int x, int y)
+        public int CalculateNumberOfSurroundingBombs(int cellRow, int cellCol)
         {
             int result = 0;
 
-            int rowStart = x - 1;
-            int rowEnd = x + 1;
-            int colStart = y - 1;
-            int colEnd = y + 1;
+            int rowStart = cellRow - 1;
+            int rowEnd = cellRow + 1;
+            int colStart = cellCol - 1;
+            int colEnd = cellCol + 1;
 
             for (int row = rowStart; row <= rowEnd; row++)
             {
                 for (int col = colStart; col <= colEnd; col++)
                 {
-                    if (this.IsInsideBoard(row, col) &&
-                        this.Bombs[row, col])
+                    if (this.IsInsideBoard(row, col))
                     {
-                        result++;
+                        if(this.IsBomb(row, col))
+                        {
+                            result += 1;
+                        }
                     }
                 }
             }
-
-            if(this.Bombs[x, y])
+            
+            if(this.IsBomb(cellRow, cellCol))
             {
                 result -= 1;
             }
@@ -85,24 +74,24 @@
             return result;
         }
 
-        public void RevealCell(int x, int y)
+        public void RevealCell(int cellRow, int cellCol)
         {
-            this.Matrix[x, y] = this.CalculateNumberOfSurroundingBombs(x, y).ToString()[0];
+            this.Cells[cellRow, cellCol].State = CellState.Revealed;
         }
 
-        public bool IsInsideBoard(int x, int y)
+        public bool IsInsideBoard(int cellRow, int cellCol)
         {
-            return (0 <= x && x < this.Rows) && (0 <= y && y < this.Cols);
+            return (0 <= cellRow && cellRow < this.Rows) && (0 <= cellCol && cellCol < this.Cols);
         }
 
-        public bool IsBomb(int x, int y)
+        public bool IsBomb(int cellRow, int cellCol)
         {
-            return this.Bombs[x, y];
+            return this.Cells[cellRow, cellCol].Content.ContentType == ContentType.Bomb;
         }
 
-        public bool IsAlreadyShown(int x, int y)
+        public bool IsAlreadyShown(int cellRow, int cellCol)
         {
-            return this.Matrix[x, y] != this.UnrevealedCellChar;
+            return this.Cells[cellRow, cellCol].State == CellState.Revealed;
         }
     }
 }

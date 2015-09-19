@@ -1,13 +1,10 @@
 ﻿namespace Minesweeper.Boards.Contracts
 {
+    using Cells.Contracts;
+
     public interface IBoard
     {
-        char[,] Matrix
-        {
-            get;
-        }
-
-        bool[,] Bombs
+        ICell[,] Cells
         {
             get;
         }
@@ -27,17 +24,14 @@
             get;
         }
 
-        char UnrevealedCellChar
-        {
-            get;
-        }
+        int CalculateNumberOfSurroundingBombs(int cellRow, int cellCol);
 
-        void RevealCell(int x, int y);
+        void RevealCell(int cellRow, int cellCol);
 
-        bool IsInsideBoard(int x, int y);
+        bool IsInsideBoard(int cellRow, int cellCol);
 
-        bool IsBomb(int x, int y);
+        bool IsBomb(int cellRow, int cellCol);
 
-        bool IsAlreadyShown(int x, int y);
+        bool IsAlreadyShown(int cellRow, int cellCol);
     }
 }
