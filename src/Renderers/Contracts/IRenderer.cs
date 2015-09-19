@@ -8,7 +8,9 @@
 
         void RenderLine(string line);
 
-        void RenderBoard(IBoard board);
+        void RenderBoard(IBoard board, int row, int col);
+
+        void SetCursorPosition(int row, int col);
 
         void Clear();
     }

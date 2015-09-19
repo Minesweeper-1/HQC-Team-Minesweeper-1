@@ -29,11 +29,13 @@
             initializationStrategy.Initialize(this.Board);
         }
 
+        // TODO: Extract these magic coordinates
         public void Run()
         {
             string welcomeLine = "Welcome to the all-time classic Minesweeper. Use your mind to tackle the mines.";
             this.Renderer.RenderLine(welcomeLine);
-            this.Renderer.RenderBoard(this.Board);
+            this.Renderer.RenderBoard(this.Board, 5, 5);
+            this.Renderer.SetCursorPosition(5 + this.Board.Rows + 1, 5);
 
             while (true)
             {
@@ -50,7 +52,8 @@
                 }
                 else if (this.GameState == GameState.Running)
                 {
-                    this.Renderer.RenderBoard(this.Board);
+                    this.Renderer.RenderBoard(this.Board, 5, 5);
+                    this.Renderer.SetCursorPosition(5 + this.Board.Rows + 1, 0);
                 }
             }
         }

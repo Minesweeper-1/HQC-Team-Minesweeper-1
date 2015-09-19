@@ -23,209 +23,137 @@
             Console.WriteLine(line);
         }
 
-        public void RenderBoard(IBoard board)
+        public void RenderBoard(IBoard board, int row, int col)
         {
-            ICell[,] boardCells = board.Cells;
-
-            int rows = boardCells.GetLength(GlobalConstants.MatrixRowsDimensionIndex);
-            int cols = boardCells.GetLength(GlobalConstants.MatrixColsDimensionIndex);
-
-            this.RenderLine(string.Empty);
-            for (int row = -2; row < rows + 1; row++)
-            {
-                if (row >= 0 && row < rows)
-                {
-                    this.Render(row + GlobalConstants.ColsRenderingDivider);
-                }
-
-                if (row == -1 || row == rows)
-                {
-                    this.Render(" " + GlobalConstants.ColsRenderingDivider);
-                }
-
-                for (int col = 0; col < cols + 1; col++)
-                {
-                    if (row < 0)
-                    {
-                        if (row == -1)
-                        {
-                            this.Render(GlobalConstants.ColsRenderingDivider);
-                        }
-
-                        else
-                        {
-                            if (col == 0)
-                            {
-                                this.Render("    " + col);
-                            }
-
-                            else
-                            {
-                                if (col < cols)
-                                {
-                                    this.Render(" " + col);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (row == rows)
-                        {
-                            this.Render(GlobalConstants.ColsRenderingDivider);
-                        }
-                        else
-                        {
-                            if (col == cols)
-                            {
-                                this.Render(GlobalConstants.ColsRenderingDivider);
-                            }
-                            else
-                            {
-                                string charToRenderAsString = this.GetCellCharAsString(boardCells[row, col]);
-                                if (charToRenderAsString == GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString())
-                                {
-                                    this.SetForegroundColor("dark cyan");
-                                }
-                                else if (charToRenderAsString == "0")
-                                {
-                                    this.SetForegroundColor("magenta");
-                                }
-                                else if (charToRenderAsString == "1")
-                                {
-                                    this.SetForegroundColor("blue");
-                                }
-                                else if (charToRenderAsString == "2")
-                                {
-                                    this.SetForegroundColor("green");
-                                }
-                                else if (charToRenderAsString == "3")
-                                {
-                                    this.SetForegroundColor("red");
-                                }
-                                else if (charToRenderAsString == "4")
-                                {
-                                    this.SetForegroundColor("dark green");
-                                }
-                                else if (charToRenderAsString == "5")
-                                {
-                                    this.SetForegroundColor("dark magenta");
-                                }
-
-                                this.Render(GlobalConstants.GameCellsDivider);
-                                this.Render(charToRenderAsString);
-                                this.ResetForegroundColor();
-                            }
-                        }
-                    }
-                }
-
-                this.RenderLine(string.Empty);
-            }
+            this.RenderLeftSidebar(board, row, col);
+            this.RenderTopBar(board, row, col + 1);
+            this.RenderBoardCells(board, row, col + 1);
 
             // Lines for debugging purposes
-            this.RenderRevealedCellsBoard(board);
+            // this.RenderRevealedBoard(board, row + board.Rows + 3, col);
         }
 
-        private void RenderRevealedCellsBoard(IBoard board)
+        private void RenderLeftSidebar(IBoard board, int row, int col)
         {
-            ICell[,] boardCells = board.Cells;
-
-            int rows = boardCells.GetLength(GlobalConstants.MatrixRowsDimensionIndex);
-            int cols = boardCells.GetLength(GlobalConstants.MatrixColsDimensionIndex);
-
-            this.RenderLine(string.Empty);
-            for (int row = -2; row < rows + 1; row++)
+            for (int boardRow = 0; boardRow < board.Rows; boardRow++)
             {
-                if (row >= 0 && row < rows)
-                {
-                    this.Render(row + GlobalConstants.ColsRenderingDivider);
-                }
-
-                if (row == -1 || row == rows)
-                {
-                    this.Render(" " + GlobalConstants.ColsRenderingDivider);
-                }
-
-                for (int col = 0; col < cols + 1; col++)
-                {
-                    if (row < 0)
-                    {
-                        if (row == -1)
-                        {
-                            this.Render(GlobalConstants.ColsRenderingDivider);
-                        }
-
-                        else
-                        {
-                            if (col == 0)
-                            {
-                                this.Render("    " + col);
-                            }
-
-                            else
-                            {
-                                if (col < cols)
-                                {
-                                    this.Render(" " + col);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (row == rows)
-                        {
-                            this.Render(GlobalConstants.ColsRenderingDivider);
-                        }
-                        else
-                        {
-                            if (col == cols)
-                            {
-                                this.Render(GlobalConstants.ColsRenderingDivider);
-                            }
-                            else
-                            {
-                                string charToRenderAsString = this.GetCellContentValue(boardCells[row, col]);
-                                if (charToRenderAsString == GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString())
-                                {
-                                    this.SetForegroundColor("dark cyan");
-                                }
-                                else if (charToRenderAsString == "0")
-                                {
-                                    this.SetForegroundColor("magenta");
-                                }
-                                else if (charToRenderAsString == "1")
-                                {
-                                    this.SetForegroundColor("blue");
-                                }
-                                else if (charToRenderAsString == "2")
-                                {
-                                    this.SetForegroundColor("green");
-                                }
-                                else if (charToRenderAsString == "3")
-                                {
-                                    this.SetForegroundColor("red");
-                                }
-                                else if (charToRenderAsString == "4")
-                                {
-                                    this.SetForegroundColor("dark green");
-                                }
-                                else if (charToRenderAsString == "5")
-                                {
-                                    this.SetForegroundColor("dark magenta");
-                                }
-
-                                this.Render(GlobalConstants.GameCellsDivider);
-                                this.Render(charToRenderAsString);
-                                this.ResetForegroundColor();
-                            }
-                        }
-                    }
-                }
-
-                this.RenderLine(string.Empty);
+                this.SetCursorPosition(row + boardRow, col);
+                string sidebarRow = boardRow + " *";
+                this.RenderLine(sidebarRow);
             }
+        }
+
+        private void RenderTopBar(IBoard board, int row, int col)
+        {
+            string topBarCols = "";
+            string topBarSeparators = "";
+            for (int boardCol = 0; boardCol < board.Cols; boardCol++)
+            {
+                topBarCols += boardCol + GlobalConstants.GameCellsDivider;
+                topBarSeparators += GlobalConstants.ColsRenderingDivider;
+            }
+
+            this.SetCursorPosition(row - GlobalConstants.TopBarColsOffset, col + GlobalConstants.LeftSidebarWidth);
+            this.Render(topBarCols);
+            this.SetCursorPosition(row - GlobalConstants.TopBarSeparatorsOffset, col + GlobalConstants.LeftSidebarWidth);
+            this.Render(topBarSeparators);
+        }
+
+        private void RenderBoardCells(IBoard board, int row, int col)
+        {
+            for (int boardRow = 0; boardRow < board.Rows; boardRow++)
+            {
+                this.SetCursorPosition(row + boardRow, col + GlobalConstants.LeftSidebarWidth);
+                for (int boardCol = 0; boardCol < board.Cols; boardCol++)
+                {
+                    string charToRenderAsString = this.GetCellCharAsString(board.Cells[boardRow, boardCol]);
+                    if (charToRenderAsString == GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString())
+                    {
+                        this.SetForegroundColor("dark cyan");
+                    }
+                    else if (charToRenderAsString == "0")
+                    {
+                        this.SetForegroundColor("magenta");
+                    }
+                    else if (charToRenderAsString == "1")
+                    {
+                        this.SetForegroundColor("blue");
+                    }
+                    else if (charToRenderAsString == "2")
+                    {
+                        this.SetForegroundColor("green");
+                    }
+                    else if (charToRenderAsString == "3")
+                    {
+                        this.SetForegroundColor("red");
+                    }
+                    else if (charToRenderAsString == "4")
+                    {
+                        this.SetForegroundColor("dark green");
+                    }
+                    else if (charToRenderAsString == "5")
+                    {
+                        this.SetForegroundColor("dark magenta");
+                    }
+
+                    this.Render(charToRenderAsString + " ");
+                    this.ResetForegroundColor();
+                }
+            }
+
+            this.ResetForegroundColor();
+        }
+
+        private void RenderRevealedBoard(IBoard board, int row, int col)
+        {
+            this.RenderLeftSidebar(board, row, col);
+            this.RenderTopBar(board, row, col + 1);
+            this.RenderRevealedBoardCells(board, row, col + 1);
+        }
+
+        private void RenderRevealedBoardCells(IBoard board, int row, int col)
+        {
+            for (int boardRow = 0; boardRow < board.Rows; boardRow++)
+            {
+                this.SetCursorPosition(row + boardRow, col + GlobalConstants.LeftSidebarWidth);
+                for (int boardCol = 0; boardCol < board.Cols; boardCol++)
+                {
+                    string charToRenderAsString = this.GetCellContentValue(board.Cells[boardRow, boardCol]);
+                    if (charToRenderAsString == GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString())
+                    {
+                        this.SetForegroundColor("dark cyan");
+                    }
+                    else if (charToRenderAsString == "0")
+                    {
+                        this.SetForegroundColor("magenta");
+                    }
+                    else if (charToRenderAsString == "1")
+                    {
+                        this.SetForegroundColor("blue");
+                    }
+                    else if (charToRenderAsString == "2")
+                    {
+                        this.SetForegroundColor("green");
+                    }
+                    else if (charToRenderAsString == "3")
+                    {
+                        this.SetForegroundColor("red");
+                    }
+                    else if (charToRenderAsString == "4")
+                    {
+                        this.SetForegroundColor("dark green");
+                    }
+                    else if (charToRenderAsString == "5")
+                    {
+                        this.SetForegroundColor("dark magenta");
+                    }
+
+                    this.Render(charToRenderAsString + " ");
+                    this.ResetForegroundColor();
+                }
+            }
+
+            this.ResetForegroundColor();
         }
 
         private string GetCellCharAsString(ICell cell)
@@ -266,6 +194,11 @@
             }
 
             return cellCharAsString;
+        }
+
+        public void SetCursorPosition(int row, int col)
+        {
+            Console.SetCursorPosition(col, row);
         }
 
         public void SetForegroundColor(string color)
