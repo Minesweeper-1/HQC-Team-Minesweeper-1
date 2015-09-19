@@ -45,7 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Boards\Contracts\IBoard.cs" />
-    <Compile Include="Common\Cell.cs" />
+    <Compile Include="Cells\Cell.cs" />
+    <Compile Include="Common\ContentType.cs" />
+    <Compile Include="Cells\Contracts\ICell.cs" />
+    <Compile Include="Contents\Contracts\IContent.cs" />
     <Compile Include="Common\GameState.cs" />
     <Compile Include="Common\GlobalConstants.cs" />
     <Compile Include="Common\GlobalMessages.cs" />
