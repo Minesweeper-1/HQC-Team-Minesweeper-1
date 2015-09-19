@@ -104,7 +104,7 @@
                 this.Renderer.Render(GlobalMessages.CellAlreadyRevealed);
             }
 
-            else if (this.Board.IsMine(x, y))
+            else if (this.Board.IsBomb(x, y))
             {
                 this.Renderer.RenderLine(GlobalMessages.GameOver);
                 this.GameState = GameState.Terminated;

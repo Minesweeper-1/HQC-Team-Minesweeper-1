@@ -1,46 +1,49 @@
 ﻿namespace Minesweeper.Boards
 {
-    using System;
-
     using Contracts;
     using Common;
 
     public class Board : IBoard
     {
-        private char unrevealedCellChar;
-
         public Board()
         {
             this.InitializeBoard();
         }
 
-        public char[,] Matrix
-        {
-            get;
-            set;
-        }
-
-        public bool[,] Bombs
-        {
-            get;
-            set;
-        }
         public int NumberOfMines
         {
             get;
-            set;
+            private set;
         }
 
         public int Cols
         {
             get;
-            set;
+            private set;
         }
 
         public int Rows
         {
             get;
-            set;
+            private set;
+        }
+
+        public char UnrevealedCellChar
+        {
+            get;
+            private set;
+        }
+
+        public char[,] Matrix
+        {
+            get;
+            private set;
+        }
+
+        public bool[,] Bombs
+        {
+            get;
+            private set;
         }
 
         private void InitializeBoard()
@@ -48,7 +51,7 @@
             this.Rows = GlobalConstants.StandardNumberOfBoardRows;
             this.Cols = GlobalConstants.StandardNumberOfBoardCols;
             this.NumberOfMines = GlobalConstants.StandardNumberOfBoardCols;
-            this.unrevealedCellChar = GlobalConstants.StandardUnrevealedBoardCellCharacter;
+            this.UnrevealedCellChar = GlobalConstants.StandardUnrevealedBoardCellCharacter;
             this.Matrix = new char[this.Rows, this.Cols];
             this.Bombs = new bool[this.Rows, this.Cols];
         }
@@ -92,14 +95,14 @@
             return (0 <= x && x < this.Rows) && (0 <= y && y < this.Cols);
         }
 
-        public bool IsMine(int x, int y)
+        public bool IsBomb(int x, int y)
         {
             return this.Bombs[x, y];
         }
 
         public bool IsAlreadyShown(int x, int y)
         {
-            return this.Matrix[x, y] != this.unrevealedCellChar;
+            return this.Matrix[x, y] != this.UnrevealedCellChar;
         }
     }
 }

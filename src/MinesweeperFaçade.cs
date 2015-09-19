@@ -8,7 +8,8 @@
 
     public class MinesweeperFaçade
     {
-        private static volatile MinesweeperFaçade instance;
+        private static MinesweeperFaçade instance;
+
         private MinesweeperFaçade()
         {
 
