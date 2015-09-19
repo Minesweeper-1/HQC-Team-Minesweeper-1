@@ -103,6 +103,14 @@
                                 {
                                     this.SetForegroundColor("red");
                                 }
+                                else if (charToRenderAsString == "4")
+                                {
+                                    this.SetForegroundColor("dark green");
+                                }
+                                else if (charToRenderAsString == "5")
+                                {
+                                    this.SetForegroundColor("dark magenta");
+                                }
 
                                 this.Render(GlobalConstants.GameCellsDivider);
                                 this.Render(charToRenderAsString);
@@ -199,6 +207,14 @@
                                 {
                                     this.SetForegroundColor("red");
                                 }
+                                else if (charToRenderAsString == "4")
+                                {
+                                    this.SetForegroundColor("dark green");
+                                }
+                                else if (charToRenderAsString == "5")
+                                {
+                                    this.SetForegroundColor("dark magenta");
+                                }
 
                                 this.Render(GlobalConstants.GameCellsDivider);
                                 this.Render(charToRenderAsString);
@@ -271,6 +287,15 @@
                     break;
                 case "magenta":
                     Console.ForegroundColor = ConsoleColor.Magenta;
+                    break;
+                case "yellow":
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case "dark green":
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    break;
+                case "dark magenta":
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
                     break;
                 default:
                     Console.ForegroundColor = ConsoleColor.White;
