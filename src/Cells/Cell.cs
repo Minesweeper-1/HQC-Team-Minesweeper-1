@@ -12,7 +12,6 @@
             this.Row = row;
             this.Col = col;
             this.State = CellState.Sealed;
-            this.Content = new EmptyContent();
         }
 
         public Cell(int row, int col, IContent content)

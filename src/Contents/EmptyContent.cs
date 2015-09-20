@@ -7,7 +7,7 @@
     {
         public EmptyContent()
         {
-            this.ContentType = ContentType.Number;
+            this.ContentType = ContentType.Empty;
             this.Value = 0;
         }
 

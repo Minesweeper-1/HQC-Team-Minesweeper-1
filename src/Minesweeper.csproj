@@ -58,6 +58,7 @@
     <Compile Include="Common\ContentType.cs" />
     <Compile Include="Cells\Contracts\ICell.cs" />
     <Compile Include="Contents\Bomb.cs" />
+    <Compile Include="Contents\ContentFactory.cs" />
     <Compile Include="Contents\Contracts\IContent.cs" />
     <Compile Include="Common\BoardState.cs" />
     <Compile Include="Common\GlobalConstants.cs" />

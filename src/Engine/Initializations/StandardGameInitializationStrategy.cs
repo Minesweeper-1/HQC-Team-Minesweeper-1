@@ -8,14 +8,22 @@
     using Cells;
     using Cells.Contracts;
     using Common;
+    using Contents.Contracts;
 
     public class StandardGameInitializationStrategy : IGameInitializationStrategy
     {
         public void Initialize(IBoard board)
         {
+            this.ContentFactory = new ContentFactory();
             this.FillBoard(board);
             this.PlantBombs(board);
             this.SetEmptyCellsValues(board);
+        }
+
+        public ContentFactory ContentFactory
+        {
+            get;
+            private set;
         }
 
         private void FillBoard(IBoard board)
@@ -24,7 +32,8 @@
             {
                 for (int col = 0; col < board.Cols; col++)
                 {
-                    board.Cells[row, col] = new Cell(row, col);
+                    IContent newEmptyCellContent = this.ContentFactory.GetContent(ContentType.Empty);
+                    board.Cells[row, col] = new Cell(row, col, newEmptyCellContent);
                 }
             }
         }
@@ -61,7 +70,7 @@
                     isInsideBoard = board.IsInsideBoard(cellRow, cellCol);
                 }
 
-                board.Cells[cellRow, cellCol].Content = new Bomb();
+                board.Cells[cellRow, cellCol].Content = this.ContentFactory.GetContent(ContentType.Bomb);
             }
         }
     }
