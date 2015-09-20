@@ -29,3 +29,8 @@ in the Telerik Academy JavaScript UI & DOM course 2015
     In the class `Engine.cs` (`Програма.cs` but must be created separately):
 	- created variables `inputProvider`...
 	- created methods `EndGame()`, `Restart()`, `HandleCommand()`, `ShowTopScores()`, `DispatchCommand()`
+
+3. Implemented the following patterns:
+   - **Creational**: Singleton
+   - **Structural**: Façade
+   - **Behavioral**: Strategy
