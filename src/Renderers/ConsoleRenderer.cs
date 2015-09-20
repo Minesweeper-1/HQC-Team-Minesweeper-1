@@ -245,5 +245,13 @@
         {
             Console.Clear();
         }
+
+        public void ClearCurrentConsoleLine()
+        {
+            int currentLineCursor = Console.CursorTop;
+            this.SetCursorPosition(Console.CursorTop, 0);
+            this.Render(new string(' ', Console.WindowWidth));
+            this.SetCursorPosition(currentLineCursor, 0);
+        }
     }
 }

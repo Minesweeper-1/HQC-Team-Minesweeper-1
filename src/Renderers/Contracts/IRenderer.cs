@@ -13,5 +13,7 @@
         void SetCursorPosition(int row, int col);
 
         void Clear();
+
+        void ClearCurrentConsoleLine();
     }
 }

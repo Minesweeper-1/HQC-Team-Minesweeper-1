@@ -32,10 +32,12 @@
         // TODO: Extract these magic coordinates
         public void Run()
         {
+            int boardStartRenderX = 5;
+            int boardStartRenderY = 5;
             string welcomeLine = "Welcome to the all-time classic Minesweeper. Use your mind to tackle the mines.";
             this.Renderer.RenderLine(welcomeLine);
-            this.Renderer.RenderBoard(this.Board, 5, 5);
-            this.Renderer.SetCursorPosition(5 + this.Board.Rows + 1, 5);
+            this.Renderer.RenderBoard(this.Board, boardStartRenderX, boardStartRenderY);
+            this.Renderer.SetCursorPosition(boardStartRenderX + this.Board.Rows + 1, 0);
 
             while (true)
             {
@@ -52,9 +54,11 @@
                 }
                 else if (this.GameState == GameState.Running)
                 {
-                    this.Renderer.RenderBoard(this.Board, 5, 5);
-                    this.Renderer.SetCursorPosition(5 + this.Board.Rows + 1, 0);
+                    this.Renderer.RenderBoard(this.Board, boardStartRenderX, boardStartRenderY);
+                    this.Renderer.SetCursorPosition(boardStartRenderX + this.Board.Rows + 1, 0);
                 }
+
+                this.Renderer.ClearCurrentConsoleLine();
             }
         }
 
@@ -93,6 +97,7 @@
             bool xIsNumeric = int.TryParse(commandComponents[0], out x);
             bool yIsNumeric = int.TryParse(commandComponents[1], out y);
 
+            this.Renderer.ClearCurrentConsoleLine();
             if (!(xIsNumeric && yIsNumeric))
             {
                 this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
@@ -102,11 +107,11 @@
 
             if (!this.Board.IsInsideBoard(x, y))
             {
-                this.Renderer.Render(GlobalMessages.OutOfBorders);
+                this.Renderer.RenderLine(GlobalMessages.OutOfBorders);
             }
             else if (this.Board.IsAlreadyShown(x, y))
             {
-                this.Renderer.Render(GlobalMessages.CellAlreadyRevealed);
+                this.Renderer.RenderLine(GlobalMessages.CellAlreadyRevealed);
             }
 
             else if (this.Board.IsBomb(x, y))
