@@ -4,25 +4,29 @@
     using Common;
     using Contracts;
     using InputProviders.Contracts;
+    using BoardOperators.Contracts;
     using Renderers.Contracts;
 
-    public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine
+    public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine, IBoardObserver
     {
-        public StandardOnePlayerMinesweeperEngine(IBoard board, IRenderer renderer, IInputProvider inputProvider)
+        public StandardOnePlayerMinesweeperEngine(IBoard board, IRenderer renderer, IInputProvider inputProvider, IBoardOperator boardOperator)
         {
             this.Board = board;
+            this.BoardOperator = boardOperator;
             this.Renderer = renderer;
             this.InputProvider = inputProvider;
-            this.GameState = GameState.Running;
+            this.GameState = this.Board.BoardState;
         }
 
         public IBoard Board { get; set; }
+
+        public IBoardOperator BoardOperator { get; set; }
 
         public IRenderer Renderer { get; set; }
 
         public IInputProvider InputProvider { get; set; }
 
-        public GameState GameState { get; set; }
+        public BoardState GameState { get; set; }
 
         public void Initialize(IGameInitializationStrategy initializationStrategy)
         {
@@ -42,17 +46,17 @@
             while (true)
             {
                 string command = this.InputProvider.Read();
-                this.ExecuteCommand(command);
+                this.BoardOperator.ExecuteCommand(command);
 
-                if (this.GameState == GameState.Terminated)
+                if (this.GameState == BoardState.Closed)
                 {
                     return;
                 }
-                else if (this.GameState == GameState.Continue)
+                else if (this.GameState == BoardState.Pending)
                 {
                     continue;
                 }
-                else if (this.GameState == GameState.Running)
+                else if (this.GameState == BoardState.Open)
                 {
                     this.Renderer.RenderBoard(this.Board, boardStartRenderX, boardStartRenderY);
                     this.Renderer.SetCursorPosition(boardStartRenderX + this.Board.Rows + 1, col: 0);
@@ -62,87 +66,9 @@
             }
         }
 
-        private void ExecuteCommand(string command)
+        public void Update(BoardState boardState)
         {
-            string commandToLowerCase = command.ToLower();
-            switch (commandToLowerCase)
-            {
-                case "exit":
-                    HandleEndGameCommand();
-                    break;
-                case "top":
-                    HandleShowTopScoresCommand();
-                    break;
-                case "restart":
-                    HandleRestartCommand();
-                    break;
-                default:
-                    HandlePlayCommand(commandToLowerCase);
-                    break;
-            }
-        }
-
-        private void HandlePlayCommand(string command)
-        {
-            string trimmedCommand = command.Trim();
-            string[] commandComponents = trimmedCommand.Split(GlobalConstants.CommandParametersDivider);
-            if (commandComponents.Length < 2 || commandComponents.Length > 2)
-            {
-                this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
-                this.GameState = GameState.Continue;
-                return;
-            }
-
-            int x, y;
-            bool xIsNumeric = int.TryParse(commandComponents[0], out x);
-            bool yIsNumeric = int.TryParse(commandComponents[1], out y);
-
-            this.Renderer.ClearCurrentConsoleLine();
-            if (!(xIsNumeric && yIsNumeric))
-            {
-                this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
-                this.GameState = GameState.Continue;
-                return;
-            }
-
-            if (!this.Board.IsInsideBoard(x, y))
-            {
-                this.Renderer.RenderLine(GlobalMessages.OutOfBorders);
-            }
-            else if (this.Board.IsAlreadyShown(x, y))
-            {
-                this.Renderer.RenderLine(GlobalMessages.CellAlreadyRevealed);
-            }
-
-            else if (this.Board.IsBomb(x, y))
-            {
-                this.Renderer.RenderLine(GlobalMessages.GameOver);
-                this.GameState = GameState.Terminated;
-                return;
-            }
-
-            else
-            {
-                this.Board.RevealCell(x, y);
-                this.Renderer.Clear();
-            }
-
-            this.GameState = GameState.Running;
-        }
-
-        private void HandleRestartCommand()
-        {
-            this.GameState = GameState.Running;
-        }
-
-        private void HandleShowTopScoresCommand()
-        {
-            this.GameState = GameState.Continue;
-        }
-
-        private void HandleEndGameCommand()
-        {
-            this.GameState = GameState.Terminated;
+            this.GameState = boardState;
         }
     }
 }

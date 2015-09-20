@@ -1,6 +1,7 @@
 ﻿namespace Minesweeper.Boards.Contracts
 {
     using Cells.Contracts;
+    using Common;
 
     public interface IBoard
     {
@@ -23,6 +24,13 @@
         {
             get;
         }
+
+        BoardState BoardState
+        {
+            get;
+        }
+
+        void ChangeBoardState(BoardState boardState);
 
         int CalculateNumberOfSurroundingBombs(int cellRow, int cellCol);
 

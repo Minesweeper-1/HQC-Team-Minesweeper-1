@@ -1,10 +1,13 @@
 ﻿namespace Minesweeper.Boards
 {
+    using System.Collections.Generic;
+
     using Contracts;
     using Common;
     using Cells.Contracts;
+    using Engine.Contracts;
 
-    public class Board : IBoard
+    public class Board : IBoard, IBoardSubject
     {
         public Board()
         {
@@ -35,12 +38,26 @@
             private set;
         }
 
+        public BoardState BoardState
+        {
+            get;
+            private set;
+        }
+
+        public IList<IBoardObserver> Subscribers
+        {
+            get;
+            private set;
+        }
+
         private void InitializeBoard()
         {
             this.Rows = GlobalConstants.StandardNumberOfBoardRows;
             this.Cols = GlobalConstants.StandardNumberOfBoardCols;
             this.NumberOfMines = GlobalConstants.StandardNumberOfBoardCols;
             this.Cells = new ICell[this.Rows, this.Cols];
+            this.BoardState = BoardState.Open;
+            this.Subscribers = new List<IBoardObserver>();
         }
 
         public int CalculateNumberOfSurroundingBombs(int cellRow, int cellCol)
@@ -92,6 +109,30 @@
         public bool IsAlreadyShown(int cellRow, int cellCol)
         {
             return this.Cells[cellRow, cellCol].State == CellState.Revealed;
+        }
+
+        public void ChangeBoardState(BoardState boardState)
+        {
+            this.BoardState = boardState;
+            this.Notify(this.BoardState);
+        }
+
+        public void Subscribe(IBoardObserver boardObserverToSubscribe)
+        {
+            this.Subscribers.Add(boardObserverToSubscribe);
+        }
+
+        public void Unsubscribe(IBoardObserver boardObserverToUnsubscribe)
+        {
+            this.Subscribers.Remove(boardObserverToUnsubscribe);
+        }
+
+        public void Notify(BoardState boardState)
+        {
+            foreach (var observer in this.Subscribers)
+            {
+                observer.Update(boardState);
+            }
         }
     }
 }
