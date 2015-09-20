@@ -37,7 +37,7 @@
             string welcomeLine = "Welcome to the all-time classic Minesweeper. Use your mind to tackle the mines.";
             this.Renderer.RenderLine(welcomeLine);
             this.Renderer.RenderBoard(this.Board, boardStartRenderX, boardStartRenderY);
-            this.Renderer.SetCursorPosition(boardStartRenderX + this.Board.Rows + 1, 0);
+            this.Renderer.SetCursorPosition(boardStartRenderX + this.Board.Rows + 1, col: 0);
 
             while (true)
             {
@@ -55,7 +55,7 @@
                 else if (this.GameState == GameState.Running)
                 {
                     this.Renderer.RenderBoard(this.Board, boardStartRenderX, boardStartRenderY);
-                    this.Renderer.SetCursorPosition(boardStartRenderX + this.Board.Rows + 1, 0);
+                    this.Renderer.SetCursorPosition(boardStartRenderX + this.Board.Rows + 1, col: 0);
                 }
 
                 this.Renderer.ClearCurrentConsoleLine();

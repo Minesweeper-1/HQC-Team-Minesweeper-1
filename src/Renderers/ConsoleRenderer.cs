@@ -74,9 +74,9 @@
         public void ClearCurrentConsoleLine()
         {
             int currentLineCursor = Console.CursorTop;
-            this.SetCursorPosition(Console.CursorTop, 0);
-            this.Render(new string(' ', Console.WindowWidth));
-            this.SetCursorPosition(currentLineCursor, 0);
+            this.SetCursorPosition(Console.CursorTop, col: 0);
+            this.Render(new string(c: ' ', count: Console.WindowWidth));
+            this.SetCursorPosition(currentLineCursor, col: 0);
         }
 
         private void RenderLeftSidebar(IBoard board, int row, int col)

@@ -31,16 +31,16 @@
         /// <exception cref="ArgumentOutOfRangeException">The number of characters in the next line of characters is greater than <see cref="F:System.Int32.MaxValue" />.</exception>
         internal void Add(int score)
         {
-            Console.Write("Please enter your name for the top scoreboard: ");
+            Console.Write(value: "Please enter your name for the top scoreboard: ");
             string name = Console.ReadLine();
             this.participants.Add(new Player(name, score));
             this.participants.Sort((p1, p2) => p2.Score.CompareTo(p1.Score));
-            this.participants = this.participants.Take(5).ToList();
+            this.participants = this.participants.Take(count: 5).ToList();
         }
 
         internal void Show()
         {
-            Console.WriteLine("Scoreboard:");
+            Console.WriteLine(value: "Scoreboard:");
             foreach (var p in this.participants)
             {
                 Console.WriteLine(this.participants.IndexOf(p) + 1 + ". " + p.Name + " --> " + p.Score + " cells");
