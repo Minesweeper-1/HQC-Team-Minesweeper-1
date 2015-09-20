@@ -16,14 +16,17 @@
 
         }
 
-        public static MinesweeperFaçade GetInstance()
+        public static MinesweeperFaçade Instance
         {
-            if(instance == null)
+            get
             {
-                instance = new MinesweeperFaçade();
-            }
+                if (instance == null)
+                {
+                    instance = new MinesweeperFaçade();
+                }
 
-            return instance;
+                return instance;
+            }
         }
 
         public void Start()
