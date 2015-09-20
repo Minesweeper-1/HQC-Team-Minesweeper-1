@@ -1,10 +1,11 @@
 ﻿namespace Minesweeper.Renderers
 {
     using System;
-    using Contracts;
-    using Common;
-    using Cells.Contracts;
+
     using Boards.Contracts;
+    using Cells.Contracts;
+    using Common;
+    using Contracts;
 
     public class ConsoleRenderer : IRenderer
     {
@@ -28,6 +29,54 @@
             this.RenderLeftSidebar(board, row, col);
             this.RenderTopBar(board, row, col + 1);
             this.RenderBoardCells(board, row, col + 1);
+        }
+        
+        private string GetCellCharAsString(ICell cell)
+        {
+            string cellCharAsString = string.Empty;
+
+            CellState cellState = cell.State;
+            switch (cellState)
+            {
+                case CellState.Sealed:
+                    cellCharAsString = GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString();
+                    break;
+                case CellState.Revealed:
+                    cellCharAsString = cell.Content.Value.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return cellCharAsString;
+        }
+
+        public void SetCursorPosition(int row, int col)
+        {
+            Console.SetCursorPosition(col, row);
+        }
+
+        public void SetForegroundColor(ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+        }
+
+        public void ResetForegroundColor()
+        {
+            this.SetForegroundColor(ConsoleColor.White);
+        }
+
+        public void Clear()
+        {
+            Console.Clear();
+        }
+
+        public void ClearCurrentConsoleLine()
+        {
+            int currentLineCursor = Console.CursorTop;
+            this.SetCursorPosition(Console.CursorTop, 0);
+            this.Render(new string(' ', Console.WindowWidth));
+            this.SetCursorPosition(currentLineCursor, 0);
         }
 
         private void RenderLeftSidebar(IBoard board, int row, int col)
@@ -103,54 +152,6 @@
             {
                 this.SetForegroundColor(ConsoleColor.DarkMagenta);
             }
-        }
-
-        private string GetCellCharAsString(ICell cell)
-        {
-            string cellCharAsString = string.Empty;
-
-            CellState cellState = cell.State;
-            switch (cellState)
-            {
-                case CellState.Sealed:
-                    cellCharAsString = GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString();
-                    break;
-                case CellState.Revealed:
-                    cellCharAsString = cell.Content.Value.ToString();
-                    break;
-                default:
-                    break;
-            }
-
-            return cellCharAsString;
-        }
-
-        public void SetCursorPosition(int row, int col)
-        {
-            Console.SetCursorPosition(col, row);
-        }
-
-        public void SetForegroundColor(ConsoleColor color)
-        {
-            Console.ForegroundColor = color;
-        }
-
-        public void ResetForegroundColor()
-        {
-            this.SetForegroundColor(ConsoleColor.White);
-        }
-
-        public void Clear()
-        {
-            Console.Clear();
-        }
-
-        public void ClearCurrentConsoleLine()
-        {
-            int currentLineCursor = Console.CursorTop;
-            this.SetCursorPosition(Console.CursorTop, 0);
-            this.Render(new string(' ', Console.WindowWidth));
-            this.SetCursorPosition(currentLineCursor, 0);
         }
     }
 }
