@@ -45,6 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoardOperators\BoardOperator.cs" />
+    <Compile Include="BoardOperators\Common\Contracts\IBoardCommand.cs" />
+    <Compile Include="BoardOperators\Common\EndGameCommand.cs" />
+    <Compile Include="BoardOperators\Common\PlayCommand.cs" />
+    <Compile Include="BoardOperators\Common\RestartCommand.cs" />
+    <Compile Include="BoardOperators\Common\ShowScoreboardCommand.cs" />
     <Compile Include="BoardOperators\Contracts\IBoardOperator.cs" />
     <Compile Include="Boards\Contracts\IBoard.cs" />
     <Compile Include="Boards\Contracts\IBoardSubject.cs" />

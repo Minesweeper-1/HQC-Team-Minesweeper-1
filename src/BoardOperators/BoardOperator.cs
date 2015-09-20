@@ -1,16 +1,28 @@
 ﻿namespace Minesweeper.BoardOperators
 {
     using Contracts;
-    using Common;
     using Boards.Contracts;
     using Renderers.Contracts;
+    using Minesweeper.Common;
+    using Common.Contracts;
+    using Common;
 
     public class BoardOperator : IBoardOperator
     {
+        private readonly IBoardCommand playCommand;
+        private readonly IBoardCommand restartCommand;
+        private readonly IBoardCommand showScoreboardCommand;
+        private readonly IBoardCommand endGameCommand;
+
         public BoardOperator(IBoard board, IRenderer renderer)
         {
             this.Board = board;
             this.Renderer = renderer;
+
+            this.playCommand = new PlayCommand(board, renderer);
+            this.restartCommand = new RestartCommand(board);
+            this.showScoreboardCommand = new ShowScoreboardCommand(board);
+            this.endGameCommand = new EndGameCommand(board);
         }
 
         public IBoard Board
@@ -31,81 +43,23 @@
             switch (commandToLowerCase)
             {
                 case "exit":
-                    this.HandleEndGameCommand();
+                    this.endGameCommand.Execute();
                     break;
                 case "top":
-                    this.HandleShowTopScoresCommand();
+                    this.showScoreboardCommand.Execute();
                     break;
                 case "restart":
-                    this.HandleRestartCommand();
+                    this.restartCommand.Execute();
                     break;
                 default:
-                    this.HandlePlayCommand(commandToLowerCase);
+                    this.playCommand.Execute(commandToLowerCase);
                     break;
             }
         }
 
-        private void HandlePlayCommand(string command)
+        public void Execute(IBoardCommand command)
         {
-            string trimmedCommand = command.Trim();
-            string[] commandComponents = trimmedCommand.Split(GlobalConstants.CommandParametersDivider);
-            if (commandComponents.Length < 2 || commandComponents.Length > 2)
-            {
-                this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
-                this.Board.ChangeBoardState(BoardState.Pending);
-                return;
-            }
-
-            int x, y;
-            bool xIsNumeric = int.TryParse(commandComponents[0], out x);
-            bool yIsNumeric = int.TryParse(commandComponents[1], out y);
-
-            this.Renderer.ClearCurrentConsoleLine();
-            if (!(xIsNumeric && yIsNumeric))
-            {
-                this.Renderer.RenderLine(GlobalMessages.InvalidCommand);
-                this.Board.ChangeBoardState(BoardState.Pending);
-                return;
-            }
-
-            if (!this.Board.IsInsideBoard(x, y))
-            {
-                this.Renderer.RenderLine(GlobalMessages.OutOfBorders);
-            }
-            else if (this.Board.IsAlreadyShown(x, y))
-            {
-                this.Renderer.RenderLine(GlobalMessages.CellAlreadyRevealed);
-            }
-
-            else if (this.Board.IsBomb(x, y))
-            {
-                this.Renderer.RenderLine(GlobalMessages.GameOver);
-                this.Board.ChangeBoardState(BoardState.Closed);
-                return;
-            }
-
-            else
-            {
-                this.Board.RevealCell(x, y);
-                this.Renderer.Clear();
-            }
-
-            this.Board.ChangeBoardState(BoardState.Open);
-        }
-
-        private void HandleRestartCommand()
-        {
-            this.Board.ChangeBoardState(BoardState.Open);
-        }
-
-        private void HandleShowTopScoresCommand()
-        {
-            this.Board.ChangeBoardState(BoardState.Pending);
-        }
-
-        private void HandleEndGameCommand()
-        {
-            this.Board.ChangeBoardState(BoardState.Closed);
+            command.Execute();
         }
     }
 }
