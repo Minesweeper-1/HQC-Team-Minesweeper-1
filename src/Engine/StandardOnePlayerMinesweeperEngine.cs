@@ -1,25 +1,27 @@
 ﻿namespace Minesweeper.Engine
 {
+    using BoardOperators.Contracts;
     using Boards.Contracts;
     using Common;
     using Contracts;
     using InputProviders.Contracts;
-    using BoardOperators.Contracts;
-    using Renderers.Contracts;
     using Players;
     using Players.Contracts;
-    using DataManagers;
+    using Renderers.Contracts;
+    using Scoreboards.Contracts;
 
     public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine, IBoardObserver
     {
         private IPlayer currentPlayer;
+        private readonly IScoreboard scoreboard;
 
-        public StandardOnePlayerMinesweeperEngine(IBoard board, IRenderer renderer, IInputProvider inputProvider, IBoardOperator boardOperator)
+        public StandardOnePlayerMinesweeperEngine(IBoard board, IRenderer renderer, IInputProvider inputProvider, IBoardOperator boardOperator, IScoreboard scoreboard)
         {
             this.Board = board;
             this.BoardOperator = boardOperator;
             this.Renderer = renderer;
             this.InputProvider = inputProvider;
+            this.scoreboard = scoreboard;
             this.GameState = this.Board.BoardState;
         }
 
@@ -75,6 +77,7 @@
                 }
                 else if (this.GameState == BoardState.Open)
                 {
+                    this.currentPlayer.Score += 10;
                     this.Renderer.RenderBoard(this.Board, boardStartRenderX, boardStartRenderY);
                     this.Renderer.SetCursorPosition(boardStartRenderX + this.Board.Rows + 1, col: 0);
                 }
@@ -94,10 +97,7 @@
 
         private void SavePlayerScore(IPlayer player)
         {
-            string contents = string.Format(format: "{0} --- {1}", arg0: player.Name, arg1: player.Score);
-
-            var dataWriter = new FileWriter();
-            dataWriter.WriteLine(path: "leaders.msr", contents: contents);
+            this.scoreboard.RegisterNewPlayerScore(player);
         }
     }
 }

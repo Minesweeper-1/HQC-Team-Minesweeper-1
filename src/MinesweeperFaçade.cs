@@ -6,6 +6,7 @@
     using InputProviders;
     using Engine.Initializations;
     using BoardOperators;
+    using Scoreboards;
 
     public class MinesweeperFaçade
     {
@@ -33,9 +34,10 @@
         {
             var board = new Board();
             var renderer = new ConsoleRenderer();
-            var boardOperator = new BoardOperator(board, renderer);
+            var scoreboard = new Scoreboard();
+            var boardOperator = new BoardOperator(board, renderer, scoreboard);
             var inputProvider = new ConsoleInputProvider();
-            var engine = new StandardOnePlayerMinesweeperEngine(board, renderer, inputProvider, boardOperator);
+            var engine = new StandardOnePlayerMinesweeperEngine(board, renderer, inputProvider, boardOperator, scoreboard);
             var initializationStrategy = new StandardGameInitializationStrategy();
             engine.Initialize(initializationStrategy);
             board.Subscribe(engine);
