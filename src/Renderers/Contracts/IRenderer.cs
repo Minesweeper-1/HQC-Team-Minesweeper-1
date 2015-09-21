@@ -10,6 +10,8 @@
 
         void RenderBoard(IBoard board, int row, int col);
 
+        void RenderWelcomeScreen(string welcomeScreen);
+
         void SetCursorPosition(int row, int col);
 
         void Clear();

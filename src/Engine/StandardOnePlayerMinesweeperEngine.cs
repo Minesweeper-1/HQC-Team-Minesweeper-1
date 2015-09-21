@@ -6,9 +6,14 @@
     using InputProviders.Contracts;
     using BoardOperators.Contracts;
     using Renderers.Contracts;
+    using Players;
+    using Players.Contracts;
+    using DataManagers;
 
     public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine, IBoardObserver
     {
+        private IPlayer currentPlayer;
+
         public StandardOnePlayerMinesweeperEngine(IBoard board, IRenderer renderer, IInputProvider inputProvider, IBoardOperator boardOperator)
         {
             this.Board = board;
@@ -33,23 +38,35 @@
             initializationStrategy.Initialize(this.Board);
         }
 
-        // TODO: Extract these magic coordinates
         public void Run()
+        {
+            this.Renderer.RenderWelcomeScreen(GlobalConstants.DefaultWelcomeScreen);
+            this.RequestNewPlayerCreation();
+            this.StartGame();
+        }
+
+        public void Update(BoardState boardState)
+        {
+            this.GameState = boardState;
+        }
+
+        // TODO: Extract these magic coordinates
+        private void StartGame()
         {
             int boardStartRenderX = 5;
             int boardStartRenderY = 5;
-            string welcomeLine = "Welcome to the all-time classic Minesweeper. Use your mind to tackle the mines.";
-            this.Renderer.RenderLine(welcomeLine);
+
             this.Renderer.RenderBoard(this.Board, boardStartRenderX, boardStartRenderY);
             this.Renderer.SetCursorPosition(boardStartRenderX + this.Board.Rows + 1, col: 0);
 
             while (true)
             {
-                string command = this.InputProvider.Read();
+                string command = this.InputProvider.ReadLine();
                 this.BoardOperator.ExecuteCommand(command);
 
                 if (this.GameState == BoardState.Closed)
                 {
+                    this.SavePlayerScore(this.currentPlayer);
                     return;
                 }
                 else if (this.GameState == BoardState.Pending)
@@ -66,9 +83,21 @@
             }
         }
 
-        public void Update(BoardState boardState)
+        private void RequestNewPlayerCreation()
         {
-            this.GameState = boardState;
+            this.Renderer.Render(line: "Enter your name: ");
+            string username = this.InputProvider.ReadLine();
+
+            var player = new Player(username, score: 0);
+            this.currentPlayer = player;
+        }
+
+        private void SavePlayerScore(IPlayer player)
+        {
+            string contents = string.Format(format: "{0} --- {1}", arg0: player.Name, arg1: player.Score);
+
+            var dataWriter = new FileWriter();
+            dataWriter.WriteLine(path: "leaders.msr", contents: contents);
         }
     }
 }

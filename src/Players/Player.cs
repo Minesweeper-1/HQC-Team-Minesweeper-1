@@ -4,6 +4,11 @@
 
     public class Player : IPlayer
     {
+        public Player()
+        {
+
+        }
+
         public Player(string name, int score)
         {
             this.Name = name;
@@ -13,13 +18,13 @@
         public string Name
         {
             get;
-            private set;
+            set;
         }
 
         public int Score
         {
             get;
-            private set;
+            set;
         }
     }
 }

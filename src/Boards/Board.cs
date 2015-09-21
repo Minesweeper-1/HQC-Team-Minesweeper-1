@@ -52,9 +52,9 @@
 
         private void InitializeBoard()
         {
-            this.Rows = GlobalConstants.StandardNumberOfBoardRows;
-            this.Cols = GlobalConstants.StandardNumberOfBoardCols;
-            this.NumberOfMines = GlobalConstants.StandardNumberOfBoardCols;
+            this.Rows = GlobalConstants.BeginnerLevelNumberOfBoardRows;
+            this.Cols = GlobalConstants.BeginnerLevelNumberOfBoardCols;
+            this.NumberOfMines = GlobalConstants.BeginnerLevelNumberOfBoardCols;
             this.Cells = new ICell[this.Rows, this.Cols];
             this.BoardState = BoardState.Open;
             this.Subscribers = new List<IBoardObserver>();

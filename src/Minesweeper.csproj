@@ -11,7 +11,8 @@
     <RootNamespace>Minesweeper</RootNamespace>
     <AssemblyName>Minesweeper</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -36,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,6 +66,12 @@
     <Compile Include="Common\GlobalConstants.cs" />
     <Compile Include="Common\GlobalMessages.cs" />
     <Compile Include="Contents\EmptyContent.cs" />
+    <Compile Include="DataManagers\Contracts\IJsonManager.cs" />
+    <Compile Include="DataManagers\Contracts\IReader.cs" />
+    <Compile Include="DataManagers\Contracts\IWriter.cs" />
+    <Compile Include="DataManagers\FileReader.cs" />
+    <Compile Include="DataManagers\FileWriter.cs" />
+    <Compile Include="DataManagers\JsonManager.cs" />
     <Compile Include="Engine\Contracts\IGameInitializationStrategy.cs" />
     <Compile Include="Engine\Contracts\IMinesweeperEngine.cs" />
     <Compile Include="Engine\Contracts\IBoardObserver.cs" />
@@ -78,10 +86,14 @@
     <Compile Include="Renderers\ConsoleRenderer.cs" />
     <Compile Include="Renderers\Contracts\IRenderer.cs" />
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="Scoreboard.cs" />
+    <Compile Include="Scoreboards\Contracts\IScoreboard.cs" />
+    <Compile Include="Scoreboards\Scoreboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

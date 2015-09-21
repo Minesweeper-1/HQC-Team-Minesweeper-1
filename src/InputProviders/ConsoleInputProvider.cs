@@ -10,7 +10,7 @@
         {
         }
 
-        public string Read()
+        public string ReadLine()
         {
             string currentCommand = Console.ReadLine();
             return currentCommand;

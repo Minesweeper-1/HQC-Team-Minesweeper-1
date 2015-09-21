@@ -3,7 +3,6 @@
     using Contracts;
     using Boards.Contracts;
     using Renderers.Contracts;
-    using Minesweeper.Common;
     using Common.Contracts;
     using Common;
 
@@ -21,7 +20,7 @@
 
             this.playCommand = new PlayCommand(board, renderer);
             this.restartCommand = new RestartCommand(board);
-            this.showScoreboardCommand = new ShowScoreboardCommand(board);
+            this.showScoreboardCommand = new ShowScoreboardCommand(board, renderer);
             this.endGameCommand = new EndGameCommand(board);
         }
 

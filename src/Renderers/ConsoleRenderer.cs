@@ -30,6 +30,11 @@
             this.RenderTopBar(board, row, col + 1);
             this.RenderBoardCells(board, row, col + 1);
         }
+
+        public void RenderWelcomeScreen(string welcomeScreen)
+        {
+            this.RenderLine(welcomeScreen);
+        }
         
         private string GetCellCharAsString(ICell cell)
         {

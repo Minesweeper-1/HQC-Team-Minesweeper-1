@@ -4,7 +4,6 @@
     using Boards.Contracts;
     using Renderers.Contracts;
     using Minesweeper.Common;
-    using System;
 
     public class PlayCommand : IBoardCommand
     {
