@@ -16,6 +16,7 @@
             this.renderer = renderer;
         }
 
+        //TODO: Implement chain of responsibility pattern
         public void Execute(string command)
         {
             string trimmedCommand = command.Trim();
