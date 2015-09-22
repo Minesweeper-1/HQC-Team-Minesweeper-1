@@ -50,6 +50,12 @@
     <Compile Include="BoardOperators\Common\Contracts\IBoardCommand.cs" />
     <Compile Include="BoardOperators\Common\EndGameCommand.cs" />
     <Compile Include="BoardOperators\Common\PlayCommand.cs" />
+    <Compile Include="BoardOperators\Common\PlayCommandHandlers\Contracts\PlayCommandHandler.cs" />
+    <Compile Include="BoardOperators\Common\PlayCommandHandlers\IsAlreadyShownHandler.cs" />
+    <Compile Include="BoardOperators\Common\PlayCommandHandlers\IsBombHandler.cs" />
+    <Compile Include="BoardOperators\Common\PlayCommandHandlers\IsInsideBoardHandler.cs" />
+    <Compile Include="BoardOperators\Common\PlayCommandHandlers\IsValidPlayCommandHandler.cs" />
+    <Compile Include="BoardOperators\Common\PlayCommandHandlers\RevealCellHandler.cs" />
     <Compile Include="BoardOperators\Common\RestartCommand.cs" />
     <Compile Include="BoardOperators\Common\ShowScoreboardCommand.cs" />
     <Compile Include="BoardOperators\Contracts\IBoardOperator.cs" />

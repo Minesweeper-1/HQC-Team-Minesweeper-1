@@ -7,6 +7,7 @@
     using Renderers.Contracts;
     using Scoreboards.Contracts;
     using Players.Contracts;
+    using System.Linq;
 
     public class ShowScoreboardCommand : IBoardCommand
     {
@@ -23,7 +24,7 @@
 
         public void Execute(string commandText)
         {
-            IList<IPlayer> leaders = this.scoreboard.GetAll();
+            IList<IPlayer> leaders = this.scoreboard.GetAll().OrderBy(player => -player.Score).ToList();
 
             // Render players and scores in a user-friendly manner
             // TODO: Extract as a method in the IRenderer interface

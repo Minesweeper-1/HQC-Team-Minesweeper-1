@@ -54,7 +54,7 @@
         {
             this.Rows = GlobalConstants.BeginnerLevelNumberOfBoardRows;
             this.Cols = GlobalConstants.BeginnerLevelNumberOfBoardCols;
-            this.NumberOfMines = GlobalConstants.BeginnerLevelNumberOfBoardCols;
+            this.NumberOfMines = GlobalConstants.BeginnerLevelNumberOfBoardMines;
             this.Cells = new ICell[this.Rows, this.Cols];
             this.BoardState = BoardState.Open;
             this.Subscribers = new List<IBoardObserver>();

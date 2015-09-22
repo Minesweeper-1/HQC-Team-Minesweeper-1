@@ -12,7 +12,7 @@
 
         public static readonly int BeginnerLevelNumberOfBoardRows = 9;
         public static readonly int BeginnerLevelNumberOfBoardCols = 9;
-        public static readonly int BeginnerLevelNumberOfBoardBombs = 10;
+        public static readonly int BeginnerLevelNumberOfBoardMines = 10;
 
         public static readonly int IntermediateLevelNumberOfBoardRows = 16;
         public static readonly int IntermediateLevelNumberOfBoardCols = 16;

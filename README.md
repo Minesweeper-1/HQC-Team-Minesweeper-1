@@ -33,4 +33,4 @@ in the Telerik Academy JavaScript UI & DOM course 2015
 3. Implemented the following patterns:
    - **Creational**: Singleton, Simple Factory
    - **Structural**: Façade, Bridge
-   - **Behavioral**: Strategy, Observer, Command
+   - **Behavioral**: Strategy, Observer, Command, Chain of Responsibility
