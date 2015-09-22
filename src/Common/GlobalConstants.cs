@@ -28,7 +28,7 @@
         public const int TopBarColsOffset = 2;
         public const int TopBarSeparatorsOffset = 1;
 
-        public static readonly string ScoreboardFilePath = "leaders.msr";
+        public static readonly string ScoreboardFilePath = "../../Data/leaders.msr";
 
         public static readonly string DefaultWelcomeScreen = "Welcome to the all-time classic game of Minesweeper";
     }
