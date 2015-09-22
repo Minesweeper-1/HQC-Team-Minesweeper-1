@@ -12,7 +12,7 @@
 
     public class StandardGameInitializationStrategy : IGameInitializationStrategy
     {
-        private ContentFactory contentFactory;
+        private readonly ContentFactory contentFactory;
 
         public StandardGameInitializationStrategy()
         {

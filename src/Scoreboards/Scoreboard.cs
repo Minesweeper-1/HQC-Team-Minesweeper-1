@@ -35,7 +35,7 @@
         {
             IList<IPlayer> leaders = this.GetAll();
             leaders.Add(player);            
-            string result = this.jsonManager.Stringify(leaders);
+            string result = this.jsonManager.ToStringRepresentation(leaders);
             this.dataWriter.WriteAllText(GlobalConstants.ScoreboardFilePath, result);
         }
     }

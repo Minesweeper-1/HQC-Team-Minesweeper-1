@@ -13,7 +13,7 @@
             this.board = board;
         }
 
-        public void Execute(string commandText)
+        public void Execute(string command)
         {
             // TODO: Implement Restart command
         }

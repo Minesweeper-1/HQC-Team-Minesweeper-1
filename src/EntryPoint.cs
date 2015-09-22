@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper
 {
-    public class EntryPoint
+    public static class EntryPoint
     {
         static void Main()
         {

@@ -2,6 +2,6 @@
 {
     public interface IBoardCommand
     {
-        void Execute(string commandText = "");
+        void Execute(string command = "");
     }
 }

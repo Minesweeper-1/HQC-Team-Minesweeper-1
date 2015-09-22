@@ -12,9 +12,9 @@
 
         }
 
-        public override void HandleRequest(int x, int y, IBoard board, IRenderer renderer)
+        public override void HandleRequest(int row, int col, IBoard board, IRenderer renderer)
         {
-            board.RevealCell(x, y);
+            board.RevealCell(row, col);
             renderer.Clear();
 
             board.ChangeBoardState(BoardState.Open);

@@ -6,6 +6,7 @@
     using Cells.Contracts;
     using Common;
     using Contracts;
+    using System.Globalization;
 
     public class ConsoleRenderer : IRenderer
     {
@@ -47,7 +48,7 @@
                     cellCharAsString = GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString();
                     break;
                 case CellState.Revealed:
-                    cellCharAsString = cell.Content.Value.ToString();
+                    cellCharAsString = cell.Content.Value.ToString(CultureInfo.InvariantCulture);
                     break;
                 default:
                     break;

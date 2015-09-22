@@ -11,18 +11,16 @@
 
     public class ShowScoreboardCommand : IBoardCommand
     {
-        private readonly IBoard board;
         private readonly IRenderer renderer;
         private readonly IScoreboard scoreboard;
         
-        public ShowScoreboardCommand(IBoard board, IRenderer renderer, IScoreboard scoreboard)
+        public ShowScoreboardCommand(IRenderer renderer, IScoreboard scoreboard)
         {
-            this.board = board;
             this.renderer = renderer;
             this.scoreboard = scoreboard;
         }
 
-        public void Execute(string commandText)
+        public void Execute(string command)
         {
             IList<IPlayer> leaders = this.scoreboard.GetAll().OrderBy(player => -player.Score).ToList();
 

@@ -2,8 +2,8 @@
 {
     public interface IJsonManager
     {
-        T Parse<T>(string jsonString);
+        T Parse<T>(string jsonValue);
 
-        string Stringify<T>(T jsonObject);
+        string ToStringRepresentation<T>(T jsonObject);
     }
 }

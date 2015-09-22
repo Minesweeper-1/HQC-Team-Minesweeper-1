@@ -5,19 +5,32 @@
 
     public abstract class PlayCommandHandler
     {
-        protected PlayCommandHandler successor;
+        private PlayCommandHandler successor;
 
-        public PlayCommandHandler()
+        protected PlayCommandHandler()
         {
 
         }
 
-        public void SetSuccessor(PlayCommandHandler successor)
+        protected PlayCommandHandler Successor
         {
-            this.successor = successor;
+            get
+            {
+                return successor;
+            }
+
+            private set
+            {
+                this.successor = value;
+            }
         }
 
-        public virtual void HandleRequest(int x, int y, IBoard board, IRenderer renderer)
+        public void SetSuccessor(PlayCommandHandler successorToSet)
+        {
+            this.Successor = successorToSet;
+        }
+
+        public virtual void HandleRequest(int row, int col, IBoard board, IRenderer renderer)
         {
 
         }

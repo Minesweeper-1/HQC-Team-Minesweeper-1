@@ -13,13 +13,13 @@
             this.serializer = new JavaScriptSerializer();
         }
 
-        public T Parse<T>(string jsonString)
+        public T Parse<T>(string jsonValue)
         {
-            T result = this.serializer.Deserialize<T>(jsonString);
+            T result = this.serializer.Deserialize<T>(jsonValue);
             return result;
         }
 
-        public string Stringify<T>(T jsonObject)
+        public string ToStringRepresentation<T>(T jsonObject)
         {
             string result = this.serializer.Serialize(jsonObject);
             return result;

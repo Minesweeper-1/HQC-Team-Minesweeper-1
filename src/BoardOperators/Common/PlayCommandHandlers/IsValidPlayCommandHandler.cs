@@ -42,9 +42,9 @@
                 renderer.RenderLine(GlobalMessages.InvalidCommand);
                 board.ChangeBoardState(BoardState.Pending);
             }
-            else if (this.successor != null)
+            else if (this.Successor != null)
             {
-                this.successor.HandleRequest(x, y, board, renderer);
+                this.Successor.HandleRequest(x, y, board, renderer);
             }
         }
     }

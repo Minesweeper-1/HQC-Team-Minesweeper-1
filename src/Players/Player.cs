@@ -28,9 +28,9 @@
             set;
         }
 
-        public int CompareTo(object anotherPlayerAsObject)
+        public int CompareTo(object obj)
         {
-            var anotherPlayer = anotherPlayerAsObject as IPlayer;
+            var anotherPlayer = obj as IPlayer;
             if(anotherPlayer.Score > this.Score)
             {
                 return 1;
@@ -41,7 +41,7 @@
             }
             else
             {
-                return string.Compare(anotherPlayer.Name, this.Name);
+                return string.Compare(anotherPlayer.Name, this.Name, StringComparison.Ordinal);
             }
         }
     }

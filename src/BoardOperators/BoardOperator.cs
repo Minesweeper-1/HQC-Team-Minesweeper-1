@@ -9,6 +9,7 @@
     using Contracts;
     using Renderers.Contracts;
     using Scoreboards.Contracts;
+    using System.Globalization;
 
     public class BoardOperator : IBoardOperator
     {
@@ -28,7 +29,7 @@
         {
             IBoardCommand playCommand = new PlayCommand(this.Board, this.Renderer);
             IBoardCommand restartCommand = new RestartCommand(this.Board);
-            IBoardCommand showScoreboardCommand = new ShowScoreboardCommand(this.Board, this.Renderer, this.scoreboard);
+            IBoardCommand showScoreboardCommand = new ShowScoreboardCommand(this.Renderer, this.scoreboard);
             IBoardCommand endGameCommand = new EndGameCommand(this.Board);
 
             this.commandExecutor = new Dictionary<string, IBoardCommand>()
@@ -62,7 +63,7 @@
 
         public void ExecuteCommand(string command)
         {
-            string commandToLowerCase = command.ToLower();
+            string commandToLowerCase = command.ToLower(CultureInfo.InvariantCulture);
             if (!this.commandExecutor.ContainsKey(commandToLowerCase))
             {
                 this.commandExecutor["play"].Execute(commandToLowerCase);

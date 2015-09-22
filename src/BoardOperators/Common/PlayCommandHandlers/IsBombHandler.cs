@@ -12,16 +12,16 @@
 
         }
 
-        public override void HandleRequest(int x, int y, IBoard board, IRenderer renderer)
+        public override void HandleRequest(int row, int col, IBoard board, IRenderer renderer)
         {
-            if (board.IsBomb(x, y))
+            if (board.IsBomb(row, col))
             {
                 renderer.RenderLine(GlobalMessages.GameOver);
                 board.ChangeBoardState(BoardState.Closed);
             }
-            else if(this.successor != null)
+            else if(this.Successor != null)
             {
-                this.successor.HandleRequest(x, y, board, renderer);
+                this.Successor.HandleRequest(row, col, board, renderer);
             }
         }
     }
