@@ -73,6 +73,7 @@
                 }
                 else if (this.GameState == BoardState.Pending)
                 {
+                    this.Renderer.SetCursorPosition(boardStartRenderX + this.Board.Rows + 1, col: 0);
                     continue;
                 }
                 else if (this.GameState == BoardState.Open)

@@ -24,7 +24,7 @@
             this.renderer = renderer;
             this.scoreboard = scoreboard;
 
-            //this.Initialize();
+            this.Initialize();
         }
 
         private void Initialize()
