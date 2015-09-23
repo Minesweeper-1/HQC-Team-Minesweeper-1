@@ -85,7 +85,7 @@
     <Compile Include="Engine\Initializations\StandardGameInitializationStrategy.cs" />
     <Compile Include="Engine\StandardOnePlayerMinesweeperEngine.cs" />
     <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
-    <Compile Include="MinesweeperFaçade.cs" />
+    <Compile Include="Minesweeper.cs" />
     <Compile Include="Players\Contracts\IPlayer.cs" />
     <Compile Include="Boards\Board.cs" />
     <Compile Include="InputProviders\ConsoleInputProvider.cs" />

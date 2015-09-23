@@ -4,7 +4,7 @@
     using Renderers.Contracts;
     using InputProviders.Contracts;
 
-    public interface IMinesweeperEngine
+    public interface IMinesweeperEngine : IBoardObserver
     {
         IBoard Board { get; set; }
 

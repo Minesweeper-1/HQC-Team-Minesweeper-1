@@ -3,7 +3,7 @@
     using Cells.Contracts;
     using Common;
 
-    public interface IBoard
+    public interface IBoard : IBoardSubject
     {
         ICell[,] Cells
         {

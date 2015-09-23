@@ -3,7 +3,7 @@
     using Contracts;
     using Renderers.Contracts;
     using Boards.Contracts;
-    using Minesweeper.Common;
+    using global::Minesweeper.Common;
 
     public class IsInsideBoardHandler : PlayCommandHandler
     {

@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper.BoardOperators.Common.PlayCommandHandlers
 {
-    using Minesweeper.Common;
+    using global::Minesweeper.Common;
     using Contracts;
     using Boards.Contracts;
     using Renderers.Contracts;

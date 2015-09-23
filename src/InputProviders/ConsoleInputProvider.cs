@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper.InputProviders
 {
-    using Minesweeper.InputProviders.Contracts;
+    using global::Minesweeper.InputProviders.Contracts;
 
     using System;
 
