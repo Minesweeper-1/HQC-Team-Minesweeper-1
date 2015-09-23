@@ -1,54 +1,50 @@
 ﻿namespace Minesweeper
 {
-    using Engine;
+    using CommandOperators;
+    using CommandOperators.Contracts;
     using Boards;
-    using Renderers;
-    using InputProviders;
-    using Engine.Initializations;
-    using BoardOperators;
-    using Scoreboards;
     using Boards.Contracts;
-    using Renderers.Contracts;
-    using Scoreboards.Contracts;
-    using BoardOperators.Contracts;
-    using InputProviders.Contracts;
+    using Engine;
     using Engine.Contracts;
+    using Engine.Initializations;
+    using InputProviders;
+    using InputProviders.Contracts;
+    using Renderers;
+    using Renderers.Contracts;
+    using Scoreboards;
+    using Scoreboards.Contracts;
 
     public class Minesweeper
     {
-        private static Minesweeper instance;
+        private static readonly Minesweeper instance = new Minesweeper();
 
-        private static readonly IBoard board = new Board();
-        private static readonly IRenderer renderer = new ConsoleRenderer();
-        private static readonly IScoreboard scoreboard = new Scoreboard();
-        private static readonly IInputProvider inputProvider = new ConsoleInputProvider();
-        private static readonly IBoardOperator boardOperator = new BoardOperator(board, renderer, scoreboard);
-        private static readonly IGameInitializationStrategy initializationStrategy = new StandardGameInitializationStrategy();
-        private static readonly IMinesweeperEngine engine = new StandardOnePlayerMinesweeperEngine(board, renderer, inputProvider, boardOperator, scoreboard);
+        private  readonly IBoard board = new Board();
+        private  readonly IRenderer renderer = new ConsoleRenderer();
+        private readonly IScoreboard scoreboard = new Scoreboard();
+        private readonly IInputProvider inputProvider = new ConsoleInputProvider();
+        private readonly IGameInitializationStrategy initializationStrategy = new StandardGameInitializationStrategy();
+        private readonly ICommandOperator boardOperator;
+        private readonly IMinesweeperEngine engine;
 
         private Minesweeper()
         {
-
+            this.boardOperator = new CommandOperator(this.board, this.renderer, this.scoreboard);
+            this.engine = new StandardOnePlayerMinesweeperEngine(this.board, this.renderer, this.inputProvider, this.boardOperator, this.scoreboard);
         }
 
         public static Minesweeper Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new Minesweeper();
-                }
-
                 return instance;
             }
         }
 
         public void Start()
         {
-            engine.Initialize(initializationStrategy);
-            board.Subscribe(engine);
-            engine.Run();
+            this.engine.Initialize(this.initializationStrategy);
+            this.board.Subscribe(this.engine);
+            this.engine.Run();
         }
     }
 }

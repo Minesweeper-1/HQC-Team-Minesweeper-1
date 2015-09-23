@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper.Engine
 {
-    using BoardOperators.Contracts;
+    using CommandOperators.Contracts;
     using Boards.Contracts;
     using Common;
     using Contracts;
@@ -15,7 +15,7 @@
         private IPlayer currentPlayer;
         private readonly IScoreboard scoreboard;
 
-        public StandardOnePlayerMinesweeperEngine(IBoard board, IRenderer renderer, IInputProvider inputProvider, IBoardOperator boardOperator, IScoreboard scoreboard)
+        public StandardOnePlayerMinesweeperEngine(IBoard board, IRenderer renderer, IInputProvider inputProvider, ICommandOperator boardOperator, IScoreboard scoreboard)
         {
             this.Board = board;
             this.BoardOperator = boardOperator;
@@ -27,7 +27,7 @@
 
         public IBoard Board { get; set; }
 
-        public IBoardOperator BoardOperator { get; set; }
+        public ICommandOperator BoardOperator { get; set; }
 
         public IRenderer Renderer { get; set; }
 
@@ -64,7 +64,7 @@
             while (true)
             {
                 string command = this.InputProvider.ReadLine();
-                this.BoardOperator.ExecuteCommand(command);
+                this.BoardOperator.Execute(command);
 
                 if (this.GameState == BoardState.Closed)
                 {

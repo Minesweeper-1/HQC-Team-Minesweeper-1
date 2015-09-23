@@ -1,23 +1,23 @@
-﻿namespace Minesweeper.BoardOperators.Common.PlayCommandHandlers
+﻿namespace Minesweeper.CommandOperators.Common.PlayCommandHandlers
 {
     using Contracts;
     using Boards.Contracts;
     using Renderers.Contracts;
     using global::Minesweeper.Common;
 
-    public class IsBombHandler : PlayCommandHandler
+    public class IsAlreadyShownHandler : PlayCommandHandler
     {
-        public IsBombHandler()
+        public IsAlreadyShownHandler()
         {
 
         }
 
         public override void HandleRequest(int row, int col, IBoard board, IRenderer renderer)
         {
-            if (board.IsBomb(row, col))
+            if(board.IsAlreadyShown(row, col))
             {
-                renderer.RenderLine(GlobalMessages.GameOver);
-                board.ChangeBoardState(BoardState.Closed);
+                renderer.RenderLine(GlobalMessages.CellAlreadyRevealed);
+                board.ChangeBoardState(BoardState.Pending);
             }
             else if(this.Successor != null)
             {

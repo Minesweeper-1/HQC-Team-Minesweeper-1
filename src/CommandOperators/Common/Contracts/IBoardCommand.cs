@@ -1,4 +1,4 @@
-﻿namespace Minesweeper.BoardOperators.Common.Contracts
+﻿namespace Minesweeper.CommandOperators.Common.Contracts
 {
     public interface IBoardCommand
     {

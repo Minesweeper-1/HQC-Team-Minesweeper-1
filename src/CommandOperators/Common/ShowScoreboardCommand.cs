@@ -1,4 +1,4 @@
-﻿namespace Minesweeper.BoardOperators.Common
+﻿namespace Minesweeper.CommandOperators.Common
 {
     using System.Collections.Generic;
 

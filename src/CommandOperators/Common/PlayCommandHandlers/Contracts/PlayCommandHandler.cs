@@ -1,4 +1,4 @@
-﻿namespace Minesweeper.BoardOperators.Common.PlayCommandHandlers.Contracts
+﻿namespace Minesweeper.CommandOperators.Common.PlayCommandHandlers.Contracts
 {
     using Boards.Contracts;
     using Renderers.Contracts;
