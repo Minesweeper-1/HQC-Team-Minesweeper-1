@@ -1,19 +1,18 @@
 ﻿namespace Minesweeper.CommandOperators.Common
 {
     using System.Collections.Generic;
+    using System.Linq;
 
-    using Boards.Contracts;
     using Contracts;
+    using Players.Contracts;
     using Renderers.Contracts;
     using Scoreboards.Contracts;
-    using Players.Contracts;
-    using System.Linq;
 
     public class ShowScoreboardCommand : IBoardCommand
     {
         private readonly IRenderer renderer;
         private readonly IScoreboard scoreboard;
-        
+
         public ShowScoreboardCommand(IRenderer renderer, IScoreboard scoreboard)
         {
             this.renderer = renderer;
