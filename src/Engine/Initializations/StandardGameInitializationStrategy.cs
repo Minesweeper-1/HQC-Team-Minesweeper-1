@@ -14,9 +14,9 @@
     {
         private readonly ContentFactory contentFactory;
 
-        public StandardGameInitializationStrategy()
+        public StandardGameInitializationStrategy(ContentFactory contentFactory)
         {
-            this.contentFactory = new ContentFactory();
+            this.contentFactory = contentFactory;
         }
 
         public void Initialize(IBoard board)

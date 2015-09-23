@@ -13,6 +13,7 @@
     using Renderers.Contracts;
     using Scoreboards;
     using Scoreboards.Contracts;
+    using Contents;
 
     public class Minesweeper
     {
@@ -22,13 +23,15 @@
         private  readonly IRenderer renderer = new ConsoleRenderer();
         private readonly IScoreboard scoreboard = new Scoreboard();
         private readonly IInputProvider inputProvider = new ConsoleInputProvider();
-        private readonly IGameInitializationStrategy initializationStrategy = new StandardGameInitializationStrategy();
+        private readonly ContentFactory contentFactory = new ContentFactory();
+        private readonly IGameInitializationStrategy initializationStrategy;
         private readonly ICommandOperator boardOperator;
         private readonly IMinesweeperEngine engine;
 
         private Minesweeper()
         {
             this.boardOperator = new CommandOperator(this.board, this.renderer, this.scoreboard);
+            this.initializationStrategy = new StandardGameInitializationStrategy(this.contentFactory);
             this.engine = new StandardOnePlayerMinesweeperEngine(this.board, this.renderer, this.inputProvider, this.boardOperator, this.scoreboard);
         }
 
