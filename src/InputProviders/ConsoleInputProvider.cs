@@ -12,8 +12,7 @@
 
         public string ReadLine()
         {
-            string currentCommand = Console.ReadLine();
-            return currentCommand;
+            return Console.ReadLine();
         }
     }
 }

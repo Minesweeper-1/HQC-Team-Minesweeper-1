@@ -15,14 +15,5 @@
         {
             File.WriteAllText(path, contents);
         }
-
-        public void WriteLine(string path, string contents)
-        {
-            using (StreamWriter file =
-            new StreamWriter(path, append: true))
-            {
-                file.WriteLine(contents);
-            }
-        }
     }
 }

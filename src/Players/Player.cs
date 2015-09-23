@@ -3,46 +3,29 @@
     using Contracts;
     using System;
 
-    public class Player : IPlayer, IComparable
+    public class Player : IPlayer
     {
         public Player()
         {
 
         }
 
-        public Player(string name, int score)
+        public Player(string name)
         {
             this.Name = name;
-            this.Score = score;
+            this.Score = 0;
         }
 
         public string Name
         {
             get;
-            set;
+            private set;
         }
 
         public int Score
         {
             get;
             set;
-        }
-
-        public int CompareTo(object obj)
-        {
-            var anotherPlayer = obj as IPlayer;
-            if(anotherPlayer.Score > this.Score)
-            {
-                return 1;
-            }
-            else if(anotherPlayer.Score > this.Score)
-            {
-                return -1;
-            }
-            else
-            {
-                return string.Compare(anotherPlayer.Name, this.Name, StringComparison.Ordinal);
-            }
         }
     }
 }

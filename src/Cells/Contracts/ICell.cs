@@ -5,18 +5,6 @@
 
     public interface ICell
     {
-        int Row
-        {
-            get;
-            set;
-        }
-
-        int Col
-        {
-            get;
-            set;
-        }
-
         IContent Content
         {
             get;

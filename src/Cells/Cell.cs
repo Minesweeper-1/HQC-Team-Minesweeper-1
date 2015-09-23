@@ -1,35 +1,19 @@
 ﻿namespace Minesweeper.Cells
 {
-    using Contracts;
-    using Contents.Contracts;
     using Common;
-    using Contents;
+    using Contents.Contracts;
+    using Contracts;
 
     public class Cell : ICell
     {
+        private readonly int row;
+        private readonly int col;
+
         public Cell(int row, int col)
         {
-            this.Row = row;
-            this.Col = col;
+            this.row = row;
+            this.col = col;
             this.State = CellState.Sealed;
-        }
-
-        public Cell(int row, int col, IContent content)
-            : this(row, col)
-        {
-            this.Content = content;
-        }
-
-        public int Row
-        {
-            get;
-            set;
-        }
-
-        public int Col
-        {
-            get;
-            set;
         }
 
         public IContent Content

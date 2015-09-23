@@ -13,8 +13,7 @@
 
         public string ReadAllText(string source)
         {
-            string text = File.ReadAllText(source);
-            return text;
+            return File.ReadAllText(source);
         }
     }
 }

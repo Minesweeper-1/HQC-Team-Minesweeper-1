@@ -12,11 +12,13 @@
 
     public class StandardGameInitializationStrategy : IGameInitializationStrategy
     {
-        private readonly ContentFactory contentFactory;
+        private readonly ContentFactory emptyContentFactory;
+        private readonly ContentFactory bombFactory;
 
-        public StandardGameInitializationStrategy(ContentFactory contentFactory)
+        public StandardGameInitializationStrategy(ContentFactory emptyContentFactory, ContentFactory bombFactory)
         {
-            this.contentFactory = contentFactory;
+            this.emptyContentFactory = emptyContentFactory;
+            this.bombFactory = bombFactory;
         }
 
         public void Initialize(IBoard board)
@@ -32,11 +34,12 @@
             {
                 for (int col = 0; col < board.Cols; col++)
                 {
-                    IContent newEmptyCellContent = this.contentFactory.GetContent(ContentType.Empty);
-                    board.Cells[row, col] = new Cell(row, col, newEmptyCellContent);
+                    IContent newEmptyCellContent = this.emptyContentFactory.GetContent();
+                    board.Cells[row, col] = new Cell(row, col);
+                    board.Cells[row, col].Content = newEmptyCellContent;
 
                     // For debugging purposes - reveals all cells' content at initialization
-                    //board.Cells[row, col].State = CellState.Revealed;
+                    // board.Cells[row, col].State = CellState.Revealed;
                 }
             }
         }
@@ -68,7 +71,7 @@
                 int col = randomGenerator.Next(board.Cols);
                 if(board.Cells[row, col].Content.ContentType == ContentType.Empty)
                 {
-                    board.Cells[row, col].Content = this.contentFactory.GetContent(ContentType.Bomb);
+                    board.Cells[row, col].Content = this.bombFactory.GetContent();
                     numberOfMines += 1;
                 }
             }

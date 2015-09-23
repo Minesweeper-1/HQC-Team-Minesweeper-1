@@ -5,8 +5,6 @@
 
     public abstract class PlayCommandHandler
     {
-        private PlayCommandHandler successor;
-
         protected PlayCommandHandler()
         {
 
@@ -14,15 +12,8 @@
 
         protected PlayCommandHandler Successor
         {
-            get
-            {
-                return successor;
-            }
-
-            private set
-            {
-                this.successor = value;
-            }
+            get;
+            private set;
         }
 
         public void SetSuccessor(PlayCommandHandler successorToSet)

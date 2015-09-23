@@ -6,23 +6,21 @@
 
     public class JsonManager : IJsonManager
     {
-        private readonly JavaScriptSerializer serializer;
+        private readonly JavaScriptSerializer serializer = new JavaScriptSerializer();
 
         public JsonManager()
         {
-            this.serializer = new JavaScriptSerializer();
+
         }
 
         public T Parse<T>(string jsonValue)
         {
-            T result = this.serializer.Deserialize<T>(jsonValue);
-            return result;
+            return this.serializer.Deserialize<T>(jsonValue);
         }
 
         public string ToStringRepresentation<T>(T jsonObject)
         {
-            string result = this.serializer.Serialize(jsonObject);
-            return result;
+            return this.serializer.Serialize(jsonObject);
         }
     }
 }

@@ -5,7 +5,6 @@
         string Name
         {
             get;
-            set;
         }
 
         int Score

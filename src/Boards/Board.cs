@@ -63,27 +63,18 @@
         public int CalculateNumberOfSurroundingBombs(int cellRow, int cellCol)
         {
             int result = 0;
-
-            int rowStart = cellRow - 1;
-            int rowEnd = cellRow + 1;
-            int colStart = cellCol - 1;
-            int colEnd = cellCol + 1;
-
-            for (int row = rowStart; row <= rowEnd; row++)
+            for (int row = cellRow - 1; row <= cellRow + 1; row++)
             {
-                for (int col = colStart; col <= colEnd; col++)
+                for (int col = cellCol - 1; col <= cellCol + 1; col++)
                 {
-                    if (this.IsInsideBoard(row, col))
+                    if (this.IsInsideBoard(row, col) && this.IsBomb(row, col))
                     {
-                        if(this.IsBomb(row, col))
-                        {
-                            result += 1;
-                        }
+                        ++result;
                     }
                 }
             }
-            
-            if(this.IsBomb(cellRow, cellCol))
+
+            if (this.IsBomb(cellRow, cellCol))
             {
                 result -= 1;
             }

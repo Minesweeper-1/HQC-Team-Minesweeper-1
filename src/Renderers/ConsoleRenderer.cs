@@ -97,8 +97,8 @@
 
         private void RenderTopBar(IBoard board, int row, int col)
         {
-            string topBarCols = "";
-            string topBarSeparators = "";
+            string topBarCols = GlobalConstants.GameCellsDivider;
+            string topBarSeparators = GlobalConstants.GameCellsDivider;
             for (int boardCol = 0; boardCol < board.Cols; boardCol++)
             {
                 topBarCols += boardCol + GlobalConstants.GameCellsDivider;
@@ -120,7 +120,7 @@
                 {
                     string charToRenderAsString = this.GetCellCharAsString(board.Cells[boardRow, boardCol]);
                     this.SetCorrespondingForegroundColor(charToRenderAsString);
-                    this.Render(charToRenderAsString + " ");
+                    this.Render(charToRenderAsString.PadLeft(totalWidth: 3));
                     this.ResetForegroundColor();
                 }
             }
