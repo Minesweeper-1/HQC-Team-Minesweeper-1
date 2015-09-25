@@ -65,6 +65,7 @@
                 else if (this.gameState == BoardState.Pending)
                 {
                     this.renderer.SetCursorPosition(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
+                    this.renderer.ClearCurrentConsoleLine();
                     continue;
                 }
                 else if (this.gameState == BoardState.Open)

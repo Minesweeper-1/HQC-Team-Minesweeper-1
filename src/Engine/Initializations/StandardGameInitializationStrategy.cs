@@ -8,7 +8,6 @@
     using Cells;
     using Cells.Contracts;
     using Common;
-    using Contents.Contracts;
 
     public class StandardGameInitializationStrategy : IGameInitializationStrategy
     {
@@ -38,7 +37,7 @@
                         .Context();
 
                     // For debugging purposes - reveals all cells' content at initialization
-                     board.Cells[row, col].State = CellState.Revealed;
+                    // board.Cells[row, col].State = CellState.Revealed;
                 }
             }
         }

@@ -21,7 +21,11 @@
 
         public void Execute(string command)
         {
-            IList<IPlayer> leaders = this.scoreboard.GetAll().OrderBy(player => -player.Score).ToList();
+            IList<IPlayer> leaders = this.scoreboard
+                .GetAll()
+                .OrderBy(player => -player.Score)
+                .Take(count: 10)
+                .ToList();
 
             // Render players and scores in a user-friendly manner
             // TODO: Extract as a method in the IRenderer interface
