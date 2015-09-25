@@ -4,7 +4,7 @@
     {
         static void Main()
         {
-            Minesweeper.Instance.Start();
+            Game.Instance.Start();
         }
     }
 }

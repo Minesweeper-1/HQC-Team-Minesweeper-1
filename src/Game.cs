@@ -9,16 +9,16 @@
     using Renderers;
     using Scoreboards;
 
-    public class Minesweeper
+    public class Game
     {
-        private static readonly Minesweeper instance = new Minesweeper();
+        private static readonly Game instance = new Game();
 
-        private Minesweeper()
+        private Game()
         {
 
         }
 
-        public static Minesweeper Instance
+        public static Game Instance
         {
             get
             {

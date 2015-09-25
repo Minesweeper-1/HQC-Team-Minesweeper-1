@@ -1,7 +1,6 @@
 ﻿namespace Minesweeper.Players
 {
     using Contracts;
-    using System;
 
     public class Player : IPlayer
     {
@@ -19,7 +18,7 @@
         public string Name
         {
             get;
-            private set;
+            set;
         }
 
         public int Score

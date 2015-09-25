@@ -4,24 +4,30 @@
     using Contents.Contracts;
     using Contracts;
 
-    public class Cell : ICell
+    public class Cell
     {
-        public Cell(CellState state = CellState.Sealed)
+        private readonly CellContext context = new CellContext();
+
+        public Cell()
         {
-            this.State = state;
-            this.Content = default(IContent);
+            
         }
 
-        public IContent Content
+        public Cell Content(IContent content)
         {
-            get;
-            set;
+            this.context.Content = content;
+            return this;
         }
 
-        public CellState State
+        public Cell State(CellState state)
         {
-            get;
-            set;
+            this.context.State = state;
+            return this;
+        }
+
+        public ICell Context()
+        {
+            return this.context;
         }
     }
 }

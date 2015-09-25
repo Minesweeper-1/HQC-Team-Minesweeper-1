@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cells\CellContext.cs" />
     <Compile Include="CommandOperators\CommandOperator.cs" />
     <Compile Include="CommandOperators\Common\Contracts\IBoardCommand.cs" />
     <Compile Include="CommandOperators\Common\EndGameCommand.cs" />
@@ -85,7 +86,7 @@
     <Compile Include="Engine\Initializations\StandardGameInitializationStrategy.cs" />
     <Compile Include="Engine\StandardOnePlayerMinesweeperEngine.cs" />
     <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
-    <Compile Include="Minesweeper.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Players\Contracts\IPlayer.cs" />
     <Compile Include="Boards\Board.cs" />
     <Compile Include="InputProviders\ConsoleInputProvider.cs" />

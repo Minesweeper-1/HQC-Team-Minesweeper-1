@@ -32,12 +32,13 @@
             {
                 for (int col = 0; col < board.Cols; col++)
                 {
-                    IContent newEmptyCellContent = this.contentFactory.GetContent(ContentType.Empty);
-                    board.Cells[row, col] = new Cell();
-                    board.Cells[row, col].Content = newEmptyCellContent;
+                    board.Cells[row, col] = new Cell()
+                        .Content(this.contentFactory.GetContent(ContentType.Empty))
+                        .State(CellState.Sealed)
+                        .Context();
 
                     // For debugging purposes - reveals all cells' content at initialization
-                    board.Cells[row, col].State = CellState.Revealed;
+                     board.Cells[row, col].State = CellState.Revealed;
                 }
             }
         }
