@@ -1,8 +1,8 @@
 ﻿namespace Minesweeper.InputProviders
 {
-    using global::Minesweeper.InputProviders.Contracts;
-
     using System;
+
+    using Contracts;
 
     public class ConsoleInputProvider : IInputProvider
     {

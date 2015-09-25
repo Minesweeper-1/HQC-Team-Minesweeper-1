@@ -8,7 +8,6 @@
     {
         public FileReader()
         {
-
         }
 
         public string ReadAllText(string source)

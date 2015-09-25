@@ -7,7 +7,6 @@
     {
         protected PlayCommandHandler()
         {
-
         }
 
         protected PlayCommandHandler Successor
@@ -23,12 +22,10 @@
 
         public virtual void HandleRequest(int row, int col, IBoard board, IRenderer renderer)
         {
-
         }
 
         public virtual void HandleRequest(string command, IBoard board, IRenderer renderer)
         {
-
         }
     }
 }

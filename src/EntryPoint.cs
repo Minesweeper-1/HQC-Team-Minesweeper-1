@@ -2,7 +2,7 @@
 {
     public static class EntryPoint
     {
-        static void Main()
+        public static void Main()
         {
             Game.Instance.Start();
         }

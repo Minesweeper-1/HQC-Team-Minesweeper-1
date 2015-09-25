@@ -1,8 +1,7 @@
 ﻿namespace Minesweeper.CommandOperators.Common
 {
-    using Contracts;
     using Boards.Contracts;
-    using global::Minesweeper.Common;
+    using Contracts;
 
     public class RestartCommand : IBoardCommand
     {

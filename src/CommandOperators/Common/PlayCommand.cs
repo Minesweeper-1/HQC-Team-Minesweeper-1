@@ -1,10 +1,9 @@
 ﻿namespace Minesweeper.CommandOperators.Common
 {
-    using Contracts;
     using Boards.Contracts;
-    using Renderers.Contracts;
-    using global::Minesweeper.Common;
+    using Contracts;
     using PlayCommandHandlers;
+    using Renderers.Contracts;
 
     public class PlayCommand : IBoardCommand
     {

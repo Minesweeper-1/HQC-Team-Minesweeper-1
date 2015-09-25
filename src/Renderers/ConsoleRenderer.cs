@@ -1,18 +1,17 @@
 ﻿namespace Minesweeper.Renderers
 {
     using System;
+    using System.Globalization;
 
     using Boards.Contracts;
     using Cells.Contracts;
     using Common;
     using Contracts;
-    using System.Globalization;
 
     public class ConsoleRenderer : IRenderer
     {
         public ConsoleRenderer()
         {
-
         }
 
         public void Render(string line)
@@ -35,26 +34,6 @@
         public void RenderWelcomeScreen(string welcomeScreen)
         {
             this.RenderLine(welcomeScreen);
-        }
-        
-        private string GetCellCharAsString(ICell cell)
-        {
-            string cellCharAsString = string.Empty;
-
-            CellState cellState = cell.State;
-            switch (cellState)
-            {
-                case CellState.Sealed:
-                    cellCharAsString = GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString();
-                    break;
-                case CellState.Revealed:
-                    cellCharAsString = cell.Content.Value.ToString(CultureInfo.InvariantCulture);
-                    break;
-                default:
-                    break;
-            }
-
-            return cellCharAsString;
         }
 
         public void SetCursorPosition(int row, int col)
@@ -83,6 +62,26 @@
             this.SetCursorPosition(Console.CursorTop, col: 0);
             this.Render(new string(c: ' ', count: Console.WindowWidth));
             this.SetCursorPosition(currentLineCursor, col: 0);
+        }
+
+        private string GetCellCharAsString(ICell cell)
+        {
+            string cellCharAsString = string.Empty;
+
+            CellState cellState = cell.State;
+            switch (cellState)
+            {
+                case CellState.Sealed:
+                    cellCharAsString = GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString();
+                    break;
+                case CellState.Revealed:
+                    cellCharAsString = cell.Content.Value.ToString(CultureInfo.InvariantCulture);
+                    break;
+                default:
+                    break;
+            }
+
+            return cellCharAsString;
         }
 
         private void RenderLeftSidebar(IBoard board, int row, int col)

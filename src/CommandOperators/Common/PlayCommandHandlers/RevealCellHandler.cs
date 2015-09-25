@@ -1,15 +1,14 @@
 ﻿namespace Minesweeper.CommandOperators.Common.PlayCommandHandlers
 {
-    using Contracts;
     using Boards.Contracts;
+    using Contracts;
+    using Minesweeper.Common;
     using Renderers.Contracts;
-    using global::Minesweeper.Common;
 
     public class RevealCellHandler : PlayCommandHandler
     {
         public RevealCellHandler()
         {
-
         }
 
         public override void HandleRequest(int row, int col, IBoard board, IRenderer renderer)

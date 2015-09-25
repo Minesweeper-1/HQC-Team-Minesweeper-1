@@ -1,8 +1,8 @@
 ﻿namespace Minesweeper.CommandOperators.Common
 {
-    using Contracts;
     using Boards.Contracts;
-    using global::Minesweeper.Common;
+    using Contracts;
+    using Minesweeper.Common;
 
     public class EndGameCommand : IBoardCommand
     {

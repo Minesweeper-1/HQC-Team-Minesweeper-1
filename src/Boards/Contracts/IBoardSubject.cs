@@ -1,10 +1,9 @@
-﻿
-namespace Minesweeper.Boards.Contracts
+﻿namespace Minesweeper.Boards.Contracts
 {
     using System.Collections.Generic;
 
-    using Engine.Contracts;
     using Common;
+    using Engine.Contracts;
 
     public interface IBoardSubject
     {

@@ -1,7 +1,7 @@
 ﻿namespace Minesweeper.Cells.Contracts
 {
-    using Contents.Contracts;
     using Common;
+    using Contents.Contracts;
 
     public interface ICell
     {

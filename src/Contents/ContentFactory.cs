@@ -7,7 +7,6 @@
     {
         public ContentFactory()
         {
-
         }
 
         public virtual IContent GetContent(ContentType type)

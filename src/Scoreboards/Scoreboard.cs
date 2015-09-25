@@ -6,9 +6,9 @@
     using Common;
     using Contracts;
     using DataManagers;
+    using DataManagers.Contracts;
     using Players;
     using Players.Contracts;
-    using DataManagers.Contracts;
 
     public class Scoreboard : IScoreboard
     {
@@ -34,7 +34,7 @@
         public void RegisterNewPlayerScore(IPlayer player)
         {
             IList<IPlayer> leaders = this.GetAll();
-            leaders.Add(player);            
+            leaders.Add(player);
             string result = this.jsonManager.ToStringRepresentation(leaders);
             this.dataWriter.WriteAllText(GlobalConstants.ScoreboardFilePath, result);
         }

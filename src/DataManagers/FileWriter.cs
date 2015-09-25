@@ -8,7 +8,6 @@
     {
         public FileWriter()
         {
-
         }
 
         public void WriteAllText(string path, string contents)

@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
 
-    using Contracts;
-    using Common;
     using Cells.Contracts;
+    using Common;
+    using Contracts;
     using Engine.Contracts;
 
     public class Board : IBoard, IBoardSubject
@@ -49,17 +49,7 @@
             get;
             private set;
         }
-
-        private void InitializeBoard()
-        {
-            this.Rows = GlobalConstants.BeginnerLevelNumberOfBoardRows;
-            this.Cols = GlobalConstants.BeginnerLevelNumberOfBoardCols;
-            this.NumberOfMines = GlobalConstants.BeginnerLevelNumberOfBoardBombs;
-            this.Cells = new ICell[this.Rows, this.Cols];
-            this.BoardState = BoardState.Open;
-            this.Subscribers = new List<IBoardObserver>();
-        }
-
+        
         public int CalculateNumberOfSurroundingBombs(int cellRow, int cellCol)
         {
             int result = 0;
@@ -124,6 +114,16 @@
             {
                 observer.Update(boardState);
             }
+        }
+
+        private void InitializeBoard()
+        {
+            this.Rows = GlobalConstants.BeginnerLevelNumberOfBoardRows;
+            this.Cols = GlobalConstants.BeginnerLevelNumberOfBoardCols;
+            this.NumberOfMines = GlobalConstants.BeginnerLevelNumberOfBoardBombs;
+            this.Cells = new ICell[this.Rows, this.Cols];
+            this.BoardState = BoardState.Open;
+            this.Subscribers = new List<IBoardObserver>();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace Minesweeper.Engine
 {
-    using CommandOperators.Contracts;
     using Boards.Contracts;
+    using CommandOperators.Contracts;
     using Common;
     using Contracts;
     using InputProviders.Contracts;
@@ -12,12 +12,12 @@
 
     public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine, IBoardObserver
     {
-        private IPlayer currentPlayer;
         private readonly IScoreboard scoreboard;
         private readonly IBoard board;
         private readonly ICommandOperator commandOperator;
         private readonly IRenderer renderer;
         private readonly IInputProvider inputProvider;
+        private IPlayer currentPlayer;
         private BoardState gameState;
 
         public StandardOnePlayerMinesweeperEngine(IBoard board, IRenderer renderer, IInputProvider inputProvider, ICommandOperator commandOperator, IScoreboard scoreboard)

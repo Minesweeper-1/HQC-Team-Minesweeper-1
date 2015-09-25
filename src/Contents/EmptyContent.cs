@@ -1,7 +1,7 @@
 ﻿namespace Minesweeper.Contents
 {
-    using Contracts;
     using Common;
+    using Contracts;
 
     public class EmptyContent : IContent
     {

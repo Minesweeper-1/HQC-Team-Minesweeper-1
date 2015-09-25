@@ -9,8 +9,7 @@
         private readonly CellContext context = new CellContext();
 
         public Cell()
-        {
-            
+        { 
         }
 
         public Cell Content(IContent content)

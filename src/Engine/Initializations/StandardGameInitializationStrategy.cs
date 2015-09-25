@@ -2,12 +2,12 @@
 {
     using System;
 
-    using Contents;
-    using Contracts;
     using Boards.Contracts;
     using Cells;
     using Cells.Contracts;
     using Common;
+    using Contents;
+    using Contracts;
 
     public class StandardGameInitializationStrategy : IGameInitializationStrategy
     {
@@ -63,11 +63,11 @@
             var randomGenerator = new Random();
             int numberOfMines = 0;
 
-            while(numberOfMines < board.NumberOfMines)
+            while (numberOfMines < board.NumberOfMines)
             {
                 int row = randomGenerator.Next(board.Rows);
                 int col = randomGenerator.Next(board.Cols);
-                if(board.Cells[row, col].Content.ContentType == ContentType.Empty)
+                if (board.Cells[row, col].Content.ContentType == ContentType.Empty)
                 {
                     board.Cells[row, col].Content = this.contentFactory.GetContent(ContentType.Bomb);
                     numberOfMines += 1;

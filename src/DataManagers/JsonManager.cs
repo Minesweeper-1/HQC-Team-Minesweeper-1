@@ -10,7 +10,6 @@
 
         public JsonManager()
         {
-
         }
 
         public T Parse<T>(string jsonValue)

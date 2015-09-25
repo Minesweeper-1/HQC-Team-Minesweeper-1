@@ -1,23 +1,21 @@
 ﻿namespace Minesweeper.CommandOperators.Common.PlayCommandHandlers
 {
-    using global::Minesweeper.Common;
-    using Contracts;
     using Boards.Contracts;
+    using Contracts;
+    using Minesweeper.Common;
     using Renderers.Contracts;
-    using System;
 
     public class IsValidPlayCommandHandler : PlayCommandHandler
     {
         public IsValidPlayCommandHandler()
         {
-
         }
 
         public override void HandleRequest(string command, IBoard board, IRenderer renderer)
         {
             bool isInvalid = false;
-            int x = -1;
-            int y = -1;
+            int row = -1;
+            int col = -1;
 
             string trimmedCommand = command.Trim();
             string[] commandComponents = trimmedCommand.Split(GlobalConstants.CommandParametersDivider);
@@ -27,11 +25,11 @@
             }
             else
             {
-                bool xIsNumeric = int.TryParse(commandComponents[0], out x);
-                bool yIsNumeric = int.TryParse(commandComponents[1], out y);
+                bool rowIsNumeric = int.TryParse(commandComponents[0], out row);
+                bool colIsNumeric = int.TryParse(commandComponents[1], out col);
 
                 renderer.ClearCurrentConsoleLine();
-                if (!(xIsNumeric && yIsNumeric))
+                if (!(rowIsNumeric && colIsNumeric))
                 {
                     isInvalid = true;
                 }
@@ -44,7 +42,7 @@
             }
             else if (this.Successor != null)
             {
-                this.Successor.HandleRequest(x, y, board, renderer);
+                this.Successor.HandleRequest(row, col, board, renderer);
             }
         }
     }
