@@ -31,6 +31,6 @@ in the Telerik Academy JavaScript UI & DOM course 2015
 	- created methods `EndGame()`, `Restart()`, `HandleCommand()`, `ShowTopScores()`, `DispatchCommand()`
 
 3. Implemented the following patterns:
-   - **Creational**: Singleton, Simple Factory
+   - **Creational**: Singleton, Factory Method
    - **Structural**: Façade, Bridge
    - **Behavioral**: Strategy, Observer, Command, Chain of Responsibility

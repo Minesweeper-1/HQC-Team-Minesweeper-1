@@ -32,9 +32,8 @@
             var renderer = new ConsoleRenderer();
             var scoreboard = new Scoreboard();
             var inputProvider = new ConsoleInputProvider();
-            var bombFactory = new BombFactory();
-            var emptyContentFactory = new EmptyContentFactory();
-            var initializationStrategy = new StandardGameInitializationStrategy(emptyContentFactory, bombFactory);
+            var contentFactory = new ContentFactory();
+            var initializationStrategy = new StandardGameInitializationStrategy(contentFactory);
             var boardOperator = new CommandOperator(board, renderer, scoreboard);
             var engine = new StandardOnePlayerMinesweeperEngine(board, renderer, inputProvider, boardOperator, scoreboard);
 

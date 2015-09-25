@@ -6,14 +6,10 @@
 
     public class Cell : ICell
     {
-        private readonly int row;
-        private readonly int col;
-
-        public Cell(int row, int col)
+        public Cell(CellState state = CellState.Sealed)
         {
-            this.row = row;
-            this.col = col;
-            this.State = CellState.Sealed;
+            this.State = state;
+            this.Content = default(IContent);
         }
 
         public IContent Content

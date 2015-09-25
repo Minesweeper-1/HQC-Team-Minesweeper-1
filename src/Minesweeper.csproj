@@ -67,14 +67,12 @@
     <Compile Include="Common\ContentType.cs" />
     <Compile Include="Cells\Contracts\ICell.cs" />
     <Compile Include="Contents\Bomb.cs" />
-    <Compile Include="Contents\BombFactory.cs" />
-    <Compile Include="Contents\Contracts\ContentFactory.cs" />
+    <Compile Include="Contents\ContentFactory.cs" />
     <Compile Include="Contents\Contracts\IContent.cs" />
     <Compile Include="Common\BoardState.cs" />
     <Compile Include="Common\GlobalConstants.cs" />
     <Compile Include="Common\GlobalMessages.cs" />
     <Compile Include="Contents\EmptyContent.cs" />
-    <Compile Include="Contents\EmptyContentFactory.cs" />
     <Compile Include="DataManagers\Contracts\IJsonManager.cs" />
     <Compile Include="DataManagers\Contracts\IReader.cs" />
     <Compile Include="DataManagers\Contracts\IWriter.cs" />
