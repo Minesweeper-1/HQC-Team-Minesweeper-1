@@ -49,7 +49,7 @@
             get;
             private set;
         }
-        
+
         public int CalculateNumberOfSurroundingBombs(int cellRow, int cellCol)
         {
             int result = 0;
@@ -72,25 +72,17 @@
             return result;
         }
 
-        public void RevealCell(int cellRow, int cellCol)
-        {
+        public void RevealCell(int cellRow, int cellCol) =>
             this.Cells[cellRow, cellCol].State = CellState.Revealed;
-        }
 
-        public bool IsInsideBoard(int cellRow, int cellCol)
-        {
-            return (0 <= cellRow && cellRow < this.Rows) && (0 <= cellCol && cellCol < this.Cols);
-        }
+        public bool IsInsideBoard(int cellRow, int cellCol) =>
+            (0 <= cellRow && cellRow < this.Rows) && (0 <= cellCol && cellCol < this.Cols);
 
-        public bool IsBomb(int cellRow, int cellCol)
-        {
-            return this.Cells[cellRow, cellCol].Content.ContentType == ContentType.Bomb;
-        }
+        public bool IsBomb(int cellRow, int cellCol) =>
+            this.Cells[cellRow, cellCol].Content.ContentType == ContentType.Bomb;
 
-        public bool IsAlreadyShown(int cellRow, int cellCol)
-        {
-            return this.Cells[cellRow, cellCol].State == CellState.Revealed;
-        }
+        public bool IsAlreadyShown(int cellRow, int cellCol) =>
+            this.Cells[cellRow, cellCol].State == CellState.Revealed;
 
         public void ChangeBoardState(BoardState boardState)
         {
@@ -98,15 +90,11 @@
             this.Notify(this.BoardState);
         }
 
-        public void Subscribe(IBoardObserver boardObserverToSubscribe)
-        {
+        public void Subscribe(IBoardObserver boardObserverToSubscribe) =>
             this.Subscribers.Add(boardObserverToSubscribe);
-        }
 
-        public void Unsubscribe(IBoardObserver boardObserverToUnsubscribe)
-        {
+        public void Unsubscribe(IBoardObserver boardObserverToUnsubscribe) =>
             this.Subscribers.Remove(boardObserverToUnsubscribe);
-        }
 
         public void Notify(BoardState boardState)
         {

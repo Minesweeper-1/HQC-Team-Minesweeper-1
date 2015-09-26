@@ -14,7 +14,7 @@
         public override void HandleRequest(int row, int col, IBoard board, IRenderer renderer)
         {
             board.RevealCell(row, col);
-            renderer.Clear();
+            renderer.ClearScreen();
 
             board.ChangeBoardState(BoardState.Open);
         }

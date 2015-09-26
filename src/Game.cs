@@ -1,5 +1,7 @@
 ﻿namespace Minesweeper
 {
+    using System;
+
     using Boards;
     using CommandOperators;
     using Contents;
@@ -11,19 +13,13 @@
 
     public class Game
     {
-        private static Game instance = new Game();
+        private static Lazy<Game> instance = new Lazy<Game>(() => new Game());
 
         private Game()
         {
         }
 
-        public static Game Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static Game Instance => instance.Value;
 
         public void Start()
         {

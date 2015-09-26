@@ -12,14 +12,8 @@
         {
         }
 
-        public T Parse<T>(string jsonValue)
-        {
-            return this.serializer.Deserialize<T>(jsonValue);
-        }
+        public T Parse<T>(string jsonValue) => this.serializer.Deserialize<T>(jsonValue);
 
-        public string ToStringRepresentation<T>(T jsonObject)
-        {
-            return this.serializer.Serialize(jsonObject);
-        }
+        public string ToStringRepresentation<T>(T jsonObject) => this.serializer.Serialize(jsonObject);
     }
 }

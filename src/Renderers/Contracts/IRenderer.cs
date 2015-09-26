@@ -12,9 +12,9 @@
 
         void RenderWelcomeScreen(string welcomeScreen);
 
-        void SetCursorPosition(int row, int col);
+        void SetCursor(int row, int col);
 
-        void Clear();
+        void ClearScreen();
 
         void ClearCurrentConsoleLine();
     }

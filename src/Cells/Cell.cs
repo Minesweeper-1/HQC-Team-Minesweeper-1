@@ -24,9 +24,6 @@
             return this;
         }
 
-        public ICell Context()
-        {
-            return this.context;
-        }
+        public ICell Context() => this.context;
     }
 }

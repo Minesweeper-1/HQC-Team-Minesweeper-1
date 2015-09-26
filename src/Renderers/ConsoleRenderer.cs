@@ -1,6 +1,7 @@
 ﻿namespace Minesweeper.Renderers
 {
     using System;
+    using static System.Console;
     using System.Globalization;
 
     using Boards.Contracts;
@@ -16,12 +17,12 @@
 
         public void Render(string line)
         {
-            Console.Write(line);
+            Write(line);
         }
 
         public void RenderLine(string line)
         {
-            Console.WriteLine(line);
+            WriteLine(line);
         }
 
         public void RenderBoard(IBoard board, int row, int col)
@@ -36,14 +37,14 @@
             this.RenderLine(welcomeScreen);
         }
 
-        public void SetCursorPosition(int row, int col)
+        public void SetCursor(int row, int col)
         {
-            Console.SetCursorPosition(col, row);
+            SetCursorPosition(col, row);
         }
 
         public void SetForegroundColor(ConsoleColor color)
         {
-            Console.ForegroundColor = color;
+            ForegroundColor = color;
         }
 
         public void ResetForegroundColor()
@@ -51,17 +52,17 @@
             this.SetForegroundColor(ConsoleColor.White);
         }
 
-        public void Clear()
+        public void ClearScreen()
         {
-            Console.Clear();
+            Clear();
         }
 
         public void ClearCurrentConsoleLine()
         {
-            int currentLineCursor = Console.CursorTop;
-            this.SetCursorPosition(Console.CursorTop, col: 0);
-            this.Render(new string(c: ' ', count: Console.WindowWidth));
-            this.SetCursorPosition(currentLineCursor, col: 0);
+            int currentLineCursor = CursorTop;
+            this.SetCursor(CursorTop, col: 0);
+            this.Render(new string(c: ' ', count: WindowWidth));
+            this.SetCursor(currentLineCursor, col: 0);
         }
 
         private string GetCellCharAsString(ICell cell)
@@ -88,7 +89,7 @@
         {
             for (int boardRow = 0; boardRow < board.Rows; boardRow++)
             {
-                this.SetCursorPosition(row + boardRow, col);
+                this.SetCursor(row + boardRow, col);
                 string sidebarRow = boardRow + " *";
                 this.RenderLine(sidebarRow);
             }
@@ -104,9 +105,9 @@
                 topBarSeparators += GlobalConstants.ColsRenderingDivider;
             }
 
-            this.SetCursorPosition(row - GlobalConstants.TopBarColsOffset, col + GlobalConstants.LeftSidebarWidth);
+            this.SetCursor(row - GlobalConstants.TopBarColsOffset, col + GlobalConstants.LeftSidebarWidth);
             this.Render(topBarCols);
-            this.SetCursorPosition(row - GlobalConstants.TopBarSeparatorsOffset, col + GlobalConstants.LeftSidebarWidth);
+            this.SetCursor(row - GlobalConstants.TopBarSeparatorsOffset, col + GlobalConstants.LeftSidebarWidth);
             this.Render(topBarSeparators);
         }
 
@@ -114,7 +115,7 @@
         {
             for (int boardRow = 0; boardRow < board.Rows; boardRow++)
             {
-                this.SetCursorPosition(row + boardRow, col + GlobalConstants.LeftSidebarWidth);
+                this.SetCursor(row + boardRow, col + GlobalConstants.LeftSidebarWidth);
                 for (int boardCol = 0; boardCol < board.Cols; boardCol++)
                 {
                     string charToRenderAsString = this.GetCellCharAsString(board.Cells[boardRow, boardCol]);

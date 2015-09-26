@@ -89,7 +89,9 @@
     <Compile Include="Game.cs" />
     <Compile Include="Players\Contracts\IPlayer.cs" />
     <Compile Include="Boards\Board.cs" />
-    <Compile Include="InputProviders\ConsoleInputProvider.cs" />
+    <Compile Include="InputProviders\ConsoleInputProvider.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Players\Player.cs" />
     <Compile Include="Renderers\ConsoleRenderer.cs" />
     <Compile Include="Renderers\Contracts\IRenderer.cs" />
@@ -102,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Data\leaders.msr" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

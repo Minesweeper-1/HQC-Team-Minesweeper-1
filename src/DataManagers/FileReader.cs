@@ -10,9 +10,6 @@
         {
         }
 
-        public string ReadAllText(string source)
-        {
-            return File.ReadAllText(source);
-        }
+        public string ReadAllText(string source) => File.ReadAllText(source);
     }
 }

@@ -1,8 +1,40 @@
 <stylecopresultscache>
   <version>12</version>
-  <project key="-893594721">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
+  <sourcecode name="ConsoleInputProvider.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015/09/25 23:52:01.401</styleCop>
+      <settingsFile>2015/09/25 23:54:02.805</settingsFile>
+      <sourceFile>2015/09/26 21:03:53.511</sourceFile>
+      <parser>2015/09/25 23:52:01.401</parser>
+      <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015/09/25 23:52:01.401</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to ReadLine must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>15</line>
+        <index>291</index>
+        <endIndex>298</endIndex>
+        <startLine>15</startLine>
+        <startColumn>20</startColumn>
+        <endLine>15</endLine>
+        <endColumn>27</endColumn>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
   <sourcecode name="Board.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2015/09/25 23:52:01.401</styleCop>
@@ -352,7 +384,7 @@
     <timestamps>
       <styleCop>2015/09/25 23:52:01.401</styleCop>
       <settingsFile>2015/09/25 23:54:02.805</settingsFile>
-      <sourceFile>2015/09/26 00:01:45.305</sourceFile>
+      <sourceFile>2015/09/26 21:10:32.441</sourceFile>
       <parser>2015/09/25 23:52:01.401</parser>
       <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -877,34 +909,11 @@
     </timestamps>
     <violations />
   </sourcecode>
-  <sourcecode name="StandardOnePlayerMinesweeperEngine.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2015/09/25 23:52:01.401</styleCop>
-      <settingsFile>2015/09/25 23:54:02.805</settingsFile>
-      <sourceFile>2015/09/26 00:04:27.445</sourceFile>
-      <parser>2015/09/25 23:52:01.401</parser>
-      <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2015/09/25 23:52:01.401</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-    </timestamps>
-    <violations />
-  </sourcecode>
   <sourcecode name="EntryPoint.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2015/09/25 23:52:01.401</styleCop>
       <settingsFile>2015/09/25 23:54:02.805</settingsFile>
-      <sourceFile>2015/09/26 00:04:42.613</sourceFile>
+      <sourceFile>2015/09/26 21:14:42.420</sourceFile>
       <parser>2015/09/25 23:52:01.401</parser>
       <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -927,30 +936,7 @@
     <timestamps>
       <styleCop>2015/09/25 23:52:01.401</styleCop>
       <settingsFile>2015/09/25 23:54:02.805</settingsFile>
-      <sourceFile>2015/09/26 00:08:39.260</sourceFile>
-      <parser>2015/09/25 23:52:01.401</parser>
-      <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2015/09/25 23:52:01.401</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-    </timestamps>
-    <violations />
-  </sourcecode>
-  <sourcecode name="ConsoleInputProvider.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2015/09/25 23:52:01.401</styleCop>
-      <settingsFile>2015/09/25 23:54:02.805</settingsFile>
-      <sourceFile>2015/09/26 00:06:35.213</sourceFile>
+      <sourceFile>2015/09/26 21:17:50.624</sourceFile>
       <parser>2015/09/25 23:52:01.401</parser>
       <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -973,7 +959,7 @@
     <timestamps>
       <styleCop>2015/09/25 23:52:01.401</styleCop>
       <settingsFile>2015/09/25 23:54:02.805</settingsFile>
-      <sourceFile>2015/09/21 10:12:18.746</sourceFile>
+      <sourceFile>2015/09/26 21:06:52.398</sourceFile>
       <parser>2015/09/25 23:52:01.401</parser>
       <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -1015,34 +1001,11 @@
     </timestamps>
     <violations />
   </sourcecode>
-  <sourcecode name="Player.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2015/09/25 23:52:01.401</styleCop>
-      <settingsFile>2015/09/25 23:54:02.805</settingsFile>
-      <sourceFile>2015/09/26 00:06:45.946</sourceFile>
-      <parser>2015/09/25 23:52:01.401</parser>
-      <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2015/09/25 23:52:01.401</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-    </timestamps>
-    <violations />
-  </sourcecode>
   <sourcecode name="ConsoleRenderer.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2015/09/25 23:52:01.401</styleCop>
       <settingsFile>2015/09/25 23:54:02.805</settingsFile>
-      <sourceFile>2015/09/26 00:07:58.883</sourceFile>
+      <sourceFile>2015/09/26 21:10:37.099</sourceFile>
       <parser>2015/09/25 23:52:01.401</parser>
       <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -1065,7 +1028,7 @@
     <timestamps>
       <styleCop>2015/09/25 23:52:01.401</styleCop>
       <settingsFile>2015/09/25 23:54:02.805</settingsFile>
-      <sourceFile>2015/09/21 10:04:12.841</sourceFile>
+      <sourceFile>2015/09/26 21:10:32.441</sourceFile>
       <parser>2015/09/25 23:52:01.401</parser>
       <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -1130,4 +1093,59 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <sourcecode name="StandardOnePlayerMinesweeperEngine.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015/09/25 23:52:01.401</styleCop>
+      <settingsFile>2015/09/25 23:54:02.805</settingsFile>
+      <sourceFile>2015/09/26 21:19:57.981</sourceFile>
+      <parser>2015/09/25 23:52:01.401</parser>
+      <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015/09/25 23:52:01.401</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Player.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015/09/25 23:52:01.401</styleCop>
+      <settingsFile>2015/09/25 23:54:02.805</settingsFile>
+      <sourceFile>2015/09/26 21:25:02.325</sourceFile>
+      <parser>2015/09/25 23:52:01.401</parser>
+      <StyleCop.CSharp.DocumentationRules>2015/09/25 23:52:01.401</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-253380179</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015/09/25 23:52:01.401</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015/09/25 23:52:01.401</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015/09/25 23:52:01.401</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file D:\My Documents\2_KURS\PROGRAMMING\Telerik Academy\GitHub\HQC-Team-Minesweeper-1\src\Players\Player.cs on line 27.</context>
+        <line>27</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <project key="-893594721">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
 </stylecopresultscache>

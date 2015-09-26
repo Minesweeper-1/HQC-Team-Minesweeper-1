@@ -6,9 +6,11 @@
     {
         public Player()
         {
+            this.Score = 0;
         }
 
         public Player(string name)
+            : this()
         {
             this.Name = name;
             this.Score = 0;

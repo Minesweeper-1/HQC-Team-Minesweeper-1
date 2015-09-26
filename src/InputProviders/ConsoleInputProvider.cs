@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper.InputProviders
 {
-    using System;
+    using static System.Console;
 
     using Contracts;
 
@@ -10,9 +10,9 @@
         {
         }
 
-        public string ReadLine()
+        public string GetLine()
         {
-            return Console.ReadLine();
+            return ReadLine();
         }
     }
 }

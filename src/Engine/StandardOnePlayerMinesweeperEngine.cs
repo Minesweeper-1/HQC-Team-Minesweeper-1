@@ -30,10 +30,8 @@
             this.gameState = this.board.BoardState;
         }
 
-        public void Initialize(IGameInitializationStrategy initializationStrategy)
-        {
+        public void Initialize(IGameInitializationStrategy initializationStrategy) =>
             initializationStrategy.Initialize(this.board);
-        }
 
         public void Run()
         {
@@ -42,19 +40,17 @@
             this.StartGame();
         }
 
-        public void Update(BoardState boardState)
-        {
+        public void Update(BoardState boardState) =>
             this.gameState = boardState;
-        }
 
         private void StartGame()
         {
             this.renderer.RenderBoard(this.board, GlobalConstants.BoardStartRenderRow, GlobalConstants.BoardStartRenderCol);
-            this.renderer.SetCursorPosition(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
+            this.renderer.SetCursor(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
 
             while (true)
             {
-                string command = this.inputProvider.ReadLine();
+                string command = this.inputProvider.GetLine();
                 this.commandOperator.Execute(command);
 
                 if (this.gameState == BoardState.Closed)
@@ -64,7 +60,7 @@
                 }
                 else if (this.gameState == BoardState.Pending)
                 {
-                    this.renderer.SetCursorPosition(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
+                    this.renderer.SetCursor(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                     this.renderer.ClearCurrentConsoleLine();
                     continue;
                 }
@@ -72,7 +68,7 @@
                 {
                     this.currentPlayer.Score += 10;
                     this.renderer.RenderBoard(this.board, GlobalConstants.BoardStartRenderRow, GlobalConstants.BoardStartRenderCol);
-                    this.renderer.SetCursorPosition(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
+                    this.renderer.SetCursor(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                 }
 
                 this.renderer.ClearCurrentConsoleLine();
@@ -82,12 +78,10 @@
         private void RequestNewPlayerCreation()
         {
             this.renderer.Render(line: "Enter your name: ");
-            this.currentPlayer = new Player(this.inputProvider.ReadLine());
+            this.currentPlayer = new Player(this.inputProvider.GetLine());
         }
 
-        private void SavePlayerScore(IPlayer player)
-        {
+        private void SavePlayerScore(IPlayer player) =>
             this.scoreboard.RegisterNewPlayerScore(player);
-        }
     }
 }

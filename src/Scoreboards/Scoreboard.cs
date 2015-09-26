@@ -12,15 +12,12 @@
 
     public class Scoreboard : IScoreboard
     {
-        private readonly IJsonManager jsonManager;
-        private readonly IReader dataReader;
-        private readonly IWriter dataWriter;
+        private readonly IJsonManager jsonManager = new JsonManager();
+        private readonly IReader dataReader = new FileReader();
+        private readonly IWriter dataWriter = new FileWriter();
 
         public Scoreboard()
         {
-            this.jsonManager = new JsonManager();
-            this.dataReader = new FileReader();
-            this.dataWriter = new FileWriter();
         }
 
         public IList<IPlayer> GetAll()
