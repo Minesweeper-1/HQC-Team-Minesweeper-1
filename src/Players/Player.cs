@@ -4,6 +4,7 @@
 
     public class Player : IPlayer
     {
+        // Needed for the parsing of objects from the deserialization for the scoreboard
         public Player()
         {
             this.Score = 0;

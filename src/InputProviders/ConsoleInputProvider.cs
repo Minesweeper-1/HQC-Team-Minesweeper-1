@@ -6,13 +6,6 @@
 
     public class ConsoleInputProvider : IInputProvider
     {
-        public ConsoleInputProvider()
-        {
-        }
-
-        public string GetLine()
-        {
-            return ReadLine();
-        }
+        public string GetLine() => ReadLine();
     }
 }

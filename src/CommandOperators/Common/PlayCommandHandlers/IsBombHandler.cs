@@ -7,10 +7,6 @@
 
     public class IsBombHandler : PlayCommandHandler
     {
-        public IsBombHandler()
-        {
-        }
-
         public override void HandleRequest(int row, int col, IBoard board, IRenderer renderer)
         {
             if (board.IsBomb(row, col))

@@ -5,10 +5,6 @@
 
     public abstract class PlayCommandHandler
     {
-        protected PlayCommandHandler()
-        {
-        }
-
         protected PlayCommandHandler Successor
         {
             get;

@@ -7,10 +7,6 @@
 
     public class IsAlreadyShownHandler : PlayCommandHandler
     {
-        public IsAlreadyShownHandler()
-        {
-        }
-
         public override void HandleRequest(int row, int col, IBoard board, IRenderer renderer)
         {
             if (board.IsAlreadyShown(row, col))

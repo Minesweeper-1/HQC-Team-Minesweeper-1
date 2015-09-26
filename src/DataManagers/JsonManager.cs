@@ -8,10 +8,6 @@
     {
         private readonly JavaScriptSerializer serializer = new JavaScriptSerializer();
 
-        public JsonManager()
-        {
-        }
-
         public T Parse<T>(string jsonValue) => this.serializer.Deserialize<T>(jsonValue);
 
         public string ToStringRepresentation<T>(T jsonObject) => this.serializer.Serialize(jsonObject);

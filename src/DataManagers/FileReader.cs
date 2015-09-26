@@ -6,10 +6,6 @@
 
     public class FileReader : IReader
     {
-        public FileReader()
-        {
-        }
-
         public string ReadAllText(string source) => File.ReadAllText(source);
     }
 }

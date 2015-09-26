@@ -1,21 +1,18 @@
 ﻿namespace Minesweeper.Cells
 {
+    using Common;
     using Contents.Contracts;
     using Contracts;
 
     public class CellContext : ICell
     {
-        public CellContext()
-        {
-        }
-
         public IContent Content
         {
             get;
             set;
         }
 
-        public Common.CellState State
+        public CellState State
         {
             get;
             set;

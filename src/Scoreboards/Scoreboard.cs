@@ -15,11 +15,7 @@
         private readonly IJsonManager jsonManager = new JsonManager();
         private readonly IReader dataReader = new FileReader();
         private readonly IWriter dataWriter = new FileWriter();
-
-        public Scoreboard()
-        {
-        }
-
+        
         public IList<IPlayer> GetAll()
         {
             string leadersAsString = this.dataReader.ReadAllText(GlobalConstants.ScoreboardFilePath);

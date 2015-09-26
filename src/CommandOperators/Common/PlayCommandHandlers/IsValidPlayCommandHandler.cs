@@ -7,10 +7,6 @@
 
     public class IsValidPlayCommandHandler : PlayCommandHandler
     {
-        public IsValidPlayCommandHandler()
-        {
-        }
-
         public override void HandleRequest(string command, IBoard board, IRenderer renderer)
         {
             bool isInvalid = false;

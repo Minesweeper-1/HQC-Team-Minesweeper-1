@@ -13,9 +13,6 @@
             this.board = board;
         }
 
-        public void Execute(string command)
-        {
-            this.board.ChangeBoardState(BoardState.Closed);
-        }
+        public void Execute(string command) => this.board.ChangeBoardState(BoardState.Closed);
     }
 }

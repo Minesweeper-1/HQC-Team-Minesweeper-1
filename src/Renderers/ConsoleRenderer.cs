@@ -11,10 +11,6 @@
 
     public class ConsoleRenderer : IRenderer
     {
-        public ConsoleRenderer()
-        {
-        }
-
         public void Render(string line)
         {
             Write(line);
