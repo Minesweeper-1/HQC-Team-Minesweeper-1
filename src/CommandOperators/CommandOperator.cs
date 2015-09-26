@@ -18,18 +18,10 @@
         {
             this.commandExecutor = new Dictionary<string, Action<string>>()
             {
-                {
-                    "exit",  new EndGameCommand(board).Execute
-                },
-                {
-                    "top", new ShowScoreboardCommand(renderer, scoreboard).Execute
-                },
-                {
-                    "restart", new RestartCommand(board).Execute
-                },
-                {
-                    "play", new PlayCommand(board, renderer).Execute
-                }
+                ["exit"] = new EndGameCommand(board).Execute,
+                ["top"] = new ShowScoreboardCommand(renderer, scoreboard).Execute,
+                ["restart"] = new RestartCommand(board).Execute,
+                ["play"] = new PlayCommand(board, renderer).Execute,
             };
         }
 

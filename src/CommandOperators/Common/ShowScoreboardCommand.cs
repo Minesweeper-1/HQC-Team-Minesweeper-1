@@ -34,7 +34,7 @@
             this.renderer.RenderLine(line: "===============");
             foreach (var player in leaders)
             {
-                string line = string.Format(format: "{0} {1}", arg0: player.Name, arg1: player.Score);
+                string line = $"{player.Name} {player.Score}";
                 this.renderer.RenderLine(line);
             }
         }
