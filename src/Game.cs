@@ -41,7 +41,7 @@
             engine.Run();
         }
 
-        public BoardSettings ChooseDifficultyLevel()
+        private BoardSettings ChooseDifficultyLevel()
         {
             Console.Write("Choose difficulty level (Easy, Medium, Hard) or start with Easy settings: ");
             string level = Console.ReadLine();
