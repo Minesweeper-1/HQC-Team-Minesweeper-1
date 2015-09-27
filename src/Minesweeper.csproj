@@ -47,6 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boards\BoardSettings.cs" />
+    <Compile Include="Boards\EasyBoardSettings.cs" />
+    <Compile Include="Boards\HardBoardSettings.cs" />
+    <Compile Include="Boards\NormalBoardSettings.cs" />
     <Compile Include="Cells\CellContext.cs" />
     <Compile Include="CommandOperators\CommandOperator.cs" />
     <Compile Include="CommandOperators\Common\Contracts\IBoardCommand.cs" />

@@ -1,10 +1,15 @@
 ﻿namespace Minesweeper.Engine
 {
+    using System;
+
     using Boards.Contracts;
     using CommandOperators.Contracts;
     using Common;
     using Contracts;
     using InputProviders.Contracts;
+
+    using Minesweeper.Boards;
+
     using Players;
     using Players.Contracts;
     using Renderers.Contracts;

@@ -9,9 +9,13 @@
 
     public class Board : IBoard, IBoardSubject
     {
-        public Board()
+        public Board(BoardSettings settings, IList<IBoardObserver> subscribers)
         {
-            this.InitializeBoard();
+            this.InitializeBoard(
+                settings.Rows, 
+                settings.Cols,
+                settings.NumberOfBombs);
+            this.Subscribers = subscribers;
         }
 
         public int NumberOfMines
@@ -104,14 +108,13 @@
             }
         }
 
-        private void InitializeBoard()
+        private void InitializeBoard(int rows, int cols, int numberOfBombs)
         {
-            this.Rows = GlobalConstants.BeginnerLevelNumberOfBoardRows;
-            this.Cols = GlobalConstants.BeginnerLevelNumberOfBoardCols;
-            this.NumberOfMines = GlobalConstants.BeginnerLevelNumberOfBoardBombs;
+            this.Rows = rows;
+            this.Cols = cols;
+            this.NumberOfMines = numberOfBombs;
             this.Cells = new ICell[this.Rows, this.Cols];
             this.BoardState = BoardState.Open;
-            this.Subscribers = new List<IBoardObserver>();
         }
     }
 }
