@@ -1,8 +1,8 @@
-﻿namespace Minesweeper.InputProviders.Contracts
+﻿namespace Minesweeper.InputProviders
 {
     using System;
 
-    public enum GameKey
+    public enum ConsoleGameKey
     {
         Enter = ConsoleKey.Enter,
         Up = ConsoleKey.UpArrow,

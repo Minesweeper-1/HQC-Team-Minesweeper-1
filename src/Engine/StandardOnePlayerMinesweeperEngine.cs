@@ -40,7 +40,7 @@
 
         public void Run()
         {
-            this.renderer.RenderWelcomeScreen(GlobalConstants.DefaultWelcomeScreen);
+            this.renderer.RenderWelcomeScreen(string.Join(string.Empty, GlobalConstants.GameTitle));
             this.RequestNewPlayerCreation();
 
             // TODO: Refactor menu handler logic
@@ -52,7 +52,7 @@
                 new ExpertMode()
             };
 
-            var menuHandler = new MenuHandler(this.inputProvider, this.renderer, menuItems, cursorPosition[0], cursorPosition[1]);
+            var menuHandler = new ConsoleMenuHandler(this.inputProvider, this.renderer, menuItems, cursorPosition[0] + 1, cursorPosition[1]);
             menuHandler.ShowSelections();
             menuHandler.RequestUserSelection();
             this.renderer.ClearScreen();
@@ -83,7 +83,7 @@
                 else if (this.gameState == BoardState.Pending)
                 {
                     this.renderer.SetCursor(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
-                    this.renderer.ClearCurrentConsoleLine();
+                    this.renderer.ClearCurrentLine();
                     continue;
                 }
                 else if (this.gameState == BoardState.Open)
@@ -93,13 +93,13 @@
                     this.renderer.SetCursor(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                 }
 
-                this.renderer.ClearCurrentConsoleLine();
+                this.renderer.ClearCurrentLine();
             }
         }
 
         private void RequestNewPlayerCreation()
         {
-            this.renderer.Render(line: "Enter your name: ");
+            this.renderer.RenderNewPlayerCreationRequest();
             this.currentPlayer = new Player(this.inputProvider.GetLine());
         }
 

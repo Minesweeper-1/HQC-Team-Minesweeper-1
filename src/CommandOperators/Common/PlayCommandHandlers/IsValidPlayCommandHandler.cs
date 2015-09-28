@@ -24,7 +24,7 @@
                 bool rowIsNumeric = int.TryParse(commandComponents[0], out row);
                 bool colIsNumeric = int.TryParse(commandComponents[1], out col);
 
-                renderer.ClearCurrentConsoleLine();
+                renderer.ClearCurrentLine();
                 if (!(rowIsNumeric && colIsNumeric))
                 {
                     isInvalid = true;

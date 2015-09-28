@@ -6,11 +6,12 @@
     using Contracts;
     using DifficultyCommands;
     using DifficultyCommands.Contracts;
+    using InputProviders;
     using InputProviders.Contracts;
     using Renderers.Contracts;
 
     // The engine will observe whether the MenuHandler has come to a final game mode resolution
-    public class MenuHandler : IMenuHandler
+    public class ConsoleMenuHandler : IMenuHandler
     {
         private int menuBodyTop = 10;
         private int menuBodyLeft = 5;
@@ -22,7 +23,7 @@
         private IInputProvider inputProvider;
         private IEnumerable<IGameMode> menuItems;
 
-        public MenuHandler(IInputProvider inputProvider, IRenderer renderer, IEnumerable<IGameMode> menuItems, int menuTop, int menuLeft)
+        public ConsoleMenuHandler(IInputProvider inputProvider, IRenderer renderer, IEnumerable<IGameMode> menuItems, int menuTop, int menuLeft)
         {
             this.inputProvider = inputProvider;
             this.renderer = renderer;
@@ -46,12 +47,12 @@
                 var cursor = this.renderer.GetCursor();
 
                 var key = this.GetKey();
-                if (key == GameKey.Enter)
+                if (key == ConsoleGameKey.Enter)
                 {
                     // Notify subscribers
                     break;
                 }
-                else if (key == GameKey.Up)
+                else if (key == ConsoleGameKey.Up)
                 {
                     if (this.selectionCharTop > this.menuBodyTop)
                     {
@@ -64,7 +65,7 @@
                         this.renderer.SetCursor(cursor[0], cursor[1]);
                     }
                 }
-                else if (key == GameKey.Down)
+                else if (key == ConsoleGameKey.Down)
                 {
                     if (this.selectionCharTop < this.menuBodyTop + 2)
                     {
@@ -80,10 +81,10 @@
             }
         }
 
-        private GameKey GetKey()
+        private ConsoleGameKey GetKey()
         {
-            GameKey keyPressed;
-            keyPressed = (GameKey)this.inputProvider.GetKeyChar(true);
+            ConsoleGameKey keyPressed;
+            keyPressed = (ConsoleGameKey)this.inputProvider.GetKeyChar(true);
             return keyPressed;
         }
     }

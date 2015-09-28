@@ -1,5 +1,6 @@
 ﻿namespace Minesweeper.Renderers.Contracts
 {
+    using System;
     using System.Collections.Generic;
 
     using Boards.Contracts;
@@ -15,6 +16,8 @@
 
         void RenderWelcomeScreen(string welcomeScreen);
 
+        void RenderNewPlayerCreationRequest();
+
         void RenderMenu(IEnumerable<IGameMode> menuItems, int row, int col);
 
         int[] GetCursor();
@@ -25,6 +28,14 @@
 
         void ClearScreen();
 
-        void ClearCurrentConsoleLine();
+        void ClearCurrentLine();
+
+        void SetForegroundColor(Enum color);
+
+        void SetBackgroundColor(Enum color);
+
+        void ResetForegroundColor();
+
+        void ResetBackgroundColor();
     }
 }

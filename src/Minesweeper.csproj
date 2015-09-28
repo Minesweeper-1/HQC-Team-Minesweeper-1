@@ -94,11 +94,11 @@
     <Compile Include="Engine\Contracts\IBoardObserver.cs" />
     <Compile Include="Engine\Initializations\StandardGameInitializationStrategy.cs" />
     <Compile Include="Engine\StandardOnePlayerMinesweeperEngine.cs" />
-    <Compile Include="InputProviders\Contracts\GameKey.cs" />
+    <Compile Include="InputProviders\ConsoleGameKey.cs" />
     <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="MenuHandlers\Contracts\IMenuHandler.cs" />
-    <Compile Include="MenuHandlers\MenuHandler.cs" />
+    <Compile Include="MenuHandlers\ConsoleMenuHandler.cs" />
     <Compile Include="Players\Contracts\IPlayer.cs" />
     <Compile Include="Boards\Board.cs" />
     <Compile Include="InputProviders\ConsoleInputProvider.cs">

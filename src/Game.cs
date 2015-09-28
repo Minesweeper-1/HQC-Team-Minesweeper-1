@@ -43,8 +43,8 @@
 
         private BoardSettings ChooseDifficultyLevel()
         {
-            Console.Write("Choose difficulty level (Easy, Medium, Hard) or start with Easy settings: ");
-            string level = Console.ReadLine();
+            //Console.Write("Choose difficulty level (Easy, Medium, Hard) or start with Easy settings: ");
+            string level = string.Empty;//Console.ReadLine();
             switch (level)
             {
                 case "Easy": return new EasyBoardSettings();

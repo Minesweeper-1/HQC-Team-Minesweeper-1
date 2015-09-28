@@ -13,6 +13,14 @@
 
     public class ConsoleRenderer : IRenderer
     {
+        public ConsoleRenderer()
+        {
+            CursorVisible = false;
+            Title = "Minesweeper";
+            SetWindowSize(GlobalConstants.ConsoleWidth, GlobalConstants.ConsoleHeight);
+            SetBufferSize(GlobalConstants.ConsoleWidth, GlobalConstants.ConsoleHeight);
+        }
+
         public void Render(string line) => Write(line);
 
         public void RenderLine(string line) => WriteLine(line);
@@ -24,19 +32,47 @@
             this.RenderBoardCells(board, row, col + 1);
         }
 
-        public void RenderWelcomeScreen(string welcomeScreen) => this.RenderLine(welcomeScreen);
+        public void RenderWelcomeScreen(string welcomeScreen)
+        {
+            this.SetForegroundColor(ConsoleColor.White);
+            this.SetBackgroundColor(ConsoleColor.DarkMagenta);
+            this.Render(welcomeScreen);
+            this.ResetForegroundColor();
+            this.ResetBackgroundColor();
+        }
+
+        public void RenderNewPlayerCreationRequest()
+        {
+            this.SetBackgroundColor(ConsoleColor.DarkCyan);
+            this.SetForegroundColor(ConsoleColor.White);
+
+            // Fill the whole next 3 lines
+            this.Render(new string(' ', GlobalConstants.ConsoleWidth));
+            this.Render(new string(' ', GlobalConstants.ConsoleWidth));
+            this.Render(new string(' ', GlobalConstants.ConsoleWidth));
+
+            // Set the cursor back at the beginning of the second line
+            var cursor = this.GetCursor();
+            this.SetCursor(cursor[0] - 2, 0);
+
+            this.Render(line: "ENTER YOUR NAME: ");
+        }
 
         public void SetCursor(int row, int col) => SetCursorPosition(col, row);
 
         public void SetCursor(bool visible) => CursorVisible = visible;
 
-        public void SetForegroundColor(ConsoleColor color) => ForegroundColor = color;
+        public void SetForegroundColor(Enum color) => ForegroundColor = (ConsoleColor)color;
+
+        public void SetBackgroundColor(Enum color) => BackgroundColor = (ConsoleColor)color;
 
         public void ResetForegroundColor() => this.SetForegroundColor(ConsoleColor.White);
 
+        public void ResetBackgroundColor() => this.SetBackgroundColor(ConsoleColor.Black);
+
         public void ClearScreen() => Clear();
 
-        public void ClearCurrentConsoleLine()
+        public void ClearCurrentLine()
         {
             int currentLineCursor = CursorTop;
             this.SetCursor(CursorTop, col: 0);
@@ -46,6 +82,9 @@
 
         public void RenderMenu(IEnumerable<IGameMode> menuItems, int row, int col)
         {
+            this.ResetBackgroundColor();
+            this.ResetForegroundColor();
+
             int linesCountBeforeFirstMenuItem = GlobalConstants.MenuTitleRowsCount;
             var cursorRow = row + linesCountBeforeFirstMenuItem;
 
