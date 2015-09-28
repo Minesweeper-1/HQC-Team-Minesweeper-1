@@ -1,4 +1,4 @@
-﻿namespace MenuTest.InputProviders.Contracts
+﻿namespace Minesweeper.InputProviders.Contracts
 {
     using System;
 

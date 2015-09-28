@@ -1,4 +1,4 @@
-﻿namespace MenuTest.DifficultyCommands.Contracts
+﻿namespace Minesweeper.DifficultyCommands.Contracts
 {
     public interface IGameMode
     {

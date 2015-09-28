@@ -1,15 +1,15 @@
 ﻿namespace Minesweeper.Engine
 {
-    using System;
+    using System.Collections.Generic;
 
     using Boards.Contracts;
     using CommandOperators.Contracts;
     using Common;
     using Contracts;
+    using DifficultyCommands;
+    using DifficultyCommands.Contracts;
     using InputProviders.Contracts;
-
-    using Minesweeper.Boards;
-
+    using MenuHandlers;
     using Players;
     using Players.Contracts;
     using Renderers.Contracts;
@@ -42,6 +42,23 @@
         {
             this.renderer.RenderWelcomeScreen(GlobalConstants.DefaultWelcomeScreen);
             this.RequestNewPlayerCreation();
+
+            // TODO: Refactor menu handler logic
+            var cursorPosition = this.renderer.GetCursor();
+            var menuItems = new List<IGameMode>()
+            {
+                new BeginnerMode(),
+                new IntermediateMode(),
+                new ExpertMode()
+            };
+
+            var menuHandler = new MenuHandler(this.inputProvider, this.renderer, menuItems, cursorPosition[0], cursorPosition[1]);
+            menuHandler.ShowSelections();
+            menuHandler.RequestUserSelection();
+            this.renderer.ClearScreen();
+            this.renderer.SetCursor(true);
+            //// End of menu handler logic
+
             this.StartGame();
         }
 

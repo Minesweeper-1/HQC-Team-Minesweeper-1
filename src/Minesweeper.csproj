@@ -71,6 +71,7 @@
     <Compile Include="Common\CellState.cs" />
     <Compile Include="Common\ContentType.cs" />
     <Compile Include="Cells\Contracts\ICell.cs" />
+    <Compile Include="Common\Utils\StringExtensions.cs" />
     <Compile Include="Contents\Bomb.cs" />
     <Compile Include="Contents\ContentFactory.cs" />
     <Compile Include="Contents\Contracts\IContent.cs" />
@@ -84,20 +85,29 @@
     <Compile Include="DataManagers\FileReader.cs" />
     <Compile Include="DataManagers\FileWriter.cs" />
     <Compile Include="DataManagers\JsonManager.cs" />
+    <Compile Include="DifficultyCommands\BeginnerMode.cs" />
+    <Compile Include="DifficultyCommands\Contracts\IGameMode.cs" />
+    <Compile Include="DifficultyCommands\ExpertMode.cs" />
+    <Compile Include="DifficultyCommands\IntermediateMode.cs" />
     <Compile Include="Engine\Contracts\IGameInitializationStrategy.cs" />
     <Compile Include="Engine\Contracts\IMinesweeperEngine.cs" />
     <Compile Include="Engine\Contracts\IBoardObserver.cs" />
     <Compile Include="Engine\Initializations\StandardGameInitializationStrategy.cs" />
     <Compile Include="Engine\StandardOnePlayerMinesweeperEngine.cs" />
+    <Compile Include="InputProviders\Contracts\GameKey.cs" />
     <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="MenuHandlers\Contracts\IMenuHandler.cs" />
+    <Compile Include="MenuHandlers\MenuHandler.cs" />
     <Compile Include="Players\Contracts\IPlayer.cs" />
     <Compile Include="Boards\Board.cs" />
     <Compile Include="InputProviders\ConsoleInputProvider.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Players\Player.cs" />
-    <Compile Include="Renderers\ConsoleRenderer.cs" />
+    <Compile Include="Renderers\ConsoleRenderer.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Renderers\Contracts\IRenderer.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Scoreboards\Contracts\IScoreboard.cs" />

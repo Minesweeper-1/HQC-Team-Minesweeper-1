@@ -1,12 +1,12 @@
-﻿namespace MenuTest.MenuHandlers
+﻿namespace Minesweeper.MenuHandlers
 {
     using System.Collections.Generic;
 
+    using Common;
     using Contracts;
     using DifficultyCommands;
     using DifficultyCommands.Contracts;
     using InputProviders.Contracts;
-    using Renderers.Common;
     using Renderers.Contracts;
 
     // The engine will observe whether the MenuHandler has come to a final game mode resolution
@@ -28,15 +28,15 @@
             this.renderer = renderer;
             this.currentSelection = new BeginnerMode();
             this.menuItems = menuItems;
-            this.menuBodyTop = menuTop + RenderersConstants.MenuTitleRowsCount;
+            this.menuBodyTop = menuTop + GlobalConstants.MenuTitleRowsCount;
             this.menuBodyLeft = menuLeft;
-            this.selectionCharTop = menuTop + RenderersConstants.MenuTitleRowsCount;
+            this.selectionCharTop = menuTop + GlobalConstants.MenuTitleRowsCount;
             this.selectionCharLeft = this.menuBodyLeft;
         }
 
         public void ShowSelections()
         {
-            this.renderer.RenderMenu(this.menuItems, this.menuBodyTop - RenderersConstants.MenuTitleRowsCount, this.menuBodyLeft);
+            this.renderer.RenderMenu(this.menuItems, this.menuBodyTop - GlobalConstants.MenuTitleRowsCount, this.menuBodyLeft);
         }
 
         public void RequestUserSelection()
@@ -60,7 +60,7 @@
                         this.renderer.Render(" ");
                         this.renderer.SetCursor(this.selectionCharTop - 1, this.selectionCharLeft);
                         this.selectionCharTop -= 1;
-                        this.renderer.Render(RenderersConstants.SelectionChar);
+                        this.renderer.Render(GlobalConstants.SelectionChar);
                         this.renderer.SetCursor(cursor[0], cursor[1]);
                     }
                 }
@@ -73,7 +73,7 @@
                         this.renderer.Render(" ");
                         this.renderer.SetCursor(this.selectionCharTop + 1, this.selectionCharLeft);
                         this.selectionCharTop += 1;
-                        this.renderer.Render(RenderersConstants.SelectionChar);
+                        this.renderer.Render(GlobalConstants.SelectionChar);
                         this.renderer.SetCursor(cursor[0], cursor[1]);
                     }
                 }

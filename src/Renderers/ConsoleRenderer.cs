@@ -1,6 +1,7 @@
 ﻿namespace Minesweeper.Renderers
 {
     using System;
+    using System.Collections.Generic;
     using static System.Console;
     using System.Globalization;
 
@@ -8,18 +9,13 @@
     using Cells.Contracts;
     using Common;
     using Contracts;
+    using DifficultyCommands.Contracts;
 
     public class ConsoleRenderer : IRenderer
     {
-        public void Render(string line)
-        {
-            Write(line);
-        }
+        public void Render(string line) => Write(line);
 
-        public void RenderLine(string line)
-        {
-            WriteLine(line);
-        }
+        public void RenderLine(string line) => WriteLine(line);
 
         public void RenderBoard(IBoard board, int row, int col)
         {
@@ -28,30 +24,17 @@
             this.RenderBoardCells(board, row, col + 1);
         }
 
-        public void RenderWelcomeScreen(string welcomeScreen)
-        {
-            this.RenderLine(welcomeScreen);
-        }
+        public void RenderWelcomeScreen(string welcomeScreen) => this.RenderLine(welcomeScreen);
 
-        public void SetCursor(int row, int col)
-        {
-            SetCursorPosition(col, row);
-        }
+        public void SetCursor(int row, int col) => SetCursorPosition(col, row);
 
-        public void SetForegroundColor(ConsoleColor color)
-        {
-            ForegroundColor = color;
-        }
+        public void SetCursor(bool visible) => CursorVisible = visible;
 
-        public void ResetForegroundColor()
-        {
-            this.SetForegroundColor(ConsoleColor.White);
-        }
+        public void SetForegroundColor(ConsoleColor color) => ForegroundColor = color;
 
-        public void ClearScreen()
-        {
-            Clear();
-        }
+        public void ResetForegroundColor() => this.SetForegroundColor(ConsoleColor.White);
+
+        public void ClearScreen() => Clear();
 
         public void ClearCurrentConsoleLine()
         {
@@ -59,6 +42,42 @@
             this.SetCursor(CursorTop, col: 0);
             this.Render(new string(c: ' ', count: WindowWidth));
             this.SetCursor(currentLineCursor, col: 0);
+        }
+
+        public void RenderMenu(IEnumerable<IGameMode> menuItems, int row, int col)
+        {
+            int linesCountBeforeFirstMenuItem = GlobalConstants.MenuTitleRowsCount;
+            var cursorRow = row + linesCountBeforeFirstMenuItem;
+
+            CursorVisible = false;
+
+            this.RenderMenuTitle(row, col);
+            foreach (var item in menuItems)
+            {
+                this.SetCursor(cursorRow++, col);
+                this.RenderLine(GlobalConstants.SelectionPrefix + item.Value);
+            }
+
+            var cursorPosition = this.GetCursor();
+
+            // Set default menu item selection
+            this.SetCursor(row + linesCountBeforeFirstMenuItem, col);
+            this.Render(GlobalConstants.SelectionChar);
+
+            // Reset cursor position
+            this.SetCursor(cursorPosition[0], cursorPosition[1]);
+        }
+
+        public int[] GetCursor() => new int[] { CursorTop, CursorLeft };
+
+        private void RenderMenuTitle(int row, int col)
+        {
+            this.SetCursor(row, col);
+            foreach (var line in GlobalConstants.MenuTitle)
+            {
+                this.SetCursor(row++, col);
+                this.RenderLine(line);
+            }
         }
 
         private string GetCellCharAsString(ICell cell)

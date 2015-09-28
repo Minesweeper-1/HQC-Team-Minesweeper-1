@@ -10,7 +10,9 @@
         }
 
         internal int Rows { get; private set; }
+
         internal int Cols { get; private set; }
+
         internal int NumberOfBombs { get; private set; }
     }
 }

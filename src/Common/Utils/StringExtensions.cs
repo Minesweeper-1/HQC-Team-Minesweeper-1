@@ -1,4 +1,4 @@
-﻿namespace MenuTest.Common
+﻿namespace Minesweeper.Common.Utils
 {
     using System.Text.RegularExpressions;
 

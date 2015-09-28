@@ -34,5 +34,16 @@
         public const string ScoreboardFilePath = "../../Data/leaders.msr";
 
         public const string DefaultWelcomeScreen = "Welcome to the all-time classic game of Minesweeper";
+
+        public const string SelectionChar = ">";
+        public const string SelectionPrefix = "   ";
+        public static readonly string[] MenuTitle = new string[]
+        {
+            "===============================",
+            "       SELECT DIFFICULTY       ",
+            "==============================="
+        };
+
+        public static readonly int MenuTitleRowsCount = MenuTitle.Length;
     }
 }

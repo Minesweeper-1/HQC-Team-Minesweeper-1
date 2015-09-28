@@ -1,8 +1,8 @@
-﻿namespace MenuTest.DifficultyCommands
+﻿namespace Minesweeper.DifficultyCommands
 {
     using System.Linq;
 
-    using Common;
+    using Common.Utils;
     using Contracts;
 
     public class BeginnerMode : IGameMode
