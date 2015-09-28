@@ -17,13 +17,15 @@
 
         public void RenderMenu(IEnumerable<IGameMode> menuItems, int row, int col)
         {
-            int linesCountBeforeFirstMenuItem = 1;
+            int linesCountBeforeFirstMenuItem = RenderersConstants.MenuTitleRowsCount;
+            var cursorRow = row + linesCountBeforeFirstMenuItem;
 
             CursorVisible = false;
-            this.SetCursor(row, col);
-            this.RenderLine("[===== Select game mode =====]");
+
+            this.RenderMenuTitle(row, col);
             foreach (var item in menuItems)
             {
+                this.SetCursor(cursorRow++, col);
                 this.RenderLine(RenderersConstants.SelectionPrefix + item.Value);
             }
 
@@ -40,6 +42,16 @@
         public int[] GetCursor()
         {
             return new int[] { CursorTop, CursorLeft };
+        }
+
+        private void RenderMenuTitle(int row, int col)
+        {
+            this.SetCursor(row, col);
+            foreach (var line in RenderersConstants.MenuTitle)
+            {
+                this.SetCursor(row++, col);
+                this.RenderLine(line);
+            }
         }
     }
 }

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\StringExtensions.cs" />
     <Compile Include="DifficultyCommands\BeginnerMode.cs" />
     <Compile Include="DifficultyCommands\Contracts\IGameMode.cs" />
     <Compile Include="DifficultyCommands\ExpertMode.cs" />
