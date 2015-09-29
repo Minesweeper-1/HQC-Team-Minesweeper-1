@@ -10,7 +10,7 @@
     using Engine.Initializations;
     using InputProviders;
 
-    using Minesweeper.Engine.Contracts;
+    using Engine.Contracts;
 
     using Renderers;
     using Scoreboards;

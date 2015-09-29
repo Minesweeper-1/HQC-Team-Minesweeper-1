@@ -10,15 +10,18 @@
     using Players;
     using Players.Contracts;
 
+    // TODO: Separate read and write logic into two separate classes - SRP Violation
+    // TODO: Extract crypto key to constants
     public class Scoreboard : IScoreboard
     {
         private readonly IJsonManager jsonManager = new JsonManager();
         private readonly IReader dataReader = new FileReader();
         private readonly IWriter dataWriter = new FileWriter();
-        
+        private readonly IStringEncryptionManager cryptoManager = new NetStringEncryptionManager();
+
         public IList<IPlayer> GetAll()
         {
-            string leadersAsString = this.dataReader.ReadAllText(GlobalConstants.ScoreboardFilePath);
+            string leadersAsString = this.cryptoManager.Decrypt("pesho", this.dataReader.ReadAllText(GlobalConstants.ScoreboardFilePath));
             IList<IPlayer> leaders = this.jsonManager.Parse<List<Player>>(leadersAsString).ToList<IPlayer>();
 
             return leaders;
@@ -28,7 +31,7 @@
         {
             IList<IPlayer> leaders = this.GetAll();
             leaders.Add(player);
-            string result = this.jsonManager.ToStringRepresentation(leaders);
+            string result = this.cryptoManager.Encrypt("pesho", this.jsonManager.ToStringRepresentation(leaders));
             this.dataWriter.WriteAllText(GlobalConstants.ScoreboardFilePath, result);
         }
     }
