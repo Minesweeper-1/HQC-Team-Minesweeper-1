@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MineSweeper_WPF
+namespace MinesweeperWpf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,17 +23,13 @@ namespace MineSweeper_WPF
         public MainWindow()
         {
             InitializeComponent();
-
             CreateButtons(10, 10);
-           
         }
 
         private void Left(object sender, RoutedEventArgs e)
         {
             var target = (Button)sender;
-            var s = target;
             target.Content = 1;
-            
         }
 
         private void Right(object sender, RoutedEventArgs e)
@@ -62,8 +58,6 @@ namespace MineSweeper_WPF
                 var colDef = new ColumnDefinition();
                 colDef.Width = GridLength.Auto;
                 grid.ColumnDefinitions.Add(colDef);
-
-
             }
 
             for (int i = 0; i < x; i++)

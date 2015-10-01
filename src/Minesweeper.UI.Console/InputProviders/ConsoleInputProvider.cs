@@ -2,11 +2,11 @@
 {
     using static System.Console;
 
-    using Logic.InputProviders.Contracts;
+    using Contracts;
 
-    public class ConsoleInputProvider : IInputProvider
+    public class ConsoleInputProvider : IConsoleInputProvider
     {
-        public string GetLine() => ReadLine();
+        public string ReceiveInputLine() => ReadLine();
 
         public bool IsKeyAvailable { get; } = KeyAvailable;
 

@@ -1,14 +1,14 @@
 ﻿namespace Minesweeper.UI.Console.Engine
 {
+    using InputProviders.Contracts;
     using Logic.Boards.Contracts;
     using Logic.CommandOperators.Contracts;
     using Logic.Common;
     using Logic.Engines.Contracts;
-    using Logic.InputProviders.Contracts;
     using Logic.Players;
     using Logic.Players.Contracts;
     using Logic.Scoreboards.Contracts;
-    using Logic.Renderers.Contracts;
+    using Renderers.Contracts;
     using Renderers.Common;
 
     public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine, IBoardObserver
@@ -16,12 +16,12 @@
         private readonly IScoreboard scoreboard;
         private readonly IBoard board;
         private readonly ICommandOperator commandOperator;
-        private readonly IInputProvider inputProvider;
-        private readonly IRenderer renderer;
+        private readonly IConsoleInputProvider inputProvider;
+        private readonly IConsoleRenderer renderer;
         private readonly IPlayer currentPlayer;
         private Notification currentGameStateChange;
 
-        public StandardOnePlayerMinesweeperEngine(IBoard board, IInputProvider inputProvider, IRenderer renderer, ICommandOperator commandOperator, IScoreboard scoreboard, Player player)
+        public StandardOnePlayerMinesweeperEngine(IBoard board, IConsoleInputProvider inputProvider, IConsoleRenderer renderer, ICommandOperator commandOperator, IScoreboard scoreboard, Player player)
         {
             this.board = board;
             this.inputProvider = inputProvider;
@@ -50,7 +50,7 @@
 
             while (true)
             {
-                string command = this.inputProvider.GetLine();
+                string command = this.inputProvider.ReceiveInputLine();
                 this.commandOperator.Execute(command);
 
                 if (this.currentGameStateChange.State == BoardState.Closed)

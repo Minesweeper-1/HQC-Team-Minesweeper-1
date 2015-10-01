@@ -7,24 +7,24 @@
     using Logic.Boards.Settings.Contracts;
     using Logic.DifficultyCommands;
     using Logic.DifficultyCommands.Contracts;
-    using Logic.InputProviders.Contracts;
-    using Logic.Renderers.Contracts;
+    using InputProviders.Contracts;
+    using Renderers.Contracts;
     using Renderers.Common;
 
     // The engine will observe whether the MenuHandler has come to a final game mode resolution
     public class ConsoleMenuHandler : IMenuHandler
     {
-        private int menuBodyTop = 10;
-        private int menuBodyLeft = 5;
+        private readonly int menuBodyTop = 10;
+        private readonly int menuBodyLeft = 5;
         private int selectionCharTop;
-        private int selectionCharLeft;
+        private readonly int selectionCharLeft;
 
         private IGameMode currentSelection;
-        private IRenderer renderer;
-        private IInputProvider inputProvider;
-        private IEnumerable<IGameMode> menuItems;
+        private readonly IConsoleRenderer renderer;
+        private readonly IConsoleInputProvider inputProvider;
+        private readonly IEnumerable<IGameMode> menuItems;
 
-        public ConsoleMenuHandler(IInputProvider inputProvider, IRenderer renderer, IEnumerable<IGameMode> menuItems, int menuTop, int menuLeft)
+        public ConsoleMenuHandler(IConsoleInputProvider inputProvider, IConsoleRenderer renderer, IEnumerable<IGameMode> menuItems, int menuTop, int menuLeft)
         {
             this.inputProvider = inputProvider;
             this.renderer = renderer;

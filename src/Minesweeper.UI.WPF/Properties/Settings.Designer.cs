@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MineSweeper_WPF.Properties
+namespace MinesweeperWpf.Properties
 {
 
 

@@ -21,7 +21,7 @@
 
     public class Game
     {
-        private static Lazy<Game> instance = new Lazy<Game>(() => new Game());
+        private static readonly Lazy<Game> instance = new Lazy<Game>(() => new Game());
 
         private Game()
         {
@@ -40,7 +40,7 @@
             renderer.RenderNewPlayerCreationRequest();
 
             // Create the active player
-            var player = new Player(inputProvider.GetLine());
+            var player = new Player(inputProvider.ReceiveInputLine());
 
             // Render console menu handler and execute logic for requesting board settings
             // TODO: Refactor menu handler logic

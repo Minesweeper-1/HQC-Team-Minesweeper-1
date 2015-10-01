@@ -9,10 +9,10 @@
     using Logic.Cells.Contracts;
     using Logic.Common;
     using Logic.DifficultyCommands.Contracts;
-    using Logic.Renderers.Contracts;
-    using Renderers.Common;
+    using Contracts;
+    using Common;
 
-    public class ConsoleRenderer : IRenderer
+    public class ConsoleRenderer : IConsoleRenderer
     {
         public ConsoleRenderer()
         {
@@ -28,8 +28,12 @@
 
         public void RenderLine(string line) => WriteLine(line);
 
-        public void RenderBoard(IBoard board, int row, int col)
+        public void RenderBoard(params object[] values)
         {
+            var board = (IBoard)values[0];
+            var row = (int)values[1];
+            var col = (int)values[2];
+
             this.RenderLeftSidebar(board, row, col);
             this.RenderTopBar(board, row, col + 1);
             this.RenderBoardCells(board, row, col + 1);

@@ -5,7 +5,7 @@
 
     public class NetStringEncryptionManager : IStringEncryptionManager
     {
-        private Encryption netEncryption = new Encryption();
+        private readonly Encryption netEncryption = new Encryption();
         
         public string Encrypt(string key, string source)
         {
