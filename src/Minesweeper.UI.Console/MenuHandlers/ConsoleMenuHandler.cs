@@ -4,8 +4,12 @@
 
     using Minesweeper.Logic.Common;
     using Contracts;
+
+    using Minesweeper.Logic.Boards;
     using Minesweeper.Logic.DifficultyCommands;
     using Minesweeper.Logic.DifficultyCommands.Contracts;
+    using Minesweeper.UI.Console;
+    using Minesweeper.UI.Console.Engine;
     using Minesweeper.UI.Console.InputProviders;
     using Minesweeper.UI.Console.InputProviders.Contracts;
     using Renderers.Contracts;
@@ -49,7 +53,8 @@
                 var key = this.GetKey();
                 if (key == ConsoleGameKey.Enter)
                 {
-                    // Notify subscribers
+                    Game.DifficultyLevel = this.currentSelection.Settings;
+
                     break;
                 }
                 else if (key == ConsoleGameKey.Up)
@@ -86,6 +91,11 @@
             ConsoleGameKey keyPressed;
             keyPressed = (ConsoleGameKey)this.inputProvider.GetKeyChar(true);
             return keyPressed;
+        }
+
+        private BoardSettings SetSettings()
+        {
+            return this.currentSelection.Settings;
         }
     }
 }

@@ -1,16 +1,12 @@
 ﻿namespace Minesweeper.UI.Console.Engine
 {
-    using System.Collections.Generic;
 
     using Contracts;
-    using MenuHandlers;
+    using InputProviders.Contracts;
     using Minesweeper.Logic.Boards.Contracts;
     using Minesweeper.Logic.CommandOperators.Contracts;
     using Minesweeper.Logic.Common;
     using Minesweeper.Logic.Common.BoardObserverContracts;
-    using Minesweeper.Logic.DifficultyCommands;
-    using Minesweeper.Logic.DifficultyCommands.Contracts;
-    using InputProviders.Contracts;
     using Minesweeper.Logic.Players;
     using Minesweeper.Logic.Players.Contracts;
     using Minesweeper.Logic.Scoreboards.Contracts;
@@ -27,13 +23,14 @@
         private IPlayer currentPlayer;
         private Notification currentGameStateChange;
 
-        public StandardOnePlayerMinesweeperEngine(IBoard board, IInputProvider inputProvider, ICommandOperator commandOperator, IScoreboard scoreboard)
+        public StandardOnePlayerMinesweeperEngine(IBoard board, IInputProvider inputProvider, ICommandOperator commandOperator, IScoreboard scoreboard, Player player)
         {
             this.board = board;
             this.commandOperator = commandOperator;
             this.inputProvider = inputProvider;
             this.scoreboard = scoreboard;
             this.currentGameStateChange = new Notification(string.Empty, this.board.BoardState);
+            this.currentPlayer = player;
         }
 
         public void Initialize(IGameInitializationStrategy initializationStrategy) =>
@@ -41,25 +38,8 @@
 
         public void Run()
         {
-            this.renderer.RenderWelcomeScreen(string.Join(string.Empty, GlobalConstants.GameTitle));
-            this.RequestNewPlayerCreation();
-
-            // TODO: Refactor menu handler logic
-            var cursorPosition = this.renderer.GetCursor();
-            var menuItems = new List<IGameMode>()
-            {
-                new BeginnerMode(),
-                new IntermediateMode(),
-                new ExpertMode()
-            };
-
-            var menuHandler = new ConsoleMenuHandler(this.inputProvider, this.renderer, menuItems, cursorPosition[0] + 1, cursorPosition[1]);
-            menuHandler.ShowSelections();
-            menuHandler.RequestUserSelection();
-            this.renderer.ClearScreen();
-            this.renderer.SetCursor(true);
-            //// End of menu handler logic
-
+            //this.renderer.RenderWelcomeScreen(string.Join(string.Empty, GlobalConstants.GameTitle));
+            // this.RequestNewPlayerCreation();
             this.StartGame();
         }
 
@@ -99,11 +79,11 @@
             }
         }
 
-        private void RequestNewPlayerCreation()
-        {
-            this.renderer.RenderNewPlayerCreationRequest();
-            this.currentPlayer = new Player(this.inputProvider.GetLine());
-        }
+        //private void RequestNewPlayerCreation()
+        //{
+        //    this.renderer.RenderNewPlayerCreationRequest();
+        //    this.currentPlayer = new Player(this.inputProvider.GetLine());
+        //}
 
         private void SavePlayerScore(IPlayer player) =>
             this.scoreboard.RegisterNewPlayerScore(player);
