@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E1502FC2-A30F-4A16-A67C-D75F7A1E7602}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Minesweeper.Logic</RootNamespace>
     <AssemblyName>Minesweeper</AssemblyName>
@@ -34,6 +34,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="KellermanSoftware.NET-Encryption-Library, Version=2.14.0.0, Culture=neutral, PublicKeyToken=dccbd7ce7d6a58c0, processorArchitecture=MSIL">
@@ -103,7 +106,6 @@
     <Compile Include="Players\Contracts\IPlayer.cs" />
     <Compile Include="Boards\Board.cs" />
     <Compile Include="Players\Player.cs" />
-    <Compile Include="EntryPoint.cs" />
     <Compile Include="Scoreboards\Contracts\IScoreboard.cs" />
     <Compile Include="Scoreboards\Scoreboard.cs" />
   </ItemGroup>

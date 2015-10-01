@@ -54,7 +54,6 @@
                 if (key == ConsoleGameKey.Enter)
                 {
                     Game.DifficultyLevel = this.currentSelection.Settings;
-
                     break;
                 }
                 else if (key == ConsoleGameKey.Up)

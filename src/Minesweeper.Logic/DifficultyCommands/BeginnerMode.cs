@@ -2,10 +2,10 @@
 {
     using System.Linq;
 
+    using Boards;
     using Common.Utils;
     using Contracts;
 
-    using Minesweeper.Logic.Boards;
 
     public class BeginnerMode : IGameMode
     {

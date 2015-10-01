@@ -12,7 +12,7 @@
     using Minesweeper.Logic.DifficultyCommands.Contracts;
     using Minesweeper.Logic.Players;
     using Minesweeper.Logic.Scoreboards;
-    using Minesweeper.UI.MenuHandlers;
+    using MenuHandlers;
     using Renderers;
     using System;
     using System.Collections.Generic;
