@@ -1,9 +1,9 @@
 ﻿namespace Minesweeper.UI.Console.Renderers.Common
 {
-    public static class RenderersConstants
+    public class RenderersConstants
     {
-        public static readonly int ConsoleHeight = 36;
-        public static readonly int ConsoleWidth = 121;
+        public const int ConsoleHeight = 36;
+        public const int ConsoleWidth = 121;
         
         public const string ColsRenderingDivider = "*  ";
         public const string GameCellsDivider = "  ";

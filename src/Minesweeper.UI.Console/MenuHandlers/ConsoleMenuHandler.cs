@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    
+
     using Contracts;
     using Logic.Boards.Settings.Contracts;
     using Logic.DifficultyCommands;
@@ -34,6 +34,7 @@
             this.menuBodyLeft = menuLeft;
             this.selectionCharTop = menuTop + RenderersConstants.MenuTitleRowsCount;
             this.selectionCharLeft = this.menuBodyLeft;
+
         }
 
         public void ShowSelections()
@@ -45,42 +46,46 @@
         {
             while (!this.inputProvider.IsKeyAvailable)
             {
-                var cursor = this.renderer.GetCursor();
+                int[] cursor = this.renderer.GetCursor();
+                ConsoleKey key = this.GetKey();
 
-                var key = this.GetKey();
                 if (key == ConsoleKey.Enter)
                 {
                     break;
                 }
-                else if (key == ConsoleKey.UpArrow)
+                else if (key == ConsoleKey.UpArrow && this.selectionCharTop > this.menuBodyTop)
                 {
-                    if (this.selectionCharTop > this.menuBodyTop)
-                    {
-                        this.currentSelection = this.currentSelection.GetPrevious();
-                        this.renderer.SetCursor(this.selectionCharTop, this.selectionCharLeft);
-                        this.renderer.Render(" ");
-                        this.renderer.SetCursor(this.selectionCharTop - 1, this.selectionCharLeft);
-                        this.selectionCharTop -= 1;
-                        this.renderer.Render(RenderersConstants.SelectionChar);
-                        this.renderer.SetCursor(cursor[0], cursor[1]);
-                    }
+                    this.SetPreviousMenuItem(cursor);
                 }
-                else if (key == ConsoleKey.DownArrow)
+                else if (key == ConsoleKey.DownArrow && this.selectionCharTop < this.menuBodyTop + 2)
                 {
-                    if (this.selectionCharTop < this.menuBodyTop + 2)
-                    {
-                        this.currentSelection = this.currentSelection.GetNext();
-                        this.renderer.SetCursor(this.selectionCharTop, this.selectionCharLeft);
-                        this.renderer.Render(" ");
-                        this.renderer.SetCursor(this.selectionCharTop + 1, this.selectionCharLeft);
-                        this.selectionCharTop += 1;
-                        this.renderer.Render(RenderersConstants.SelectionChar);
-                        this.renderer.SetCursor(cursor[0], cursor[1]);
-                    }
+                    this.SetNextMenuItem(cursor);
                 }
             }
 
             return this.currentSelection.Settings;
+        }
+
+        private void SetPreviousMenuItem(int[] cursor)
+        {
+            this.currentSelection = this.currentSelection.GetPrevious();
+            this.renderer.SetCursor(this.selectionCharTop, this.selectionCharLeft);
+            this.renderer.Render(" ");
+            this.renderer.SetCursor(this.selectionCharTop - 1, this.selectionCharLeft);
+            this.selectionCharTop -= 1;
+            this.renderer.Render(RenderersConstants.SelectionChar);
+            this.renderer.SetCursor(cursor[0], cursor[1]);
+        }
+
+        private void SetNextMenuItem(int[] cursor)
+        {
+            this.currentSelection = this.currentSelection.GetNext();
+            this.renderer.SetCursor(this.selectionCharTop, this.selectionCharLeft);
+            this.renderer.Render(" ");
+            this.renderer.SetCursor(this.selectionCharTop + 1, this.selectionCharLeft);
+            this.selectionCharTop += 1;
+            this.renderer.Render(RenderersConstants.SelectionChar);
+            this.renderer.SetCursor(cursor[0], cursor[1]);
         }
 
         private ConsoleKey GetKey()

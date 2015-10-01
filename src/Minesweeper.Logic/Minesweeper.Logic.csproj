@@ -103,10 +103,13 @@
     <Compile Include="DifficultyCommands\Contracts\IGameMode.cs" />
     <Compile Include="DifficultyCommands\ExpertMode.cs" />
     <Compile Include="DifficultyCommands\IntermediateMode.cs" />
+    <Compile Include="Engines\Contracts\IGameInitializationStrategy.cs" />
+    <Compile Include="Engines\Contracts\IMinesweeperEngine.cs" />
     <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
     <Compile Include="Players\Contracts\IPlayer.cs" />
     <Compile Include="Boards\Board.cs" />
     <Compile Include="Players\Player.cs" />
+    <Compile Include="Renderers\Contracts\IRenderer.cs" />
     <Compile Include="Scoreboards\Contracts\IScoreboard.cs" />
     <Compile Include="Scoreboards\Scoreboard.cs" />
   </ItemGroup>
