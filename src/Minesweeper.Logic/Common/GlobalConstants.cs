@@ -1,9 +1,11 @@
 ﻿namespace Minesweeper.Logic.Common
 {
+    using static System.Console;
+
     public static class GlobalConstants
     {
-        public const int ConsoleHeight = 30;
-        public const int ConsoleWidth = 61;
+        public static readonly int ConsoleHeight = 36;
+        public static readonly int ConsoleWidth = 121;
 
         public const char CommandParametersDivider = ' ';
 

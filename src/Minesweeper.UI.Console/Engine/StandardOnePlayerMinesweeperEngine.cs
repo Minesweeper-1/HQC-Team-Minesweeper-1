@@ -19,18 +19,19 @@
         private readonly IBoard board;
         private readonly ICommandOperator commandOperator;
         private readonly IInputProvider inputProvider;
-        private readonly IRenderer renderer = new ConsoleRenderer();
-        private IPlayer currentPlayer;
+        private readonly IRenderer renderer;
+        private readonly IPlayer currentPlayer;
         private Notification currentGameStateChange;
 
-        public StandardOnePlayerMinesweeperEngine(IBoard board, IInputProvider inputProvider, ICommandOperator commandOperator, IScoreboard scoreboard, Player player)
+        public StandardOnePlayerMinesweeperEngine(IBoard board, IInputProvider inputProvider, IRenderer renderer, ICommandOperator commandOperator, IScoreboard scoreboard, Player player)
         {
             this.board = board;
-            this.commandOperator = commandOperator;
             this.inputProvider = inputProvider;
+            this.renderer = renderer;
+            this.commandOperator = commandOperator;
             this.scoreboard = scoreboard;
-            this.currentGameStateChange = new Notification(string.Empty, this.board.BoardState);
             this.currentPlayer = player;
+            this.currentGameStateChange = new Notification(string.Empty, this.board.BoardState);
         }
 
         public void Initialize(IGameInitializationStrategy initializationStrategy) =>
@@ -38,8 +39,6 @@
 
         public void Run()
         {
-            //this.renderer.RenderWelcomeScreen(string.Join(string.Empty, GlobalConstants.GameTitle));
-            // this.RequestNewPlayerCreation();
             this.StartGame();
         }
 
@@ -78,12 +77,6 @@
                 this.renderer.ClearCurrentLine();
             }
         }
-
-        //private void RequestNewPlayerCreation()
-        //{
-        //    this.renderer.RenderNewPlayerCreationRequest();
-        //    this.currentPlayer = new Player(this.inputProvider.GetLine());
-        //}
 
         private void SavePlayerScore(IPlayer player) =>
             this.scoreboard.RegisterNewPlayerScore(player);

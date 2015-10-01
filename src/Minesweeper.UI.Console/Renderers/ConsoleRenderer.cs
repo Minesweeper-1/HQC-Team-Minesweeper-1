@@ -2,21 +2,21 @@
 {
     using System;
     using System.Collections.Generic;
-    using static System.Console;
     using System.Globalization;
+    using static System.Console;
 
-    using Minesweeper.Logic.Boards.Contracts;
-    using Minesweeper.Logic.Cells.Contracts;
-    using Minesweeper.Logic.Common;
     using Contracts;
-    using Minesweeper.Logic.DifficultyCommands.Contracts;
+    using Logic.Boards.Contracts;
+    using Logic.Cells.Contracts;
+    using Logic.Common;
+    using Logic.DifficultyCommands.Contracts;
 
     public class ConsoleRenderer : IRenderer
     {
         public ConsoleRenderer()
         {
             CursorVisible = false;
-            Title = "Minesweeper.UI";
+            Title = "Minesweeper";
 
             // TODO: Refactor so that it depends on the level
             SetWindowSize(GlobalConstants.ConsoleWidth, GlobalConstants.ConsoleHeight);

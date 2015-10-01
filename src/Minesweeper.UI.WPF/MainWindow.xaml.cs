@@ -31,7 +31,7 @@ namespace MineSweeper_WPF
         private void Left(object sender, RoutedEventArgs e)
         {
             var target = (Button)sender;
-            var s=target.
+            var s = target;
             target.Content = 1;
             
         }

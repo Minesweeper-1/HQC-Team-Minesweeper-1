@@ -2,16 +2,13 @@
 {
     using System.Collections.Generic;
 
-    using Minesweeper.Logic.Common;
+    using Console.InputProviders;
+    using Console.InputProviders.Contracts;
     using Contracts;
-
-    using Minesweeper.Logic.Boards;
-    using Minesweeper.Logic.DifficultyCommands;
-    using Minesweeper.Logic.DifficultyCommands.Contracts;
-    using Minesweeper.UI.Console;
-    using Minesweeper.UI.Console.Engine;
-    using Minesweeper.UI.Console.InputProviders;
-    using Minesweeper.UI.Console.InputProviders.Contracts;
+    using Logic.Boards;
+    using Logic.Common;
+    using Logic.DifficultyCommands;
+    using Logic.DifficultyCommands.Contracts;
     using Renderers.Contracts;
 
     // The engine will observe whether the MenuHandler has come to a final game mode resolution
@@ -44,7 +41,7 @@
             this.renderer.RenderMenu(this.menuItems, this.menuBodyTop - GlobalConstants.MenuTitleRowsCount, this.menuBodyLeft);
         }
 
-        public void RequestUserSelection()
+        public BoardSettings RequestUserSelection()
         {
             while (!this.inputProvider.IsKeyAvailable)
             {
@@ -53,7 +50,6 @@
                 var key = this.GetKey();
                 if (key == ConsoleGameKey.Enter)
                 {
-                    Game.DifficultyLevel = this.currentSelection.Settings;
                     break;
                 }
                 else if (key == ConsoleGameKey.Up)
@@ -83,6 +79,8 @@
                     }
                 }
             }
+
+            return this.currentSelection.Settings;
         }
 
         private ConsoleGameKey GetKey()
