@@ -1,15 +1,15 @@
-﻿namespace Minesweeper.UI.MenuHandlers
+﻿namespace Minesweeper.UI.Console.MenuHandlers
 {
+    using System;
     using System.Collections.Generic;
-
-    using Console.InputProviders;
-    using Console.InputProviders.Contracts;
+    
     using Contracts;
-    using Logic.Boards;
-    using Logic.Common;
+    using Logic.Boards.Settings.Contracts;
     using Logic.DifficultyCommands;
     using Logic.DifficultyCommands.Contracts;
-    using Renderers.Contracts;
+    using Logic.InputProviders.Contracts;
+    using Logic.Renderers.Contracts;
+    using Renderers.Common;
 
     // The engine will observe whether the MenuHandler has come to a final game mode resolution
     public class ConsoleMenuHandler : IMenuHandler
@@ -30,15 +30,15 @@
             this.renderer = renderer;
             this.currentSelection = new BeginnerMode();
             this.menuItems = menuItems;
-            this.menuBodyTop = menuTop + GlobalConstants.MenuTitleRowsCount;
+            this.menuBodyTop = menuTop + RenderersConstants.MenuTitleRowsCount;
             this.menuBodyLeft = menuLeft;
-            this.selectionCharTop = menuTop + GlobalConstants.MenuTitleRowsCount;
+            this.selectionCharTop = menuTop + RenderersConstants.MenuTitleRowsCount;
             this.selectionCharLeft = this.menuBodyLeft;
         }
 
         public void ShowSelections()
         {
-            this.renderer.RenderMenu(this.menuItems, this.menuBodyTop - GlobalConstants.MenuTitleRowsCount, this.menuBodyLeft);
+            this.renderer.RenderMenu(this.menuItems, this.menuBodyTop - RenderersConstants.MenuTitleRowsCount, this.menuBodyLeft);
         }
 
         public BoardSettings RequestUserSelection()
@@ -48,11 +48,11 @@
                 var cursor = this.renderer.GetCursor();
 
                 var key = this.GetKey();
-                if (key == ConsoleGameKey.Enter)
+                if (key == ConsoleKey.Enter)
                 {
                     break;
                 }
-                else if (key == ConsoleGameKey.Up)
+                else if (key == ConsoleKey.UpArrow)
                 {
                     if (this.selectionCharTop > this.menuBodyTop)
                     {
@@ -61,11 +61,11 @@
                         this.renderer.Render(" ");
                         this.renderer.SetCursor(this.selectionCharTop - 1, this.selectionCharLeft);
                         this.selectionCharTop -= 1;
-                        this.renderer.Render(GlobalConstants.SelectionChar);
+                        this.renderer.Render(RenderersConstants.SelectionChar);
                         this.renderer.SetCursor(cursor[0], cursor[1]);
                     }
                 }
-                else if (key == ConsoleGameKey.Down)
+                else if (key == ConsoleKey.DownArrow)
                 {
                     if (this.selectionCharTop < this.menuBodyTop + 2)
                     {
@@ -74,7 +74,7 @@
                         this.renderer.Render(" ");
                         this.renderer.SetCursor(this.selectionCharTop + 1, this.selectionCharLeft);
                         this.selectionCharTop += 1;
-                        this.renderer.Render(GlobalConstants.SelectionChar);
+                        this.renderer.Render(RenderersConstants.SelectionChar);
                         this.renderer.SetCursor(cursor[0], cursor[1]);
                     }
                 }
@@ -83,10 +83,10 @@
             return this.currentSelection.Settings;
         }
 
-        private ConsoleGameKey GetKey()
+        private ConsoleKey GetKey()
         {
-            ConsoleGameKey keyPressed;
-            keyPressed = (ConsoleGameKey)this.inputProvider.GetKeyChar(true);
+            ConsoleKey keyPressed;
+            keyPressed = (ConsoleKey)this.inputProvider.GetKeyChar(true);
             return keyPressed;
         }
 

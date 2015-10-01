@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper.Logic", "Minesw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper.UI.Console", "Minesweeper.UI.Console\Minesweeper.UI.Console.csproj", "{7A51AFDE-28D9-4061-858D-22B9B5177F31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineSweeper.UI.WPF", "MineSweeper WPF\MineSweeper.UI.WPF.csproj", "{0C4AE469-0794-4B8C-A6CF-12B30CD5664A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper.UI.WPF", "Minesweeper.UI.WPF\Minesweeper.UI.WPF.csproj", "{0C4AE469-0794-4B8C-A6CF-12B30CD5664A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

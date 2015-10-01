@@ -2,7 +2,7 @@
 {
     using Boards.Contracts;
     using Contracts;
-    using Minesweeper.Logic.Common;
+    using Logic.Common;
 
     public class IsValidPlayCommandHandler : PlayCommandHandler
     {

@@ -2,7 +2,6 @@
 {
     using Cells.Contracts;
     using Common;
-    using Common.BoardObserverContracts;
 
     public interface IBoard : IBoardSubject
     {

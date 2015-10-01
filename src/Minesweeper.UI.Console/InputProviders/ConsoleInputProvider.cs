@@ -2,7 +2,7 @@
 {
     using static System.Console;
 
-    using Contracts;
+    using Logic.InputProviders.Contracts;
 
     public class ConsoleInputProvider : IInputProvider
     {

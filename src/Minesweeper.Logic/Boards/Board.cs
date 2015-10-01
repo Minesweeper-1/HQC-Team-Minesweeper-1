@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
 
+    using Settings.Contracts;
     using Cells.Contracts;
     using Common;
-    using Common.BoardObserverContracts;
     using Contracts;
 
     public class Board : IBoard, IBoardSubject

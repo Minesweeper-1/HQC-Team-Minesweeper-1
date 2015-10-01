@@ -1,17 +1,15 @@
 ﻿namespace Minesweeper.UI.Console.Engine
 {
-
-    using Contracts;
-    using InputProviders.Contracts;
-    using Minesweeper.Logic.Boards.Contracts;
-    using Minesweeper.Logic.CommandOperators.Contracts;
-    using Minesweeper.Logic.Common;
-    using Minesweeper.Logic.Common.BoardObserverContracts;
-    using Minesweeper.Logic.Players;
-    using Minesweeper.Logic.Players.Contracts;
-    using Minesweeper.Logic.Scoreboards.Contracts;
-    using Renderers;
-    using Renderers.Contracts;
+    using Logic.Boards.Contracts;
+    using Logic.CommandOperators.Contracts;
+    using Logic.Common;
+    using Logic.Engines.Contracts;
+    using Logic.InputProviders.Contracts;
+    using Logic.Players;
+    using Logic.Players.Contracts;
+    using Logic.Scoreboards.Contracts;
+    using Logic.Renderers.Contracts;
+    using Renderers.Common;
 
     public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine, IBoardObserver
     {
@@ -47,8 +45,8 @@
 
         private void StartGame()
         {
-            this.renderer.RenderBoard(this.board, GlobalConstants.BoardStartRenderRow, GlobalConstants.BoardStartRenderCol);
-            this.renderer.SetCursor(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
+            this.renderer.RenderBoard(this.board, RenderersConstants.BoardStartRenderRow, RenderersConstants.BoardStartRenderCol);
+            this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
 
             while (true)
             {
@@ -63,15 +61,15 @@
                 else if (this.currentGameStateChange.State == BoardState.Pending)
                 {
                     this.renderer.RenderLine(this.currentGameStateChange.Message);
-                    this.renderer.SetCursor(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
+                    this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                     this.renderer.ClearCurrentLine();
                     continue;
                 }
                 else if (this.currentGameStateChange.State == BoardState.Open)
                 {
                     this.currentPlayer.Score += 10;
-                    this.renderer.RenderBoard(this.board, GlobalConstants.BoardStartRenderRow, GlobalConstants.BoardStartRenderCol);
-                    this.renderer.SetCursor(GlobalConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
+                    this.renderer.RenderBoard(this.board, RenderersConstants.BoardStartRenderRow, RenderersConstants.BoardStartRenderCol);
+                    this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                 }
 
                 this.renderer.ClearCurrentLine();

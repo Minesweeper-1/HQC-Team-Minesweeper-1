@@ -2,7 +2,7 @@
 {
     using System.Linq;
 
-    using Boards;
+    using Boards.Settings.Contracts;
     using Common.Utils;
     using Contracts;
 

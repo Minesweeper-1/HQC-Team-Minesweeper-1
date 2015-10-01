@@ -1,15 +1,16 @@
-﻿namespace Minesweeper.UI.Renderers
+﻿namespace Minesweeper.UI.Console.Renderers
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using static System.Console;
 
-    using Contracts;
     using Logic.Boards.Contracts;
     using Logic.Cells.Contracts;
     using Logic.Common;
     using Logic.DifficultyCommands.Contracts;
+    using Logic.Renderers.Contracts;
+    using Renderers.Common;
 
     public class ConsoleRenderer : IRenderer
     {
@@ -19,8 +20,8 @@
             Title = "Minesweeper";
 
             // TODO: Refactor so that it depends on the level
-            SetWindowSize(GlobalConstants.ConsoleWidth, GlobalConstants.ConsoleHeight);
-            SetBufferSize(GlobalConstants.ConsoleWidth, GlobalConstants.ConsoleHeight);
+            SetWindowSize(RenderersConstants.ConsoleWidth, RenderersConstants.ConsoleHeight);
+            SetBufferSize(RenderersConstants.ConsoleWidth, RenderersConstants.ConsoleHeight);
         }
 
         public void Render(string line) => Write(line);
@@ -49,9 +50,9 @@
             this.SetForegroundColor(ConsoleColor.White);
 
             // Fill the whole next 3 lines
-            this.Render(new string(' ', GlobalConstants.ConsoleWidth));
-            this.Render(new string(' ', GlobalConstants.ConsoleWidth));
-            this.Render(new string(' ', GlobalConstants.ConsoleWidth));
+            this.Render(new string(' ', RenderersConstants.ConsoleWidth));
+            this.Render(new string(' ', RenderersConstants.ConsoleWidth));
+            this.Render(new string(' ', RenderersConstants.ConsoleWidth));
 
             // Set the cursor back at the beginning of the second line
             var cursor = this.GetCursor();
@@ -87,7 +88,7 @@
             this.ResetBackgroundColor();
             this.ResetForegroundColor();
 
-            int linesCountBeforeFirstMenuItem = GlobalConstants.MenuTitleRowsCount;
+            int linesCountBeforeFirstMenuItem = RenderersConstants.MenuTitleRowsCount;
             var cursorRow = row + linesCountBeforeFirstMenuItem;
 
             CursorVisible = false;
@@ -96,14 +97,14 @@
             foreach (var item in menuItems)
             {
                 this.SetCursor(cursorRow++, col);
-                this.RenderLine(GlobalConstants.SelectionPrefix + item.Value);
+                this.RenderLine(RenderersConstants.SelectionPrefix + item.Value);
             }
 
             var cursorPosition = this.GetCursor();
 
             // Set default menu item selection
             this.SetCursor(row + linesCountBeforeFirstMenuItem, col);
-            this.Render(GlobalConstants.SelectionChar);
+            this.Render(RenderersConstants.SelectionChar);
 
             // Reset cursor position
             this.SetCursor(cursorPosition[0], cursorPosition[1]);
@@ -114,7 +115,7 @@
         private void RenderMenuTitle(int row, int col)
         {
             this.SetCursor(row, col);
-            foreach (var line in GlobalConstants.MenuTitle)
+            foreach (var line in RenderersConstants.MenuTitle)
             {
                 this.SetCursor(row++, col);
                 this.RenderLine(line);
@@ -129,7 +130,7 @@
             switch (cellState)
             {
                 case CellState.Sealed:
-                    cellCharAsString = GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString();
+                    cellCharAsString = RenderersConstants.StandardUnrevealedBoardCellCharacter.ToString();
                     break;
                 case CellState.Revealed:
                     cellCharAsString = cell.Content.Value.ToString(CultureInfo.InvariantCulture);
@@ -153,17 +154,17 @@
 
         private void RenderTopBar(IBoard board, int row, int col)
         {
-            string topBarCols = GlobalConstants.GameCellsDivider;
-            string topBarSeparators = GlobalConstants.GameCellsDivider;
+            string topBarCols = RenderersConstants.GameCellsDivider;
+            string topBarSeparators = RenderersConstants.GameCellsDivider;
             for (int boardCol = 0; boardCol < board.Cols; boardCol++)
             {
-                topBarCols += boardCol + GlobalConstants.GameCellsDivider;
-                topBarSeparators += GlobalConstants.ColsRenderingDivider;
+                topBarCols += boardCol + RenderersConstants.GameCellsDivider;
+                topBarSeparators += RenderersConstants.ColsRenderingDivider;
             }
 
-            this.SetCursor(row - GlobalConstants.TopBarColsOffset, col + GlobalConstants.LeftSidebarWidth);
+            this.SetCursor(row - RenderersConstants.TopBarColsOffset, col + RenderersConstants.LeftSidebarWidth);
             this.Render(topBarCols);
-            this.SetCursor(row - GlobalConstants.TopBarSeparatorsOffset, col + GlobalConstants.LeftSidebarWidth);
+            this.SetCursor(row - RenderersConstants.TopBarSeparatorsOffset, col + RenderersConstants.LeftSidebarWidth);
             this.Render(topBarSeparators);
         }
 
@@ -171,7 +172,7 @@
         {
             for (int boardRow = 0; boardRow < board.Rows; boardRow++)
             {
-                this.SetCursor(row + boardRow, col + GlobalConstants.LeftSidebarWidth);
+                this.SetCursor(row + boardRow, col + RenderersConstants.LeftSidebarWidth);
                 for (int boardCol = 0; boardCol < board.Cols; boardCol++)
                 {
                     string charToRenderAsString = this.GetCellCharAsString(board.Cells[boardRow, boardCol]);
@@ -186,7 +187,7 @@
 
         private void SetCorrespondingForegroundColor(string charToRenderAsString)
         {
-            if (charToRenderAsString == GlobalConstants.StandardUnrevealedBoardCellCharacter.ToString())
+            if (charToRenderAsString == RenderersConstants.StandardUnrevealedBoardCellCharacter.ToString())
             {
                 this.SetForegroundColor(ConsoleColor.DarkCyan);
             }

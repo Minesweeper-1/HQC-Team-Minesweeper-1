@@ -1,6 +1,6 @@
-﻿namespace Minesweeper.UI.MenuHandlers.Contracts
+﻿namespace Minesweeper.UI.Console.MenuHandlers.Contracts
 {
-    using Logic.Boards;
+    using Logic.Boards.Settings.Contracts;
 
     public interface IMenuHandler
     {

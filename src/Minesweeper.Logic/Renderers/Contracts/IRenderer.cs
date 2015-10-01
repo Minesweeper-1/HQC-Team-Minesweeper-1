@@ -1,10 +1,10 @@
-﻿namespace Minesweeper.UI.Renderers.Contracts
+﻿namespace Minesweeper.Logic.Renderers.Contracts
 {
     using System;
     using System.Collections.Generic;
 
-    using Minesweeper.Logic.Boards.Contracts;
-    using Minesweeper.Logic.DifficultyCommands.Contracts;
+    using Boards.Contracts;
+    using DifficultyCommands.Contracts;
 
     public interface IRenderer
     {

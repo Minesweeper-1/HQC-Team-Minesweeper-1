@@ -1,4 +1,4 @@
-﻿namespace Minesweeper.Logic.Boards
+﻿namespace Minesweeper.Logic.Boards.Settings.Contracts
 {
     using Minesweeper.Logic.Common;
 

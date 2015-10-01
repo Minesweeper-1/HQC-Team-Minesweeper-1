@@ -57,10 +57,10 @@
     <Compile Include="Alternative\Game.cs" />
     <Compile Include="Alternative\GameEngine.cs" />
     <Compile Include="Alternative\GameLoop.cs" />
-    <Compile Include="Boards\BoardSettings.cs" />
-    <Compile Include="Boards\EasyBoardSettings.cs" />
-    <Compile Include="Boards\HardBoardSettings.cs" />
-    <Compile Include="Boards\NormalBoardSettings.cs" />
+    <Compile Include="Boards\Settings\Contracts\BoardSettings.cs" />
+    <Compile Include="Boards\Settings\EasyBoardSettings.cs" />
+    <Compile Include="Boards\Settings\HardBoardSettings.cs" />
+    <Compile Include="Boards\Settings\NormalBoardSettings.cs" />
     <Compile Include="Cells\CellContext.cs" />
     <Compile Include="CommandOperators\CommandOperator.cs" />
     <Compile Include="CommandOperators\Common\Contracts\IBoardCommand.cs" />
@@ -76,8 +76,8 @@
     <Compile Include="CommandOperators\Common\ShowScoreboardCommand.cs" />
     <Compile Include="CommandOperators\Contracts\ICommandOperator.cs" />
     <Compile Include="Boards\Contracts\IBoard.cs" />
-    <Compile Include="Common\BoardObserversContracts\IBoardObserver.cs" />
-    <Compile Include="Common\BoardObserversContracts\IBoardSubject.cs" />
+    <Compile Include="Boards\Contracts\IBoardObserver.cs" />
+    <Compile Include="Boards\Contracts\IBoardSubject.cs" />
     <Compile Include="Cells\Cell.cs" />
     <Compile Include="Common\CellState.cs" />
     <Compile Include="Common\ContentType.cs" />
@@ -103,6 +103,7 @@
     <Compile Include="DifficultyCommands\Contracts\IGameMode.cs" />
     <Compile Include="DifficultyCommands\ExpertMode.cs" />
     <Compile Include="DifficultyCommands\IntermediateMode.cs" />
+    <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
     <Compile Include="Players\Contracts\IPlayer.cs" />
     <Compile Include="Boards\Board.cs" />
     <Compile Include="Players\Player.cs" />

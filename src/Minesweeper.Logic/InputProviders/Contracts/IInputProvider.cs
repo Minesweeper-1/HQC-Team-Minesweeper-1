@@ -1,4 +1,4 @@
-﻿namespace Minesweeper.UI.Console.InputProviders.Contracts
+﻿namespace Minesweeper.Logic.InputProviders.Contracts
 {
     public interface IInputProvider
     {

@@ -1,6 +1,6 @@
-﻿namespace Minesweeper.UI.Console.Engine.Contracts
+﻿namespace Minesweeper.Logic.Engines.Contracts
 {
-    using Minesweeper.Logic.Boards.Contracts;
+    using Boards.Contracts;
 
     public interface IGameInitializationStrategy
     {

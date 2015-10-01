@@ -8,15 +8,16 @@
     using InputProviders;
     using MenuHandlers;
     using Logic.Boards;
+    using Logic.Boards.Contracts;
     using Logic.CommandOperators;
     using Logic.Common;
-    using Logic.Common.BoardObserverContracts;
     using Logic.Contents;
     using Logic.DifficultyCommands;
     using Logic.DifficultyCommands.Contracts;
     using Logic.Players;
     using Logic.Scoreboards;
     using Renderers;
+    using Renderers.Common;
 
     public class Game
     {
@@ -35,7 +36,7 @@
             var renderer = new ConsoleRenderer();
 
             // Render initial UI
-            renderer.RenderWelcomeScreen(string.Join(string.Empty, GlobalConstants.GameTitle));
+            renderer.RenderWelcomeScreen(string.Join(string.Empty, RenderersConstants.GameTitle));
             renderer.RenderNewPlayerCreationRequest();
 
             // Create the active player

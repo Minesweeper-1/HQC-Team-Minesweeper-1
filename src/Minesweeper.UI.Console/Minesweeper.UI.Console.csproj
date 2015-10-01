@@ -72,9 +72,7 @@
     <Compile Include="Engine\StandardOnePlayerMinesweeperEngine.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="InputProviders\ConsoleGameKey.cs" />
     <Compile Include="InputProviders\ConsoleInputProvider.cs" />
-    <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
     <Compile Include="MenuHandlers\ConsoleMenuHandler.cs" />
     <Compile Include="MenuHandlers\Contracts\IMenuHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

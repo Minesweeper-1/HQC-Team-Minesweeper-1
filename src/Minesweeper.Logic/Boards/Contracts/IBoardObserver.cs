@@ -1,4 +1,4 @@
-﻿namespace Minesweeper.Logic.Common.BoardObserverContracts
+﻿namespace Minesweeper.Logic.Boards.Contracts
 {
     using Common;
 

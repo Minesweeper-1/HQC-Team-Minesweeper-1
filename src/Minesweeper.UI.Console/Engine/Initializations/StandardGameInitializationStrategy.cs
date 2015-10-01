@@ -2,12 +2,12 @@
 {
     using System;
 
-    using Minesweeper.Logic.Boards.Contracts;
-    using Minesweeper.Logic.Cells;
-    using Minesweeper.Logic.Cells.Contracts;
-    using Minesweeper.Logic.Common;
-    using Minesweeper.Logic.Contents;
-    using Contracts;
+    using Logic.Boards.Contracts;
+    using Logic.Cells;
+    using Logic.Cells.Contracts;
+    using Logic.Common;
+    using Logic.Contents;
+    using Logic.Engines.Contracts;
 
     public class StandardGameInitializationStrategy : IGameInitializationStrategy
     {

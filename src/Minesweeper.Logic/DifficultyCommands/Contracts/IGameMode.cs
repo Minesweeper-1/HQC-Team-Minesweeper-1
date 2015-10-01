@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper.Logic.DifficultyCommands.Contracts
 {
-    using Boards;
+    using Boards.Settings.Contracts;
 
     public interface IGameMode
     {
