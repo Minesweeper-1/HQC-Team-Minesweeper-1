@@ -68,15 +68,7 @@
         public void SetCursor(int row, int col) => SetCursorPosition(col, row);
 
         public void SetCursor(bool visible) => CursorVisible = visible;
-
-        public void SetForegroundColor(Enum color) => ForegroundColor = (ConsoleColor)color;
-
-        public void SetBackgroundColor(Enum color) => BackgroundColor = (ConsoleColor)color;
-
-        public void ResetForegroundColor() => this.SetForegroundColor(ConsoleColor.White);
-
-        public void ResetBackgroundColor() => this.SetBackgroundColor(ConsoleColor.Black);
-
+        
         public void ClearScreen() => Clear();
 
         public void ClearCurrentLine()
@@ -116,6 +108,14 @@
 
         public int[] GetCursor() => new int[] { CursorTop, CursorLeft };
 
+        private void SetForegroundColor(Enum color) => ForegroundColor = (ConsoleColor)color;
+
+        private void SetBackgroundColor(Enum color) => BackgroundColor = (ConsoleColor)color;
+
+        private void ResetForegroundColor() => this.SetForegroundColor(ConsoleColor.White);
+
+        private void ResetBackgroundColor() => this.SetBackgroundColor(ConsoleColor.Black);
+
         private void RenderMenuTitle(int row, int col)
         {
             this.SetCursor(row, col);
@@ -151,18 +151,18 @@
             for (int boardRow = 0; boardRow < board.Rows; boardRow++)
             {
                 this.SetCursor(row + boardRow, col);
-                string sidebarRow = boardRow + " *";
+                string sidebarRow = boardRow.ToString().PadRight(2) + " *";
                 this.RenderLine(sidebarRow);
             }
         }
 
         private void RenderTopBar(IBoard board, int row, int col)
         {
-            string topBarCols = RenderersConstants.GameCellsDivider;
+            string topBarCols = " ";
             string topBarSeparators = RenderersConstants.GameCellsDivider;
             for (int boardCol = 0; boardCol < board.Cols; boardCol++)
             {
-                topBarCols += boardCol + RenderersConstants.GameCellsDivider;
+                topBarCols += boardCol.ToString().PadLeft(2) + " ";
                 topBarSeparators += RenderersConstants.ColsRenderingDivider;
             }
 

@@ -21,7 +21,7 @@
         private static readonly string scoreboardBasePath = System.Reflection.Assembly
             .GetExecutingAssembly().Location;
 
-        public static readonly string ScoreboardFilePath = scoreboardBasePath.Substring(0, scoreboardBasePath.IndexOf("Minesweeper.UI.Console")) + "Minesweeper.Logic\\Data\\leaders.msr";
+        public static readonly string ScoreboardFilePath = scoreboardBasePath.Substring(0, scoreboardBasePath.IndexOf("UI\\Minesweeper.UI.Console")) + "Minesweeper.Logic\\Data\\leaders.msr";
         
         public const char CommandParametersDivider = ' ';
     }
