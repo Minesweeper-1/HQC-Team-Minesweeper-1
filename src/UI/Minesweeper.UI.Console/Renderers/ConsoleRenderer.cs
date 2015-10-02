@@ -162,7 +162,7 @@
             string topBarSeparators = RenderersConstants.GameCellsDivider;
             for (int boardCol = 0; boardCol < board.Cols; boardCol++)
             {
-                topBarCols += boardCol.ToString().PadLeft(2) + " ";
+                topBarCols += RenderersConstants.IndexLetters[boardCol].ToString().PadLeft(2) + " ";
                 topBarSeparators += RenderersConstants.ColsRenderingDivider;
             }
 

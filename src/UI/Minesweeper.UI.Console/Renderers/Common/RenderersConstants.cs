@@ -4,7 +4,9 @@
     {
         public const int ConsoleHeight = 36;
         public const int ConsoleWidth = 121;
-        
+
+        public const string IndexLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         public const string ColsRenderingDivider = "*  ";
         public const string GameCellsDivider = "  ";
 

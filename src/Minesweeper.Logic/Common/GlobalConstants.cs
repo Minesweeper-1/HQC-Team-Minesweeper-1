@@ -17,7 +17,7 @@
         public const int ExpertLevelNumberOfBoardRows = 20;
         public const int ExpertLevelNumberOfBoardCols = 24;
         public const int ExpertLevelNumberOfBoardBombs = 99;
-        
+
         private static readonly string scoreboardBasePath = System.Reflection.Assembly
             .GetExecutingAssembly().Location;
 
