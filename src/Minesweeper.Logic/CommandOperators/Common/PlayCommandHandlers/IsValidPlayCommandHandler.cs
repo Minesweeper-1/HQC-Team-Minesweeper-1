@@ -1,5 +1,7 @@
 ﻿namespace Minesweeper.Logic.CommandOperators.Common.PlayCommandHandlers
 {
+    using System;
+
     using Boards.Contracts;
     using Contracts;
     using Logic.Common;
@@ -21,8 +23,7 @@
             else
             {
                 bool rowIsNumeric = int.TryParse(commandComponents[0], out row);
-                bool colIsNumeric = int.TryParse(commandComponents[1], out col);
-                
+                bool colIsNumeric = int.TryParse(("abcdefghijklmnopqrstuvwxyz".IndexOf(commandComponents[1]).ToString()), out col);
 
                 if (!(rowIsNumeric && colIsNumeric))
                 {
