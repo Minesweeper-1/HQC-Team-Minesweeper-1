@@ -8,18 +8,18 @@
     {
         private readonly CellContext context = new CellContext();
         
-        public Cell Content(IContent content)
+        public Cell SetContent(IContent content)
         {
             this.context.Content = content;
             return this;
         }
 
-        public Cell State(CellState state)
+        public Cell SetState(CellState state)
         {
             this.context.State = state;
             return this;
         }
 
-        public ICell Context() => this.context;
+        public ICell GetContext() => this.context;
     }
 }

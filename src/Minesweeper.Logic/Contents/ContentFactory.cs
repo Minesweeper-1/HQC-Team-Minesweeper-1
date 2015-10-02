@@ -5,7 +5,7 @@
 
     public class ContentFactory
     {
-        public virtual IContent GetContent(ContentType type)
+        public virtual IContent GetContent(ContentType type = ContentType.Empty)
         {
             if (type == ContentType.Bomb)
             {

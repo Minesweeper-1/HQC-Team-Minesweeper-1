@@ -32,9 +32,9 @@
                 for (int col = 0; col < board.Cols; col++)
                 {
                     board.Cells[row, col] = new Cell()
-                        .Content(this.contentFactory.GetContent(ContentType.Empty))
-                        .State(CellState.Sealed)
-                        .Context();
+                        .SetContent(this.contentFactory.GetContent(ContentType.Empty))
+                        .SetState(CellState.Sealed)
+                        .GetContext();
 
                     // For debugging purposes - reveals all cells' content at initialization
                     // board.Cells[row, col].State = CellState.Revealed;

@@ -8,14 +8,14 @@
         public Player()
         {
             this.Name = string.Empty;
-            this.Score = 0;
+            this.Score = default(int);
         }
 
         public Player(string name)
             : this()
         {
             this.Name = name;
-            this.Score = 0;
+            this.Score = default(int);
         }
 
         public string Name

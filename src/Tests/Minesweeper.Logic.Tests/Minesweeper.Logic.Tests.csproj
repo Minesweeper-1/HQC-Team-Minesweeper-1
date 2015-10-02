@@ -52,6 +52,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Cells\CellTests.cs" />
+    <Compile Include="Contents\ContentFactoryTests.cs" />
+    <Compile Include="Contents\BombTests.cs" />
+    <Compile Include="Contents\EmptyContentTests.cs" />
     <Compile Include="Players\PlayerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
