@@ -7,6 +7,7 @@
         // Needed for the parsing of objects from the deserialization for the scoreboard
         public Player()
         {
+            this.Name = string.Empty;
             this.Score = 0;
         }
 
