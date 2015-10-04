@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MineSweeper_WPF.CustomWPFElelements;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,17 +27,7 @@ namespace MinesweeperWpf
             CreateButtons(10, 10);
         }
 
-        private void Left(object sender, RoutedEventArgs e)
-        {
-            var target = (Button)sender;
-            target.Content = 1;
-        }
-
-        private void Right(object sender, RoutedEventArgs e)
-        {
-            var target = (Button)sender;
-            target.Content = 2;
-        }
+       
 
         private void CreateButtons(int x, int y)
         {
@@ -64,15 +55,13 @@ namespace MinesweeperWpf
             {
                 for (int j = 0; j < y; j++)
                 {
-                    var button = new Button();
+                    var button = new MineSweeperButton(j,i);
                     //button.Content = i * y + j;
                     button.Width = 30;
                     button.Height = 30;
-                    button.Click += Left;
-                    button.MouseRightButtonDown += Right;
+
                     grid.Children.Add(button);
-                    Grid.SetColumn(button, j);
-                    Grid.SetRow(button, i);
+
                 }
             }
          
