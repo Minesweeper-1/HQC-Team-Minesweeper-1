@@ -6,8 +6,27 @@
         xmlns:local="clr-namespace:MinesweeperWpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    
     <Grid x:Name="Main">
-        <DataGridRow></DataGridRow>
+        <Grid.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="MyBtn">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Border" 
+                      BorderThickness="1"
+                      Background="{TemplateBinding Background}"
+                      BorderBrush="{TemplateBinding BorderBrush}">
+                                <ContentPresenter Margin="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RecognizesAccessKey="True"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
     </Grid>
     
 </Window>

@@ -15,6 +15,11 @@ namespace MineSweeper_WPF.CustomWPFElelements
     {
         public int Row { get; private set; }
         public int Col { get; private set; }
+        
+        private int clickCount = 0;
+        private Uri currentUri;
+        private BitmapImage image;
+        private ImageBrush background;
 
         public MineSweeperButton(int col, int row)
         {
@@ -23,12 +28,16 @@ namespace MineSweeper_WPF.CustomWPFElelements
 
             this.Click += this.Left;
             this.MouseRightButtonDown += this.Right;
+            this.Background = null;
+
         }
         private void SetCol(int col)
         {
             Grid.SetColumn(this, col);
             this.Col = col;
         }
+
+       
 
         private void SetRow(int row)
         {
@@ -39,17 +48,41 @@ namespace MineSweeper_WPF.CustomWPFElelements
         private void Left(object sender, RoutedEventArgs e)
         {
             var target = (MineSweeperButton)sender;
+            target.Content = 2;
 
-            var uri = new Uri("../../../Resources/flag.png", UriKind.Relative);
-            var flag = new BitmapImage(uri);
-            var bg = new ImageBrush(flag);
-            target.Background = bg;
+
+        }
+
+        private void SetAlpha(object sender, RoutedEventArgs e)
+        {
+            this.Style = (Style)Application.Current.Resources["WindowButtons"];
         }
 
         private void Right(object sender, RoutedEventArgs e)
         {
             var target = (MineSweeperButton)sender;
-            target.Content = 2;
+            switch (clickCount)
+            {
+                case 0:
+                    this.currentUri = new Uri("../../../Resources/flag.png", UriKind.Relative);
+                    this.image = new BitmapImage(currentUri);
+                    this.background = new ImageBrush(image);
+                    target.Background = background;
+                    this.clickCount++;
+                    break;
+                case 1:
+                    this.currentUri = new Uri("../../../Resources/bomb.png", UriKind.Relative);
+                    this.image = new BitmapImage(currentUri);
+                    this.background = new ImageBrush(image);
+                    target.Background=null;
+                    this.clickCount++;
+                    break;
+                default:
+                    target.Background = null;
+                    this.clickCount = 0;
+                    break;
+            }
+           
         }
     }
 }
