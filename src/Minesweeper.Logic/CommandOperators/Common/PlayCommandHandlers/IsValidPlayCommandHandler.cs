@@ -23,7 +23,7 @@
             else
             {
                 bool rowIsNumeric = int.TryParse(commandComponents[0], out row);
-                bool colIsNumeric = int.TryParse(("abcdefghijklmnopqrstuvwxyz".IndexOf(commandComponents[1]).ToString()), out col);
+                bool colIsNumeric = int.TryParse(commandComponents[1], out col);
 
                 if (!(rowIsNumeric && colIsNumeric))
                 {

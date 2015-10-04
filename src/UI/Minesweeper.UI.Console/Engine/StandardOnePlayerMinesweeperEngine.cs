@@ -1,5 +1,7 @@
 ﻿namespace Minesweeper.UI.Console.Engine
 {
+    using System;
+
     using InputProviders.Contracts;
     using Logic.Boards.Contracts;
     using Logic.CommandOperators.Contracts;
@@ -51,7 +53,9 @@
             while (true)
             {
                 string command = this.inputProvider.ReceiveInputLine();
-                this.commandOperator.Execute(command);
+                string[] commandParts = command.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                commandParts[1] = RenderersConstants.IndexLetters.ToLowerInvariant().IndexOf(commandParts[1].ToLowerInvariant(), StringComparison.InvariantCulture).ToString();
+                this.commandOperator.Execute(string.Join(" ", commandParts));
 
                 if (this.currentGameStateChange.State == BoardState.Closed)
                 {
