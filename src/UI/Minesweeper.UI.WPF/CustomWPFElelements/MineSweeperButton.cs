@@ -28,7 +28,8 @@ namespace MineSweeper_WPF.CustomWPFElelements
 
             this.Click += this.Left;
             this.MouseRightButtonDown += this.Right;
-            this.Background = null;
+            this.GotMouseCapture += SetAlpha;
+
 
         }
         private void SetCol(int col)
@@ -74,7 +75,8 @@ namespace MineSweeper_WPF.CustomWPFElelements
                     this.currentUri = new Uri("../../../Resources/bomb.png", UriKind.Relative);
                     this.image = new BitmapImage(currentUri);
                     this.background = new ImageBrush(image);
-                    target.Background=null;
+                    //target.Background=null;
+                    target.Background = background;
                     this.clickCount++;
                     break;
                 default:
