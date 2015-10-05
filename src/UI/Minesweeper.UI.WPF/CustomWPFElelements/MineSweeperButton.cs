@@ -30,6 +30,8 @@ namespace MineSweeper_WPF.CustomWPFElelements
             this.MouseRightButtonDown += this.Right;
             this.GotMouseCapture += SetAlpha;
 
+            var s = this.Triggers;
+
 
         }
         private void SetCol(int col)
