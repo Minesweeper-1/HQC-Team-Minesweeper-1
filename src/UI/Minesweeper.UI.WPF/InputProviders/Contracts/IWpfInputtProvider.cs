@@ -1,11 +1,9 @@
-﻿namespace Minesweeper.UI.Console.InputProviders.Contracts
+﻿namespace MineSweeper_WPF.Renderers
 {
-    using Logic.InputProviders.Contracts;
+    using Minesweeper.Logic.InputProviders.Contracts;
 
-    public interface IConsoleInputProvider : IInputProvider
+    public interface IWpfInputtProvider : IInputProvider
     {
-        bool IsKeyAvailable { get; }
-
-        int GetKeyChar(bool justABool);
+      
     }
 }

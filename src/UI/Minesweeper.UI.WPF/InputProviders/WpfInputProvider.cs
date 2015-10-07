@@ -1,15 +1,14 @@
-﻿namespace Minesweeper.UI.Console.InputProviders
+﻿namespace MineSweeper_WPF.Renderers
 {
-    using static System.Console;
 
     using Contracts;
+    using System;
 
-    public class ConsoleInputProvider : IConsoleInputProvider
+    public class WpfInputtProvider : IWpfInputtProvider
     {
-        public string ReceiveInputLine() => ReadLine();
-
-        public bool IsKeyAvailable { get; } = KeyAvailable;
-
-        public int GetKeyChar(bool justABool) => (int)ReadKey(true).Key;
+        public string ReceiveInputLine()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
