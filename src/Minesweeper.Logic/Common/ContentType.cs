@@ -2,7 +2,7 @@
 {
     public enum ContentType
     {
-        Empty,
-        Bomb
+        Empty = 0,
+        Bomb = 1
     }
 }

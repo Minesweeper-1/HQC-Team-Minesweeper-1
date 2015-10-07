@@ -100,6 +100,7 @@
     <Compile Include="Common\CellState.cs" />
     <Compile Include="Common\ContentType.cs" />
     <Compile Include="Cells\Contracts\ICell.cs" />
+    <Compile Include="Common\Coordinate.cs" />
     <Compile Include="Common\Notification.cs" />
     <Compile Include="Common\Utils\StringExtensions.cs" />
     <Compile Include="Contents\Bomb.cs" />
