@@ -2,6 +2,9 @@
 {
     using Common;
 
+    /// <summary>
+    /// Interface defining content type and value
+    /// </summary>
     public interface IContent
     {
         ContentType ContentType

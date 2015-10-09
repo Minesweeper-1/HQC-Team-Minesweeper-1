@@ -1,6 +1,8 @@
 ﻿namespace Minesweeper.Logic.Common
 {
-
+    /// <summary>
+    /// A class containing the global constants for the application
+    /// </summary>
     public static class GlobalConstants
     {
         public const int MatrixRowsDimensionIndex = 0;

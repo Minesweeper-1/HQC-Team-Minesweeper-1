@@ -1,5 +1,8 @@
 ﻿namespace Minesweeper.Logic.Common
 {
+    /// <summary>
+    /// The class dealing with the notification initialization
+    /// </summary>
     public class Notification
     {
         public Notification(string message, BoardState state)
