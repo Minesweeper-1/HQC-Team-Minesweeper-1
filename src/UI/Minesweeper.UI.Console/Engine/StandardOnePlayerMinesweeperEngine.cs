@@ -84,6 +84,9 @@
                 }
                 else if (this.currentGameStateChange.State == BoardState.Pending)
                 {
+                    this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 2, col: 0);
+                    this.renderer.ClearCurrentLine();
+                    this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 2, col: 0);
                     this.renderer.RenderLine(this.currentGameStateChange.Message);
                     this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                     this.renderer.ClearCurrentLine();
