@@ -95,6 +95,7 @@
                 else if (this.currentGameStateChange.State == BoardState.Open)
                 {
                     this.currentPlayer.Score += 10;
+                    this.renderer.ClearScreen();
                     this.renderer.RenderBoard(this.board, RenderersConstants.BoardStartRenderRow, RenderersConstants.BoardStartRenderCol);
                     this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                 }

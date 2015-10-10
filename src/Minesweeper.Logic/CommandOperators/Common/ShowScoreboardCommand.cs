@@ -42,7 +42,7 @@
 
             // Render players and scores in a user-friendly manner
             // TODO: Extract as a method in the IRenderer interface
-            var message = string.Empty;
+            string message = "\n";
             message += "===============\n";
             message += "  SCOREBOARD  \n";
             message += "===============\n";
