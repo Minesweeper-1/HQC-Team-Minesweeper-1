@@ -1,7 +1,5 @@
 ﻿namespace Minesweeper.UI.Console.Engine
 {
-    using System;
-
     using InputProviders.Contracts;
     using Logic.Boards.Contracts;
     using Logic.CommandOperators.Contracts;
@@ -22,6 +20,7 @@
         private readonly IConsoleRenderer renderer;
         private readonly IPlayer currentPlayer;
         private Notification currentGameStateChange;
+        private IGameInitializationStrategy initializationStrategy;
 
         /// <summary>
         /// Construct game Engine
@@ -47,26 +46,16 @@
         /// Use game initialization strategy
         /// </summary>
         /// <param name="initializationStrategy"></param>
-        public void Initialize(IGameInitializationStrategy initializationStrategy) =>
-            initializationStrategy.Initialize(this.board);
+        public void Initialize(IGameInitializationStrategy initializationStrategy)
+        {
+            this.initializationStrategy = initializationStrategy;
+            this.initializationStrategy.Initialize(this.board);
+        }
 
         /// <summary>
         /// Start game
         /// </summary>
         public void Run()
-        {
-            this.StartGame();
-        }
-
-        /// <summary>
-        /// Updates upon notification
-        /// </summary>
-        /// <param name="newGameState"></param>
-        public void Update(Notification newGameState) =>
-            this.currentGameStateChange = newGameState;
-
-
-        private void StartGame()
         {
             this.renderer.RenderBoard(this.board, RenderersConstants.BoardStartRenderRow, RenderersConstants.BoardStartRenderCol);
             this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
@@ -99,10 +88,26 @@
                     this.renderer.RenderBoard(this.board, RenderersConstants.BoardStartRenderRow, RenderersConstants.BoardStartRenderCol);
                     this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                 }
+                else if(this.currentGameStateChange.State == BoardState.Reset)
+                {
+                    this.currentPlayer.Score = 0;
+                    this.initializationStrategy.Initialize(this.board);
+                    this.board.ChangeBoardState(new Notification(string.Empty, BoardState.Open));
+                    this.renderer.ClearScreen();
+                    this.renderer.RenderBoard(this.board, RenderersConstants.BoardStartRenderRow, RenderersConstants.BoardStartRenderCol);
+                    this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
+                }
 
                 this.renderer.ClearCurrentLine();
             }
         }
+
+        /// <summary>
+        /// Updates upon notification
+        /// </summary>
+        /// <param name="newGameState"></param>
+        public void Update(Notification newGameState) =>
+            this.currentGameStateChange = newGameState;
 
         private void SavePlayerScore(IPlayer player) =>
             this.scoreboard.RegisterNewPlayerScore(player);
