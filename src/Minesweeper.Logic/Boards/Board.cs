@@ -19,10 +19,7 @@
         /// <param name="subscribers">The list of subscribers of the board</param>
         public Board(BoardSettings settings, List<IBoardObserver> subscribers)
         {
-            this.InitializeBoard(
-                settings.Rows, 
-                settings.Cols,
-                settings.NumberOfBombs);
+            this.InitializeBoard(settings.Rows, settings.Cols, settings.NumberOfBombs);
             this.Subscribers = subscribers;
         }
 

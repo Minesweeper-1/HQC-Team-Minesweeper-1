@@ -56,7 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Boards\BoardSettingsTests.cs" />
+    <Compile Include="Boards\Settings\BoardSettingsTests.cs" />
     <Compile Include="Boards\BoardTests.cs" />
     <Compile Include="Cells\CellTests.cs" />
     <Compile Include="Contents\ContentFactoryTests.cs" />
