@@ -9,6 +9,9 @@
     using Logic.Contents;
     using Logic.Engines.Contracts;
 
+    /// <summary>
+    /// InitializationStrategy
+    /// </summary>
     public class StandardGameInitializationStrategy : IGameInitializationStrategy
     {
         private readonly ContentFactory contentFactory;

@@ -23,6 +23,15 @@
         private readonly IPlayer currentPlayer;
         private Notification currentGameStateChange;
 
+        /// <summary>
+        /// Construct game Engine
+        /// </summary>
+        /// <param name="board">IBoard Object</param>
+        /// <param name="inputProvider">Console input provider</param>
+        /// <param name="renderer">Console renderer</param>
+        /// <param name="commandOperator">Coomand interpreter</param>
+        /// <param name="scoreboard">Score board</param>
+        /// <param name="player">player </param>
         public StandardOnePlayerMinesweeperEngine(IBoard board, IConsoleInputProvider inputProvider, IConsoleRenderer renderer, ICommandOperator commandOperator, IScoreboard scoreboard, Player player)
         {
             this.board = board;
@@ -34,16 +43,28 @@
             this.currentGameStateChange = new Notification(string.Empty, this.board.BoardState);
         }
 
+        /// <summary>
+        /// Use game initialization strategy
+        /// </summary>
+        /// <param name="initializationStrategy"></param>
         public void Initialize(IGameInitializationStrategy initializationStrategy) =>
             initializationStrategy.Initialize(this.board);
 
+        /// <summary>
+        /// Start game
+        /// </summary>
         public void Run()
         {
             this.StartGame();
         }
 
+        /// <summary>
+        /// Updates upon notification
+        /// </summary>
+        /// <param name="newGameState"></param>
         public void Update(Notification newGameState) =>
             this.currentGameStateChange = newGameState;
+
 
         private void StartGame()
         {
