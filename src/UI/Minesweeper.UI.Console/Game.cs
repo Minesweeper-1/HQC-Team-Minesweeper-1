@@ -19,6 +19,9 @@
     using Renderers;
     using Renderers.Common;
 
+    /// <summary>
+    /// Lazy load for game
+    /// </summary>
     public class Game
     {
         private static readonly Lazy<Game> instance = new Lazy<Game>(() => new Game());
@@ -29,6 +32,9 @@
 
         public static Game Instance => instance.Value;
 
+        /// <summary>
+        /// Start Game
+        /// </summary>
         public void Start()
         {
             // Initialize the two basic objects needed for user interactions
