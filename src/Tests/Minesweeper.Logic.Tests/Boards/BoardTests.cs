@@ -1,18 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace Minesweeper.Logic.Tests.Boards
+﻿namespace Minesweeper.Logic.Tests.Boards
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
     using System.Collections.Generic;
 
-    using Common;
     using Logic.Boards;
     using Logic.Boards.Contracts;
     using Logic.Boards.Settings.Contracts;
-    using Logic.Cells.Contracts;
-    using Moq;
     using Logic.Cells;
+    using Logic.Cells.Contracts;
+    using Logic.Common;
     using Logic.Contents;
+    using Moq;
 
     [TestClass]
     public class BoardTests

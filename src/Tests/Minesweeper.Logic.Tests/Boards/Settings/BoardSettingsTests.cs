@@ -1,6 +1,7 @@
 ﻿namespace Minesweeper.Logic.Tests.Boards.Settings
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     using Logic.Boards.Settings.Contracts;
 
     [TestClass]
