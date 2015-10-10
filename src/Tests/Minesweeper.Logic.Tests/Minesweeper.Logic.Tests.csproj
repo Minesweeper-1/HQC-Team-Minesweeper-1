@@ -60,6 +60,8 @@
     <Compile Include="Boards\BoardTests.cs" />
     <Compile Include="Cells\CellTests.cs" />
     <Compile Include="CommandOperators\CommandOperatorTests.cs" />
+    <Compile Include="CommandOperators\Common\PlayCommandHandlers\IsAlreadyShownHandlerTests.cs" />
+    <Compile Include="CommandOperators\Common\PlayCommandHandlers\IsValidPlayCommandHandlerTests.cs" />
     <Compile Include="Common\CoordinateTests.cs" />
     <Compile Include="Common\NotificationTests.cs" />
     <Compile Include="Common\Utils\StringExtensionsTests.cs" />
@@ -70,6 +72,9 @@
     <Compile Include="DataManagers\FileWriterTests.cs" />
     <Compile Include="DataManagers\JsonManagerTests.cs" />
     <Compile Include="DataManagers\NetStringEncryptionManagerTests.cs" />
+    <Compile Include="DifficultyCommands\BeginnerModeTests.cs" />
+    <Compile Include="DifficultyCommands\ExpertModeTests.cs" />
+    <Compile Include="DifficultyCommands\IntermediateModeTests.cs" />
     <Compile Include="Players\PlayerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +91,7 @@
     <Content Include="DataManagers\answer-to-the-universe.txt" />
     <Content Include="DataManagers\top-secret.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
