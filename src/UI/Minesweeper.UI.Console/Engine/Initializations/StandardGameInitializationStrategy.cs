@@ -13,11 +13,19 @@
     {
         private readonly ContentFactory contentFactory;
 
+        /// <summary>
+        /// Creat content factory
+        /// </summary>
+        /// <param name="contentFactory"></param>
         public StandardGameInitializationStrategy(ContentFactory contentFactory)
         {
             this.contentFactory = contentFactory;
         }
 
+        /// <summary>
+        /// Generate Board
+        /// </summary>
+        /// <param name="board">IBoard object</param>
         public void Initialize(IBoard board)
         {
             this.CreateEmptyBoard(board);
@@ -25,6 +33,10 @@
             this.SetEmptyCellsValues(board);
         }
 
+        /// <summary>
+        /// Creat empty board
+        /// </summary>
+        /// <param name="board">IBoard object</param>
         private void CreateEmptyBoard(IBoard board)
         {
             for (var row = 0; row < board.Rows; row++)
@@ -42,6 +54,10 @@
             }
         }
 
+        /// <summary>
+        /// Calculate Numbers
+        /// </summary>
+        /// <param name="board">IBoard object</param>
         private void SetEmptyCellsValues(IBoard board)
         {
             ICell[,] boardCells = board.Cells;
@@ -58,6 +74,10 @@
             }
         }
 
+        /// <summary>
+        /// Position Bombs
+        /// </summary>
+        /// <param name="board">IBoard object</param>
         private void PlantBombs(IBoard board)
         {
             var randomGenerator = new Random();
