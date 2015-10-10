@@ -1,5 +1,8 @@
 ﻿namespace Minesweeper.Logic.Common
 {
+    /// <summary>
+    /// A class containing the global messages for the application as string constants
+    /// </summary>
     public static class GlobalMessages
     {
         public const string InvalidCommand = "Invalid command";

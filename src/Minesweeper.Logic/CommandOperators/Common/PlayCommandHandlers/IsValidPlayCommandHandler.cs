@@ -6,10 +6,18 @@
     using Contracts;
     using Logic.Common;
 
+    /// <summary>
+    /// A class that checks the validity of the command
+    /// </summary>
     public class IsValidPlayCommandHandler : PlayCommandHandler
     {
         private readonly ICollection<Coordinate> visited = new List<Coordinate>();
 
+        /// <summary>
+        /// A method that checks whether the command is valid and deals with it or calls its successor to handle the request
+        /// </summary>
+        /// <param name="command">String with the incoming command</param>
+        /// <param name="board">The current playing board</param>
         public override void HandleRequest(string command, IBoard board)
         {
             bool isInvalid = false;

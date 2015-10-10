@@ -4,6 +4,9 @@
 
     public class NormalBoardSettings : BoardSettings
     {
+        /// <summary>
+        /// The class containing the board settings for a normal game
+        /// </summary>
         public NormalBoardSettings()
             : base(
                   GlobalConstants.IntermediateLevelNumberOfBoardRows,

@@ -3,8 +3,14 @@
     using Common;
     using Contracts;
 
+    /// <summary>
+    /// A class implementing the IContent interface when the content is a bomb
+    /// </summary>
     public class Bomb : IContent
     {
+        /// <summary>
+        /// Bomb constructor
+        /// </summary>
         public Bomb()
         {
             this.ContentType = ContentType.Bomb;

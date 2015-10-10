@@ -3,6 +3,9 @@
     using Boards.Contracts;
     using Contracts;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class RestartCommand : IBoardCommand
     {
         private readonly IBoard board;
