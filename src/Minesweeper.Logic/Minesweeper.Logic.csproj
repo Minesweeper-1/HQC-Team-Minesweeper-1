@@ -76,9 +76,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alternative\Game.cs" />
-    <Compile Include="Alternative\GameEngine.cs" />
-    <Compile Include="Alternative\GameLoop.cs" />
     <Compile Include="Boards\Settings\Contracts\BoardSettings.cs" />
     <Compile Include="Boards\Settings\EasyBoardSettings.cs" />
     <Compile Include="Boards\Settings\HardBoardSettings.cs" />
