@@ -59,6 +59,7 @@
     <Compile Include="Boards\Settings\BoardSettingsTests.cs" />
     <Compile Include="Boards\BoardTests.cs" />
     <Compile Include="Cells\CellTests.cs" />
+    <Compile Include="CommandOperators\CommandOperatorTests.cs" />
     <Compile Include="Common\CoordinateTests.cs" />
     <Compile Include="Common\NotificationTests.cs" />
     <Compile Include="Common\Utils\StringExtensionsTests.cs" />
