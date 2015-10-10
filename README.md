@@ -5,8 +5,8 @@ in the Telerik Academy High-Quality Code Course 2015
 
 ------------------------------------------------------
 1. Redesigned the project structure: Team "Minesweeper-1"
-	- Created a project Minesweeper.Logic;
-	- Created a namespace UI:
+	- Created a project `Minesweeper.Logic`;
+	- Created a namespace `UI`:
 		- Created a project Minesweeper.UI.Console;
 		- Created a project Minesweeper.UI.WPF;
 	- Renamed the namespace `Mini` to `Minesweeper.Logic`
@@ -34,7 +34,11 @@ in the Telerik Academy High-Quality Code Course 2015
 	- Removed all inadequate comments
 	- Removed all bad statics from the classes
 	- Abstracted as much as possible all class references
-	- Separated the class logic in accordance with SRP
+	- Separated the class logic in accordance with Single Responsibility Principle
+	- All classes now conform to the Open/Closed Principle
+	- Inheritance chains conform to the Liskov Substitution Principle
+	- All interfaces conform to the Interface Segregation Principle
+	- Applied Dependency Inversion to the complex classes which have more or less a lot of class dependencies
 
 3. Implemented the following patterns:
    - **Creational**: 
