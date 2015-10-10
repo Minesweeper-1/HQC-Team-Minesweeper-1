@@ -74,9 +74,8 @@
             while (true)
             {
                 string command = this.inputProvider.ReceiveInputLine();
-                string[] commandParts = command.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                commandParts[1] = RenderersConstants.IndexLetters.ToLowerInvariant().IndexOf(commandParts[1].ToLowerInvariant(), StringComparison.InvariantCulture).ToString();
-                this.commandOperator.Execute(string.Join(" ", commandParts));
+                string adaptedCommand = this.inputProvider.TransformCommandToNumbersOnly(command);
+                this.commandOperator.Execute(adaptedCommand);
 
                 if (this.currentGameStateChange.State == BoardState.Closed)
                 {

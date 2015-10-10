@@ -15,5 +15,12 @@
         /// <param name="justABool"></param>
         /// <returns>Char int code</returns>
         int GetKeyChar(bool justABool);
+
+        /// <summary>
+        /// Transforms the command input from (int char) to (int int)
+        /// </summary>
+        /// <param name="initialCommandInput">(int char) command to transform</param>
+        /// <returns>Command of type (int int)</returns>
+        string TransformCommandToNumbersOnly(string initialCommandInput);
     }
 }

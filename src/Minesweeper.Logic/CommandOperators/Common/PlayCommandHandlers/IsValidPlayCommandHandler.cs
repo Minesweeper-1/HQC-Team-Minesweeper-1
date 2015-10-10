@@ -47,30 +47,11 @@
             }
             else if (this.Successor != null)
             {
-                //Console.WriteLine(board.Cells[row, col].Content.Value);
-                //IList<Coordinate> neighbours = new List<Coordinate>();
-                //neighbours.Add(new Coordinate(0, 1));
-                //neighbours.Add(new Coordinate(1, 0));
-                //neighbours.Add(new Coordinate(1, 1));
-                //neighbours.Add(new Coordinate(0, -1));
-                //neighbours.Add(new Coordinate(-1, 0));
-                //neighbours.Add(new Coordinate(1, -1));
-                //neighbours.Add(new Coordinate(-1, 1));
-                //neighbours.Add(new Coordinate(-1, -1));
-
-                if (board.Cells[row, col].Content.Value == 0)
+                if (board.IsInsideBoard(row, col) && board.Cells[row, col].Content.Value == 0)
                 {
-                    //foreach (var neighbour in neighbours)
-                    //{
-                    //    var curRow = row + neighbour.Row;
-                    //    var curCol = col + neighbour.Col;
-                    //    // Console.WriteLine($"{curRow} {curCol}");
-                    //    // var newCommand = curRow + " " + curCol;
-                    //    this.Successor.HandleRequest(curRow, curCol, board);
-                    //}
                     this.Accumulate(row, col, board);
 
-                    // Reset list for next command???
+                    // Reset list for next play command
                     this.visited.Clear();
                 }
                 else
