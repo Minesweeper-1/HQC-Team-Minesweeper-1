@@ -22,6 +22,10 @@
         public const string SelectionPrefix = "   ";
 
         public const string MenuTitleAsString = "SELECT DIFFICULTY";
+
+        /// <summary>
+        /// Menu tittle to be used as a part of a view
+        /// </summary>
         public static readonly string[] MenuTitle = new string[]
         {
             new string('=', (ConsoleWidth - 1) / 2 + 1),
@@ -32,6 +36,10 @@
         public static readonly int MenuTitleRowsCount = MenuTitle.Length;
 
         public const string GameTitleAsString = "Minesweeper";
+
+        /// <summary>
+        /// Game Tittle to be used as part of a view
+        /// </summary>
         public static readonly string[] GameTitle = new string[]
         {
             new string('=', ConsoleWidth),
