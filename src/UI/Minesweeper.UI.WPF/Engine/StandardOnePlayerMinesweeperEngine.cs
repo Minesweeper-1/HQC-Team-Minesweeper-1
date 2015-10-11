@@ -12,7 +12,7 @@
     using Renderers.Contracts;
     using Renderers;
 
-    class StandardOnePlayerMinesweeperEngine: IMinesweeperEngine, IBoardObserver
+    class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine, IBoardObserver
     {
         private readonly IScoreboard scoreboard;
         private readonly IBoard board;

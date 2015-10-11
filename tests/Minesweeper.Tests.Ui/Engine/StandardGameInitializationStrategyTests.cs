@@ -1,24 +1,20 @@
-﻿
-
-namespace Minesweeper.Tests.Ui.Engine
+﻿namespace Minesweeper.Tests.Ui.Engine
 {
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using UI.Console.Engine.Initializations;
-    using Logic.Contents;
-    using Logic.Boards.Settings;
-    using Logic.Boards.Contracts;
     using System.Collections.Generic;
     using Logic.Boards;
+    using Logic.Boards.Contracts;
+    using Logic.Boards.Settings;
     using Logic.Common;
-
+    using Logic.Contents;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using UI.Console.Engine.Initializations;
+    
     [TestClass]
     public class StandardGameInitializationStrategyTests
     {
         [TestMethod]
         public void InitializationStrategyForEasyGame()
         {
-
             var settings = new EasyBoardSettings();
             var subscribers = new List<IBoardObserver>()
             {
@@ -48,7 +44,6 @@ namespace Minesweeper.Tests.Ui.Engine
         [TestMethod]
         public void InitializationStrategyForNormalGame()
         {
-
             var settings = new NormalBoardSettings();
             var subscribers = new List<IBoardObserver>()
             {
@@ -78,7 +73,6 @@ namespace Minesweeper.Tests.Ui.Engine
         [TestMethod]
         public void InitializationStrategyForHardGame()
         {
-
             var settings = new HardBoardSettings();
             var subscribers = new List<IBoardObserver>()
             {

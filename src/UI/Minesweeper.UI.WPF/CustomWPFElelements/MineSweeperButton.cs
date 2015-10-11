@@ -47,7 +47,7 @@ namespace MineSweeper_WPF.CustomWPFElelements
             Grid.SetRow(this, row);
             this.Row = row;
         }
-        //C:\Users\ArgiDux\Documents\GitHub\HQC-Team-Minesweeper-1\src\UI\Minesweeper.UI.WPF\Resources\flag.png
+
         private void Left(object sender, RoutedEventArgs e)
         {
             var target = (MineSweeperButton)sender;
@@ -70,14 +70,13 @@ namespace MineSweeper_WPF.CustomWPFElelements
                     this.currentUri = new Uri("../../../Resources/flag.png", UriKind.Relative);
                     this.image = new BitmapImage(currentUri);
                     this.background = new ImageBrush(image);
-                    target.Background = background;
+                    target.Background = this.background;
                     this.clickCount++;
                     break;
                 case 1:
                     this.currentUri = new Uri("../../../Resources/bomb.png", UriKind.Relative);
                     this.image = new BitmapImage(currentUri);
                     this.background = new ImageBrush(image);
-                    //target.Background=null;
                     target.Background = background;
                     this.clickCount++;
                     break;

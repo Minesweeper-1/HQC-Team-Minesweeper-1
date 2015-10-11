@@ -44,7 +44,7 @@
         {
             get
             {
-                return inputProvider;
+                return this.inputProvider;
             }
 
             set
@@ -57,7 +57,7 @@
         {
             get
             {
-                return outputRenderer;
+                return this.outputRenderer;
             }
 
             set

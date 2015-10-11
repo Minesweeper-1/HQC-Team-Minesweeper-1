@@ -12,8 +12,8 @@ namespace MinesweeperWpf
     {
         public MainWindow()
         {
-            InitializeComponent();
-            CreateButtons(10, 10);
+            this.InitializeComponent();
+            this.CreateButtons(10, 10);
         }
 
        
@@ -44,8 +44,8 @@ namespace MinesweeperWpf
             {
                 for (int j = 0; j < y; j++)
                 {
-                    var button = new MineSweeperButton(j,i);
-                    //button.Content = i * y + j;
+                    var button = new MineSweeperButton(j, i);
+
                     button.Width = 30;
                     button.Height = 30;
 
