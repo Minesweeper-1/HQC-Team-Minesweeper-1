@@ -13,6 +13,10 @@
     {
         private readonly ICollection<Coordinate> visited = new List<Coordinate>();
 
+        private bool isInvalid;
+
+        public bool IsInvalid { get; private set; }
+
         /// <summary>
         /// A method that checks whether the command is valid and deals with it or calls its successor to handle the request
         /// </summary>
@@ -20,7 +24,7 @@
         /// <param name="board">The current playing board</param>
         public override void HandleRequest(string command, IBoard board)
         {
-            bool isInvalid = false;
+            this.IsInvalid = false;
             int row = -1;
             int col = -1;
 
@@ -28,7 +32,7 @@
             string[] commandComponents = trimmedCommand.Split(GlobalConstants.CommandParametersDivider);
             if (commandComponents.Length < 2 || commandComponents.Length > 2)
             {
-                isInvalid = true;
+                this.IsInvalid = true;
             }
             else
             {
@@ -37,11 +41,11 @@
 
                 if (!(rowIsNumeric && colIsNumeric))
                 {
-                    isInvalid = true;
+                    this.IsInvalid = true;
                 }
             }
 
-            if (isInvalid)
+            if (this.IsInvalid)
             {
                 board.ChangeBoardState(new Notification(GlobalMessages.InvalidCommand, BoardState.Pending));
             }
@@ -59,6 +63,9 @@
                     this.Successor.HandleRequest(row, col, board);
                 }
             }
+
+            base.HandleRequest(row, col, board);
+            base.HandleRequest(row + " " + col, board);
         }
 
         private void Accumulate(int row, int col, IBoard board)
