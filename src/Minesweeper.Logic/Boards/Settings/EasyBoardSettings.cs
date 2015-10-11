@@ -1,7 +1,4 @@
-﻿/// <summary>
-/// Defines a namespace containing all board settings
-/// </summary>
-namespace Minesweeper.Logic.Boards.Settings
+﻿namespace Minesweeper.Logic.Boards.Settings
 {
     using Common;
     using Contracts;

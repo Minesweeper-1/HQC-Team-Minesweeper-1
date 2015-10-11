@@ -1,7 +1,4 @@
-﻿/// <summary>
-/// Defines a namespace containing common interfaces for all game board and game board related implementations
-/// </summary>
-namespace Minesweeper.Logic.Boards.Contracts
+﻿namespace Minesweeper.Logic.Boards.Contracts
 {
     using Cells.Contracts;
     using Common;
