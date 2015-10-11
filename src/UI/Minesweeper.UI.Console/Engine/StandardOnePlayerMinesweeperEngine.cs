@@ -72,6 +72,7 @@
                 if (this.currentGameStateChange.State == BoardState.Closed)
                 {
                     this.SavePlayerScore(this.currentPlayer);
+                    this.renderer.RenderLine(GlobalMessages.GameOver);
                     return;
                 }
                 else if (this.currentGameStateChange.State == BoardState.Pending)
