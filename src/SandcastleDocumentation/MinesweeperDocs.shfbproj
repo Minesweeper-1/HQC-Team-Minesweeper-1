@@ -35,8 +35,9 @@
     <HelpTitle>Minesweeper.Logic Help File</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\Minesweeper.Logic\bin\Debug\Minesweeper.dll" xmlns="" />
-<DocumentationSource sourceFile="..\Minesweeper.Logic\bin\Debug\Minesweeper.XML" xmlns="" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\Minesweeper.Logic\bin\Debug\Minesweeper.dll" />
+<DocumentationSource sourceFile="..\Minesweeper.Logic\bin\Debug\Minesweeper.XML" /></DocumentationSources>
+    <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, InheritedFrameworkInternalMembers, Internals, ProtectedInternalAsProtected, NoPIATypes</VisibleItems>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
