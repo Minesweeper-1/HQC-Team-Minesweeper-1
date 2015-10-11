@@ -16,6 +16,10 @@
     using Logic.Players;
     using Logic.Scoreboards;
     using MenuHandlers;
+
+    using Minesweeper.UI.Console.InputProviders.Contracts;
+    using Minesweeper.UI.Console.Renderers.Contracts;
+
     using Renderers;
     using Renderers.Common;
 
@@ -24,13 +28,45 @@
     /// </summary>
     public class Game
     {
-        private static readonly Lazy<Game> LazyInstance = new Lazy<Game>(() => new Game());
+        private static readonly Lazy<Game> LazyInstance = new Lazy<Game>(() => new Game(new ConsoleInputProvider(), new ConsoleRenderer()));
 
-        private Game()
+        private IConsoleInputProvider inputProvider;
+
+        private IConsoleRenderer outputRenderer;
+
+        private Game(IConsoleInputProvider inputProvider, IConsoleRenderer outputRenderer)
         {
+            this.InputProvider = inputProvider;
+            this.OutputRenderer = outputRenderer;
         }
 
         public static Game Instance => LazyInstance.Value;
+
+        public IConsoleInputProvider InputProvider
+        {
+            get
+            {
+                return inputProvider;
+            }
+
+            set
+            {
+                this.inputProvider = value;
+            }
+        }
+
+        public IConsoleRenderer OutputRenderer
+        {
+            get
+            {
+                return outputRenderer;
+            }
+
+            set
+            {
+                this.outputRenderer = value;
+            }
+        }
 
         /// <summary>
         /// Start Game logic
@@ -38,19 +74,18 @@
         public void Start()
         {
             // Initialize the two basic objects needed for user interactions
-            var inputProvider = new ConsoleInputProvider();
-            var renderer = new ConsoleRenderer();
+            
 
             // Render initial UI
-            renderer.RenderWelcomeScreen(string.Join(string.Empty, RenderersConstants.GameTitle));
-            renderer.RenderNewPlayerCreationRequest();
+            this.outputRenderer.RenderWelcomeScreen(string.Join(string.Empty, RenderersConstants.GameTitle));
+            this.outputRenderer.RenderNewPlayerCreationRequest();
 
             // Create the active player
-            var player = new Player(inputProvider.ReceiveInputLine());
+            var player = new Player(this.inputProvider.ReceiveInputLine());
 
             // Render console menu handler and execute logic for requesting board settings
             // TODO: Refactor menu handler logic
-            int[] cursorPosition = renderer.GetCursor();
+            int[] cursorPosition = this.outputRenderer.GetCursor();
             var menuItems = new List<IGameMode>()
             {
                 new BeginnerMode(),
@@ -58,13 +93,13 @@
                 new ExpertMode()
             };
 
-            var menuHandler = new ConsoleMenuHandler(inputProvider, renderer, menuItems, cursorPosition[0] + 1, cursorPosition[1]);
+            var menuHandler = new ConsoleMenuHandler(this.inputProvider, this.outputRenderer, menuItems, cursorPosition[0] + 1, cursorPosition[1]);
 
             menuHandler.ShowSelections();
 
             BoardSettings boardSettings = menuHandler.RequestUserSelection();
-            renderer.ClearScreen();
-            renderer.SetCursor(visible: true);
+            this.outputRenderer.ClearScreen();
+            this.outputRenderer.SetCursor(visible: true);
             //// End of menu handler logic
 
             var board = new Board(boardSettings, new List<IBoardObserver>());
@@ -72,7 +107,7 @@
             var contentFactory = new ContentFactory();
             var initializationStrategy = new StandardGameInitializationStrategy(contentFactory);
             var boardOperator = new CommandOperator(board, scoreboard);
-            var engine = new StandardOnePlayerMinesweeperEngine(board, inputProvider, renderer, boardOperator, scoreboard, player);
+            var engine = new StandardOnePlayerMinesweeperEngine(board, this.inputProvider, this.outputRenderer, boardOperator, scoreboard, player);
 
             engine.Initialize(initializationStrategy);
             board.Subscribe(engine);
