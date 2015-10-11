@@ -1,6 +1,4 @@
-﻿
-
-namespace Minesweeper.Tests.Ui.Engine
+﻿namespace Minesweeper.Tests.Ui.Engine
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Logic.InputProviders.Contracts;
