@@ -1,7 +1,5 @@
 ﻿namespace Minesweeper.UI.Console.Engine
 {
-    using System;
-
     using InputProviders.Contracts;
     using Logic.Boards.Contracts;
     using Logic.CommandOperators.Contracts;
@@ -22,6 +20,7 @@
         private readonly IConsoleRenderer renderer;
         private readonly IPlayer currentPlayer;
         private Notification currentGameStateChange;
+        private IGameInitializationStrategy initializationStrategy;
 
         /// <summary>
         /// Construct game Engine
@@ -47,26 +46,16 @@
         /// Use game initialization strategy
         /// </summary>
         /// <param name="initializationStrategy"></param>
-        public void Initialize(IGameInitializationStrategy initializationStrategy) =>
-            initializationStrategy.Initialize(this.board);
+        public void Initialize(IGameInitializationStrategy initializationStrategy)
+        {
+            this.initializationStrategy = initializationStrategy;
+            this.initializationStrategy.Initialize(this.board);
+        }
 
         /// <summary>
         /// Start game
         /// </summary>
         public void Run()
-        {
-            this.StartGame();
-        }
-
-        /// <summary>
-        /// Updates upon notification
-        /// </summary>
-        /// <param name="newGameState"></param>
-        public void Update(Notification newGameState) =>
-            this.currentGameStateChange = newGameState;
-
-
-        private void StartGame()
         {
             this.renderer.RenderBoard(this.board, RenderersConstants.BoardStartRenderRow, RenderersConstants.BoardStartRenderCol);
             this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
@@ -74,9 +63,8 @@
             while (true)
             {
                 string command = this.inputProvider.ReceiveInputLine();
-                string[] commandParts = command.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                commandParts[1] = RenderersConstants.IndexLetters.ToLowerInvariant().IndexOf(commandParts[1].ToLowerInvariant(), StringComparison.InvariantCulture).ToString();
-                this.commandOperator.Execute(string.Join(" ", commandParts));
+                string adaptedCommand = this.inputProvider.TransformCommandToNumbersOnly(command);
+                this.commandOperator.Execute(adaptedCommand);
 
                 if (this.currentGameStateChange.State == BoardState.Closed)
                 {
@@ -85,6 +73,9 @@
                 }
                 else if (this.currentGameStateChange.State == BoardState.Pending)
                 {
+                    this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 2, col: 0);
+                    this.renderer.ClearCurrentLine();
+                    this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 2, col: 0);
                     this.renderer.RenderLine(this.currentGameStateChange.Message);
                     this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                     this.renderer.ClearCurrentLine();
@@ -93,6 +84,16 @@
                 else if (this.currentGameStateChange.State == BoardState.Open)
                 {
                     this.currentPlayer.Score += 10;
+                    this.renderer.ClearScreen();
+                    this.renderer.RenderBoard(this.board, RenderersConstants.BoardStartRenderRow, RenderersConstants.BoardStartRenderCol);
+                    this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
+                }
+                else if(this.currentGameStateChange.State == BoardState.Reset)
+                {
+                    this.currentPlayer.Score = 0;
+                    this.initializationStrategy.Initialize(this.board);
+                    this.board.ChangeBoardState(new Notification(string.Empty, BoardState.Open));
+                    this.renderer.ClearScreen();
                     this.renderer.RenderBoard(this.board, RenderersConstants.BoardStartRenderRow, RenderersConstants.BoardStartRenderCol);
                     this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                 }
@@ -100,6 +101,13 @@
                 this.renderer.ClearCurrentLine();
             }
         }
+
+        /// <summary>
+        /// Updates upon notification
+        /// </summary>
+        /// <param name="newGameState"></param>
+        public void Update(Notification newGameState) =>
+            this.currentGameStateChange = newGameState;
 
         private void SavePlayerScore(IPlayer player) =>
             this.scoreboard.RegisterNewPlayerScore(player);

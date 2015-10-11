@@ -1,36 +1,57 @@
-﻿Refactoring Documentation for Project “Minesweeper-1”
+Refactoring Documentation for Project “Minesweeper-1”
 ------------------------------------------------------
 This document describes the steps in the refactoring of the team project "Minesweeper-1" 
-in the Telerik Academy JavaScript UI & DOM course 2015
+in the Telerik Academy High-Quality Code Course 2015
 
 ------------------------------------------------------
 1. Redesigned the project structure: Team "Minesweeper-1"
-	- Renamed the namespace `Mini` to `Minesweeper`
-	- Renamed the class `Команда.cs` to `ConsoleInputProvider.cs`
-	- Created a namespace `Minesweeper.InputProviders`
-	- Moved the class `ConsoleInputProvider.cs` to the namespace `Minesweeper.InputProviders`
-	- Created a namespace `Minesweeper.InputProviders.Contracts`
-	- Created an interface `IInputProvider.cs` in the namespace `Minesweeper.InputProviders.Contracts` with a method `Read()`
+	- Created a project `Minesweeper.Logic`;
+	- Created a namespace `UI`:
+		- Created a project Minesweeper.UI.Console;
+		- Created a project Minesweeper.UI.WPF;
+	- Renamed the namespace `Mini` to `Minesweeper.Logic`
+	- Introduced the following namespaces:
+		- `Minesweeper.Logic.Boards`, containing the Board object and settings definitions
+		- `Minesweeper.Logic.Cells`, containing the Cell object definitions
+		- `Minesweeper.Logic.CommandOperators`, containing Play, ShowScoreboard, Exit and Restart command handling definitions
+		- `Minesweeper.Logic.Common`, containing common utils, constants and enumerations used in the entire Logic namespace
+		- `Minesweeper.Logic.Contents`, containg  the cell contents and cell contents factory definitions
+		- `Minesweeper.Logic.Data`, containing the text file with the soreboard entries
+		- `Minesweeper.Logic.DataManagers`, containg JSON parsing and serializing logic, as well as encryption/decryption and file reading and writing logic
+		- `Minesweeper.Logic.DifficultyCommands`, containing definitions of chained game modes with successors and predecessors aimed at providing an interface for implementing menu logic in some UI form
+		- `Minesweeper.Logic.Engines`, containing the interfaces for an engine operating the different modules
+		- `Minesweeper.Logic.InputProviders`, containing the interfaces for an input providing module logic
+		- `Minesweeper.Logic.Players`, containing the Player object definitions
+		- `Minesweeper.Logic.Renderers`, containing the interfaces for a rendering module logic
+		- `Minesweeper.Logic.Scoreboards`, containing the Scoreboard object definitions
 
 2. Reformatted the source code:
 
     Generally:
 	- Removed all unnecessary `using` directives
-	- Moved all `using` directives inside of the `namespace`s
-	- Removed all unnecessary whitespaces
+	- Moved all `using` directives inside the `namespace`s
+	- Removed all unnecessary whitespace
 	- Removed all inadequate comments
-
-    In the class `ConsoleInputProvider.cs`:
-	- Removed the `static` modifier from the class
-	- Now implements interface `IInputProvider`
-	- Created an empty constructor that takes no parameters
-	- Deleted all the rest of the logic inside and moved it to the class `Engine.cs` (`Програма.cs` but must be created separately)
-
-    In the class `Engine.cs` (`Програма.cs` but must be created separately):
-	- created variables `inputProvider`...
-	- created methods `EndGame()`, `Restart()`, `HandleCommand()`, `ShowTopScores()`, `DispatchCommand()`
+	- Removed all bad statics from the classes
+	- Abstracted as much as possible all class references
+	- Separated the class logic in accordance with Single Responsibility Principle
+	- All classes now conform to the Open/Closed Principle
+	- Inheritance chains conform to the Liskov Substitution Principle
+	- All interfaces conform to the Interface Segregation Principle
+	- Applied Dependency Inversion to the complex classes which have more or less a lot of class dependencies
 
 3. Implemented the following patterns:
-   - **Creational**: Singleton, Simple Factory, Fluent Interface, Lazy Initialization
-   - **Structural**: Façade, Bridge, Adapter
-   - **Behavioral**: Strategy, Observer, Command, Chain of Responsibility
+   - **Creational**: 
+	   - Singleton: The façade
+	   - Simple Factory: `ContentFactory` class, producing Cell Content
+	   - Fluent Interface: The `Board` class
+	   - Lazy Initialization: The façade
+   - **Structural**: 
+	   - Façade: The `Game` class
+	   - Bridge: Rendering and input providing logic is abstracted through interfaces
+	   - Adapter: For the NetEncryptionLibrary
+   - **Behavioral**: 
+	   - Strategy: The board initialization with empty cells and bombs
+	   - Observer: The Engine observes the state of the board
+	   - Command: The input is being translated to engine instructions by being processed by their corresponding commands
+	   - Chain of Responsibility: The different stages of "reading" the play command - is the command valid, is it inside the board, is it a bomb, and finally - reveal the cell

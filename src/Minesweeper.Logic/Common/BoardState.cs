@@ -7,6 +7,7 @@
     {
         Open,
         Pending,
-        Closed
+        Closed,
+        Reset
     }
 }
