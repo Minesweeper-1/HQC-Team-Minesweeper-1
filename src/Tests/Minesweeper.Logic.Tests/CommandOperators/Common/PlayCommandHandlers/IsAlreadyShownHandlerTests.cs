@@ -34,8 +34,8 @@ namespace Minesweeper.Logic.CommandOperators.Common.PlayCommandHandlers.Tests
             var testHandler = new IsAlreadyShownHandler();
             var testBoard = new Board(new EasyBoardSettings(), new List<IBoardObserver>());
             testBoard.Cells[0, 0] = new CellContext();
-            testBoard.Cells[0, 0].State = CellState.Revealed;
-            testHandler.SetSuccessor(new IsBombHandler());
+            testBoard.Cells[0, 0].State = CellState.Sealed;
+            testHandler.SetSuccessor(new RevealCellHandler());
             testHandler.HandleRequest(0, 0, testBoard);
         }
     }
