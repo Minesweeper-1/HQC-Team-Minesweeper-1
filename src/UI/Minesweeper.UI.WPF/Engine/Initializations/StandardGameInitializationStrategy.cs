@@ -18,11 +18,13 @@
             this.contentFactory = contentFactory;
         }
 
-        public void Initialize(IBoard board)
+        public IBoard Initialize(IBoard board)
         {
             this.CreateEmptyBoard(board);
             this.PlantBombs(board);
             this.SetEmptyCellsValues(board);
+
+            return board;
         }
 
         private void CreateEmptyBoard(IBoard board)

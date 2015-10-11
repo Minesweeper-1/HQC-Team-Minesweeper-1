@@ -29,11 +29,13 @@
         /// Creates and fills the board with bombs and empty cells
         /// </summary>
         /// <param name="board">IBoard object</param>
-        public void Initialize(IBoard board)
+        public IBoard Initialize(IBoard board)
         {
             this.CreateEmptyBoard(board);
             this.PlantBombs(board);
             this.SetEmptyCellsValues(board);
+
+            return board;
         }
 
         /// <summary>
