@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9ED9AAD8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper.Logic.Tests", "..\tests\Minesweeper.Logic.Tests\Minesweeper.Logic.Tests.csproj", "{9FF05FC4-FBCC-4D4B-899A-E7B122F1F914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper.UI.Console.Tests", "..\tests\Minesweeper.UI.Console.Tests\Minesweeper.UI.Console.Tests.csproj", "{A154B173-7A32-4B15-8445-3B47E2BC00FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper.Tests.Ui", "..\tests\Minesweeper.Tests.Ui\Minesweeper.Tests.Ui.csproj", "{A154B173-7A32-4B15-8445-3B47E2BC00FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
