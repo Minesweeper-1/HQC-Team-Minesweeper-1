@@ -9,6 +9,7 @@ namespace Minesweeper.Tests.Ui.Engine
         [TestMethod]
         public void TestMethod1()
         {
+            
         }
     }
 }
