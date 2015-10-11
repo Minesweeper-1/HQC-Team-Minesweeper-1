@@ -1,15 +1,14 @@
-﻿namespace Minesweeper.Logic.CommandOperators.Tests
+﻿namespace Minesweeper.Logic.Tests.CommandOperators
 {
-    using System;
     using System.Collections.Generic;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Minesweeper.Logic.Boards;
-    using Minesweeper.Logic.Boards.Contracts;
-    using Minesweeper.Logic.Boards.Settings.Contracts;
-    using Minesweeper.Logic.CommandOperators;
-    using Minesweeper.Logic.Scoreboards;
+    using Logic.Boards;
+    using Logic.Boards.Contracts;
+    using Logic.Boards.Settings;
+    using Logic.CommandOperators;
+    using Logic.Scoreboards;
 
     /// <summary>
     /// Test class for the CommandOperators class

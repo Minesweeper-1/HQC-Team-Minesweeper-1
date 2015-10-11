@@ -5,7 +5,7 @@
 
     using Logic.Boards;
     using Logic.Boards.Contracts;
-    using Logic.Boards.Settings.Contracts;
+    using Logic.Boards.Settings;
     using Logic.Cells;
     using Logic.Cells.Contracts;
     using Logic.Common;

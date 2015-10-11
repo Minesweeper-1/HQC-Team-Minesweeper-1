@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Boards.Settings.Contracts
+﻿/// <summary>
+/// Defines the namespace for all board settings interfaces
+/// </summary>
+namespace Minesweeper.Logic.Boards.Settings.Contracts
 {
     /// <summary>
     /// Defines an abstract class for a set of board settings

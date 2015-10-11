@@ -2,7 +2,7 @@
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Logic.Boards.Settings.Contracts;
+    using Logic.Boards.Settings;
 
     [TestClass]
     public class BoardSettingsTests

@@ -1,7 +1,8 @@
 ﻿namespace Minesweeper.Logic.DifficultyCommands
 {
     using System.Linq;
-   
+
+    using Boards.Settings;
     using Boards.Settings.Contracts;
     using Common.Utils;
     using Contracts;

@@ -1,6 +1,10 @@
-﻿namespace Minesweeper.Logic.Boards.Settings.Contracts
+﻿/// <summary>
+/// Defines a namespace containing all board settings
+/// </summary>
+namespace Minesweeper.Logic.Boards.Settings
 {
     using Common;
+    using Contracts;
 
     /// <summary>
     /// Class containing the board settings for an easy game mode

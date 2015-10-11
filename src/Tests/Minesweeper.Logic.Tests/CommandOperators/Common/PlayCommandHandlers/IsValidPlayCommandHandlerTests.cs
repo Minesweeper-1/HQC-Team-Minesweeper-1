@@ -1,16 +1,16 @@
-﻿namespace Minesweeper.Logic.CommandOperators.Common.PlayCommandHandlers.Tests
+﻿namespace Minesweeper.Logic.Tests.CommandOperators.Common.PlayCommandHandlers
 {
     using System.Collections.Generic;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Minesweeper.Logic.Boards;
-    using Minesweeper.Logic.Boards.Contracts;
-    using Minesweeper.Logic.Boards.Settings.Contracts;
-    using Minesweeper.Logic.Cells;
-    using Minesweeper.Logic.CommandOperators.Common.PlayCommandHandlers;
-    using Minesweeper.Logic.Common;
-    using Minesweeper.Logic.Contents;
+    using Logic.Boards;
+    using Logic.Boards.Contracts;
+    using Logic.Boards.Settings;
+    using Logic.Cells;
+    using Logic.CommandOperators.Common.PlayCommandHandlers;
+    using Logic.Common;
+    using Logic.Contents;
 
     [TestClass]
     public class IsValidPlayCommandHandlerTests

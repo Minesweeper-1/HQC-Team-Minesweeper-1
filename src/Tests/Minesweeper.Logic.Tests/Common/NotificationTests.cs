@@ -1,7 +1,7 @@
-﻿namespace Minesweeper.Logic.Common.Tests
+﻿namespace Minesweeper.Logic.Tests.Common
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Minesweeper.Logic.Common;
+    using Logic.Common;
 
     /// <summary>
     /// Testclass for the Notification class

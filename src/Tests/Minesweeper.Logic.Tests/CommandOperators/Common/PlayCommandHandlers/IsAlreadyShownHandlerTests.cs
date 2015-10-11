@@ -1,18 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Minesweeper.Logic.CommandOperators.Common.PlayCommandHandlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Minesweeper.Logic.CommandOperators.Common.PlayCommandHandlers.Tests
+﻿namespace Minesweeper.Logic.Tests.CommandOperators.Common.PlayCommandHandlers
 {
-    using Minesweeper.Logic.Boards;
-    using Minesweeper.Logic.Boards.Contracts;
-    using Minesweeper.Logic.Boards.Settings.Contracts;
-    using Minesweeper.Logic.Cells;
-    using Minesweeper.Logic.Common;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Collections.Generic;
+
+    using Logic.Boards;
+    using Logic.Boards.Contracts;
+    using Logic.Boards.Settings;
+    using Logic.Cells;
+    using Logic.Common;
+    using Logic.CommandOperators.Common.PlayCommandHandlers;
 
     [TestClass]
     public class IsAlreadyShownHandlerTests

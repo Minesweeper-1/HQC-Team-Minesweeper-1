@@ -1,14 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Minesweeper.Logic.DifficultyCommands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Minesweeper.Logic.DifficultyCommands.Tests
+﻿namespace Minesweeper.Logic.Tests.DifficultyCommands
 {
-    using Minesweeper.Logic.Boards.Settings.Contracts;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Logic.Boards.Settings;
+    using Logic.DifficultyCommands;
 
     [TestClass]
     public class ExpertModeTests

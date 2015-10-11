@@ -1,16 +1,12 @@
-﻿namespace Minesweeper.Logic.Scoreboards.Tests
+﻿namespace Minesweeper.Logic.Tests.Scoreboards
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Collections.Generic;
 
-    using Minesweeper.Logic.Players;
-    using Minesweeper.Logic.Players.Contracts;
-    using Minesweeper.Logic.Scoreboards;
-    using Minesweeper.Logic.Scoreboards.Contracts;
-
+    using Logic.Players;
+    using Logic.Players.Contracts;
+    using Logic.Scoreboards;
+    using Logic.Scoreboards.Contracts;
     using Moq;
 
     [TestClass]
@@ -19,11 +15,9 @@
         [TestMethod]
         public void GetAllShouldReturnListOfLeaders()
         {
-            var mockBoard = new Mock<IScoreboard>();
-            mockBoard.Setup(x => x.GetAll()).Returns(new List<IPlayer> { new Player("Gosho"), new Player("Pesho") });
-            mockBoard.Object.GetAll();
-            mockBoard.Verify(x => x.GetAll());
-            Assert.AreEqual(2, mockBoard.Object.GetAll().Count);
+            var fakeScoreboard = new Mock<Scoreboard>();
+            //fakeScoreboard.Setup(s => s.GetAll()).Returns(new List<IPlayer>());
+            
         }
 
         [TestMethod]
