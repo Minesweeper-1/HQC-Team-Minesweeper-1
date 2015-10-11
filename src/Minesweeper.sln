@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{8322418D-397D-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9ED9AAD8-B191-4B1E-974A-AD205392322B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper.Logic.Tests", "Tests\Minesweeper.Logic.Tests\Minesweeper.Logic.Tests.csproj", "{9FF05FC4-FBCC-4D4B-899A-E7B122F1F914}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper.Logic.Tests", "..\tests\Minesweeper.Logic.Tests\Minesweeper.Logic.Tests.csproj", "{9FF05FC4-FBCC-4D4B-899A-E7B122F1F914}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
