@@ -6,24 +6,24 @@
     using Logic.DifficultyCommands.Contracts;
 
     /// <summary>
-    /// Handles Drawing to console
+    /// Defines an interface for a console rendering object public members
     /// </summary>
     public interface IConsoleRenderer : IRenderer
     {
         /// <summary>
-        /// Write Line, without skipping line
+        /// Write without line break
         /// </summary>
         /// <param name="line"></param>
         void Render(string line);
 
         /// <summary>
-        /// Write new line
+        /// Write with line break
         /// </summary>
         /// <param name="line"></param>
         void RenderLine(string line);
 
         /// <summary>
-        /// Write WelcomScreen
+        /// Render the welcome screen
         /// </summary>
         /// <param name="welcomeScreen">Welcome screen view</param>
         void RenderWelcomeScreen(string welcomeScreen);
@@ -38,30 +38,30 @@
         /// </summary>
         /// <param name="menuItems">Menu items</param>
         /// <param name="row">Row count</param>
-        /// <param name="col">Collum count</param>
+        /// <param name="col">Column count</param>
         void RenderMenu(IEnumerable<IGameMode> menuItems, int row, int col);
 
         /// <summary>
-        /// Cursor coordinates
+        /// Returns the cursor coordinates
         /// </summary>
         /// <returns></returns>
         int[] GetCursor();
 
         /// <summary>
-        /// Toggle curosor between visble and invisible
+        /// Toggle cursor between visble and invisible
         /// </summary>
         /// <param name="visible"></param>
         void SetCursor(bool visible);
 
         /// <summary>
-        /// Set Cursor coordinates
+        /// Set cursor coordinates
         /// </summary>
         /// <param name="row">Row coordinate</param>
         /// <param name="col">Collum coordinate</param>
         void SetCursor(int row, int col);
 
         /// <summary>
-        /// Clear Console
+        /// Clear screen
         /// </summary>
         void ClearScreen();
 

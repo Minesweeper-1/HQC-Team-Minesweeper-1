@@ -1,15 +1,16 @@
 ﻿namespace Minesweeper.UI.Console.InputProviders
 {
+    using System;
     using static System.Console;
 
     using Contracts;
-    using System;
+    using Logic.InputProviders.Contracts;
     using Renderers.Common;
 
     /// <summary>
-    /// 
+    /// Concrete implementation of the IConsoleInputProvider and IInputProvider interfaces
     /// </summary>
-    public class ConsoleInputProvider : IConsoleInputProvider
+    public class ConsoleInputProvider : IConsoleInputProvider, IInputProvider
     {
         /// <summary>
         /// Reads user input from console
@@ -17,10 +18,22 @@
         /// <returns>User input as a string</returns>
         public string ReceiveInputLine() => ReadLine();
 
+        /// <summary>
+        /// Returns whether there is a key available for pressing
+        /// </summary>
         public bool IsKeyAvailable { get; } = KeyAvailable;
 
-        public int GetKeyChar(bool justABool) => (int)ReadKey(true).Key;
+        /// <summary>
+        /// Returns the character code of the pressed key
+        /// </summary>
+        /// <returns>The charcter code of the pressed key</returns>
+        public int GetKeyChar() => (int)ReadKey(intercept: true).Key;
 
+        /// <summary>
+        /// Converts a command from (int)(char) type to (int)(int) type
+        /// </summary>
+        /// <param name="initialCommandInput">Command of type (int)(char)</param>
+        /// <returns>Command of type (int)(int)</returns>
         public string TransformCommandToNumbersOnly(string initialCommandInput)
         {
             string result = initialCommandInput;

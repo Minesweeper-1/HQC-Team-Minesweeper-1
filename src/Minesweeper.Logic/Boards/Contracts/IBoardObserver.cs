@@ -3,7 +3,7 @@
     using Common;
 
     /// <summary>
-    /// Interface of the board observer, defining an Update method
+    /// Defines the interface for a board observer public members
     /// </summary>
     public interface IBoardObserver
     {

@@ -11,8 +11,14 @@
     /// </summary>
     public class BeginnerMode : IGameMode
     {
+        /// <summary>
+        /// Beginner mode value
+        /// </summary>
         public string Value { get; } = nameof(BeginnerMode).SplitByUpperCase().First();
 
+        /// <summary>
+        /// Beginner mode settings
+        /// </summary>
         public BoardSettings Settings => new EasyBoardSettings();
 
         /// <summary>

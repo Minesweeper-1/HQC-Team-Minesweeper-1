@@ -7,8 +7,14 @@
     /// </summary>
     public interface IGameMode
     {
+        /// <summary>
+        /// Mode value
+        /// </summary>
         string Value { get; }
 
+        /// <summary>
+        /// Mode settings
+        /// </summary>
         BoardSettings Settings { get; }
 
         /// <summary>

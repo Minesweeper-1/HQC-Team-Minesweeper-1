@@ -5,17 +5,20 @@
     using Contracts;
 
     /// <summary>
-    /// A class providing means of setting content and state and getting the context of a cell
+    /// A fluent interface wrapper for the ICell interface
     /// </summary>
     public class Cell
     {
+        /// <summary>
+        /// The wrapped concrete ICell implementation
+        /// </summary>
         private readonly CellContext context = new CellContext();
         
         /// <summary>
-        /// A method for setting the content of a cell and returning it
+        /// Sets the content of the cell context
         /// </summary>
         /// <param name="content">The content to be set</param>
-        /// <returns>A cell with the given content</returns>
+        /// <returns>The context wrapper</returns>
         public Cell SetContent(IContent content)
         {
             this.context.Content = content;
@@ -23,10 +26,10 @@
         }
 
         /// <summary>
-        /// A method for setting the state of a cell and returning it
+        /// Sets the state of the cell context
         /// </summary>
         /// <param name="state">The state to be set</param>
-        /// <returns>A cell with the given state</returns>
+        /// <returns>The context wrapper</returns>
         public Cell SetState(CellState state)
         {
             this.context.State = state;
@@ -34,9 +37,9 @@
         }
 
         /// <summary>
-        /// A method for getting the context of a cell
+        /// Removes the context wrapper and returns the context
         /// </summary>
-        /// <returns>The context</returns>
+        /// <returns>The cell context</returns>
         public ICell GetContext() => this.context;
     }
 }

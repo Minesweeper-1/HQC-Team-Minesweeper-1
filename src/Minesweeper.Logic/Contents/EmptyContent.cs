@@ -17,12 +17,18 @@
             this.Value = 0;
         }
 
+        /// <summary>
+        /// Empty content type
+        /// </summary>
         public ContentType ContentType
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Empty content value
+        /// </summary>
         public int Value
         {
             get;

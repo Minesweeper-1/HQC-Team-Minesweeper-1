@@ -12,9 +12,7 @@
     public class IsValidPlayCommandHandler : PlayCommandHandler
     {
         private readonly ICollection<Coordinate> visited = new List<Coordinate>();
-
-        private bool isInvalid;
-
+        
         public bool IsInvalid { get; private set; }
 
         /// <summary>
@@ -68,6 +66,12 @@
             base.HandleRequest(row + " " + col, board);
         }
 
+        /// <summary>
+        /// Accumulates the zero-content board cells
+        /// </summary>
+        /// <param name="row">Root cell row</param>
+        /// <param name="col">Roow cell column</param>
+        /// <param name="board">Board to which the cells to accumulate belong</param>
         private void Accumulate(int row, int col, IBoard board)
         {
             for (int i = row - 1; i <= row + 1; i++)

@@ -10,23 +10,23 @@
     using Logic.Engines.Contracts;
 
     /// <summary>
-    /// InitializationStrategy
+    /// Concrete implementation of the IGameInitializationStrategy interface
     /// </summary>
     public class StandardGameInitializationStrategy : IGameInitializationStrategy
     {
         private readonly ContentFactory contentFactory;
 
         /// <summary>
-        /// Creat content factory
+        /// Creates a new game initialization algorithm
         /// </summary>
-        /// <param name="contentFactory"></param>
+        /// <param name="contentFactory">Content factory</param>
         public StandardGameInitializationStrategy(ContentFactory contentFactory)
         {
             this.contentFactory = contentFactory;
         }
 
         /// <summary>
-        /// Generate Board
+        /// Creates and fills the board with bombs and empty cells
         /// </summary>
         /// <param name="board">IBoard object</param>
         public void Initialize(IBoard board)
@@ -37,7 +37,7 @@
         }
 
         /// <summary>
-        /// Creat empty board
+        /// Creates empty board
         /// </summary>
         /// <param name="board">IBoard object</param>
         private void CreateEmptyBoard(IBoard board)
@@ -58,7 +58,7 @@
         }
 
         /// <summary>
-        /// Calculate Numbers
+        /// Calculates empty cells surrounding bombs
         /// </summary>
         /// <param name="board">IBoard object</param>
         private void SetEmptyCellsValues(IBoard board)
@@ -78,7 +78,7 @@
         }
 
         /// <summary>
-        /// Position Bombs
+        /// Positions Bombs
         /// </summary>
         /// <param name="board">IBoard object</param>
         private void PlantBombs(IBoard board)

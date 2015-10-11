@@ -1,20 +1,19 @@
 ﻿namespace Minesweeper.Logic.Boards.Settings.Contracts
 {
-    using Minesweeper.Logic.Common;
+    using Common;
 
     /// <summary>
-    /// The class containing the board settings for an easy game
+    /// Class containing the board settings for an easy game mode
     /// </summary>
     public class EasyBoardSettings : BoardSettings
     {
         /// <summary>
-        /// Creates board settings for the easy difficulty level
+        /// Calls the base constructor with board parameters for easy game mode
         /// </summary>
         public EasyBoardSettings()
-            : base(
-                  GlobalConstants.BeginnerLevelNumberOfBoardRows, 
-                  GlobalConstants.BeginnerLevelNumberOfBoardCols, 
-                  GlobalConstants.BeginnerLevelNumberOfBoardBombs)
+            : base(GlobalConstants.BeginnerLevelNumberOfBoardRows, 
+                   GlobalConstants.BeginnerLevelNumberOfBoardCols, 
+                   GlobalConstants.BeginnerLevelNumberOfBoardBombs)
         {
         }
     }

@@ -2,7 +2,7 @@
 {
     using Boards.Contracts;
     using Contracts;
-    using Minesweeper.Logic.Common;
+    using Logic.Common;
 
     /// <summary>
     /// A class which inherits the PlayCommandHandler and handles the request if the cell is already revealed

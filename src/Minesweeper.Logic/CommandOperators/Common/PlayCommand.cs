@@ -9,10 +9,13 @@
     /// </summary>
     public class PlayCommand : IBoardCommand
     {
+        /// <summary>
+        /// The board to execute a command on
+        /// </summary>
         private readonly IBoard board;
 
         /// <summary>
-        /// The constructor of PlayCommand
+        /// Creates a PlayCommand instance
         /// </summary>
         /// <param name="board">The current playing board</param>
         public PlayCommand(IBoard board)
@@ -22,7 +25,7 @@
 
         /// <summary>
         /// The concrete implementation of the common method Execute setting up all handlers and successors
-        /// and calling the first of them
+        /// and calling the first fro their chain
         /// </summary>
         /// <param name="command">The command to be executed</param>
         public void Execute(string command)

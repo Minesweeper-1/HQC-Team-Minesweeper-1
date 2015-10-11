@@ -5,16 +5,22 @@
     using Contracts;
 
     /// <summary>
-    /// A class for getting and setting a cell context consisting of cell state and content
+    /// Concrete implementation of the ICell interface
     /// </summary>
     public class CellContext : ICell
     {
+        /// <summary>
+        /// Concrete cell content
+        /// </summary>
         public IContent Content
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Concrete cell state
+        /// </summary>
         public CellState State
         {
             get;

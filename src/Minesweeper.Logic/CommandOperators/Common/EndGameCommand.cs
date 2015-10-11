@@ -2,28 +2,31 @@
 {
     using Boards.Contracts;
     using Contracts;
-    using Minesweeper.Logic.Common;
+    using Logic.Common;
 
     /// <summary>
-    /// Class dealing with the end game command
+    /// Concrete implementation of the IBoardCommand interface as an End Game command
     /// </summary>
     public class EndGameCommand : IBoardCommand
     {
+        /// <summary>
+        /// The board to execute the command on
+        /// </summary>
         private readonly IBoard board;
 
         /// <summary>
-        /// The constructor of the class
+        /// Creates a new End Game command
         /// </summary>
-        /// <param name="board">the current playing board</param>
+        /// <param name="board">The board to execute the command on</param>
         public EndGameCommand(IBoard board)
         {
             this.board = board;
         }
 
         /// <summary>
-        /// The method ending the game, changing the board state to closed
+        /// Sets the board state to Closed with a new notification
         /// </summary>
-        /// <param name="command">The command</param>
+        /// <param name="command">A message to pass with the notification</param>
         public void Execute(string command) => 
             this.board.ChangeBoardState(new Notification(GlobalMessages.GameOver, BoardState.Closed));
     }

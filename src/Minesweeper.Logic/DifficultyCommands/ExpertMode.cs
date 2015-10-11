@@ -11,7 +11,15 @@
     /// </summary>
     public class ExpertMode : IGameMode
     {
+        /// <summary>
+        /// Expert mode value
+        /// </summary>
         public string Value { get; } = nameof(ExpertMode).SplitByUpperCase().First();
+
+        /// <summary>
+        /// Expert mode settings
+        /// </summary>
+        public BoardSettings Settings => new HardBoardSettings();
 
         /// <summary>
         /// A method returning a beginner game mode
@@ -24,7 +32,5 @@
         /// </summary>
         /// <returns>An intermediate game mode</returns>
         public IGameMode GetPrevious() => new IntermediateMode();
-
-        public BoardSettings Settings => new HardBoardSettings();
     }
 }

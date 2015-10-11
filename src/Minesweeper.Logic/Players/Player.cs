@@ -3,7 +3,7 @@
     using Contracts;
 
     /// <summary>
-    /// A class implementing the Player logic
+    /// A class implementing the IPlayer logic
     /// </summary>
     public class Player : IPlayer
     {
@@ -28,12 +28,18 @@
             this.Score = default(int);
         }
 
+        /// <summary>
+        /// Player name
+        /// </summary>
         public string Name
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Player score
+        /// </summary>
         public int Score
         {
             get;

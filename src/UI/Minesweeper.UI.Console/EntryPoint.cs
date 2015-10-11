@@ -3,7 +3,7 @@
     public class EntryPoint
     {
         /// <summary>
-        /// Stars game
+        /// Entry point for the console application
         /// </summary>
         public static void Main() => Game.Instance.Start();
     }

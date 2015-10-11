@@ -1,17 +1,19 @@
 ﻿namespace Minesweeper.Logic.Boards.Settings.Contracts
 {
-    using Minesweeper.Logic.Common;
+    using Common;
 
+    /// <summary>
+    /// The class containing the board settings for a normal game
+    /// </summary>
     public class NormalBoardSettings : BoardSettings
     {
         /// <summary>
-        /// The class containing the board settings for a normal game
+        /// Calls the base constructor with board settings for normal game mode
         /// </summary>
         public NormalBoardSettings()
-            : base(
-                  GlobalConstants.IntermediateLevelNumberOfBoardRows,
-                  GlobalConstants.IntermediateLevelNumberOfBoardCols,
-                  GlobalConstants.IntermediateLevelNumberOfBoardBombs)
+            : base(GlobalConstants.IntermediateLevelNumberOfBoardRows,
+                   GlobalConstants.IntermediateLevelNumberOfBoardCols,
+                   GlobalConstants.IntermediateLevelNumberOfBoardBombs)
         {
         }
     }

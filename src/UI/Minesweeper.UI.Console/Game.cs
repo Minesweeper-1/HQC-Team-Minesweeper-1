@@ -19,7 +19,7 @@
     using Renderers.Common;
 
     /// <summary>
-    /// Lazy load for game
+    /// Game facade
     /// </summary>
     public class Game
     {
@@ -32,7 +32,7 @@
         public static Game Instance => instance.Value;
 
         /// <summary>
-        /// Start Game
+        /// Start Game logic
         /// </summary>
         public void Start()
         {

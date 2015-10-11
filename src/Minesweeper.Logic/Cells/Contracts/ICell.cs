@@ -4,16 +4,22 @@
     using Contents.Contracts;
 
     /// <summary>
-    /// The public interface of the board cells defining their content and state
+    /// Defines the inerface for all cell public members
     /// </summary>
     public interface ICell
     {
+        /// <summary>
+        /// Content of the cell
+        /// </summary>
         IContent Content
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// State of the cell
+        /// </summary>
         CellState State
         {
             get;

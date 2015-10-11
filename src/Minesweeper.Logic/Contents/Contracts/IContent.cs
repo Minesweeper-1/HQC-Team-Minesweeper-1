@@ -3,15 +3,22 @@
     using Common;
 
     /// <summary>
-    /// Interface defining content type and value
+    /// Defines the interface for all Cell Content public members
     /// </summary>
     public interface IContent
     {
+        /// <summary>
+        /// Content type
+        /// </summary>
         ContentType ContentType
         {
             get;
         }
 
+
+        /// <summary>
+        /// Content value
+        /// </summary>
         int Value
         {
             get;

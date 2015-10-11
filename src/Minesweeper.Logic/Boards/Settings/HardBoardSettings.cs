@@ -1,20 +1,19 @@
 ﻿namespace Minesweeper.Logic.Boards.Settings.Contracts
 {
-    using Minesweeper.Logic.Common;
+    using Common;
 
     /// <summary>
-    /// The class containing the board settings for a hard game
+    /// The class containing the board settings for a hard game mode
     /// </summary>
     public class HardBoardSettings : BoardSettings
     {
         /// <summary>
-        /// Creates board settings for the hard difficulty level
+        /// Calls the base constructor with board settings for hard game mode
         /// </summary>
         public HardBoardSettings()
-            : base(
-                  GlobalConstants.ExpertLevelNumberOfBoardRows,
-                  GlobalConstants.ExpertLevelNumberOfBoardCols,
-                  GlobalConstants.ExpertLevelNumberOfBoardBombs)
+            : base(GlobalConstants.ExpertLevelNumberOfBoardRows,
+                   GlobalConstants.ExpertLevelNumberOfBoardCols,
+                   GlobalConstants.ExpertLevelNumberOfBoardBombs)
         {
         }
     }

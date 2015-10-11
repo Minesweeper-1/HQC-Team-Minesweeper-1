@@ -12,6 +12,9 @@
     using Renderers.Common;
 
     // The engine will observe whether the MenuHandler has come to a final game mode resolution
+    /// <summary>
+    /// Concrete implementation of the IMenuHandler interface
+    /// </summary>
     public class ConsoleMenuHandler : IMenuHandler
     {
         private readonly int menuBodyTop = 10;
@@ -24,6 +27,14 @@
         private readonly IConsoleInputProvider inputProvider;
         private readonly IEnumerable<IGameMode> menuItems;
 
+        /// <summary>
+        /// Creates a new console menu handler
+        /// </summary>
+        /// <param name="inputProvider">Input provider</param>
+        /// <param name="renderer">Renderer</param>
+        /// <param name="menuItems">Menu items</param>
+        /// <param name="menuTop">Menu rendering top row</param>
+        /// <param name="menuLeft">Menu rendering left col</param>
         public ConsoleMenuHandler(IConsoleInputProvider inputProvider, IConsoleRenderer renderer, IEnumerable<IGameMode> menuItems, int menuTop, int menuLeft)
         {
             this.inputProvider = inputProvider;
@@ -38,7 +49,7 @@
         }
 
         /// <summary>
-        /// Indicates the seleted menu option
+        /// Shos the menu items to the user
         /// </summary>
         public void ShowSelections()
         {
@@ -46,7 +57,7 @@
         }
 
         /// <summary>
-        /// Wait for user input to modify board settings
+        /// Requests user input
         /// </summary>
         /// <returns>Returs board settings</returns>
         public BoardSettings RequestUserSelection()
@@ -73,10 +84,6 @@
             return this.currentSelection.Settings;
         }
 
-        /// <summary>
-        /// Redraw deselected menu option
-        /// </summary>
-        /// <param name="cursor"></param>
         private void SetPreviousMenuItem(int[] cursor)
         {
             this.currentSelection = this.currentSelection.GetPrevious();
@@ -88,10 +95,6 @@
             this.renderer.SetCursor(cursor[0], cursor[1]);
         }
 
-        /// <summary>
-        /// Draw current option
-        /// </summary>
-        /// <param name="cursor"></param>
         private void SetNextMenuItem(int[] cursor)
         {
             this.currentSelection = this.currentSelection.GetNext();
@@ -102,22 +105,14 @@
             this.renderer.Render(RenderersConstants.SelectionChar);
             this.renderer.SetCursor(cursor[0], cursor[1]);
         }
-
-        /// <summary>
-        /// Returns pressed key
-        /// </summary>
-        /// <returns></returns>
+        
         private ConsoleKey GetKey()
         {
             ConsoleKey keyPressed;
-            keyPressed = (ConsoleKey)this.inputProvider.GetKeyChar(true);
+            keyPressed = (ConsoleKey)this.inputProvider.GetKeyChar();
             return keyPressed;
         }
-
-        /// <summary>
-        /// Generate board settings to be passed to enigne
-        /// </summary>
-        /// <returns>Updated board settings</returns>
+        
         private BoardSettings SetSettings()
         {
             return this.currentSelection.Settings;

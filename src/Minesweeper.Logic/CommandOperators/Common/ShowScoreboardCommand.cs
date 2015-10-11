@@ -4,7 +4,7 @@
     using System.Linq;
 
     using Boards.Contracts;
-    using Minesweeper.Logic.Common;
+    using Logic.Common;
     using Contracts;
     using Players.Contracts;
     using Scoreboards.Contracts;
@@ -14,11 +14,18 @@
     /// </summary>
     public class ShowScoreboardCommand : IBoardCommand
     {
+        /// <summary>
+        /// The board toexecute a command on
+        /// </summary>
         private readonly IBoard board;
+
+        /// <summary>
+        /// The scoreboard to show
+        /// </summary>
         private readonly IScoreboard scoreboard;
 
         /// <summary>
-        /// The constructor of the show scoreboard command
+        /// Creates a ShowScoreboard command instance
         /// </summary>
         /// <param name="board">The current playing board</param>
         /// <param name="scoreboard">The current scoreboard</param>
@@ -29,7 +36,7 @@
         }
 
         /// <summary>
-        /// A method for displaying the score and changing the board state to pending
+        /// Displays the scores and changes the board state to Pending through notification
         /// </summary>
         /// <param name="command"></param>
         public void Execute(string command)

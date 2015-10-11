@@ -3,14 +3,17 @@
     using Logic.Boards.Settings.Contracts;
 
     /// <summary>
-    /// Handles Menu operations
+    /// Defines an interface for a menu handler public members
     /// </summary>
     public interface IMenuHandler
     {
+        /// <summary>
+        /// Shows menu items
+        /// </summary>
         void ShowSelections();
 
         /// <summary>
-        /// Wait for user selection of menu
+        /// Gets for user selection of menu
         /// </summary>
         /// <returns>YUpdated Board Settings</returns>
         BoardSettings RequestUserSelection();

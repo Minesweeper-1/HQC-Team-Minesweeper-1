@@ -5,10 +5,13 @@
     using Common;
 
     /// <summary>
-    /// Interface providing means of subscribing, unsubscribing and updating observers of the board
+    /// Defines the interface for board subject public members
     /// </summary>
     public interface IBoardSubject
     {
+        /// <summary>
+        /// Collection of all board subscribers
+        /// </summary>
         IList<IBoardObserver> Subscribers
         {
             get;

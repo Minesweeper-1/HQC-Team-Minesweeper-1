@@ -17,12 +17,18 @@
             this.Value = -1;
         }
 
+        /// <summary>
+        /// Bomb content type
+        /// </summary>
         public ContentType ContentType
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Bomb content value
+        /// </summary>
         public int Value
         {
             get;

@@ -11,6 +11,9 @@
     using Renderers.Contracts;
     using Renderers.Common;
 
+    /// <summary>
+    /// Concrete implementation of the IMinesweeperEngine and IBoardObserver interfaces
+    /// </summary>
     public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine, IBoardObserver
     {
         private readonly IScoreboard scoreboard;
@@ -23,14 +26,14 @@
         private IGameInitializationStrategy initializationStrategy;
 
         /// <summary>
-        /// Construct game Engine
+        /// Creates a new game engine
         /// </summary>
-        /// <param name="board">IBoard Object</param>
+        /// <param name="board">Board</param>
         /// <param name="inputProvider">Console input provider</param>
         /// <param name="renderer">Console renderer</param>
-        /// <param name="commandOperator">Coomand interpreter</param>
-        /// <param name="scoreboard">Score board</param>
-        /// <param name="player">player </param>
+        /// <param name="commandOperator">Command interpreter</param>
+        /// <param name="scoreboard">Scoreboard</param>
+        /// <param name="player">Current player</param>
         public StandardOnePlayerMinesweeperEngine(IBoard board, IConsoleInputProvider inputProvider, IConsoleRenderer renderer, ICommandOperator commandOperator, IScoreboard scoreboard, Player player)
         {
             this.board = board;
@@ -43,7 +46,7 @@
         }
 
         /// <summary>
-        /// Use game initialization strategy
+        /// Initializes the game using a game initialization strategy
         /// </summary>
         /// <param name="initializationStrategy"></param>
         public void Initialize(IGameInitializationStrategy initializationStrategy)
@@ -53,7 +56,7 @@
         }
 
         /// <summary>
-        /// Start game
+        /// Runs the game loop
         /// </summary>
         public void Run()
         {
@@ -103,12 +106,16 @@
         }
 
         /// <summary>
-        /// Updates upon notification
+        /// Changes the engine's initial state
         /// </summary>
-        /// <param name="newGameState"></param>
+        /// <param name="newGameState">The new game state</param>
         public void Update(Notification newGameState) =>
             this.currentGameStateChange = newGameState;
 
+        /// <summary>
+        /// Saves the current player's score
+        /// </summary>
+        /// <param name="player">The current player</param>
         private void SavePlayerScore(IPlayer player) =>
             this.scoreboard.RegisterNewPlayerScore(player);
     }

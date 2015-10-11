@@ -8,51 +8,69 @@
     using Contracts;
 
     /// <summary>
-    /// The class containing the logic for setting up and creating the board
+    /// Concrete implementation of the IBoard and IBoardSubject interfaces
     /// </summary>
     public class Board : IBoard, IBoardSubject
     {
         /// <summary>
-        /// Creates new board with given settings and subscribers
+        /// Creates a new board with the given settings and initial collection of subscribers
         /// </summary>
         /// <param name="settings">The difficulty level settings of the board</param>
-        /// <param name="subscribers">The list of subscribers of the board</param>
+        /// <param name="subscribers">The initial list of subscribers of the board</param>
         public Board(BoardSettings settings, List<IBoardObserver> subscribers)
         {
             this.InitializeBoard(settings.Rows, settings.Cols, settings.NumberOfBombs);
             this.Subscribers = subscribers;
         }
 
+        /// <summary>
+        /// Board number of mines
+        /// </summary>
         public int NumberOfMines
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Board number of columns
+        /// </summary>
         public int Cols
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Board number of rows
+        /// </summary>
         public int Rows
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Board collection of cells
+        /// </summary>
         public ICell[,] Cells
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Current board state
+        /// </summary>
         public BoardState BoardState
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Collection of all board subscribers
+        /// </summary>
         public IList<IBoardObserver> Subscribers
         {
             get;
@@ -60,7 +78,7 @@
         }
 
         /// <summary>
-        /// A method for calculating the number of surrounding bombs of a given cell
+        /// Calculates the number of surrounding bombs around a given cell
         /// </summary>
         /// <param name="cellRow">The row of the given cell</param>
         /// <param name="cellCol">The column of the given cell</param>
@@ -88,7 +106,7 @@
         }
 
         /// <summary>
-        /// A method revealing the given cell
+        /// Sets the state of a specified state to Reavealed
         /// </summary>
         /// <param name="cellRow">The row of the given cell</param>
         /// <param name="cellCol">The column of the given cell</param>
@@ -96,7 +114,7 @@
             this.Cells[cellRow, cellCol].State = CellState.Revealed;
 
         /// <summary>
-        /// A method for checking whether the given cell is inside the board
+        /// Checks whether the given cell is inside the board
         /// </summary>
         /// <param name="cellRow">The row of the given cell</param>
         /// <param name="cellCol">The column of the given cell</param>
@@ -105,7 +123,7 @@
             (0 <= cellRow && cellRow < this.Rows) && (0 <= cellCol && cellCol < this.Cols);
 
         /// <summary>
-        /// A method for checking whether the given cell contains a bomb
+        /// Checks whether the given cell contains a bomb
         /// </summary>
         /// <param name="cellRow">The row of the given cell</param>
         /// <param name="cellCol">The column of the given cell</param>
@@ -114,7 +132,7 @@
             this.Cells[cellRow, cellCol].Content.ContentType == ContentType.Bomb;
 
         /// <summary>
-        /// A method for checking whether the given cell is revealed
+        /// Checks whether the given cell is already revealed
         /// </summary>
         /// <param name="cellRow">The row of the given cell</param>
         /// <param name="cellCol">The column of the given cell</param>
@@ -123,7 +141,7 @@
             this.Cells[cellRow, cellCol].State == CellState.Revealed;
 
         /// <summary>
-        /// A method for changing the board state and notifying the observers based on a given notification
+        /// Changes the board state and notifies the board observers with a provided notification
         /// </summary>
         /// <param name="notification">The notification containing a message and a state</param>
         public void ChangeBoardState(Notification notification)
@@ -133,21 +151,21 @@
         }
 
         /// <summary>
-        /// A method for subscribing a new observer to the board
+        /// Subscribes a new observer to the board
         /// </summary>
         /// <param name="boardObserverToSubscribe">The observer to be subscribed</param>
         public void Subscribe(IBoardObserver boardObserverToSubscribe) =>
             this.Subscribers.Add(boardObserverToSubscribe);
 
         /// <summary>
-        /// A method for unsubscribing an existing observer of the board
+        /// Unsubscribes an existing observer of the board
         /// </summary>
         /// <param name="boardObserverToUnsubscribe">The observer to be unsubscribed</param>
         public void Unsubscribe(IBoardObserver boardObserverToUnsubscribe) =>
             this.Subscribers.Remove(boardObserverToUnsubscribe);
 
         /// <summary>
-        /// A method for notifying the observers for a change in the board state
+        /// Notifies the observers for a change in the board state
         /// </summary>
         /// <param name="boardState">The notification containing a message and a state the observers will be updated with</param>
         public void Notify(Notification boardState)
@@ -159,7 +177,7 @@
         }
 
         /// <summary>
-        /// A method for initiliazation of the board setting size, number of bombs and the state of the board
+        /// A method for setting all board settings to an initial state
         /// </summary>
         /// <param name="rows">The number of rows of the board</param>
         /// <param name="cols">The number of columns of the board</param>

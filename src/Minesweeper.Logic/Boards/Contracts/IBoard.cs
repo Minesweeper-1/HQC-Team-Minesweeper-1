@@ -4,30 +4,45 @@
     using Common;
 
     /// <summary>
-    /// Interface defining the playing board
+    /// Interface defining the playing board public members
     /// </summary>
     public interface IBoard : IBoardSubject
     {
+        /// <summary>
+        /// Specifies the algorithmic structure for storing and accessing the board cells
+        /// </summary>
         ICell[,] Cells
         {
             get;
         }
 
+        /// <summary>
+        /// Specifies board number of rows
+        /// </summary>
         int Rows
         {
             get;
         }
 
+        /// <summary>
+        /// Specifies board number of columns
+        /// </summary>
         int Cols
         {
             get;
         }
 
+        /// <summary>
+        /// Specifies board total number of mines
+        /// </summary>
         int NumberOfMines
         {
             get;
         }
 
+        /// <summary>
+        /// Specifies the current board state
+        /// </summary>
         BoardState BoardState
         {
             get;
@@ -71,11 +86,11 @@
         bool IsBomb(int cellRow, int cellCol);
 
         /// <summary>
-        /// 
+        /// Checks whether the given cell has already been revealed or not
         /// </summary>
-        /// <param name="cellRow"></param>
-        /// <param name="cellCol"></param>
-        /// <returns></returns>
+        /// <param name="cellRow">The row of the cell to be checked</param>
+        /// <param name="cellCol">The column of the cell to be checked</param>
+        /// <returns>Boolean showing whether the cell has already been revealed or not</returns>
         bool IsAlreadyShown(int cellRow, int cellCol);
     }
 }

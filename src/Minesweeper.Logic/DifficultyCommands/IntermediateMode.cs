@@ -11,16 +11,23 @@
     /// </summary>
     public class IntermediateMode : IGameMode
     {
+        /// <summary>
+        /// Intermediate mode value
+        /// </summary>
         public string Value { get; } = nameof(IntermediateMode).SplitByUpperCase().First();
+
+        /// <summary>
+        /// Intermediate mode settings
+        /// </summary>
+        public BoardSettings Settings => new NormalBoardSettings();
+
 
         /// <summary>
         /// A method returning an expert game mode
         /// </summary>
         /// <returns>An expert game mode</returns>
         public IGameMode GetNext() => new ExpertMode();
-
-        public BoardSettings Settings => new NormalBoardSettings();
-
+        
         /// <summary>
         /// A method returning a beginner game mode
         /// </summary>

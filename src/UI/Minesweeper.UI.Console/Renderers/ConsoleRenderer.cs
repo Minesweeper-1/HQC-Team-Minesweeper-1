@@ -9,11 +9,18 @@
     using Logic.Cells.Contracts;
     using Logic.Common;
     using Logic.DifficultyCommands.Contracts;
+    using Logic.Renderers.Contracts;
     using Contracts;
     using Common;
 
-    public class ConsoleRenderer : IConsoleRenderer
+    /// <summary>
+    /// Concrete implementation of the IConsoleRenderer and IRenderer interfaces
+    /// </summary>
+    public class ConsoleRenderer : IConsoleRenderer, IRenderer
     {
+        /// <summary>
+        /// Creates a new console renderer
+        /// </summary>
         public ConsoleRenderer()
         {
             CursorVisible = false;
@@ -24,10 +31,22 @@
             SetBufferSize(RenderersConstants.ConsoleWidth, RenderersConstants.ConsoleHeight);
         }
 
+        /// <summary>
+        /// Renders without line break
+        /// </summary>
+        /// <param name="line"></param>
         public void Render(string line) => Write(line);
 
+        /// <summary>
+        /// Renders with a line break
+        /// </summary>
+        /// <param name="line"></param>
         public void RenderLine(string line) => WriteLine(line);
 
+        /// <summary>
+        /// Renders the game board
+        /// </summary>
+        /// <param name="values"></param>
         public void RenderBoard(params object[] values)
         {
             var board = (IBoard)values[0];
@@ -39,6 +58,10 @@
             this.RenderBoardCells(board, row, col + 1);
         }
 
+        /// <summary>
+        /// Renders the welcome screen
+        /// </summary>
+        /// <param name="welcomeScreen"></param>
         public void RenderWelcomeScreen(string welcomeScreen)
         {
             this.SetForegroundColor(ConsoleColor.White);
@@ -48,6 +71,9 @@
             this.ResetBackgroundColor();
         }
 
+        /// <summary>
+        /// Renders the new player creation request
+        /// </summary>
         public void RenderNewPlayerCreationRequest()
         {
             this.SetBackgroundColor(ConsoleColor.DarkCyan);
@@ -65,12 +91,27 @@
             this.Render(line: "ENTER YOUR NAME: ");
         }
 
+        /// <summary>
+        /// Sets the rendering cursor to the specified row and column
+        /// </summary>
+        /// <param name="row">New cursor row</param>
+        /// <param name="col">New cursor column</param>
         public void SetCursor(int row, int col) => SetCursorPosition(col, row);
 
+        /// <summary>
+        /// Sets the visibility of the rendering cursor
+        /// </summary>
+        /// <param name="visible">New rendering cursor visibility</param>
         public void SetCursor(bool visible) => CursorVisible = visible;
         
+        /// <summary>
+        /// Clears the rendering screen
+        /// </summary>
         public void ClearScreen() => Clear();
 
+        /// <summary>
+        /// Clears the current rendering line 
+        /// </summary>
         public void ClearCurrentLine()
         {
             int currentLineCursor = CursorTop;
@@ -79,6 +120,12 @@
             this.SetCursor(currentLineCursor, col: 0);
         }
 
+        /// <summary>
+        /// Renders the menu
+        /// </summary>
+        /// <param name="menuItems">Collection of menu items</param>
+        /// <param name="row">Rendering top row</param>
+        /// <param name="col">Rendering left column</param>
         public void RenderMenu(IEnumerable<IGameMode> menuItems, int row, int col)
         {
             this.ResetBackgroundColor();
@@ -106,8 +153,12 @@
             this.SetCursor(cursorPosition[0], cursorPosition[1]);
         }
 
+        /// <summary>
+        /// Returns an array with the current rendering cursor coordinates
+        /// </summary>
+        /// <returns></returns>
         public int[] GetCursor() => new int[] { CursorTop, CursorLeft };
-
+       
         private void SetForegroundColor(Enum color) => ForegroundColor = (ConsoleColor)color;
 
         private void SetBackgroundColor(Enum color) => BackgroundColor = (ConsoleColor)color;
