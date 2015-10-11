@@ -28,16 +28,14 @@
     /// </summary>
     public class Game
     {
-        private static readonly Lazy<Game> LazyInstance = new Lazy<Game>(() => new Game(new ConsoleInputProvider(), new ConsoleRenderer()));
+        private static readonly Lazy<Game> LazyInstance = new Lazy<Game>(() => new Game());
 
         private IConsoleInputProvider inputProvider;
 
         private IConsoleRenderer outputRenderer;
 
-        private Game(IConsoleInputProvider inputProvider, IConsoleRenderer outputRenderer)
+        private Game()
         {
-            this.InputProvider = inputProvider;
-            this.OutputRenderer = outputRenderer;
         }
 
         public static Game Instance => LazyInstance.Value;
@@ -74,7 +72,8 @@
         public void Start()
         {
             // Initialize the two basic objects needed for user interactions
-            
+            this.InputProvider = this.inputProvider ?? new ConsoleInputProvider();
+            this.OutputRenderer = this.outputRenderer ?? new ConsoleRenderer();
 
             // Render initial UI
             this.outputRenderer.RenderWelcomeScreen(string.Join(string.Empty, RenderersConstants.GameTitle));
