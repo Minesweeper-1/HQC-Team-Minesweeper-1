@@ -76,15 +76,15 @@
             this.OutputRenderer = this.outputRenderer ?? new ConsoleRenderer();
 
             // Render initial UI
-            this.outputRenderer.RenderWelcomeScreen(string.Join(string.Empty, RenderersConstants.GameTitle));
-            this.outputRenderer.RenderNewPlayerCreationRequest();
+            this.OutputRenderer.RenderWelcomeScreen(string.Join(string.Empty, RenderersConstants.GameTitle));
+            this.OutputRenderer.RenderNewPlayerCreationRequest();
 
             // Create the active player
-            var player = new Player(this.inputProvider.ReceiveInputLine());
+            var player = new Player(this.InputProvider.ReceiveInputLine());
 
             // Render console menu handler and execute logic for requesting board settings
             // TODO: Refactor menu handler logic
-            int[] cursorPosition = this.outputRenderer.GetCursor();
+            int[] cursorPosition = this.OutputRenderer.GetCursor();
             var menuItems = new List<IGameMode>()
             {
                 new BeginnerMode(),
@@ -97,8 +97,8 @@
             menuHandler.ShowSelections();
 
             BoardSettings boardSettings = menuHandler.RequestUserSelection();
-            this.outputRenderer.ClearScreen();
-            this.outputRenderer.SetCursor(visible: true);
+            this.OutputRenderer.ClearScreen();
+            this.OutputRenderer.SetCursor(visible: true);
             //// End of menu handler logic
 
             var board = new Board(boardSettings, new List<IBoardObserver>());

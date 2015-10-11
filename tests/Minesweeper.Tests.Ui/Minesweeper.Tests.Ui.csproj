@@ -95,9 +95,8 @@
       <HintPath>..\packages\Code2Xml.1.4.0.2\lib\Microsoft.Scripting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Moq, Version=4.2.1507.118, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.2.1507.0118\lib\net40\Moq.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Moq">
+      <HintPath>..\..\src\packages\Moq.4.2.1507.0118\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="Paraiba, Version=1.0.0.10, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Paraiba.1.0.0.10\lib\net40\Paraiba.dll</HintPath>
@@ -132,8 +131,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Engine\EngineTests.cs" />
     <Compile Include="Engine\StandardGameInitializationStrategyTests.cs" />
     <Compile Include="Engine\EngineTest.cs" />
+    <Compile Include="Engine\StandardOnePlayerMinesweeperEngineTests.cs" />
+    <Compile Include="GameTests.cs" />
     <Compile Include="InputProviders\InputProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\ConsoleRendererTest.cs" />
