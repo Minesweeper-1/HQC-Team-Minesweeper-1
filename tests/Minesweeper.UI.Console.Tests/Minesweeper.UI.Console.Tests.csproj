@@ -6,8 +6,8 @@
     <ProjectGuid>{A154B173-7A32-4B15-8445-3B47E2BC00FA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Minesweeper.Tests.Ui</RootNamespace>
-    <AssemblyName>Minesweeper.Tests.Ui</AssemblyName>
+    <RootNamespace>Minesweeper.UI.Console.Tests</RootNamespace>
+    <AssemblyName>Minesweeper.UI.Console.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
@@ -124,21 +126,29 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+<<<<<<< HEAD:src/Minesweeper.Tests.Ui/Minesweeper.Tests.Ui.csproj
     <Compile Include="Engine\StandardGameInitializationStrategyTests.cs" />
     <Compile Include="Engine\EngineTest.cs" />
     <Compile Include="InputProviders\InputProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+=======
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Engines\" />
+    <Folder Include="InputProviders\" />
+>>>>>>> ab25afb5eba632f893755f689426062e1b9104cb:tests/Minesweeper.UI.Console.Tests/Minesweeper.UI.Console.Tests.csproj
     <Folder Include="MenuHandlers\" />
     <Folder Include="Renderers\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Minesweeper.Logic\Minesweeper.Logic.csproj">
+    <ProjectReference Include="..\..\src\Minesweeper.Logic\Minesweeper.Logic.csproj">
       <Project>{e1502fc2-a30f-4a16-a67c-d75f7a1e7602}</Project>
       <Name>Minesweeper.Logic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UI\Minesweeper.UI.Console\Minesweeper.UI.Console.csproj">
+    <ProjectReference Include="..\..\src\UI\Minesweeper.UI.Console\Minesweeper.UI.Console.csproj">
       <Project>{7a51afde-28d9-4061-858d-22b9b5177f31}</Project>
       <Name>Minesweeper.UI.Console</Name>
     </ProjectReference>

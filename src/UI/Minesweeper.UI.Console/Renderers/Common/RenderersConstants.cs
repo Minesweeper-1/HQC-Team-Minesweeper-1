@@ -5,8 +5,8 @@
     /// </summary>
     public class RenderersConstants
     {
-        public const int ConsoleHeight = 36;
-        public const int ConsoleWidth = 121;
+        public const int ConsoleHeight = 41;
+        public const int ConsoleWidth = 81;
 
         public const string IndexLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
