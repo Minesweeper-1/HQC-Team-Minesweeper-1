@@ -6,15 +6,16 @@
     using Engine;
     using Engine.Initializations;
     using InputProviders;
-    using MenuHandlers;
     using Logic.Boards;
     using Logic.Boards.Contracts;
+    using Logic.Boards.Settings.Contracts;
     using Logic.CommandOperators;
     using Logic.Contents;
     using Logic.DifficultyCommands;
     using Logic.DifficultyCommands.Contracts;
     using Logic.Players;
     using Logic.Scoreboards;
+    using MenuHandlers;
     using Renderers;
     using Renderers.Common;
 
@@ -23,13 +24,13 @@
     /// </summary>
     public class Game
     {
-        private static readonly Lazy<Game> instance = new Lazy<Game>(() => new Game());
+        private static readonly Lazy<Game> LazyInstance = new Lazy<Game>(() => new Game());
 
         private Game()
         {
         }
 
-        public static Game Instance => instance.Value;
+        public static Game Instance => LazyInstance.Value;
 
         /// <summary>
         /// Start Game logic
@@ -61,9 +62,9 @@
 
             menuHandler.ShowSelections();
 
-            var boardSettings = menuHandler.RequestUserSelection();
+            BoardSettings boardSettings = menuHandler.RequestUserSelection();
             renderer.ClearScreen();
-            renderer.SetCursor(true);
+            renderer.SetCursor(visible: true);
             //// End of menu handler logic
 
             var board = new Board(boardSettings, new List<IBoardObserver>());

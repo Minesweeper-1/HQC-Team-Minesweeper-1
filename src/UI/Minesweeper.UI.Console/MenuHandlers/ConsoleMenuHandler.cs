@@ -4,14 +4,15 @@
     using System.Collections.Generic;
 
     using Contracts;
+    using InputProviders.Contracts;
     using Logic.Boards.Settings.Contracts;
     using Logic.DifficultyCommands;
     using Logic.DifficultyCommands.Contracts;
-    using InputProviders.Contracts;
-    using Renderers.Contracts;
     using Renderers.Common;
+    using Renderers.Contracts;
 
     // The engine will observe whether the MenuHandler has come to a final game mode resolution
+
     /// <summary>
     /// Concrete implementation of the IMenuHandler interface
     /// </summary>
@@ -19,13 +20,13 @@
     {
         private readonly int menuBodyTop = 10;
         private readonly int menuBodyLeft = 5;
-        private int selectionCharTop;
         private readonly int selectionCharLeft;
-
-        private IGameMode currentSelection;
         private readonly IConsoleRenderer renderer;
         private readonly IConsoleInputProvider inputProvider;
         private readonly IEnumerable<IGameMode> menuItems;
+
+        private int selectionCharTop;
+        private IGameMode currentSelection;
 
         /// <summary>
         /// Creates a new console menu handler
@@ -45,7 +46,6 @@
             this.menuBodyLeft = menuLeft;
             this.selectionCharTop = menuTop + RenderersConstants.MenuTitleRowsCount;
             this.selectionCharLeft = this.menuBodyLeft;
-
         }
 
         /// <summary>
@@ -88,7 +88,7 @@
         {
             this.currentSelection = this.currentSelection.GetPrevious();
             this.renderer.SetCursor(this.selectionCharTop, this.selectionCharLeft);
-            this.renderer.Render(" ");
+            this.renderer.Render(line: " ");
             this.renderer.SetCursor(this.selectionCharTop - 1, this.selectionCharLeft);
             this.selectionCharTop -= 1;
             this.renderer.Render(RenderersConstants.SelectionChar);
@@ -99,7 +99,7 @@
         {
             this.currentSelection = this.currentSelection.GetNext();
             this.renderer.SetCursor(this.selectionCharTop, this.selectionCharLeft);
-            this.renderer.Render(" ");
+            this.renderer.Render(line: " ");
             this.renderer.SetCursor(this.selectionCharTop + 1, this.selectionCharLeft);
             this.selectionCharTop += 1;
             this.renderer.Render(RenderersConstants.SelectionChar);

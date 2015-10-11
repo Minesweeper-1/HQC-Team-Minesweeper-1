@@ -12,9 +12,10 @@
         /// Calls the base constructor with board settings for hard game mode
         /// </summary>
         public HardBoardSettings()
-            : base(GlobalConstants.ExpertLevelNumberOfBoardRows,
-                   GlobalConstants.ExpertLevelNumberOfBoardCols,
-                   GlobalConstants.ExpertLevelNumberOfBoardBombs)
+            : base(
+                  GlobalConstants.ExpertLevelNumberOfBoardRows,
+                  GlobalConstants.ExpertLevelNumberOfBoardCols,
+                  GlobalConstants.ExpertLevelNumberOfBoardBombs)
         {
         }
     }

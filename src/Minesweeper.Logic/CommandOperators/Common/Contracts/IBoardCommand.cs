@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// Defines an interface for all public members of board commands that could be applied
-    ///</summary>
+    /// </summary>
     public interface IBoardCommand
     {
         /// <summary>

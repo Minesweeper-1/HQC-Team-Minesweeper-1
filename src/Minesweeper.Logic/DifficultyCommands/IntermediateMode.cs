@@ -22,7 +22,6 @@
         /// </summary>
         public BoardSettings Settings => new NormalBoardSettings();
 
-
         /// <summary>
         /// A method returning an expert game mode
         /// </summary>

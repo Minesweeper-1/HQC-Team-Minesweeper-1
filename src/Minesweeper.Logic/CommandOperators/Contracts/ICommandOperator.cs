@@ -5,6 +5,10 @@
     /// </summary>
     public interface ICommandOperator
     {
+        /// <summary>
+        /// Executes logic for handling a game command
+        /// </summary>
+        /// <param name="command">Command to handle</param>
         void Execute(string command);
     }
 }

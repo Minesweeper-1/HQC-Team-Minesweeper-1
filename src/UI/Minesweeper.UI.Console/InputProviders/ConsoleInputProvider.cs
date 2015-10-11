@@ -13,15 +13,15 @@
     public class ConsoleInputProvider : IConsoleInputProvider, IInputProvider
     {
         /// <summary>
+        /// Returns whether there is a key available for pressing
+        /// </summary>
+        public bool IsKeyAvailable { get; } = KeyAvailable;
+
+        /// <summary>
         /// Reads user input from console
         /// </summary>
         /// <returns>User input as a string</returns>
         public string ReceiveInputLine() => ReadLine();
-
-        /// <summary>
-        /// Returns whether there is a key available for pressing
-        /// </summary>
-        public bool IsKeyAvailable { get; } = KeyAvailable;
 
         /// <summary>
         /// Returns the character code of the pressed key
@@ -42,8 +42,9 @@
             if (commandParts.Length == 2 && commandParts[1].Length == 1)
             {
                 commandParts[1] = RenderersConstants.IndexLetters.ToLowerInvariant()
-                                  .IndexOf(commandParts[1][0].ToString().ToLowerInvariant(),
-                                           StringComparison.InvariantCulture)
+                                  .IndexOf(
+                    commandParts[1][0].ToString().ToLowerInvariant(),
+                    StringComparison.InvariantCulture)
                                   .ToString();
 
                 result = string.Join(separator: " ", value: commandParts);

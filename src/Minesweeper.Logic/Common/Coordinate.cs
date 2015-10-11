@@ -16,8 +16,14 @@
             this.Col = col;
         }
 
+        /// <summary>
+        /// Coordinate row
+        /// </summary>
         public int Row { get; set; }
 
+        /// <summary>
+        /// Coordinate column
+        /// </summary>
         public int Col { get; set; }
 
         /// <summary>
@@ -28,7 +34,16 @@
         public override bool Equals(object obj)
         {
             var otherCoordinate = obj as Coordinate;
-            return (otherCoordinate.Col == this.Col && otherCoordinate.Row == this.Row);
+            return otherCoordinate.Col == this.Col && otherCoordinate.Row == this.Row;
+        }
+
+        /// <summary>
+        /// Returns hash code for the concrete coordinate
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

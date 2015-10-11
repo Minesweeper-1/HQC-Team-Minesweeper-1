@@ -13,6 +13,9 @@
     {
         private readonly ICollection<Coordinate> visited = new List<Coordinate>();
         
+        /// <summary>
+        /// Returns whether the resolved command is valid
+        /// </summary>
         public bool IsInvalid { get; private set; }
 
         /// <summary>

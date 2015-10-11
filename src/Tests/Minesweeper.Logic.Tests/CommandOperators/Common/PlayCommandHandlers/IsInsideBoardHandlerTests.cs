@@ -1,6 +1,5 @@
 ﻿namespace Minesweeper.Logic.Tests.CommandOperators.Common.PlayCommandHandlers
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
     
     using Logic.Boards;
@@ -11,6 +10,8 @@
     using Logic.Common;
     using Logic.Contents;
 
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    
     /// <summary>
     /// Class thesting the IsInsideBoardHandler
     /// </summary>
@@ -26,7 +27,7 @@
             testBoard.Cells[0, 0] = new CellContext();
             testBoard.Cells[0, 0].Content = new Bomb();
             testBoard.Cells[0, 0].Content.Value = 0;
-            testHandler.HandleRequest(0, 0, testBoard);
+            testHandler.HandleRequest(row: 0, col: 0, board: testBoard);
             Assert.AreEqual(BoardState.Closed, testBoard.BoardState);
         }
 

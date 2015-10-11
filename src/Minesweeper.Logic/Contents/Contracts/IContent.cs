@@ -14,8 +14,7 @@
         {
             get;
         }
-
-
+        
         /// <summary>
         /// Content value
         /// </summary>

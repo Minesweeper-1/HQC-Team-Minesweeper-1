@@ -5,7 +5,14 @@
     /// </summary>
     public enum CellState
     {
+        /// <summary>
+        /// Describes a closed cell
+        /// </summary>
         Sealed,
+
+        /// <summary>
+        /// Describes an open cell
+        /// </summary>
         Revealed
     }
 }

@@ -12,6 +12,7 @@
 
     // TODO: Separate read and write logic into two separate classes - SRP Violation
     // TODO: Extract crypto key to constants
+
     /// <summary>
     /// A class implementing the IScoreboard interface
     /// </summary>
@@ -28,7 +29,7 @@
         /// <returns>An IList of the players</returns>
         public IList<IPlayer> GetAll()
         {
-            string leadersAsString = this.cryptoManager.Decrypt("pesho", this.dataReader.ReadAllText(GlobalConstants.ScoreboardFilePath));
+            string leadersAsString = this.cryptoManager.Decrypt(key: "pesho", source: this.dataReader.ReadAllText(GlobalConstants.ScoreboardFilePath));
             IList<IPlayer> leaders = this.jsonManager.Parse<List<Player>>(leadersAsString).ToList<IPlayer>();
 
             return leaders;
@@ -42,7 +43,7 @@
         {
             IList<IPlayer> leaders = this.GetAll();
             leaders.Add(player);
-            string result = this.cryptoManager.Encrypt("pesho", this.jsonManager.ToStringRepresentation(leaders));
+            string result = this.cryptoManager.Encrypt(key: "pesho", source: this.jsonManager.ToStringRepresentation(leaders));
             this.dataWriter.WriteAllText(GlobalConstants.ScoreboardFilePath, result);
         }
     }

@@ -12,9 +12,10 @@
         /// Calls the base constructor with board settings for normal game mode
         /// </summary>
         public NormalBoardSettings()
-            : base(GlobalConstants.IntermediateLevelNumberOfBoardRows,
-                   GlobalConstants.IntermediateLevelNumberOfBoardCols,
-                   GlobalConstants.IntermediateLevelNumberOfBoardBombs)
+            : base(
+                  GlobalConstants.IntermediateLevelNumberOfBoardRows,
+                  GlobalConstants.IntermediateLevelNumberOfBoardCols,
+                  GlobalConstants.IntermediateLevelNumberOfBoardBombs)
         {
         }
     }

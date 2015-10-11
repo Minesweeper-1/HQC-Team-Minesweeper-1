@@ -12,9 +12,9 @@
         [TestMethod]
         public void SplitByUpperCaseShouldReturnArrayOfStringsOfTheInitialStringSplitByUpperCaseLetters()
         {
-            var result = "OneTwo".SplitByUpperCase();
-            Assert.AreEqual("One", result[0], "The first element of the array should be the string \"One\"");
-            Assert.AreEqual("Two", result[1], "The second element of the array should be the string \"Two\"");
+            string[] result = "OneTwo".SplitByUpperCase();
+            Assert.AreEqual(expected: "One", actual: result[0], message: "The first element of the array should be the string \"One\"");
+            Assert.AreEqual(expected: "Two", actual: result[1], message: "The second element of the array should be the string \"Two\"");
         }
     }
 }

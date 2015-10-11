@@ -2,10 +2,10 @@
 {
     using System.Collections.Generic;
 
-    using Settings.Contracts;
     using Cells.Contracts;
     using Common;
     using Contracts;
+    using Settings.Contracts;
 
     /// <summary>
     /// Concrete implementation of the IBoard and IBoardSubject interfaces

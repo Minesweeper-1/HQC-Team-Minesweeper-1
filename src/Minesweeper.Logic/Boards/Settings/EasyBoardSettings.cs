@@ -12,9 +12,10 @@
         /// Calls the base constructor with board parameters for easy game mode
         /// </summary>
         public EasyBoardSettings()
-            : base(GlobalConstants.BeginnerLevelNumberOfBoardRows, 
-                   GlobalConstants.BeginnerLevelNumberOfBoardCols, 
-                   GlobalConstants.BeginnerLevelNumberOfBoardBombs)
+            : base(
+                  GlobalConstants.BeginnerLevelNumberOfBoardRows, 
+                  GlobalConstants.BeginnerLevelNumberOfBoardCols, 
+                  GlobalConstants.BeginnerLevelNumberOfBoardBombs)
         {
         }
     }

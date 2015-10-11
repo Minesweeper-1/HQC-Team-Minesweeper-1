@@ -1,8 +1,8 @@
 ﻿namespace Minesweeper.Logic.Tests.Players
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Logic.Players;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Defines unit tests for the Player class in Minesweeper.Logic.Players

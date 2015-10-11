@@ -2,10 +2,13 @@
 {
     using Boards.Contracts;
 
+    /// <summary>
+    /// Abstract class for the Play command handler
+    /// </summary>
     public abstract class PlayCommandHandler
     {
         /// <summary>
-        /// Abstract class for the Play command handler
+        /// Play command successor
         /// </summary>
         protected PlayCommandHandler Successor
         {

@@ -1,7 +1,8 @@
 ﻿namespace Minesweeper.Logic.Tests.Common
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Logic.Common;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Testclass for the Notification class
@@ -12,8 +13,8 @@
         [TestMethod]
         public void NotificationShouldContainMessageAndState()
         {
-            var testNotification = new Notification("testMessage", BoardState.Open);
-            Assert.AreEqual("testMessage", testNotification.Message);
+            var testNotification = new Notification(message: "testMessage", state: BoardState.Open);
+            Assert.AreEqual(expected: "testMessage", actual: testNotification.Message);
             Assert.AreEqual(BoardState.Open, testNotification.State);
         }
     }

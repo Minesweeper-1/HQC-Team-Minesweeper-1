@@ -1,8 +1,8 @@
 ﻿namespace Minesweeper.Logic.Tests.DataManagers
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Logic.DataManagers;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class FileWriterTests

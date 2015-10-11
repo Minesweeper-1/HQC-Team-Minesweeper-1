@@ -2,13 +2,12 @@
 {
     using System.Collections.Generic;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Logic.Boards;
     using Logic.Boards.Contracts;
     using Logic.Boards.Settings;
     using Logic.CommandOperators;
     using Logic.Scoreboards;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Test class for the CommandOperators class
@@ -22,10 +21,10 @@
             var testOperator = new CommandOperator(
                 new Board(new EasyBoardSettings(), new List<IBoardObserver>()),
                 new Scoreboard());
-            testOperator.Execute("play");
-            testOperator.Execute("exit");
-            testOperator.Execute("restart");
-            testOperator.Execute("invalid");
+            testOperator.Execute(command: "play");
+            testOperator.Execute(command: "exit");
+            testOperator.Execute(command: "restart");
+            testOperator.Execute(command: "invalid");
         }
     }
 }

@@ -18,7 +18,7 @@
         /// <returns>The encrypted string</returns>
         public string Encrypt(string key, string source)
         {
-            string result = netEncryption.EncryptString(EncryptionProvider.Rijndael, key, source);
+            string result = this.netEncryption.EncryptString(EncryptionProvider.Rijndael, key, source);
             return result;
         }
 
@@ -30,7 +30,7 @@
         /// <returns>The decrypted string</returns>
         public string Decrypt(string key, string source)
         {
-            string result = netEncryption.DecryptString(EncryptionProvider.Rijndael, key, source);
+            string result = this.netEncryption.DecryptString(EncryptionProvider.Rijndael, key, source);
             return result;
         }
     }

@@ -5,7 +5,14 @@
     /// </summary>
     public enum ContentType
     {
-        Empty = 0,
-        Bomb = 1
+        /// <summary>
+        /// Describes an empty cell content
+        /// </summary>
+        Empty,
+
+        /// <summary>
+        /// Describes a bomb cell content
+        /// </summary>
+        Bomb
     }
 }

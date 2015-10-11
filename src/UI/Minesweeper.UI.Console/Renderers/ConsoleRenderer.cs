@@ -2,16 +2,16 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using static System.Console;
+    using System.Globalization;
 
+    using Common;
+    using Contracts;
     using Logic.Boards.Contracts;
     using Logic.Cells.Contracts;
     using Logic.Common;
     using Logic.DifficultyCommands.Contracts;
     using Logic.Renderers.Contracts;
-    using Contracts;
-    using Common;
 
     /// <summary>
     /// Concrete implementation of the IConsoleRenderer and IRenderer interfaces
@@ -80,13 +80,13 @@
             this.SetForegroundColor(ConsoleColor.White);
 
             // Fill the whole next 3 lines
-            this.Render(new string(' ', RenderersConstants.ConsoleWidth));
-            this.Render(new string(' ', RenderersConstants.ConsoleWidth));
-            this.Render(new string(' ', RenderersConstants.ConsoleWidth));
+            this.Render(new string(c: ' ', count: RenderersConstants.ConsoleWidth));
+            this.Render(new string(c: ' ', count: RenderersConstants.ConsoleWidth));
+            this.Render(new string(c: ' ', count: RenderersConstants.ConsoleWidth));
 
             // Set the cursor back at the beginning of the second line
-            var cursor = this.GetCursor();
-            this.SetCursor(cursor[0] - 2, 0);
+            int[] cursor = this.GetCursor();
+            this.SetCursor(row: cursor[0] - 2, col: 0);
 
             this.Render(line: "ENTER YOUR NAME: ");
         }
@@ -103,7 +103,7 @@
         /// </summary>
         /// <param name="visible">New rendering cursor visibility</param>
         public void SetCursor(bool visible) => CursorVisible = visible;
-        
+
         /// <summary>
         /// Clears the rendering screen
         /// </summary>
@@ -132,7 +132,7 @@
             this.ResetForegroundColor();
 
             int linesCountBeforeFirstMenuItem = RenderersConstants.MenuTitleRowsCount;
-            var cursorRow = row + linesCountBeforeFirstMenuItem;
+            int cursorRow = row + linesCountBeforeFirstMenuItem;
 
             CursorVisible = false;
 
@@ -143,7 +143,7 @@
                 this.RenderLine(RenderersConstants.SelectionPrefix + item.Value);
             }
 
-            var cursorPosition = this.GetCursor();
+            int[] cursorPosition = this.GetCursor();
 
             // Set default menu item selection
             this.SetCursor(row + linesCountBeforeFirstMenuItem, col);
@@ -157,8 +157,12 @@
         /// Returns an array with the current rendering cursor coordinates
         /// </summary>
         /// <returns></returns>
-        public int[] GetCursor() => new int[] { CursorTop, CursorLeft };
-       
+        public int[] GetCursor() => new int[]
+        {
+            CursorTop,
+            CursorLeft
+        };
+
         private void SetForegroundColor(Enum color) => ForegroundColor = (ConsoleColor)color;
 
         private void SetBackgroundColor(Enum color) => BackgroundColor = (ConsoleColor)color;
@@ -202,7 +206,7 @@
             for (int boardRow = 0; boardRow < board.Rows; boardRow++)
             {
                 this.SetCursor(row + boardRow, col);
-                string sidebarRow = boardRow.ToString().PadRight(2) + " *";
+                string sidebarRow = boardRow.ToString().PadRight(totalWidth: 2) + " *";
                 this.RenderLine(sidebarRow);
             }
         }
@@ -213,7 +217,7 @@
             string topBarSeparators = RenderersConstants.GameCellsDivider;
             for (int boardCol = 0; boardCol < board.Cols; boardCol++)
             {
-                topBarCols += RenderersConstants.IndexLetters[boardCol].ToString().PadLeft(2) + " ";
+                topBarCols += RenderersConstants.IndexLetters[boardCol].ToString().PadLeft(totalWidth: 2) + " ";
                 topBarSeparators += RenderersConstants.ColsRenderingDivider;
             }
 

@@ -25,23 +25,28 @@
         public const string SelectionPrefix = "   ";
 
         public const string MenuTitleAsString = "SELECT DIFFICULTY";
-        
+        public const string GameTitleAsString = "Minesweeper";
+
+        public static readonly int SymbolsCount = (((ConsoleWidth - 1) / 2) +
+                                                   (1 - MenuTitleAsString.Length)) / 2;
+
         public static readonly string[] MenuTitle = new string[]
         {
-            new string('=', (ConsoleWidth - 1) / 2 + 1),
-            new string(' ', ((ConsoleWidth - 1) / 2 + 1 - MenuTitleAsString.Length) / 2) + MenuTitleAsString + new string(' ', ((ConsoleWidth - 1) / 2 + 1 - MenuTitleAsString.Length) / 2),
-            new string('=', (ConsoleWidth - 1) / 2 + 1)
+            new string(c: '=', count: ((ConsoleWidth - 1) / 2) + 1),
+            string.Concat(
+                new string(c: ' ', count: SymbolsCount) +
+                MenuTitleAsString,
+                new string(c: ' ', count: SymbolsCount)),
+            new string(c: '=', count: ((ConsoleWidth - 1) / 2) + 1)
         };
 
         public static readonly int MenuTitleRowsCount = MenuTitle.Length;
 
-        public const string GameTitleAsString = "Minesweeper";
-        
         public static readonly string[] GameTitle = new string[]
         {
-            new string('=', ConsoleWidth),
-            new string(' ', (ConsoleWidth - GameTitleAsString.Length) / 2) + GameTitleAsString + new string(' ', (ConsoleWidth - GameTitleAsString.Length) / 2),
-            new string('=', ConsoleWidth)
+            new string(c: '=', count: ConsoleWidth),
+            new string(c: ' ', count: (ConsoleWidth - GameTitleAsString.Length) / 2) + GameTitleAsString + new string(c: ' ', count: (ConsoleWidth - GameTitleAsString.Length) / 2),
+            new string(c: '=', count: ConsoleWidth)
         };
     }
 }

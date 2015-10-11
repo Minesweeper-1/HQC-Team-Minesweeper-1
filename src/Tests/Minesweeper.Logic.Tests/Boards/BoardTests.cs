@@ -1,6 +1,5 @@
 ﻿namespace Minesweeper.Logic.Tests.Boards
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
 
     using Logic.Boards;
@@ -10,6 +9,9 @@
     using Logic.Cells.Contracts;
     using Logic.Common;
     using Logic.Contents;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     using Moq;
 
     [TestClass]
@@ -21,7 +23,6 @@
             var settings = new EasyBoardSettings();
             var subscribers = new List<IBoardObserver>()
             {
-
             };
 
             var board = new Board(settings, subscribers);
@@ -41,7 +42,6 @@
             var settings = new EasyBoardSettings();
             var subscribers = new List<IBoardObserver>()
             {
-
             };
 
             var board = new Board(settings, subscribers);
@@ -75,7 +75,6 @@
             var settings = new EasyBoardSettings();
             var subscribers = new List<IBoardObserver>()
             {
-
             };
 
             var board = new Board(settings, subscribers);
@@ -93,7 +92,6 @@
             var settings = new EasyBoardSettings();
             var subscribers = new List<IBoardObserver>()
             {
-
             };
 
             var board = new Board(settings, subscribers);
@@ -113,7 +111,6 @@
             var settings = new EasyBoardSettings();
             var subscribers = new List<IBoardObserver>()
             {
-
             };
 
             var board = new Board(settings, subscribers);
@@ -132,7 +129,6 @@
             var settings = new EasyBoardSettings();
             var subscribers = new List<IBoardObserver>()
             {
-
             };
 
             var board = new Board(settings, subscribers);
@@ -149,7 +145,6 @@
             var settings = new EasyBoardSettings();
             var subscribers = new List<IBoardObserver>()
             {
-
             };
 
             var board = new Board(settings, subscribers);
@@ -177,7 +172,6 @@
             var board = new Board(settings, subscribers);
             board.ChangeBoardState(templateNotification);
             mockedBoardObserver.Verify(o => o.Update(templateNotification), Times.AtMostOnce);
-
         }
 
         private void FillBoard(IBoard board)

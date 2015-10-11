@@ -1,9 +1,11 @@
 ﻿namespace Minesweeper.Logic.Tests.DifficultyCommands
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Logic.Boards.Settings;
+    using Logic.Boards.Settings.Contracts;
     using Logic.DifficultyCommands;
+    using Logic.DifficultyCommands.Contracts;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class ExpertModeTests
@@ -12,9 +14,9 @@
         public void ExpertModeValueAndSettingsShouldBeSetProperly()
         {
             var testMode = new ExpertMode();
-            var value = testMode.Value;
-            var settings = testMode.Settings;
-            Assert.AreEqual("Expert", value);
+            string value = testMode.Value;
+            BoardSettings settings = testMode.Settings;
+            Assert.AreEqual(expected: "Expert", actual: value);
             Assert.AreEqual(typeof(HardBoardSettings), settings.GetType());
         }
 
@@ -22,16 +24,16 @@
         public void GetPreviousShouldReturnNewIntermediateMode()
         {
             var testExpertMode = new ExpertMode();
-            var testIntermediateMode = testExpertMode.GetPrevious();
-            Assert.AreEqual("Intermediate", testIntermediateMode.Value);
+            IGameMode testIntermediateMode = testExpertMode.GetPrevious();
+            Assert.AreEqual(expected: "Intermediate", actual: testIntermediateMode.Value);
         }
 
         [TestMethod]
         public void GetNextShouldReturnNewBeginnerMode()
         {
             var testExpertMode = new ExpertMode();
-            var testBeginnerMode = testExpertMode.GetNext();
-            Assert.AreEqual("Beginner", testBeginnerMode.Value);
+            IGameMode testBeginnerMode = testExpertMode.GetNext();
+            Assert.AreEqual(expected: "Beginner", actual: testBeginnerMode.Value);
         }
     }
 }

@@ -2,8 +2,6 @@
 {
     using System.Collections.Generic;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Logic.Boards;
     using Logic.Boards.Contracts;
     using Logic.Boards.Settings;
@@ -12,6 +10,8 @@
     using Logic.Common;
     using Logic.Contents;
 
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class IsValidPlayCommandHandlerTests
     {
@@ -19,8 +19,8 @@
         public void IsValidHandleRequestShouldRecogniseAValidCommand()
         {
             var testHandler = new IsValidPlayCommandHandler();
-            testHandler.HandleRequest("1 1", new Board(new EasyBoardSettings(), new List<IBoardObserver>()));
-            Assert.AreEqual(false, testHandler.IsInvalid);
+            testHandler.HandleRequest(command: "1 1", board: new Board(new EasyBoardSettings(), new List<IBoardObserver>()));
+            Assert.AreEqual(expected: false, actual: testHandler.IsInvalid);
         }
 
         [TestMethod]
@@ -28,8 +28,8 @@
         {
             var testHandler = new IsValidPlayCommandHandler();
             var testBoard = new Board(new EasyBoardSettings(), new List<IBoardObserver>());
-            testHandler.HandleRequest("a a", testBoard);
-            Assert.AreEqual(true, testHandler.IsInvalid);
+            testHandler.HandleRequest(command: "a a", board: testBoard);
+            Assert.AreEqual(expected: true, actual: testHandler.IsInvalid);
             Assert.AreEqual(BoardState.Pending, testBoard.BoardState);
         }
 
@@ -55,7 +55,7 @@
             testBoard.Cells[1, 1].Content = new EmptyContent();
             testBoard.Cells[1, 1].Content.Value = 2;
             testBoard.Cells[1, 1].State = CellState.Sealed;
-            testHandler.HandleRequest("0 0", testBoard);
+            testHandler.HandleRequest(command: "0 0", board: testBoard);
         }
 
         [TestMethod]
@@ -67,7 +67,7 @@
             testBoard.Cells[0, 0] = new CellContext();
             testBoard.Cells[0, 0].Content = new EmptyContent();
             testBoard.Cells[0, 0].Content.Value = 1;
-            testHandler.HandleRequest("0 0", testBoard);
+            testHandler.HandleRequest(command: "0 0", board: testBoard);
         }
     }
 }

@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
 
-    using Logic.Renderers.Contracts;
     using Logic.DifficultyCommands.Contracts;
+    using Logic.Renderers.Contracts;
 
     /// <summary>
     /// Defines an interface for a console rendering object public members

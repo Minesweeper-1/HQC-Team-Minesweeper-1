@@ -1,8 +1,9 @@
 ﻿namespace Minesweeper.Logic.Tests.Contents
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Logic.Contents;
+    using Logic.Contents.Contracts;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Defines unit tests for the ContentFactory class in Minesweeper.Logic.Contents
@@ -15,7 +16,7 @@
         {
             var factory = new ContentFactory();
 
-            var content = factory.GetContent();
+            IContent content = factory.GetContent();
 
             Assert.AreEqual(!default(bool), content is EmptyContent);
         }

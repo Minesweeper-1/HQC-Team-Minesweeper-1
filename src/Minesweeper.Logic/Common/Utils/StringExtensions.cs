@@ -14,7 +14,7 @@
         /// <returns>A string array of the parts of the split string</returns>
         public static string[] SplitByUpperCase(this string source)
         {
-            return Regex.Split(source, @"(?<!^)(?=[A-Z])");
+            return Regex.Split(source, pattern: @"(?<!^)(?=[A-Z])");
         }
     }
 }

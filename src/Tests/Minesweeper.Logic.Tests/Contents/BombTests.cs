@@ -1,9 +1,9 @@
 ﻿namespace Minesweeper.Logic.Tests.Contents
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    using Logic.Contents;
     using Logic.Common;
+    using Logic.Contents;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Defines unit tests for the Bomb class in Minesweeper.Logic.Contents

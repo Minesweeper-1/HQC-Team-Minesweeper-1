@@ -2,8 +2,6 @@
 {
     using System.Collections.Generic;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Logic.Boards;
     using Logic.Boards.Contracts;
     using Logic.Boards.Settings;
@@ -11,6 +9,8 @@
     using Logic.CommandOperators.Common.PlayCommandHandlers;
     using Logic.Common;
     using Logic.Contents;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// A test class for the IsBombHandler
@@ -26,7 +26,7 @@
             testHandler.SetSuccessor(new IsAlreadyShownHandler());
             testBoard.Cells[0, 0] = new CellContext();
             testBoard.Cells[0, 0].Content = new Bomb();
-            testHandler.HandleRequest(0, 0, testBoard);
+            testHandler.HandleRequest(row: 0, col: 0, board: testBoard);
             Assert.AreEqual(BoardState.Closed, testBoard.BoardState);
         }
 
@@ -39,7 +39,7 @@
             testBoard.Cells[0, 0] = new CellContext();
             testBoard.Cells[0, 0].Content = new EmptyContent();
             testBoard.Cells[0, 0].State = CellState.Revealed;
-            testHandler.HandleRequest(0, 0, testBoard);
+            testHandler.HandleRequest(row: 0, col: 0, board: testBoard);
             Assert.AreEqual(BoardState.Pending, testBoard.BoardState);
         }
     }

@@ -8,8 +8,8 @@
     using Logic.Players;
     using Logic.Players.Contracts;
     using Logic.Scoreboards.Contracts;
-    using Renderers.Contracts;
     using Renderers.Common;
+    using Renderers.Contracts;
 
     /// <summary>
     /// Concrete implementation of the IMinesweeperEngine and IBoardObserver interfaces
@@ -91,7 +91,7 @@
                     this.renderer.RenderBoard(this.board, RenderersConstants.BoardStartRenderRow, RenderersConstants.BoardStartRenderCol);
                     this.renderer.SetCursor(RenderersConstants.BoardStartRenderRow + this.board.Rows + 1, col: 0);
                 }
-                else if(this.currentGameStateChange.State == BoardState.Reset)
+                else if (this.currentGameStateChange.State == BoardState.Reset)
                 {
                     this.currentPlayer.Score = 0;
                     this.initializationStrategy.Initialize(this.board);

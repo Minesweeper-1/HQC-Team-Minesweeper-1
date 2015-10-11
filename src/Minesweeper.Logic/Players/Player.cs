@@ -8,8 +8,9 @@
     public class Player : IPlayer
     {
         // Needed for the parsing of objects from the deserialization for the scoreboard
+
         /// <summary>
-        /// The player empty constructor
+        /// Default player constructor
         /// </summary>
         public Player()
         {
@@ -18,7 +19,7 @@
         }
 
         /// <summary>
-        /// Player constructor setting player name and score
+        /// Player constructor with name and default score
         /// </summary>
         /// <param name="name">The name of the player</param>
         public Player(string name)

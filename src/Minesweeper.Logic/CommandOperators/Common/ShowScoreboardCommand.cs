@@ -4,8 +4,8 @@
     using System.Linq;
 
     using Boards.Contracts;
-    using Logic.Common;
     using Contracts;
+    using Logic.Common;
     using Players.Contracts;
     using Scoreboards.Contracts;
 

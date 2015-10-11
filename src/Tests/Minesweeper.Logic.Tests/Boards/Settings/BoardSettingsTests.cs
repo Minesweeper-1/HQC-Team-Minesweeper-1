@@ -1,8 +1,8 @@
 ﻿namespace Minesweeper.Logic.Tests.Boards.Settings
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Logic.Boards.Settings;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class BoardSettingsTests
