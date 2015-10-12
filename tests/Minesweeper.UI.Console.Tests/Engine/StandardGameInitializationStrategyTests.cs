@@ -34,8 +34,8 @@ namespace Minesweeper.UI.Console.Tests.Engine
 
             var strategy = new StandardGameInitializationStrategy(new ContentFactory());
 
-            var newBoard = strategy.Initialize(board);
-            var bombCount = 0;
+            IBoard newBoard = strategy.Initialize(board);
+            int bombCount = 0;
             for (int i = 0; i < GlobalConstants.BeginnerLevelNumberOfBoardRows; i++)
             {
                 for (int j = 0; j < GlobalConstants.BeginnerLevelNumberOfBoardCols; j++)
@@ -66,8 +66,8 @@ namespace Minesweeper.UI.Console.Tests.Engine
 
             var strategy = new StandardGameInitializationStrategy(new ContentFactory());
 
-            var newBoard = strategy.Initialize(board);
-            var bombCount = 0;
+            IBoard newBoard = strategy.Initialize(board);
+            int bombCount = 0;
             for (int i = 0; i < GlobalConstants.IntermediateLevelNumberOfBoardRows; i++)
             {
                 for (int j = 0; j < GlobalConstants.IntermediateLevelNumberOfBoardCols; j++)
@@ -98,8 +98,8 @@ namespace Minesweeper.UI.Console.Tests.Engine
 
             var strategy = new StandardGameInitializationStrategy(new ContentFactory());
 
-            var newBoard = strategy.Initialize(board);
-            var bombCount = 0;
+            IBoard newBoard = strategy.Initialize(board);
+            int bombCount = 0;
             for (int i = 0; i < GlobalConstants.ExpertLevelNumberOfBoardRows; i++)
             {
                 for (int j = 0; j < GlobalConstants.ExpertLevelNumberOfBoardCols; j++)

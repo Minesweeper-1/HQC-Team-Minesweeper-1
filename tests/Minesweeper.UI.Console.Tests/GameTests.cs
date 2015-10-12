@@ -4,13 +4,15 @@
 namespace Minesweeper.UI.Console.Tests
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Minesweeper.UI.Console.InputProviders.Contracts;
-    using Minesweeper.UI.Console.Renderers.Contracts;
-    using Moq;
-    using Console.Renderers;
     using System.Runtime.InteropServices;
     using System.Threading.Tasks;
+
+    using Console.InputProviders.Contracts;
+    using Console.Renderers;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Moq;
 
     /// <summary>
     /// A test class for the Game class
@@ -66,7 +68,6 @@ namespace Minesweeper.UI.Console.Tests
               {
                   gameInstance.Start();
               });
-            
         }
 
         [DllImport("kernel32.dll")]

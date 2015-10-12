@@ -48,8 +48,8 @@ namespace Minesweeper.UI.Console.Tests.Engine
         {
             AllocConsole();
             var testInputProvider = new Mock<IConsoleInputProvider>();
-            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns("1 a");
-            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns("1 a");
+            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns(value: "1 a");
+            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns(value: "1 a");
             var testOutputRenderer = new ConsoleRenderer();
             var testScoreboard = new Mock<IScoreboard>();
             var testBoard = new Board(new EasyBoardSettings(), new List<IBoardObserver>());
@@ -59,12 +59,12 @@ namespace Minesweeper.UI.Console.Tests.Engine
                 testOutputRenderer,
                 new CommandOperator(testBoard, testScoreboard.Object),
                 testScoreboard.Object,
-                new Player("Gosho"));
+                new Player(name: "Gosho"));
             testEngine.Initialize(new StandardGameInitializationStrategy(new ContentFactory()));
-            testEngine.Update(new Notification("test", BoardState.Closed));
+            testEngine.Update(new Notification(message: "test", state: BoardState.Closed));
 
             bool completed = this.ExecuteWithTimeLimit(
-                TimeSpan.FromMilliseconds(200),
+                TimeSpan.FromMilliseconds(value: 200),
                 () =>
                 {
                     testEngine.Run();
@@ -79,8 +79,8 @@ namespace Minesweeper.UI.Console.Tests.Engine
         {
             AllocConsole();
             var testInputProvider = new Mock<IConsoleInputProvider>();
-            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns("1 a");
-            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns("1 a");
+            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns(value: "1 a");
+            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns(value: "1 a");
             var testOutputRenderer = new ConsoleRenderer();
             var testScoreboard = new Mock<IScoreboard>();
             var testBoard = new Board(new EasyBoardSettings(), new List<IBoardObserver>());
@@ -90,12 +90,12 @@ namespace Minesweeper.UI.Console.Tests.Engine
                 testOutputRenderer,
                 new CommandOperator(testBoard, testScoreboard.Object),
                 testScoreboard.Object,
-                new Player("Gosho"));
+                new Player(name: "Gosho"));
             testEngine.Initialize(new StandardGameInitializationStrategy(new ContentFactory()));
-            testEngine.Update(new Notification("test", BoardState.Open));
+            testEngine.Update(new Notification(message: "test", state: BoardState.Open));
 
             bool completed = this.ExecuteWithTimeLimit(
-                TimeSpan.FromMilliseconds(200),
+                TimeSpan.FromMilliseconds(value: 200),
                 () =>
                 {
                     testEngine.Run();
@@ -110,8 +110,8 @@ namespace Minesweeper.UI.Console.Tests.Engine
         {
             AllocConsole();
             var testInputProvider = new Mock<IConsoleInputProvider>();
-            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns("1 a");
-            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns("1 a");
+            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns(value: "1 a");
+            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns(value: "1 a");
             var testOutputRenderer = new ConsoleRenderer();
             var testScoreboard = new Mock<IScoreboard>();
             var testBoard = new Board(new EasyBoardSettings(), new List<IBoardObserver>());
@@ -121,12 +121,12 @@ namespace Minesweeper.UI.Console.Tests.Engine
                 testOutputRenderer,
                 new CommandOperator(testBoard, testScoreboard.Object),
                 testScoreboard.Object,
-                new Player("Gosho"));
+                new Player(name: "Gosho"));
             testEngine.Initialize(new StandardGameInitializationStrategy(new ContentFactory()));
-            testEngine.Update(new Notification("test", BoardState.Reset));
+            testEngine.Update(new Notification(message: "test", state: BoardState.Reset));
 
             bool completed = this.ExecuteWithTimeLimit(
-                TimeSpan.FromMilliseconds(200),
+                TimeSpan.FromMilliseconds(value: 200),
                 () =>
                 {
                     testEngine.Run();
@@ -141,8 +141,8 @@ namespace Minesweeper.UI.Console.Tests.Engine
         {
             AllocConsole();
             var testInputProvider = new Mock<IConsoleInputProvider>();
-            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns("1 a");
-            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns("1 a");
+            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns(value: "1 a");
+            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns(value: "1 a");
             var testOutputRenderer = new ConsoleRenderer();
             var testScoreboard = new Mock<IScoreboard>();
             var testBoard = new Board(new EasyBoardSettings(), new List<IBoardObserver>());
@@ -152,12 +152,12 @@ namespace Minesweeper.UI.Console.Tests.Engine
                 testOutputRenderer,
                 new CommandOperator(testBoard, testScoreboard.Object),
                 testScoreboard.Object,
-                new Player("Gosho"));
+                new Player(name: "Gosho"));
             testEngine.Initialize(new StandardGameInitializationStrategy(new ContentFactory()));
-            testEngine.Update(new Notification("test", BoardState.Pending));
+            testEngine.Update(new Notification(message: "test", state: BoardState.Pending));
 
             bool completed = this.ExecuteWithTimeLimit(
-                TimeSpan.FromMilliseconds(200),
+                TimeSpan.FromMilliseconds(value: 200),
                 () =>
                 {
                     testEngine.Run();
