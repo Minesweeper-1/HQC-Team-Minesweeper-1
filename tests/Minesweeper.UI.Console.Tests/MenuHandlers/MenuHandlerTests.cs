@@ -1,21 +1,23 @@
 ﻿namespace Minesweeper.UI.Console.Tests.MenuHandlers
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.Runtime.InteropServices;
-    using Moq;
-    using Renderers.Contracts;
-    using Logic.InputProviders.Contracts;
     using System.Collections.Generic;
-    using Logic.DifficultyCommands.Contracts;
-    using Logic.DifficultyCommands;
+    using System.Runtime.InteropServices;
+    using Console.InputProviders.Contracts;
     using Console.MenuHandlers;
-    using InputProviders.Contracts;
+    using Console.Renderers.Contracts;  
+    using Logic.DifficultyCommands;
+    using Logic.DifficultyCommands.Contracts;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
 
     [TestClass]
     public class MenuHandlerTests
     {
         private const uint StdOutputHandle = 0xFFFFFFF5;
+
+        [DllImport("kernel32")]
+        public static extern bool AllocConsole();
 
         [TestMethod]
         public void ExpectNoExcpetionFromMenuHandlerConstructor()
@@ -56,10 +58,8 @@
         }
 
         [DllImport("kernel32.dll")]
-        private static extern IntPtr GetStdHandle(uint nStdHandle);
+        private static extern IntPtr GetStdHandle(uint nonStardarddHandle);
         [DllImport("kernel32.dll")]
-        private static extern void SetStdHandle(uint nStdHandle, IntPtr handle);
-        [DllImport("kernel32")]
-        public static extern bool AllocConsole();
+        private static extern void SetStdHandle(uint nonStardarddHandle, IntPtr handle);        
     }
 }
