@@ -5,7 +5,22 @@ in the Telerik Academy High-Quality Code Course 2015
 
 ------------------------------------------------------
 1. Redesigned the project structure: Team "Minesweeper-1"
-	- Created a project `Minesweeper.Logic`;
+	- Created a project `Minesweeper.Logic`
+		- Renamed the namespace `Mini` to `Minesweeper.Logic`
+		- Introduced the following namespaces:
+			- `Minesweeper.Logic.Boards`, containing the Board object and settings definitions
+			- `Minesweeper.Logic.Cells`, containing the Cell object definitions
+			- `Minesweeper.Logic.CommandOperators`, containing Play, ShowScoreboard, Exit and Restart command handling definitions
+			- `Minesweeper.Logic.Common`, containing common utils, constants and enumerations used in the entire Logic namespace
+			- `Minesweeper.Logic.Contents`, containg  the cell contents and cell contents factory definitions
+			- `Minesweeper.Logic.Data`, containing the text file with the soreboard entries
+			- `Minesweeper.Logic.DataManagers`, containg JSON parsing and serializing logic, as well as encryption/decryption and file reading and writing logic
+			- `Minesweeper.Logic.DifficultyCommands`, containing definitions of chained game modes with successors and predecessors aimed at providing an interface for implementing menu logic in some UI form
+			- `Minesweeper.Logic.Engines`, containing the interfaces for an engine operating the different modules
+			- `Minesweeper.Logic.InputProviders`, containing the interfaces for an input providing module logic
+			- `Minesweeper.Logic.Players`, containing the Player object definitions
+			- `Minesweeper.Logic.Renderers`, containing the interfaces for a rendering module logic
+			- `Minesweeper.Logic.Scoreboards`, containing the Scoreboard object definitions
 	- Created a namespace `UI`:
 		- Created a project `Minesweeper.UI.Console`
 			- Introduced a class `ConsoleInputProvider` implementing the `IInputPovider` interface from the logic, which uses the Console to receive input - menu item selection, cell selection, board and game interaction
@@ -14,21 +29,6 @@ in the Telerik Academy High-Quality Code Course 2015
 			- Introduced a class `StandardOnePlayerMinesweeperEngine` which utilizes the `StandardGameInitializationStrategy` by filling the board using a concrete step-by-step algorithm
 		- Created a project `Minesweeper.UI.WPF`
 			- For now it is just an example of how easy it can be implementing entirely different means of receiving input and sending output
-	- Renamed the namespace `Mini` to `Minesweeper.Logic`
-	- Introduced the following namespaces:
-		- `Minesweeper.Logic.Boards`, containing the Board object and settings definitions
-		- `Minesweeper.Logic.Cells`, containing the Cell object definitions
-		- `Minesweeper.Logic.CommandOperators`, containing Play, ShowScoreboard, Exit and Restart command handling definitions
-		- `Minesweeper.Logic.Common`, containing common utils, constants and enumerations used in the entire Logic namespace
-		- `Minesweeper.Logic.Contents`, containg  the cell contents and cell contents factory definitions
-		- `Minesweeper.Logic.Data`, containing the text file with the soreboard entries
-		- `Minesweeper.Logic.DataManagers`, containg JSON parsing and serializing logic, as well as encryption/decryption and file reading and writing logic
-		- `Minesweeper.Logic.DifficultyCommands`, containing definitions of chained game modes with successors and predecessors aimed at providing an interface for implementing menu logic in some UI form
-		- `Minesweeper.Logic.Engines`, containing the interfaces for an engine operating the different modules
-		- `Minesweeper.Logic.InputProviders`, containing the interfaces for an input providing module logic
-		- `Minesweeper.Logic.Players`, containing the Player object definitions
-		- `Minesweeper.Logic.Renderers`, containing the interfaces for a rendering module logic
-		- `Minesweeper.Logic.Scoreboards`, containing the Scoreboard object definitions
 
 2. Reformatted the source code:
 
@@ -71,4 +71,15 @@ in the Telerik Academy High-Quality Code Course 2015
 	   - Strategy: The board initialization with empty cells and bombs
 	   - Observer: The Engine observes the state of the board
 	   - Command: The input is being translated to engine instructions by being processed by their corresponding commands
-	   - Chain of Responsibility: The different stages of "reading" the play command - is the command valid, is it inside the board, is it a bomb, and finally - reveal the cell
+	   - Chain of Responsibility: The different stages of "reading" the play command - is the command valid, is it inside the board, is it a bomb, and finally - reveal the cell 
+
+4. Introduced tests for `Minesweeper.Logic` and `Minesweeper.UI.Console`
+	- Achieved around 90% code coverage
+
+5. Refactored the newly designed source code the core - `Minesweeper.Logic`
+	- Maintainability Index - 92/100
+	- Cyclomatic Complexity - 211
+	- Depth of Inheritance - 2
+	- Class coupling - 62
+	- Lines of Code - 239
+	- Around 80% Maintainability Index for `Minesweeper.UI.Console`
