@@ -1,9 +1,9 @@
-﻿<Window x:Class="MinesweeperWpf.MainWindow"
+﻿<Window x:Class="Minesweeper.UI.Wpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MinesweeperWpf"
+        xmlns:local="clr-namespace:Minesweeper.UI.Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     

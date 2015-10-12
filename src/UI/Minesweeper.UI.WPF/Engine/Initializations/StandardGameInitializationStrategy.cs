@@ -1,4 +1,4 @@
-﻿namespace Minesweeper.UI.Console.Engine.Initializations
+﻿namespace Minesweeper.UI.Wpf.Engine.Initializations
 {
     using System;
 
