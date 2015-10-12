@@ -1,16 +1,18 @@
 ﻿namespace Minesweeper.UI.Console.Tests.MenuHandlers
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.Runtime.InteropServices;
-    using Moq;
-    using Renderers.Contracts;
-    using Logic.InputProviders.Contracts;
     using System.Collections.Generic;
-    using Logic.DifficultyCommands.Contracts;
-    using Logic.DifficultyCommands;
+    using System.Runtime.InteropServices;
+
+    using Console.InputProviders.Contracts;
     using Console.MenuHandlers;
-    using InputProviders.Contracts;
+    using Console.Renderers.Contracts;
+    using Logic.DifficultyCommands;
+    using Logic.DifficultyCommands.Contracts;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Moq;
 
     [TestClass]
     public class MenuHandlerTests
