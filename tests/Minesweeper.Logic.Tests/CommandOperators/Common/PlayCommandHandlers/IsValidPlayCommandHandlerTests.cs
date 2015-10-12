@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.CommandOperators.Common.PlayCommandHandlers
+﻿// <copyright file="IsValidPlayCommandHandlerTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.CommandOperators.Common.PlayCommandHandlers
 {
     using System.Collections.Generic;
 
@@ -12,9 +15,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// A class containing tests for the IsValidCommandHandler functionality
+    /// </summary>
     [TestClass]
     public class IsValidPlayCommandHandlerTests
     {
+        /// <summary>
+        /// Test checking whether the handler recognized a valid command
+        /// </summary>
         [TestMethod]
         public void IsValidHandleRequestShouldRecogniseAValidCommand()
         {
@@ -23,6 +32,9 @@
             Assert.AreEqual(expected: false, actual: testHandler.IsInvalid);
         }
 
+        /// <summary>
+        /// Test checking whether the handler recognizes an invalid command
+        /// </summary>
         [TestMethod]
         public void IsValidHandleRequestShouldRecogniseAnInvalidCommand()
         {
@@ -33,6 +45,9 @@
             Assert.AreEqual(BoardState.Pending, testBoard.BoardState);
         }
 
+        /// <summary>
+        /// Test checking whether the handler handles the request if the cell is valid
+        /// </summary>
         [TestMethod]
         public void IsValidPlayShouldHandleTheRequestIfTheCellIsValid()
         {
@@ -58,6 +73,9 @@
             testHandler.HandleRequest(command: "0 0", board: testBoard);
         }
 
+        /// <summary>
+        /// Test checking whether the successor is called
+        /// </summary>
         [TestMethod]
         public void IsValidPlayCommandShouldCallItsSuccessorWhenNeeded()
         {

@@ -1,33 +1,54 @@
-﻿namespace Minesweeper.Tests.Ui.InputProviders
+﻿// <copyright file="InputProviderTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.UI.Console.Tests.InputProviders
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Moq;
-    using UI.Console.InputProviders.Contracts;
 
+    using Minesweeper.UI.Console.InputProviders.Contracts;
+
+    using Moq;
+
+    /// <summary>
+    /// Test class for the InputProvider
+    /// </summary>
     [TestClass]
     public class InputProviderTests
     {
+        /// <summary>
+        /// Testing receiving input
+        /// </summary>
         [TestMethod]
-        public void MockTestOFReceiceInputLieMethod()
+        public void MockTestOfReceiveInputLieMethod()
         {
-            var mockedInputProvider = MockedInputProvder();
+            var mockedInputProvider = this.MockedInputProvder();
             Assert.AreEqual(mockedInputProvider.Object.ReceiveInputLine(), "a 1");
         }
 
+        /// <summary>
+        /// Testing IsKeyAvailable
+        /// </summary>
         [TestMethod]
-        public void MockTestOFIsKeyAvailableProperty()
+        public void MockTestOfIsKeyAvailableProperty()
         {
-            var mockedInputProvider = MockedInputProvder();
+            var mockedInputProvider = this.MockedInputProvder();
             Assert.AreEqual(mockedInputProvider.Object.IsKeyAvailable, true);
         }
 
+        /// <summary>
+        /// Testing GetKeyChar
+        /// </summary>
         [TestMethod]
-        public void MockTestOFGetKeyChar()
+        public void MockTestOfGetKeyChar()
         {
-            var mockedInputProvider = MockedInputProvder();
+            var mockedInputProvider = this.MockedInputProvder();
             Assert.AreEqual(mockedInputProvider.Object.GetKeyChar(), 1);
         }
 
+        /// <summary>
+        /// Private method providing a mocked input provider
+        /// </summary>
+        /// <returns>The mocked input provider</returns>
         private Mock<IConsoleInputProvider> MockedInputProvder()
         {
             var mockedInputProvider = new Mock<IConsoleInputProvider>();

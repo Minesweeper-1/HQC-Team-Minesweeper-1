@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.DifficultyCommands
+﻿// <copyright file="ExpertModeTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.DifficultyCommands
 {
     using Logic.Boards.Settings;
     using Logic.Boards.Settings.Contracts;
@@ -7,9 +10,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Test class for the ExpertMode class
+    /// </summary>
     [TestClass]
     public class ExpertModeTests
     {
+        /// <summary>
+        /// Testing ExpertMode value and settings creation
+        /// </summary>
         [TestMethod]
         public void ExpertModeValueAndSettingsShouldBeSetProperly()
         {
@@ -20,6 +29,9 @@
             Assert.AreEqual(typeof(HardBoardSettings), settings.GetType());
         }
 
+        /// <summary>
+        /// Testing GetPrevious functionality
+        /// </summary>
         [TestMethod]
         public void GetPreviousShouldReturnNewIntermediateMode()
         {
@@ -28,6 +40,9 @@
             Assert.AreEqual(expected: "Intermediate", actual: testIntermediateMode.Value);
         }
 
+        /// <summary>
+        /// Testing GetNext functionality
+        /// </summary>
         [TestMethod]
         public void GetNextShouldReturnNewBeginnerMode()
         {

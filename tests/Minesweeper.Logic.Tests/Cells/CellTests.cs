@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.Cells
+﻿// <copyright file="CellTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.Cells
 {
     using Logic.Cells;
     using Logic.Cells.Contracts;
@@ -13,6 +16,9 @@
     [TestClass]
     public class CellTests
     {
+        /// <summary>
+        /// Method testing the GetContext functionality
+        /// </summary>
         [TestMethod]
         public void GetContextReturnsObjectOfTypeCellContext()
         {
@@ -21,6 +27,9 @@
             Assert.AreEqual(!default(bool), cell.GetContext() is CellContext);
         }
 
+        /// <summary>
+        /// Method testing whether the constructor creates default context
+        /// </summary>
         [TestMethod]
         public void CellConstructorCreatesContextWithDefaultPropertyValues()
         {
@@ -31,6 +40,9 @@
             Assert.AreEqual((CellState)default(int), context.State);
         }
 
+        /// <summary>
+        /// Method testing the SetState functionality
+        /// </summary>
         [TestMethod]
         public void SetStateAssignsSpecifiedStateToContext()
         {
@@ -43,6 +55,9 @@
             Assert.AreEqual(CellState.Revealed, context.State);
         }
 
+        /// <summary>
+        /// Method testing the SetContent functionality
+        /// </summary>
         [TestMethod]
         public void SetContentAssignsSpecifiedContentToContext()
         {

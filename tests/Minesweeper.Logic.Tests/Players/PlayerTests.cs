@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.Players
+﻿// <copyright file="PlayerTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.Players
 {
     using Logic.Players;
 
@@ -10,6 +13,9 @@
     [TestClass]
     public class PlayerTests
     {
+        /// <summary>
+        /// Testing empty constructor
+        /// </summary>
         [TestMethod]
         public void EmptyConstructorSetsDefaultPropertyValues()
         {
@@ -19,6 +25,9 @@
             Assert.AreEqual(default(int), player.Score);
         }
 
+        /// <summary>
+        /// Testing constructor with given name
+        /// </summary>
         [TestMethod]
         public void ConstructorWithNameSetsNameAndDefaultScore()
         {

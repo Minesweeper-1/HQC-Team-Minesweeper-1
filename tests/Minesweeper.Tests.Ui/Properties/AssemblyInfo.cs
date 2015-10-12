@@ -1,17 +1,15 @@
-﻿// <copyright file="AssemblyInfo.cs" company="Team Minesweeper-1">
-// Copyright (c) The team. All rights reserved.
-// </copyright>
-using System.Reflection;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Minesweeper.Logic.Tests")]
+[assembly: AssemblyTitle("Minesweeper.Tests.Ui")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Minesweeper.Logic.Tests")]
+[assembly: AssemblyProduct("Minesweeper.Tests.Ui")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9ff05fc4-fbcc-4d4b-899a-e7b122f1f914")]
+[assembly: Guid("a154b173-7a32-4b15-8445-3b47e2bc00fa")]
 
 // Version information for an assembly consists of the following four values:
 //

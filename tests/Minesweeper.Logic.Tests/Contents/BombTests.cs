@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.Contents
+﻿// <copyright file="BombTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.Contents
 {
     using Logic.Common;
     using Logic.Contents;
@@ -11,6 +14,9 @@
     [TestClass]
     public class BombTests
     {
+        /// <summary>
+        /// Testing bomb creation
+        /// </summary>
         [TestMethod]
         public void ConstructorSetsCorrectBombProperties()
         {

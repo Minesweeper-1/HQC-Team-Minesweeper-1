@@ -1,13 +1,9 @@
-﻿using MineSweeper_WPF.Renderers.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MineSweeper_WPF.Renderers
+﻿namespace MineSweeper_WPF.Renderers
 {
-    class WpfRenderer : IWpfRenderer
+    using System;
+    using MineSweeper_WPF.Renderers.Contracts;
+    
+    public class WpfRenderer : IWpfRenderer
     {
         public void RenderBoard(params object[] values)
         {

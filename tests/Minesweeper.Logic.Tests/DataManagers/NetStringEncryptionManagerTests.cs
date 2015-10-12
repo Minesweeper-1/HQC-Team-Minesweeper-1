@@ -1,12 +1,21 @@
-﻿namespace Minesweeper.Logic.Tests.DataManagers
+﻿// <copyright file="NetStringEncryptionManagerTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.DataManagers
 {
     using Logic.DataManagers;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Test class for the NetStringEncryptionManager class
+    /// </summary>
     [TestClass]
     public class NetStringEncryptionManagerTests
     {
+        /// <summary>
+        /// Testing encrypt and decrypt functionality
+        /// </summary>
         [TestMethod]
         public void EncryptAndDecryptOnSameKeyShouldReturnCorrectEncryptedString()
         {

@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.Boards
+﻿// <copyright file="BoardTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.Boards
 {
     using System.Collections.Generic;
 
@@ -14,14 +17,20 @@
 
     using Moq;
 
+    /// <summary>
+    /// A test class for the Board class
+    /// </summary>
     [TestClass]
     public class BoardTests
     {
+        /// <summary>
+        /// A test method testing whether the constructor sets the provided parameters
+        /// </summary>
         [TestMethod]
         public void BoardConstructorShouldSetProvidedParameters()
         {
             var settings = new EasyBoardSettings();
-            var subscribers = new List<IBoardObserver>()
+            var subscribers = new List<IBoardObserver>
             {
             };
 
@@ -35,6 +44,9 @@
             Assert.AreNotEqual(default(ICell[,]), board.Cells);
         }
 
+        /// <summary>
+        /// A method testing whether the Subscribe method adds the given object to the list
+        /// </summary>
         [TestMethod]
         public void SubscribeShouldAddTheObjectToTheBoardSubscribers()
         {
@@ -50,6 +62,9 @@
             Assert.AreEqual(!default(bool), board.Subscribers.Contains(mockedBoardObserver));
         }
 
+        /// <summary>
+        /// A method testing whether the Unsubscribe method removes the object from the list
+        /// </summary>
         [TestMethod]
         public void UnsubscribeShouldRemoveTheObjectFromTheBoardSubscribers()
         {
@@ -69,6 +84,9 @@
             Assert.AreEqual(default(int), board.Subscribers.Count);
         }
 
+        /// <summary>
+        /// A method testing whether the CalculateSurroundingBombs method returns correct value
+        /// </summary>
         [TestMethod]
         public void CalculateSurroundingBombsOnEmptyBoardShouldReturnZero()
         {
@@ -85,6 +103,9 @@
             Assert.AreEqual(default(int), result);
         }
 
+        /// <summary>
+        /// A method testing whether the CalculateSurroundingBombs method returns correct value
+        /// </summary>
         [TestMethod]
         public void CalculateSurroundingBombsOnCellWithBombShouldReturnZero()
         {
@@ -104,6 +125,9 @@
             Assert.AreEqual(default(int), result);
         }
 
+        /// <summary>
+        /// A method testing whether the CalculateSurroundingBombs method returns correct value
+        /// </summary>
         [TestMethod]
         public void CalculateSurroundingBombsWithSurroundingBombShouldReturnOne()
         {
@@ -123,6 +147,9 @@
             Assert.AreEqual(default(int) + 1, result);
         }
 
+        /// <summary>
+        /// A method testing whether the IsAlreadyShown method returns correct value
+        /// </summary>
         [TestMethod]
         public void IsAlreadyShownShouldReturnFalseWhenCalledUponSealedCell()
         {
@@ -139,6 +166,9 @@
             Assert.AreEqual(default(bool), result);
         }
 
+        /// <summary>
+        /// A method testing whether the IsAlreadyShown method returns correct value
+        /// </summary>
         [TestMethod]
         public void IsAlreadyShownShouldReturnTrueWhenCalledUponRevealedCell()
         {
@@ -156,6 +186,9 @@
             Assert.AreEqual(!default(bool), result);
         }
 
+        /// <summary>
+        /// Test method for the ChangeBoardState functionality
+        /// </summary>
         [TestMethod]
         public void ChangeBoardStateShouldChangeBoardStateAndNotifySubscribers()
         {
@@ -174,6 +207,10 @@
             mockedBoardObserver.Verify(o => o.Update(templateNotification), Times.AtMostOnce);
         }
 
+        /// <summary>
+        /// A method for filling the playing board with cells 
+        /// </summary>
+        /// <param name="board">The current playing board to be filled</param>
         private void FillBoard(IBoard board)
         {
             var contentFactory = new ContentFactory();

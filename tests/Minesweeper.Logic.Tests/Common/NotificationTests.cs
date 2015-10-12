@@ -1,15 +1,21 @@
-﻿namespace Minesweeper.Logic.Tests.Common
+﻿// <copyright file="NotificationTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.Common
 {
     using Logic.Common;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Testclass for the Notification class
+    /// Test class for the Notification class
     /// </summary>
     [TestClass]
     public class NotificationTests
     {
+        /// <summary>
+        /// Testing notification creation
+        /// </summary>
         [TestMethod]
         public void NotificationShouldContainMessageAndState()
         {

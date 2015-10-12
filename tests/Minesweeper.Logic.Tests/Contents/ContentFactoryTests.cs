@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.Contents
+﻿// <copyright file="ContentFactoryTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.Contents
 {
     using Logic.Contents;
     using Logic.Contents.Contracts;
@@ -11,6 +14,9 @@
     [TestClass]
     public class ContentFactoryTests
     {
+        /// <summary>
+        /// Testing the default functionality of the Factory
+        /// </summary>
         [TestMethod]
         public void GetContentWithNoParametersReturnsDefaultContent()
         {

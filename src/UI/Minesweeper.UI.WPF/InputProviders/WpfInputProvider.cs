@@ -1,8 +1,11 @@
-﻿namespace MineSweeper_WPF.Renderers
+﻿// <copyright file="WpfInputProvider.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace MineSweeper_WPF.InputProviders
 {
-
-    using Contracts;
     using System;
+
+    using MineSweeper_WPF.InputProviders.Contracts;
 
     public class WpfInputtProvider : IWpfInputtProvider
     {

@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.Scoreboards
+﻿// <copyright file="ScoreboardTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.Scoreboards
 {
     using System.Collections.Generic;
 
@@ -11,9 +14,15 @@
 
     using Moq;
 
+    /// <summary>
+    /// Test class for the Scoreboard class
+    /// </summary>
     [TestClass]
     public class ScoreboardTests
     {
+        /// <summary>
+        /// Testing the GetAll functionality
+        /// </summary>
         [TestMethod]
         public void GetAllShouldReturnListOfLeaders()
         {
@@ -29,6 +38,9 @@
             Assert.AreEqual(expected: 2, actual: mockBoard.Object.GetAll().Count);
         }
 
+        /// <summary>
+        /// Testing the RegisterNewPlayer functionality
+        /// </summary>
         [TestMethod]
         public void RegisterNewPlayerShouldAddPlayersToTheList()
         {

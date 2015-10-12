@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.Common.Utils
+﻿// <copyright file="StringExtensionsTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.Common.Utils
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Minesweeper.Logic.Common.Utils;
@@ -9,6 +12,9 @@
     [TestClass]
     public class StringExtensionsTests
     {
+        /// <summary>
+        /// Testing the SplitByUpperCase functionality
+        /// </summary>
         [TestMethod]
         public void SplitByUpperCaseShouldReturnArrayOfStringsOfTheInitialStringSplitByUpperCaseLetters()
         {

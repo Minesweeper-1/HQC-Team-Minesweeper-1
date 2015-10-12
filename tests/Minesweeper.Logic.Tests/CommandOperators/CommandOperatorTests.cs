@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.CommandOperators
+﻿// <copyright file="CommandOperatorTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.CommandOperators
 {
     using System.Collections.Generic;
 
@@ -15,6 +18,9 @@
     [TestClass]
     public class CommandOperatorTests
     {
+        /// <summary>
+        /// Execute method test
+        /// </summary>
         [TestMethod]
         public void TheExecuteMethodShouldExecuteTheCorrectCommandBasedOnTheInput()
         {

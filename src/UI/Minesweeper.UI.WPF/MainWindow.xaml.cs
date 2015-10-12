@@ -1,10 +1,14 @@
-﻿using MineSweeper_WPF.CustomWPFElelements;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace MinesweeperWpf
+﻿// <copyright file="MainWindow.xaml.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace MineSweeper_WPF
 {
+    using System.Collections.Generic;
+    using System.Windows;
+    using System.Windows.Controls;
+
+    using MineSweeper_WPF.CustomWPFElelements;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -16,11 +20,11 @@ namespace MinesweeperWpf
             this.CreateButtons(10, 10);
         }
 
-       
+        public Grid Main { get; set; }
 
         private void CreateButtons(int x, int y)
         {
-            Grid grid = Main;
+            Grid grid = this.Main;
 
             List<ColumnDefinition> cols = new List<ColumnDefinition>();
 
@@ -29,8 +33,6 @@ namespace MinesweeperWpf
                 var rowDef = new RowDefinition();
                 rowDef.Height = GridLength.Auto;
                 grid.RowDefinitions.Add(rowDef);
-
-
             }
 
             for (int i = 0; i < y; i++)
@@ -50,10 +52,12 @@ namespace MinesweeperWpf
                     button.Height = 30;
 
                     grid.Children.Add(button);
-
                 }
             }
-         
+        }
+
+        private void InitializeComponent()
+        {
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.CommandOperators.Common.PlayCommandHandlers
+﻿// <copyright file="IsBombHandlerTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.CommandOperators.Common.PlayCommandHandlers
 {
     using System.Collections.Generic;
 
@@ -18,6 +21,9 @@
     [TestClass]
     public class IsBombHandlerTests
     {
+        /// <summary>
+        /// Method verifying that the request is handled when the cell is a bomb
+        /// </summary>
         [TestMethod]
         public void IsBombHandlerShouldHandleTheRequestIfTheCellIsABomb()
         {
@@ -30,6 +36,9 @@
             Assert.AreEqual(BoardState.Closed, testBoard.BoardState);
         }
 
+        /// <summary>
+        /// Method verifying that the request is passed to the successor when the cell is empty
+        /// </summary>
         [TestMethod]
         public void IsBombHandlerShouldPassTheRequestToItsSuccessorIfTheContentIsEmpty()
         {

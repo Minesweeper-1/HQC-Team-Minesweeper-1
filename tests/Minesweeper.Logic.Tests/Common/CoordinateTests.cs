@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.Common
+﻿// <copyright file="CoordinateTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.Common
 {
     using Logic.Common;
 
@@ -10,6 +13,9 @@
     [TestClass]
     public class CoordinateTests
     {
+        /// <summary>
+        /// Testing cells equality comparison with equal cells
+        /// </summary>
         [TestMethod]
         public void CoordinatesWithEqualValuesForRowAndCallShouldBeEqual()
         {
@@ -18,6 +24,9 @@
             Assert.AreEqual(firstCoordinate, secondCoordinate);
         }
 
+        /// <summary>
+        /// Testing cells equality comparison with different cells
+        /// </summary>
         [TestMethod]
         public void CoordinatesWithDifferentValuesForRowOrCallShouldNotBeEqual()
         {

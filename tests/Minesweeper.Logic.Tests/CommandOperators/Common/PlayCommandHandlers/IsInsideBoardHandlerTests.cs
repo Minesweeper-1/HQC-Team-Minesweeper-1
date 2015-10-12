@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Tests.CommandOperators.Common.PlayCommandHandlers
+﻿// <copyright file="IsInsideBoardHandlerTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.CommandOperators.Common.PlayCommandHandlers
 {
     using System.Collections.Generic;
     
@@ -13,11 +16,14 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     
     /// <summary>
-    /// Class thesting the IsInsideBoardHandler
+    /// Class testing the IsInsideBoardHandler
     /// </summary>
     [TestClass]
     public class IsInsideBoardHandlerTests
     {
+        /// <summary>
+        /// Test checking whether the successor is called
+        /// </summary>
         [TestMethod]
         public void IsInsideBoardSetsItsAndCallsItSuccessorCorrectly()
         {
@@ -31,6 +37,9 @@
             Assert.AreEqual(BoardState.Closed, testBoard.BoardState);
         }
 
+        /// <summary>
+        /// Test checking whether the request is handled when the given cell is outside the board
+        /// </summary>
         [TestMethod]
         public void IsInsideBoardHandlerShouldHandleTheRequestIfCoordinatesOutsideBoardArePassed()
         {

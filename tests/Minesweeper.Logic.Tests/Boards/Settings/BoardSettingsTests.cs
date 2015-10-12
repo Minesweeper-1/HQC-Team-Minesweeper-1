@@ -1,12 +1,21 @@
-﻿namespace Minesweeper.Logic.Tests.Boards.Settings
+﻿// <copyright file="BoardSettingsTests.cs" company="Team Minesweeper-1">
+// Copyright (c) The team. All rights reserved.
+// </copyright>
+namespace Minesweeper.Logic.Tests.Boards.Settings
 {
     using Logic.Boards.Settings;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Class containing BoardSettings tests
+    /// </summary>
     [TestClass]
     public class BoardSettingsTests
     {
+        /// <summary>
+        /// The settings should set the appropriate board parameters
+        /// </summary>
         [TestMethod]
         public void EasyBoardSettingsConstructorShouldSetExpectedBoardParameterValues()
         {
@@ -17,6 +26,9 @@
             Assert.AreEqual(expected: 10, actual: settings.NumberOfBombs);
         }
 
+        /// <summary>
+        /// The settings should set the appropriate board parameters
+        /// </summary>
         [TestMethod]
         public void NormalBoardSettingsConstructorShouldSetExpectedBoardParameterValues()
         {
@@ -27,6 +39,9 @@
             Assert.AreEqual(expected: 40, actual: settings.NumberOfBombs);
         }
 
+        /// <summary>
+        /// The settings should set the appropriate board parameters
+        /// </summary>
         [TestMethod]
         public void HardBoardSettingsConstructorShouldSetExpectedBoardParameterValues()
         {

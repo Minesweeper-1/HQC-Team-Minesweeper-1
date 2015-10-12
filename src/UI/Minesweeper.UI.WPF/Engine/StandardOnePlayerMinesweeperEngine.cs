@@ -1,18 +1,16 @@
 ﻿namespace MineSweeper_WPF.Engine
 {
-    using System;
-
+    using Minesweeper.Logic.Boards.Contracts;
     using Minesweeper.Logic.CommandOperators.Contracts;
     using Minesweeper.Logic.Common;
     using Minesweeper.Logic.Engines.Contracts;
     using Minesweeper.Logic.Players;
     using Minesweeper.Logic.Players.Contracts;
     using Minesweeper.Logic.Scoreboards.Contracts;
-    using Minesweeper.Logic.Boards.Contracts;
+    using MineSweeper_WPF.InputProviders.Contracts;
     using Renderers.Contracts;
-    using Renderers;
 
-    class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine, IBoardObserver
+    public class StandardOnePlayerMinesweeperEngine : IMinesweeperEngine, IBoardObserver
     {
         private readonly IScoreboard scoreboard;
         private readonly IBoard board;
@@ -46,7 +44,6 @@
 
         private void StartGame()
         {
-
         }
 
         private void SavePlayerScore(IPlayer player) =>
