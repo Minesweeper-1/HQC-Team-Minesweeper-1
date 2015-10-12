@@ -6,15 +6,15 @@ namespace Minesweeper.UI.Console.Tests.MenuHandlers
     using System;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
+    using System.Threading.Tasks;
     using Console.InputProviders.Contracts;
     using Console.MenuHandlers;
+    using Console.Renderers;
     using Console.Renderers.Contracts;
     using Logic.DifficultyCommands;
     using Logic.DifficultyCommands.Contracts;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using Console.Renderers;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Tests for MenuHandler class
@@ -65,7 +65,7 @@ namespace Minesweeper.UI.Console.Tests.MenuHandlers
         }
 
         /// <summary>
-        /// test selection menu when input is provided
+        /// Test selection menu user selection when no input is provided
         /// </summary>
         [TestMethod]
         public void ExpectNoExcpetionFromMenuHandlerUserSelection()
@@ -81,7 +81,9 @@ namespace Minesweeper.UI.Console.Tests.MenuHandlers
             consoleMenuHandler.RequestUserSelection();
         }
 
-
+        /// <summary>
+        /// Test selection menu when enter is pressed
+        /// </summary>
         [TestMethod]
         public void ExpectNoExcpetionFromMenuHandlerUserSelectionDownsEnter()
         {
@@ -99,6 +101,9 @@ namespace Minesweeper.UI.Console.Tests.MenuHandlers
             consoleMenuHandler.RequestUserSelection();
         }
 
+        /// <summary>
+        /// Test selection menu when up arrow is pressed 200 micro seconds
+        /// </summary>
         [TestMethod]
         public void ExpectNoExcpetionFromMenuHandlerUserSelectionDownSelection()
         {
@@ -115,12 +120,17 @@ namespace Minesweeper.UI.Console.Tests.MenuHandlers
 
             var consoleMenuHandler = new ConsoleMenuHandler(mockedInputProvider.Object, mockedConsoleRenderer, gameModes, 10, 6);
 
-            bool Completed = ExecuteWithTimeLimit(TimeSpan.FromMilliseconds(200), () =>
+            bool completed = this.ExecuteWithTimeLimit(
+                TimeSpan.FromMilliseconds(200), 
+                () =>
             {
                 consoleMenuHandler.RequestUserSelection();
             });            
         }
 
+        /// <summary>
+        /// Test selection menu when up arrow is pressed 200 micro seconds
+        /// </summary>
         [TestMethod]
         public void ExpectNoExcpetionFromMenuHandlerUserSelectionUpSelection()
         {
@@ -137,19 +147,25 @@ namespace Minesweeper.UI.Console.Tests.MenuHandlers
 
             var consoleMenuHandler = new ConsoleMenuHandler(mockedInputProvider.Object, mockedConsoleRenderer, gameModes, 10, 5);
 
-            bool Completed = ExecuteWithTimeLimit(TimeSpan.FromMilliseconds(200), () =>
+            bool completed = this.ExecuteWithTimeLimit(
+                TimeSpan.FromMilliseconds(200), 
+                () =>
             {
                 consoleMenuHandler.RequestUserSelection();
             });
-
         }
 
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr GetStdHandle(uint nonStardarddHandle);
+        [DllImport("kernel32.dll")]
+        private static extern void SetStdHandle(uint nonStardarddHandle, IntPtr handle);
+
         /// <summary>
-        /// 
+        /// Limits method execution time. It is used to skip wait for user input
         /// </summary>
-        /// <param name="timeSpan"></param>
-        /// <param name="codeBlock"></param>
-        /// <returns></returns>
+        /// <param name="timeSpan">Allow time of execution</param>
+        /// <param name="codeBlock">Code to be executed</param>
+        /// <returns>Code that will be terminated after time span</returns>
         private bool ExecuteWithTimeLimit(TimeSpan timeSpan, Action codeBlock)
         {
             try
@@ -163,10 +179,5 @@ namespace Minesweeper.UI.Console.Tests.MenuHandlers
                 throw ae.InnerExceptions[0];
             }
         }
-
-        [DllImport("kernel32.dll")]
-        private static extern IntPtr GetStdHandle(uint nonStardarddHandle);
-        [DllImport("kernel32.dll")]
-        private static extern void SetStdHandle(uint nonStardarddHandle, IntPtr handle);
     }
 }
