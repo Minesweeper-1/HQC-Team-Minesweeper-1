@@ -1,11 +1,14 @@
-﻿// <copyright file="IWpfRenderer.cs" company="Team Minesweeper-1">
-// Copyright (c) The team. All rights reserved.
-// </copyright>
-namespace MineSweeper_WPF.Renderers.Contracts
+﻿namespace Minesweeper.UI.Wpf.Renderers.Contracts
 {
-    using Minesweeper.Logic.Renderers.Contracts;
+    using System.Windows.Controls;
 
+    using Logic.Renderers.Contracts;
+
+    /// <summary>
+    /// Defines all public members of a WpfRenderer
+    /// </summary>
     public interface IWpfRenderer : IRenderer
     {
+        Grid Grid { get; }
     }
 }

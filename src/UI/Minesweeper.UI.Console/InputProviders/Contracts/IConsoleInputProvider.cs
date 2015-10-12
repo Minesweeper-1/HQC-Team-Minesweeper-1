@@ -15,7 +15,6 @@
         /// <summary>
         /// Gets the character correspoding to the pressed key
         /// </summary>
-        /// <param name="justABool"></param>
         /// <returns>Char int code</returns>
         int GetKeyChar();
 

@@ -1,7 +1,7 @@
 ﻿// <copyright file="MineSweeperButton.cs" company="Team Minesweeper-1">
 // Copyright (c) The team. All rights reserved.
 // </copyright>
-namespace MineSweeper_WPF.CustomWPFElelements
+namespace Minesweeper.UI.Wpf.CustomWpfElelements
 {
     using System;
     using System.Windows;
@@ -12,7 +12,7 @@ namespace MineSweeper_WPF.CustomWPFElelements
     /// <summary>
     /// A minesweeper button class inheriting the Button class
     /// </summary>
-    public class MineSweeperButton : Button
+    public class MinesweeperButton : Button
     {
         private ImageBrush background;
         private int clickCount;
@@ -24,7 +24,7 @@ namespace MineSweeper_WPF.CustomWPFElelements
         /// </summary>
         /// <param name="col">The column of the button</param>
         /// <param name="row">The row of the button</param>
-        public MineSweeperButton(int col, int row)
+        public MinesweeperButton(int col, int row)
         {
             this.SetCol(col);
             this.SetRow(row);
@@ -33,7 +33,7 @@ namespace MineSweeper_WPF.CustomWPFElelements
             this.MouseRightButtonDown += this.Right;
             this.GotMouseCapture += this.SetAlpha;
 
-            var s = this.Triggers;
+            TriggerCollection s = this.Triggers;
         }
 
         public int Col { get; private set; }
@@ -42,13 +42,13 @@ namespace MineSweeper_WPF.CustomWPFElelements
 
         private void Left(object sender, RoutedEventArgs e)
         {
-            var target = (MineSweeperButton)sender;
+            var target = (MinesweeperButton)sender;
             target.Content = 2;
         }
 
         private void Right(object sender, RoutedEventArgs e)
         {
-            var target = (MineSweeperButton)sender;
+            var target = (MinesweeperButton)sender;
             switch (this.clickCount)
             {
                 case 0:

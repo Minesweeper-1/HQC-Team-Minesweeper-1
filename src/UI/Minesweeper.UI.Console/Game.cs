@@ -6,6 +6,7 @@
     using Engine;
     using Engine.Initializations;
     using InputProviders;
+    using InputProviders.Contracts;
     using Logic.Boards;
     using Logic.Boards.Contracts;
     using Logic.Boards.Settings.Contracts;
@@ -16,12 +17,9 @@
     using Logic.Players;
     using Logic.Scoreboards;
     using MenuHandlers;
-
-    using Minesweeper.UI.Console.InputProviders.Contracts;
-    using Minesweeper.UI.Console.Renderers.Contracts;
-
     using Renderers;
     using Renderers.Common;
+    using Renderers.Contracts;
 
     /// <summary>
     /// Game facade
@@ -38,8 +36,14 @@
         {
         }
 
+        /// <summary>
+        /// Facade singleton instance
+        /// </summary>
         public static Game Instance => LazyInstance.Value;
 
+        /// <summary>
+        /// The facade input provider
+        /// </summary>
         public IConsoleInputProvider InputProvider
         {
             get
@@ -53,6 +57,9 @@
             }
         }
 
+        /// <summary>
+        /// The facade renderer
+        /// </summary>
         public IConsoleRenderer OutputRenderer
         {
             get
