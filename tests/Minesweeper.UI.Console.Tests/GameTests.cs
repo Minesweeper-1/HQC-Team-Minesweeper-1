@@ -8,6 +8,9 @@ namespace Minesweeper.UI.Console.Tests
     using Minesweeper.UI.Console.InputProviders.Contracts;
     using Minesweeper.UI.Console.Renderers.Contracts;
     using Moq;
+    using Console.Renderers;
+    using System.Runtime.InteropServices;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// A test class for the Game class
@@ -15,6 +18,18 @@ namespace Minesweeper.UI.Console.Tests
     [TestClass]
     public class GameTests
     {
+        /// <summary>
+        /// Standard output handle constant
+        /// </summary>
+        private const uint StdOutputHandle = 0xFFFFFFF5;
+
+        /// <summary>
+        /// Allocates a new console for the calling process.
+        /// </summary>
+        /// <returns>True upon success and false otherwise</returns>
+        [DllImport("kernel32")]
+        public static extern bool AllocConsole();
+
         /// <summary>
         /// Testing singleton functionality
         /// </summary>
@@ -27,23 +42,56 @@ namespace Minesweeper.UI.Console.Tests
         }
 
         /// <summary>
-        /// Starting the game with not fully correct settings should throw an exception
+        /// Game start with correct settings and allowed 200 microseconds execution time
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]
         public void TestStart()
         {
+            AllocConsole();
             var gameInstance = Game.Instance;
             var inputMock = new Mock<IConsoleInputProvider>();
-            var outputMock = new Mock<IConsoleRenderer>();
+            var outputMock = new ConsoleRenderer();
             inputMock.Setup(x => x.IsKeyAvailable).Returns(true);
             inputMock.Setup(x => x.GetKeyChar()).Returns(' ');
             inputMock.Setup(x => x.ReceiveInputLine()).Returns("1 1");
             inputMock.Setup(x => x.TransformCommandToNumbersOnly(It.IsAny<string>())).Returns("1 1");
             gameInstance.InputProvider = inputMock.Object;
-            gameInstance.OutputRenderer = outputMock.Object;
+            gameInstance.OutputRenderer = outputMock;
             inputMock.Verify();
-            gameInstance.Start();
+            outputMock.SetCursor(6, 0);
+
+            bool completed = this.ExecuteWithTimeLimit(
+              TimeSpan.FromMilliseconds(200),
+              () =>
+              {
+                  gameInstance.Start();
+              });
+            
+        }
+
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr GetStdHandle(uint stdHandle);
+        [DllImport("kernel32.dll")]
+        private static extern void SetStdHandle(uint stdHandle, IntPtr handle);
+
+        /// <summary>
+        /// Limits method execution time. It is used to skip wait for user input
+        /// </summary>
+        /// <param name="timeSpan">Allow time of execution</param>
+        /// <param name="codeBlock">Code to be executed</param>
+        /// <returns>Code that will be terminated after time span</returns>
+        private bool ExecuteWithTimeLimit(TimeSpan timeSpan, Action codeBlock)
+        {
+            try
+            {
+                Task task = Task.Factory.StartNew(() => codeBlock());
+                task.Wait(timeSpan);
+                return task.IsCompleted;
+            }
+            catch (AggregateException ae)
+            {
+                throw ae.InnerExceptions[0];
+            }
         }
     }
 }
