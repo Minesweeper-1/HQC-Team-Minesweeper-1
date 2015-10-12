@@ -62,7 +62,7 @@ in the Telerik Academy High-Quality Code Course 2015
    - **Creational**: 
 	   - Singleton: The façade
 	   - Simple Factory: `ContentFactory` class, producing Cell Content
-	   - Fluent Interface: The `Board` class
+	   - Fluent Interface: The `Cell` class
 	   - Lazy Initialization: The façade
    - **Structural**: 
 	   - Façade: The `Game` class
