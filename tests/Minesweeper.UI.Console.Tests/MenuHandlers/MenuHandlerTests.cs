@@ -139,6 +139,7 @@ namespace Minesweeper.UI.Console.Tests.MenuHandlers
             var mockedInputProvider = new Mock<IConsoleInputProvider>();
             mockedInputProvider.Setup(o => o.IsKeyAvailable).Returns(false);
             mockedInputProvider.Setup(o => o.GetKeyChar()).Returns(40);
+            mockedInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns("1 a");
 
             var gameModes = new List<IGameMode>();
             gameModes.Add(new BeginnerMode());
