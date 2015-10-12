@@ -15,7 +15,7 @@
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
     <OutputPath>.\Help\</OutputPath>
-    <HtmlHelpName>Minesweeper.LogicDocumentation</HtmlHelpName>
+    <HtmlHelpName>MinesweeperDocumentation</HtmlHelpName>
     <Language>en-US</Language>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <HelpFileFormat>HtmlHelp1</HelpFileFormat>
@@ -32,10 +32,12 @@
     <PresentationStyle>VS2013</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
-    <HelpTitle>Minesweeper.Logic Help File</HelpTitle>
+    <HelpTitle>Minesweeper Logic and Console UI Help File</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\Minesweeper.Logic\bin\Debug\Minesweeper.dll" />
+<DocumentationSource sourceFile="..\UI\Minesweeper.UI.Console\bin\x86\Release\Minesweeper.UI.Console.exe" />
+<DocumentationSource sourceFile="..\UI\Minesweeper.UI.Console\bin\x86\Release\Minesweeper.UI.Console.XML" />
 <DocumentationSource sourceFile="..\Minesweeper.Logic\bin\Debug\Minesweeper.XML" /></DocumentationSources>
     <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, InheritedFrameworkInternalMembers, Internals, ProtectedInternalAsProtected, NoPIATypes</VisibleItems>
   </PropertyGroup>
