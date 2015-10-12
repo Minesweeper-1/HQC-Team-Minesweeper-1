@@ -41,10 +41,10 @@ namespace Minesweeper.UI.Console.Tests.Engine
         public static extern bool AllocConsole();
 
         /// <summary>
-        /// Running with the engine should throw an NullReferenceException when some of the required components are not set
+        /// Normal operation of Engine test when the board is in Closed state
         /// </summary>
         [TestMethod]
-        public void StandardOnePlayerMinesweeperEngineTest()
+        public void StandardOnePlayerMinesweeperEngineTestClosedState()
         {
             AllocConsole();
             var testInputProvider = new Mock<IConsoleInputProvider>();
@@ -62,6 +62,99 @@ namespace Minesweeper.UI.Console.Tests.Engine
                 new Player("Gosho"));
             testEngine.Initialize(new StandardGameInitializationStrategy(new ContentFactory()));
             testEngine.Update(new Notification("test", BoardState.Closed));
+
+            bool completed = this.ExecuteWithTimeLimit(
+                TimeSpan.FromMilliseconds(200),
+                () =>
+                {
+                    testEngine.Run();
+                });
+        }
+
+        /// <summary>
+        /// Normal operation of Engine test when the board is in Open state
+        /// </summary>
+        [TestMethod]
+        public void StandardOnePlayerMinesweeperEngineTestOpenState()
+        {
+            AllocConsole();
+            var testInputProvider = new Mock<IConsoleInputProvider>();
+            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns("1 a");
+            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns("1 a");
+            var testOutputRenderer = new ConsoleRenderer();
+            var testScoreboard = new Mock<IScoreboard>();
+            var testBoard = new Board(new EasyBoardSettings(), new List<IBoardObserver>());
+            var testEngine = new StandardOnePlayerMinesweeperEngine(
+                testBoard,
+                testInputProvider.Object,
+                testOutputRenderer,
+                new CommandOperator(testBoard, testScoreboard.Object),
+                testScoreboard.Object,
+                new Player("Gosho"));
+            testEngine.Initialize(new StandardGameInitializationStrategy(new ContentFactory()));
+            testEngine.Update(new Notification("test", BoardState.Open));
+
+            bool completed = this.ExecuteWithTimeLimit(
+                TimeSpan.FromMilliseconds(200),
+                () =>
+                {
+                    testEngine.Run();
+                });
+        }
+
+        /// <summary>
+        /// Normal operation of Engine test when the board is in Reset state
+        /// </summary>
+        [TestMethod]
+        public void StandardOnePlayerMinesweeperEngineTestResetState()
+        {
+            AllocConsole();
+            var testInputProvider = new Mock<IConsoleInputProvider>();
+            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns("1 a");
+            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns("1 a");
+            var testOutputRenderer = new ConsoleRenderer();
+            var testScoreboard = new Mock<IScoreboard>();
+            var testBoard = new Board(new EasyBoardSettings(), new List<IBoardObserver>());
+            var testEngine = new StandardOnePlayerMinesweeperEngine(
+                testBoard,
+                testInputProvider.Object,
+                testOutputRenderer,
+                new CommandOperator(testBoard, testScoreboard.Object),
+                testScoreboard.Object,
+                new Player("Gosho"));
+            testEngine.Initialize(new StandardGameInitializationStrategy(new ContentFactory()));
+            testEngine.Update(new Notification("test", BoardState.Reset));
+
+            bool completed = this.ExecuteWithTimeLimit(
+                TimeSpan.FromMilliseconds(200),
+                () =>
+                {
+                    testEngine.Run();
+                });
+        }
+        
+        /// <summary>
+        /// Normal operation of Engine test when the board is in Pending state
+        /// </summary>
+        [TestMethod]
+        public void StandardOnePlayerMinesweeperEngineTestPendingState()
+        {
+            AllocConsole();
+            var testInputProvider = new Mock<IConsoleInputProvider>();
+            testInputProvider.Setup(o => o.ReceiveInputLine()).Returns("1 a");
+            testInputProvider.Setup(o => o.TransformCommandToNumbersOnly("1 a")).Returns("1 a");
+            var testOutputRenderer = new ConsoleRenderer();
+            var testScoreboard = new Mock<IScoreboard>();
+            var testBoard = new Board(new EasyBoardSettings(), new List<IBoardObserver>());
+            var testEngine = new StandardOnePlayerMinesweeperEngine(
+                testBoard,
+                testInputProvider.Object,
+                testOutputRenderer,
+                new CommandOperator(testBoard, testScoreboard.Object),
+                testScoreboard.Object,
+                new Player("Gosho"));
+            testEngine.Initialize(new StandardGameInitializationStrategy(new ContentFactory()));
+            testEngine.Update(new Notification("test", BoardState.Pending));
 
             bool completed = this.ExecuteWithTimeLimit(
                 TimeSpan.FromMilliseconds(200),
