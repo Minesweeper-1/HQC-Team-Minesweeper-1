@@ -48,7 +48,8 @@ in the Telerik Academy High-Quality Code Course 2015
 	- All interfaces conform to the Interface Segregation Principle
 	- Applied Dependency Inversion to the complex classes which have more or less a lot of class dependencies
 	- Character casing: variables and fields made camelCase; types and methods made PascalCase
-	- Formatted all other elements of the source code according to the best practices introduced in the course “High-Quality Programming Code”.
+	- Formatted all other elements of the source code according to the best practices introduced in the course “High-Quality Programming Code”
+	- Achieved all dependencies through interfaces and abstract classes for a higher level of abstraction
 	- Removed **90%** of the initial logic - impossible to split the spaghetti 
 	
 	The console rendering class:
