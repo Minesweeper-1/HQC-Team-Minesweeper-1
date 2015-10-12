@@ -3,21 +3,21 @@
     using System;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
-
     using Console.InputProviders.Contracts;
     using Console.MenuHandlers;
-    using Console.Renderers.Contracts;
+    using Console.Renderers.Contracts;  
     using Logic.DifficultyCommands;
     using Logic.DifficultyCommands.Contracts;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Moq;
 
     [TestClass]
     public class MenuHandlerTests
     {
         private const uint StdOutputHandle = 0xFFFFFFF5;
+
+        [DllImport("kernel32")]
+        public static extern bool AllocConsole();
 
         [TestMethod]
         public void ExpectNoExcpetionFromMenuHandlerConstructor()
@@ -58,10 +58,8 @@
         }
 
         [DllImport("kernel32.dll")]
-        private static extern IntPtr GetStdHandle(uint nStdHandle);
+        private static extern IntPtr GetStdHandle(uint nonStardarddHandle);
         [DllImport("kernel32.dll")]
-        private static extern void SetStdHandle(uint nStdHandle, IntPtr handle);
-        [DllImport("kernel32")]
-        public static extern bool AllocConsole();
+        private static extern void SetStdHandle(uint nonStardarddHandle, IntPtr handle);        
     }
 }
