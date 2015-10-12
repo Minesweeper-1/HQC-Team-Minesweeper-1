@@ -8,11 +8,13 @@ namespace Minesweeper.UI.Console.Tests.MenuHandlers
     using System.Runtime.InteropServices;
     using Console.InputProviders.Contracts;
     using Console.MenuHandlers;
-    using Console.Renderers.Contracts;  
+    using Console.Renderers.Contracts;
     using Logic.DifficultyCommands;
     using Logic.DifficultyCommands.Contracts;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
+    using Console.Renderers;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Tests for MenuHandler class
@@ -79,9 +81,92 @@ namespace Minesweeper.UI.Console.Tests.MenuHandlers
             consoleMenuHandler.RequestUserSelection();
         }
 
+
+        [TestMethod]
+        public void ExpectNoExcpetionFromMenuHandlerUserSelectionDownsEnter()
+        {
+            var mockedConsoleRenderer = new Mock<IConsoleRenderer>();
+            var mockedInputProvider = new Mock<IConsoleInputProvider>();
+            mockedInputProvider.Setup(o => o.IsKeyAvailable).Returns(false);
+            mockedInputProvider.Setup(o => o.GetKeyChar()).Returns(13);
+            
+            var gameModes = new List<IGameMode>();
+            gameModes.Add(new BeginnerMode());
+            gameModes.Add(new ExpertMode());
+
+            var consoleMenuHandler = new ConsoleMenuHandler(mockedInputProvider.Object, mockedConsoleRenderer.Object, gameModes, 10, 5);
+
+            consoleMenuHandler.RequestUserSelection();
+        }
+
+        [TestMethod]
+        public void ExpectNoExcpetionFromMenuHandlerUserSelectionDownSelection()
+        {
+            AllocConsole();
+            var mockedConsoleRenderer = new ConsoleRenderer();
+            var mockedInputProvider = new Mock<IConsoleInputProvider>();
+            mockedInputProvider.Setup(o => o.IsKeyAvailable).Returns(false);
+            mockedInputProvider.Setup(o => o.GetKeyChar()).Returns(38);
+
+            var gameModes = new List<IGameMode>();
+            gameModes.Add(new BeginnerMode());
+            gameModes.Add(new ExpertMode());
+            gameModes.Add(new BeginnerMode());
+
+            var consoleMenuHandler = new ConsoleMenuHandler(mockedInputProvider.Object, mockedConsoleRenderer, gameModes, 10, 6);
+
+            bool Completed = ExecuteWithTimeLimit(TimeSpan.FromMilliseconds(200), () =>
+            {
+                consoleMenuHandler.RequestUserSelection();
+            });            
+        }
+
+        [TestMethod]
+        public void ExpectNoExcpetionFromMenuHandlerUserSelectionUpSelection()
+        {
+            AllocConsole();
+            var mockedConsoleRenderer = new ConsoleRenderer();
+            var mockedInputProvider = new Mock<IConsoleInputProvider>();
+            mockedInputProvider.Setup(o => o.IsKeyAvailable).Returns(false);
+            mockedInputProvider.Setup(o => o.GetKeyChar()).Returns(40);
+
+            var gameModes = new List<IGameMode>();
+            gameModes.Add(new BeginnerMode());
+            gameModes.Add(new ExpertMode());
+            gameModes.Add(new BeginnerMode());
+
+            var consoleMenuHandler = new ConsoleMenuHandler(mockedInputProvider.Object, mockedConsoleRenderer, gameModes, 10, 5);
+
+            bool Completed = ExecuteWithTimeLimit(TimeSpan.FromMilliseconds(200), () =>
+            {
+                consoleMenuHandler.RequestUserSelection();
+            });
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="timeSpan"></param>
+        /// <param name="codeBlock"></param>
+        /// <returns></returns>
+        private bool ExecuteWithTimeLimit(TimeSpan timeSpan, Action codeBlock)
+        {
+            try
+            {
+                Task task = Task.Factory.StartNew(() => codeBlock());
+                task.Wait(timeSpan);
+                return task.IsCompleted;
+            }
+            catch (AggregateException ae)
+            {
+                throw ae.InnerExceptions[0];
+            }
+        }
+
         [DllImport("kernel32.dll")]
         private static extern IntPtr GetStdHandle(uint nonStardarddHandle);
         [DllImport("kernel32.dll")]
-        private static extern void SetStdHandle(uint nonStardarddHandle, IntPtr handle);        
+        private static extern void SetStdHandle(uint nonStardarddHandle, IntPtr handle);
     }
 }
