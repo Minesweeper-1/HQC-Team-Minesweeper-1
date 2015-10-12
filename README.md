@@ -7,8 +7,13 @@ in the Telerik Academy High-Quality Code Course 2015
 1. Redesigned the project structure: Team "Minesweeper-1"
 	- Created a project `Minesweeper.Logic`;
 	- Created a namespace `UI`:
-		- Created a project Minesweeper.UI.Console;
-		- Created a project Minesweeper.UI.WPF;
+		- Created a project `Minesweeper.UI.Console`
+			- Introduced a class `ConsoleInputProvider` implementing the `IInputPovider` interface from the logic, which uses the Console to receive input - menu item selection, cell selection, board and game interaction
+			- Introduced a class `ConsoleRenderer` implementing the `IRenderer` interface from the logic, which uses the Console to write output - the board, scoreboard and game messages
+			- Introduced a class `ConsoleMenuHandler` which is a console-based class used for rendering a menu and introducing menu item-selecting logic for better UX
+			- Introduced a class `StandardOnePlayerMinesweeperEngine` which utilizes the `StandardGameInitializationStrategy` by filling the board using a concrete step-by-step algorithm
+		- Created a project `Minesweeper.UI.WPF`
+			- For now it is just an example of how easy it can be implementing entirely different means of receiving input and sending output
 	- Renamed the namespace `Mini` to `Minesweeper.Logic`
 	- Introduced the following namespaces:
 		- `Minesweeper.Logic.Boards`, containing the Board object and settings definitions
@@ -33,12 +38,24 @@ in the Telerik Academy High-Quality Code Course 2015
 	- Removed all unnecessary whitespace
 	- Removed all inadequate comments
 	- Removed all bad statics from the classes
+	- Refactored all one-line block statements
+	- Added angle brackets to one-line block statements
+	- Removed the bad `goto`
 	- Abstracted as much as possible all class references
 	- Separated the class logic in accordance with Single Responsibility Principle
 	- All classes now conform to the Open/Closed Principle
 	- Inheritance chains conform to the Liskov Substitution Principle
 	- All interfaces conform to the Interface Segregation Principle
 	- Applied Dependency Inversion to the complex classes which have more or less a lot of class dependencies
+	- Character casing: variables and fields made camelCase; types and methods made PascalCase
+	- Formatted all other elements of the source code according to the best practices introduced in the course “High-Quality Programming Code”.
+	- Removed **90%** of the initial logic - impossible to split the spaghetti 
+	
+	The console rendering class:
+	- Changed the rendering symbols
+	- Added color to the rendered symbols
+	- Added more sophisticated board borders
+	- Replaced all inadequate game messages with better
 
 3. Implemented the following patterns:
    - **Creational**: 
